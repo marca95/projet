@@ -81,16 +81,14 @@ nav ul li a:hover{
 /*-------------- MAIN /!\---------------------*/
 
 main {
-
   color: green;
 }
 
 h2 {
   display: flex;
   justify-content: center;
-  padding: 30px 30px;
-  font-style: 2.6rem;
-  text-decoration: underline;
+  padding: 40px 40px;
+  font-style: 4rem;
 }
 
 .main_div{
@@ -99,7 +97,7 @@ h2 {
 }
 
 .btn_habitat {
-  width: 460px;
+  width: 650px;
   height: 300px;
   border-radius: 10px;
   font-size: 1.6rem;
@@ -113,7 +111,7 @@ h2 {
 
 .hidden {
   height: auto;
-  width: 460px;
+  width: 650px;
   border-radius: 10px;  
   display: none;
   background-color: #4545451f;
@@ -137,6 +135,7 @@ h6 {
 
 .list_animals{
   text-align: start;
+  font-size: 0.9rem;
 }
 
 .li_animals{
@@ -145,7 +144,7 @@ h6 {
 }
 
 .li_animals:hover{
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -162,6 +161,7 @@ h6 {
 .descr_animal{
   padding: 5px;
   position: relative;
+  font-size: 1rem;
   top: 0;
   left: 0;
   width: 100%;
@@ -172,7 +172,7 @@ h6 {
 .img_animals {
   background-size: cover;
   background-repeat: no-repeat;
-  width: 444px;
+  width: 384px;
   height: 400px;
 }
 
@@ -180,6 +180,7 @@ h6 {
   background-color: #454545;
   text-align: start;
   padding: 5px;
+  font-size: 1rem;
 }
 
 
@@ -239,14 +240,15 @@ h6 {
 
 /* -------------------------------MEADIA QUERIES------------------------------------ */
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1399px) {
 
   #logo_nav {
     width: 50%;
   }
 
-  .sec-div {
-    margin-bottom: 20px;
+  .btn_habitat {
+    width: 480px;
+
   }
 }
 
@@ -286,6 +288,7 @@ h6 {
     color: rgb(0, 204, 51);
     cursor: pointer;
   }
+
 }
 
 
@@ -320,7 +323,7 @@ h6 {
   }
 
   .btn_habitat {
-    margin-bottom: 20px;
+    width: 700px;
   }
 }
 

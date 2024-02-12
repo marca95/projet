@@ -1,0 +1,219 @@
+* {
+  margin: 0px ;
+  padding: 0px;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.header_div {
+ text-align: center;
+ background-image: url('../../img/menu/nuage2.jpg');
+ background-size: 100%;
+ background-repeat: no-repeat;
+ height: 10%;
+ align-items: flex-start;
+}
+
+.main_title {
+  display: flex;
+  justify-content: center;
+  font-size: 6rem;
+  letter-spacing: 1.8rem;
+  margin: 0;
+  color: white;
+}
+
+.button {
+  align-self: center;
+}
+
+button {
+  width: 100px;
+  letter-spacing: 0.6rem;
+}
+
+main {
+  height: 66vh;
+  display: flex;
+  align-items: center;
+}
+
+.setup {
+  align-content: center;
+  border-radius: 1200px/500px;
+  height: 500px;
+  width: 1200px;
+  overflow: hidden;
+}
+
+#image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height:100%;
+  width: 100%;
+  position: fixed;
+} 
+
+.logo_main{
+ display: flex;
+ height: 100%;
+ justify-content: center;
+ align-self: center;
+ padding: 5px 0;
+}
+
+.logo_nav {
+  width: 35%;
+} 
+
+.main_div1 {
+  background-image: url('../../img/menu/train2.png');
+}
+
+.main_div2{
+  background-image: url('../../img/menu/chien.jpg');
+}
+
+.main_div3 {
+  background-image: url('../../img/menu/batiment.jpg');
+}
+
+.main_div4 {
+  background-image: url('../../img/menu/login.jpg');
+}
+
+.main_div1, .main_div2, .main_div3, .main_div4 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-decoration: none;
+  padding: 0;
+  height: 250px;
+}
+
+.main_a {
+  text-decoration: none;
+}
+
+.main_para {
+  display: flex;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 2.4rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  transition: 0.5s;
+}
+
+.main_para:hover {
+  opacity: 1;
+  background-color: #4545457a; 
+}
+
+footer {
+  background-image: url('../../img/menu/herbe.jpg');
+  background-size: contain;
+  background-repeat: repeat-x;
+  height: 20vh;
+  position: relative;
+  bottom: 0px;
+  left: 0px;
+}
+
+
+/*-------------- MEDIA SCREEN WIDTH /!\---------------------*/
+@media screen and (max-width: 992px) {
+  .main_title {
+    font-size: 4rem;
+    letter-spacing: 1.5rem;
+  }
+
+  button {
+    width: 70px;
+    letter-spacing: 0rem;
+  }
+
+  .main_para {
+    opacity: 1;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+
+  }
+
+  .setup {
+    border-radius: 1200px/500px;
+    height: 500px;
+    width: 1200px;
+    overflow: hidden;
+  }
+
+  .main_div1, .main_div2, .main_div3, .main_div4 {
+    height: 250px;
+  }
+
+  main {
+    align-items: center;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .main_title {
+    font-size: 2.2rem;
+    letter-spacing: 0.6rem;
+    align-self: center;
+  }
+
+  button {
+    margin-right: 2px;
+    width: 60%;
+  }
+
+  .btn1 {
+    font-size: 0.9rem;
+  }
+}
+
+/*-------------- MEDIA SCREEN HEIGHT /!\---------------------*/
+@media screen and (max-height: 758px) {
+  .setup {
+    border-radius: 1200px/400px;
+    height: 400px;
+  }
+
+  .main_div1, .main_div2, .main_div3, .main_div4 {
+    height: 200px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .setup {
+    border-radius: 1400px/300px;
+    height: 300px;
+    width: 1400px;
+  }
+
+  .main_div1, .main_div2, .main_div3, .main_div4 {
+    height: 150px;
+  }
+}
+
+@media screen and (max-height: 455px) {
+  .header_div {
+    height: 20vh;
+   }
+  .main_title {
+    font-size: 3rem;
+  }
+  .logo_nav {
+    width: 20%;
+  } 
+}

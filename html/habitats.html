@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoo d'Arcadia en Bretagne</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="../style/css/habitats.css" rel="styleSheet">
+  <link href="../img/logo.png" rel="icon">
+</head>
+
+<body>
+  <header>
+    <nav id="nav">
+      <h1 class="titre-principal">Arcadia</h1>
+      <div class="nav-div">
+        <img id="logo_nav" src="../img/accueil/logo.png" alt="erreur">
+      </div>
+      <ul class="navigation">
+        <li><a href="connexion.html">Connexion</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="accueil.html">Accueil</a></li>
+      </ul>
+      <div id="icon"></div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="row">
+      <h2>Leurs "chez eux"</h2>
+    </div>
+    <div class="main_div container-fluid">
+      <div class="row mb-4">
+        <div class="sec-div col-4 container">
+          <button class="btn_habitat col-4 mb-1" style="background-image: url(../img/habitats/foret.jpg);">La
+            foret
+          </button>
+          <div class="hidden container-fluid mb-2">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex mb-3">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+            <div class="row d-flex">
+              <div class="hidAnimal" style="background-image: url('../img/habitats/cerf.jpg');">
+                <p class="pt-2 fw-bold">Le cerf "Jules"</p>
+                <p>Le cerf élaphe, grand cervidé des forets d'Europe. Sa femmelle est la biche</p>
+                <br>
+                <div class="avis_veterinaire">
+                  <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Sa nourriure: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                </div>
+              </div>
+              <div class="hidAnimal text-black fw-bold" style="background-image: url('../img/habitats/cochon.jpg');">
+                <p class="pt-2 fw-bold text-danger">Les cochons Hector et Ficelle</p>
+                <p class="text-danger">Mammifères omnivores de la famille des Suidae, proche du sanglier avec lequel il
+                  peut se croiser.
+                  Peut vivre en foret ou certain le prenne comme animal dometique.
+                </p>
+                <br>
+                <div class="avis_veterinaire text-danger">
+                  <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Sa nourriure: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                </div>
+              </div>
+              <div class="hidAnimal" style="background-image: url('../img/habitats/lapin.jpg');">
+                <p class="pt-2 fw-bold">Les lapins Furet et Carotte</p>
+                <p>Nos lapins sont de race Oryctolagus. Ce sont de petits mammifères herbivores. Ils creusent énormément
+                  de terriers.</p>
+                <p></p>
+                <br>
+                <div class="avis_veterinaire">
+                  <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Sa nourriure: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                </div>
+              </div>
+              <div class="hidAnimal fw-bold" style="background-image: url('../img/habitats/dains.jpg');">
+                <p class="pt-2 fw-bold">Les daims Vinc et Carole</p>
+                <p>Les dains sont des animaux de taille plutôt grand. Leur robe est habituellement fauve-roussâtre,
+                  tachetée de blanc en été et brune en hiver</p>
+                <br>
+                <div class="avis_veterinaire">
+                  <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Sa nourriure: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                </div>
+              </div>
+              <div class="hidAnimal" style="background-image: url('../img/habitats/poule.jpg');">
+                <p class="pt-2 fw-bold">Les poules Sabine et Jacky</p>
+                <p>Sabine et Jacky sont de race Gauloise. Ce sont des poules qui vivent habituellement en Europe. La
+                  distinction de sexe n'est pas toujours précise. Une poule domestique glousse tandis que la poule
+                  domestique claquette.</p>
+                <br>
+                <div class="avis_veterinaire">
+                  <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Sa nourriure: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                </div>
+              </div>
+              <div class="hidAnimal" style="background-image: url('../img/habitats/chevreuil.jpg');">
+                <p class="pt-2 fw-bold">Les chevreuils Banbi et Bina</p>
+                <p>Nos chevreuils viennent tout droit d'Asie. Leur nom latin est <i>capreolus pygargus</i>. Ils vivent
+                  dans la foret, de préférence avec des clairières, mais aussi dans des steppes où il peut vivre
+                  entièrement à découvert.</p>
+                <br>
+                <div class="avis_veterinaire">
+                  <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Sa nourriure: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                </div>
+              </div>
+              <div class="hidAnimal text-danger fw-bold" style="background-image: url('../img/habitats/ecureuil.jpg');">
+                <p class="pt-2 fw-bold">Les écureuils Jacques et Danis</p>
+                <p>Ce sont des écureuils roux, il peut y avoir jusqu'à 285 espèces différentes. Les écureuils peuvent
+                  etre volants. Leur taille varie de 13cm à 90cm. Ils ont la faculté de sauter de branche en branche.
+                </p>
+                <br>
+                <div class="avis_veterinaire">
+                  <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Sa nourriure: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
+                  <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/etang.jpg);">L'étang
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">L'étang</h5>
+            <p class="descr_p">Grand bassin d'eau avec petite île au milieu pour que nos canards puissent se reposer
+              sans être déranger. Notre étang cache des nombreuses espèces.
+              La qualité de l'eau est controlé hebdomadairement par nos vétérinaire, afin de s'assurer le bien-être de
+              nos animaux.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Les poissons Asiatique</li>
+                <li class="li_animals">Les tortues</li>
+                <li class="li_animals">Les flamands Rose</li>
+                <li class="li_animals">Les grenouilles</li>
+                <li class="li_animals">Les canards</li>
+                <li class="li_animals">Nos castors</li>
+                <li class="li_animals">Les oies</li>
+              </ul>
+              <img class="col-7 p-3" src="../img/habitats/etang1.jpg" width="20%" title="Nunéphare">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Les poissons Asiatique</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les tortues</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les flamands Rose</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les grenouilles</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les canards</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Nos castors</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les oies</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/vivarium.jpg);">Nos
+            vivariums
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Le cerf</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les cochons</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les lapinsssss</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les dains</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les poules</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les chevreuils</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les écureuils</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="sec-div col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/pature.jpg);">Notre
+            pâture
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Le cerf</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les cochons</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les lapinsssss</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les dains</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les poules</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les chevreuils</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les écureuils</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/ranch.jpg);">Le
+            ranch
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Le cerf</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les cochons</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les lapinsssss</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les dains</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les poules</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les chevreuils</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les écureuils</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/taniere.jpg);">Les
+            tanières
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Le cerf</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les cochons</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les lapinsssss</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les dains</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les poules</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les chevreuils</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les écureuils</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="sec-div col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/oceanarium.jpg);">L'océanarium
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Le cerf</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les cochons</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les lapinsssss</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les dains</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les poules</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les chevreuils</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les écureuils</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/voliere.jpg);">Les
+            volières
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Le cerf</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les cochons</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les lapinsssss</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les dains</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les poules</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les chevreuils</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les écureuils</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <button class="btn_habitat col-4" style="background-image: url(../img/habitats/terre.jpg);">Une
+            terre plus
+            verte
+          </button>
+          <div class="hidden container-fluid">
+            <h5 class="p-1">La zone forestière :</h5>
+            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
+              quelques animaux de la ferme.
+              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
+              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
+            </p>
+            <div class="row d-flex">
+              <h6>Vous pouvez rencontrer :</h6>
+              <ul class="list_animals col-4 ms-3">
+                <li class="li_animals">Le cerf</li>
+                <li class="li_animals">Les cochons</li>
+                <li class="li_animals">Les lapins</li>
+                <li class="li_animals">Les dains</li>
+                <li class="li_animals">Les poules</li>
+                <li class="li_animals">Les chevreuils</li>
+                <li class="li_animals">Les écureuils</li>
+              </ul>
+              <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
+            </div>
+
+            <div class="hidAnimal">
+              <p>Le cerf</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les cochons</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les lapinsssss</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les dains</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les poules</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les chevreuils</p>
+            </div>
+            <div class="hidAnimal">
+              <p>Les écureuils</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <footer>
+    <section class="section-footer">
+      <div class="contenu-footer">
+        <div class="footer-div">
+          <ul class="footer-ul">
+            <li class="footer-titre">Nous contacter</li>
+            <li>Arcadia</li>
+            <li>Domaine de La Sure</li>
+            <li>6666 Brocéliande</li>
+            <li>France</li>
+            <li>+33 77 777 777</li>
+            <li>info@arcadia.eu</li>
+          </ul>
+        </div>
+        <div class="footer-div">
+          <ul class="footer-ul">
+            <li class="footer-titre">Nos services</li>
+            <li class="footer-li"><a class="footer-a" href="services.html">Restaurant</a></li>
+            <!-- A MODIFIER LORS DE LA CREATION DES SERVICES -->
+            <li class="footer-li"><a class="footer-a" href="services.html">Visite des habitats</a></li>
+            <!-- A MODIFIER LORS DE LA CREATION DES SERVICES -->
+            <li class="footer-li"><a class="footer-a" href="services.html">Visite du Zoo en petit train</a></li>
+            <!-- A MODIFIER LORS DE LA CREATION DES SERVICES -->
+          </ul>
+        </div>
+        <div class="footer-div">
+          <ul class="footer-ul">
+            <li class="footer-titre">Horaires</li>
+            <li>Lundi : Fermé</li>
+            <li>Mardi : Fermé</li>
+            <li>Mercredi : 10h à 19h</li>
+            <li>Jeudi : 10h à 19h</li>
+            <li>Vendredi : 10h à 19h</li>
+            <li>Samedi : 10h à 19h</li>
+            <li>Dimanche : 10h à 19h</li>
+          </ul>
+        </div>
+        <div class="footer-div">
+          <ul class="footer-ul">
+            <li class="footer-titre">Suivez-nous</li>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img
+                  src="../img/accueil/insta.png" width="30vh"></a>
+            </li> <br>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img
+                  src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img
+                  src="../img/accueil/linkedin.png" width="30vh"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>Copyright © Arcadia 2024</p>
+      </div>
+
+      <!--  -->
+    </section>
+  </footer>
+
+  <!-- ATTENTION la partie de JS Bootstrap n'est pas mise
+   (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
+
+
+  <script src="../js/habitats.js"></script>
+</body>
+
+</html>

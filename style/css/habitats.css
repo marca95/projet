@@ -89,7 +89,7 @@ h2 {
   display: flex;
   justify-content: center;
   padding: 30px 30px;
-  font-style: 2.3rem;
+  font-style: 2.6rem;
   text-decoration: underline;
 }
 
@@ -156,15 +156,33 @@ h6 {
   color: white;
   height: auto;
   display: none;
-  height: 600px;
+  /* padding: 5px; */
+}
+
+.descr_animal{
+  padding: 5px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #454545;
+}
+
+.img_animals {
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 5px;
+  width: 444px;
+  height: 400px;
 }
 
 .avis_veterinaire{
+  background-color: #454545;
   text-align: start;
+  padding: 5px;
 }
+
+
 
 /*-------------- FOOTER /!\---------------------*/
 
@@ -225,6 +243,10 @@ h6 {
 
   #logo_nav {
     width: 50%;
+  }
+
+  .sec-div {
+    margin-bottom: 20px;
   }
 }
 
@@ -295,6 +317,10 @@ h6 {
 
   .footer-ul{
     font-size: 0.7rem;
+  }
+
+  .btn_habitat {
+    margin-bottom: 20px;
   }
 }
 

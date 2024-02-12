@@ -159,11 +159,11 @@ h6 {
   height: 600px;
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 5px;
 }
 
 .avis_veterinaire{
   text-align: start;
-  
 }
 
 /*-------------- FOOTER /!\---------------------*/

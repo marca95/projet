@@ -154,7 +154,6 @@ h6 {
   color: white;
   height: auto;
   display: none;
-  justify-content: center;
 }
 
 .descr_animal{
@@ -243,7 +242,10 @@ h6 {
 
   .btn_habitat {
     width: 480px;
+  }
 
+  .hidden{
+    width: 480px;
   }
 }
 
@@ -318,7 +320,11 @@ h6 {
   }
 
   .btn_habitat {
-    width: 700px;
+    width: 650px;
+  }
+
+  .hidden{
+    width: 650px;
   }
 }
 
@@ -376,6 +382,14 @@ h6 {
   .footer-div {
     width: 50%;
   } 
+
+  .btn_habitat {
+    width: 500px;
+  }
+
+  .hidden{
+    width: 500px;
+  }
 
 }
 
@@ -443,5 +457,25 @@ h6 {
   nav ul li {
     text-align: center;
     width: 100%;
+  }
+
+  .btn_habitat {
+    width: 400px;
+  }
+
+  .hidden{
+    width: 400px;
+  }
+
+  .descr_p, .list_animals{
+    font-size: 0.8rem;
+  }
+
+  h6{
+    font-size: 0.9rem;
+  }
+
+  h5 {
+    font-size: 1rem;
   }
 }

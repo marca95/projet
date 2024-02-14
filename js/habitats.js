@@ -46,3 +46,17 @@ btns.forEach((btn, index) => {
 //  function showAnimal(index) {
 //    hidAnimals[index].classList.remove("hidAnimal");
 //  }
+
+
+// Get destination animals 
+let recup = document.getElementById('bison')
+let test = window.location.hash;
+let rico = document.getElementById('vache');
+
+let sas = window.location.hash.substring(1);
+
+if (sas == 'vache') {
+rico.innerText = 'Cliquez ici';
+  recup.style.display = 'block';
+}
+

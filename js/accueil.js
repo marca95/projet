@@ -10,3 +10,8 @@ links.forEach((link) => {
   });
 });
 
+// Get destination animals 
+
+let test = window.location.href;
+
+console.log(test)

@@ -81,6 +81,7 @@ nav ul li a:hover{
 /*-------------- MAIN /!\---------------------*/
 
 main {
+  background-color: rgba(0, 116, 0, 0.325);
   color: green;
 }
 
@@ -412,6 +413,30 @@ h6 {
   .navigation {
     display: flex;
   }
+  
+  h2{
+    font-size: 2.1rem;
+  }
+
+  .btn_habitat {
+    height: 250px;
+  }
+
+  .descr_p, .list_animals, .descr_animal, .avis_veterinaire{
+    font-size: 0.9rem;
+  }
+
+  h6{
+    font-size: 0.9rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  .img_animals{
+    height: 300px;
+  }
 
 }
 
@@ -469,10 +494,6 @@ h6 {
 
   .descr_p, .list_animals{
     font-size: 0.8rem;
-  }
-
-  h6{
-    font-size: 0.9rem;
   }
 
   h5 {

@@ -178,22 +178,6 @@ h6 {
   font-size: 1rem;
 }
 
-#getClickFarm, #getClickOcean, #getClickPond, #getClickTaniere, #getClickVivarium, #getClickBird {
-  animation-duration: 1.5s;
-  animation-name: blink;
-  animation-iteration-count: infinite;
-  transition: none;
-  color: yellow;
-  display: none;
-}
-
-@keyframes blink {
-  0% {opacity: 1; }
-  50% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-
 /*-------------- FOOTER /!\---------------------*/
 
 .section-footer {

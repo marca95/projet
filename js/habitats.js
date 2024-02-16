@@ -64,6 +64,8 @@ const getPond = document.getElementById('getClickPond');
 const getTaniere = document.getElementById('getClickTaniere');
 const getVivarium = document.getElementById('getClickVivarium');
 const getBird = document.getElementById('getClickBird');
+const getForest = document.getElementById('getClickForest');
+const getRanch = document.getElementById('getClickRanch');
 
 let url = window.location.hash.substring(1);
 
@@ -99,5 +101,40 @@ switch(url) {
   case 'cameleon' :
     getVivarium.style.display = 'block';
     fetchCameleon.style.display = 'block';
+  break
+
+
+
+  case 'foret' :
+    getForest.style.display = 'block';
+    getForest.style.border = 'yellow 3px solid';
+  break
+  case 'etang' :
+    getPond.style.display = 'block';
+    getPond.style.border = 'yellow 3px solid';
+  break
+  case 'vivarium' :
+    getVivarium.style.display = 'block';
+    getVivarium.style.border = 'yellow 3px solid';
+  break
+  case 'pature' :
+    getFarm.style.display = 'block';
+    getFarm.style.border = 'yellow 3px solid';
+  break
+  case 'ranch' :
+    getRanch.style.display = 'block';
+    getRanch.style.border = 'yellow 3px solid';
+  break
+  case 'taniere' :
+    getTaniere.style.display = 'block';
+    getTaniere.style.border = 'yellow 3px solid';
+  break
+  case 'oceanarium' :
+    getOcean.style.display = 'block';
+    getOcean.style.border = 'yellow 3px solid';
+  break
+  case 'terre' :
+    getForest.style.display = 'block';
+    getForest.style.border = 'yellow 3px solid';
   break
 }

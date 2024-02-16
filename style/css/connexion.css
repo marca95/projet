@@ -12,6 +12,8 @@ body {
   width: 100%;
 }
 
+/* -------------------------------NAV------------------------------------ */
+
 nav {
   height : 70px;
   display: flex;
@@ -75,6 +77,39 @@ nav ul li a:hover{
   cursor: pointer;
   display: none;
 }
+
+/* -------------------------------MAIN------------------------------------ */
+
+/* .grid {
+  display: grid;
+  grid-auto-rows: 33.3%;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: 
+  'aside outside beside'
+  'aside main beside'
+  'aside inside beside';
+}
+.first_img{
+grid-area: outside;
+background-color: red;
+}
+
+.second_img{
+  grid-area: inside;
+  background-color: blue;
+}
+
+.third_img{
+  grid-area: aside;
+  background-color: green;
+}
+
+.fourth_img{
+  grid-area: beside;
+  background-color: yellow;
+} */
+
+/* -------------------------------FOOTER------------------------------------ */
 
 .section-footer {
   overflow: hidden;

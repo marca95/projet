@@ -80,34 +80,45 @@ nav ul li a:hover{
 
 /* -------------------------------MAIN------------------------------------ */
 
-/* .grid {
-  display: grid;
-  grid-auto-rows: 33.3%;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-areas: 
-  'aside outside beside'
-  'aside main beside'
-  'aside inside beside';
-}
-.first_img{
-grid-area: outside;
-background-color: red;
+.img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 25%;
+  height: 700px;
+  padding: 0;
 }
 
-.second_img{
-  grid-area: inside;
-  background-color: blue;
+.content {
+  background-color: bisque;
 }
 
-.third_img{
-  grid-area: aside;
-  background-color: green;
+h2{
+  font-size: 4rem;
+  color: green;
+  text-align: center;
+  padding: 20px 20px;
 }
 
-.fourth_img{
-  grid-area: beside;
-  background-color: yellow;
-} */
+.warning{
+  font-size: 0.9rem;
+  margin: 30px;  
+}
+
+.formulaire {
+  background-color: #454545c6;
+  border-radius: 20px;
+  color: white;
+  padding: 20px;
+  height: 340px;
+}
+
+.btn {
+  float: right;
+}
+
+.img_hidden{
+  display: none;
+}
 
 /* -------------------------------FOOTER------------------------------------ */
 
@@ -207,10 +218,14 @@ background-color: red;
     color: rgb(0, 204, 51);
     cursor: pointer;
   }
+
+  h2 {
+    font-size: 2.8rem;
+  }
 }
 
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
 
   nav .titre-principal { 
     font-size: 2.2rem;
@@ -238,6 +253,28 @@ background-color: red;
 
   .footer-ul{
     font-size: 0.7rem;
+  }
+
+  .img{
+    display: none;
+  }
+
+  h2 {
+    font-size: 2.8rem;
+  }
+
+  .formulaire {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .img_hidden {
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
   }
 }
 
@@ -296,6 +333,10 @@ background-color: red;
     width: 50%;
   } 
 
+  h2 {
+    font-size: 2.4rem;
+  }
+
 }
 
 
@@ -316,6 +357,21 @@ background-color: red;
 
   .navigation {
     display: flex;
+  }
+
+  .img_hidden{
+    display: none;
+  }
+
+  h2{
+    color: white;
+  }
+  
+  .content {
+    background-image: url(../../img/connexion/girafe.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
   }
 
 }

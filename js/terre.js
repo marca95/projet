@@ -1,4 +1,4 @@
-//icon responsive
+// Bar nivagation responsive "icon".
 
 const links = document.querySelectorAll('nav li');
 
@@ -12,12 +12,5 @@ links.forEach((link) => {
   });
 });
 
-// fetch img accueil/terre
 
-let url = window.location.hash.substring(1);
-
-if(url == 'ecologie') {
-  getPond.style.display = 'block';
-  getPond.style.border = 'yellow 3px solid';
-} 
 

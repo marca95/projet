@@ -30,20 +30,38 @@
   </header>
 
   <main>
-    <div class="grid">
-      <div class="first_img">
-
+    <div class="row">
+      <img class="col-lg-4 col-xl-3 img" src="../../img/connexion/gorille.jpg" alt="gorille">
+      <div class="col-lg-6 content">
+        <h2>Connexion</h2>
+        <p class="warning">Attention, cette page est réservé uniquement pour les membres du personnel d'Arcadia, il est
+          donc impossible
+          pour un visiteur de créer un compte.</p>
+        <div class="formulaire">
+          <form>
+            <label for="exampleInputEmail1" class="form-label">Profession : </label>
+            <select class="form-select mb-3" aria-label="Default select example">
+              <option value="1">Employé</option>
+              <option value="2">Vétérinaire</option>
+              <option value="3">Administrateur</option>
+            </select>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Adresse e-mail : </label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Mot de passe : </label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-success">Connexion</button>
+          </form>
+        </div>
       </div>
-      <div class="second_img">
+      <img class="col-lg-4 col-xl-3 img" src="../../img/connexion/lama.jpg" alt="lama">
+      <img class="img_hidden" src="../img/connexion/crocodile.jpg" alt="crocodile">
 
-      </div>
-      <div class="third_img">
-
-      </div>
-      <div class="fourth_img">
-
-      </div>
     </div>
+
   </main>
 
 

@@ -39,7 +39,7 @@ nav .titre-principal {
 }
 
 #logo_nav {
-  width: 40%;
+  width: 30%;
 }
 
 nav ul {
@@ -114,6 +114,12 @@ button {
   position: relative;
   left: 80%;
 }
+
+/* Important, do not resize the text box  */
+.form-control {
+  resize: none;
+}
+
 /* --------------------------- FOOTER /!\------------------------- */
 
 .section-footer {

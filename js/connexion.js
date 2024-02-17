@@ -1,3 +1,5 @@
+// Bar nivagation responsive "icon".
+
 const links = document.querySelectorAll('nav li');
 
 icon.addEventListener("click", () => {
@@ -14,20 +16,20 @@ links.forEach((link) => {
 //Search function preload because it takes a long time
 
 
-let image = document.getElementById("image");
+// let image = document.getElementById("image");
 
-let images = ["../img/menu/cameleon.jpg", "../img/menu/alpaga.jpg", "../img/menu/lion.jpg"];
-let n = 0;
+// let images = ["../img/menu/cameleon.jpg", "../img/menu/alpaga.jpg", "../img/menu/lion.jpg"];
+// let n = 0;
 
-function changeImage() {
-  n++;
-  if (n > images.length - 1) {
-    n = 0;
-  }
+// function changeImage() {
+//   n++;
+//   if (n > images.length - 1) {
+//     n = 0;
+//   }
 
-  image.style.backgroundImage = "url(" + images[n] + ")";
+//   image.style.backgroundImage = "url(" + images[n] + ")";
 
-}
+// }
 
-changeImage();
-setInterval(changeImage, 8000);
+// changeImage();
+// setInterval(changeImage, 8000);

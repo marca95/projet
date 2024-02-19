@@ -1,4 +1,4 @@
-// Bar nivagation responsive "icon".
+// Bar navigation responsive "icon".
 
 const links = document.querySelectorAll('nav li');
 

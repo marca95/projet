@@ -133,6 +133,11 @@ form {
   resize: none;
 }
 
+.regl_img{
+  width: 100%;
+}
+
+
 /* -------------------------------FOOTER------------------------------------ */
 .section-footer {
   overflow: hidden;
@@ -282,6 +287,10 @@ form {
   h2{
     font-size: 3rem;
     align-self: center;
+  }
+
+  .regl_img{
+    width: 60%;
   }
 
 }

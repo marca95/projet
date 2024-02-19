@@ -1,3 +1,17 @@
+<?php
+
+$user = 'root';
+$password = 'pierre2';
+
+try {
+  $db = new PDO('mysql:host=localhost;dbname=zoo', $user, $password);
+} catch (PDOException $e) {
+  print "Erreur : " . $e->getMessage() . "<br/>";
+  die;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +19,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="../style/css/connexion.css" rel="styleSheet">
   <link href="../img/logo.png" rel="icon">
 </head>
@@ -30,7 +43,7 @@
   </header>
   <main>
     <div class="row">
-      <img class="col-lg-4 col-xl-3 img" src="../../img/connexion/gorille.jpg" alt="gorille">
+      <img class="col-lg-4 col-xl-3 img" src="../img/connexion/gorille.jpg" alt="gorille">
       <div class="col-lg-6 content">
         <h2>Connexion</h2>
         <p class="warning">Attention, cette page est réservé uniquement aux membres du personnel d'Arcadia, il est
@@ -56,7 +69,7 @@
           </form>
         </div>
       </div>
-      <img class="col-lg-4 col-xl-3 img" src="../../img/connexion/lama.jpg" alt="lama">
+      <img class="col-lg-4 col-xl-3 img" src="../img/connexion/lama.jpg" alt="lama">
       <img class="img_hidden" src="../img/connexion/crocodile.jpg" alt="crocodile">
     </div>
   </main>
@@ -71,7 +84,7 @@
             <li>6666 Brocéliande</li>
             <li>France</li>
             <li>+33 77 777 777</li>
-            <li>info@arcadia.eu</li>
+            <li>monzooarcadia@gmail.com</li>
           </ul>
         </div>
         <div class="footer-div">
@@ -98,13 +111,10 @@
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Suivez-nous</li>
-            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img
-                  src="../img/accueil/insta.png" width="30vh"></a>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
             </li> <br>
-            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img
-                  src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img
-                  src="../img/accueil/linkedin.png" width="30vh"></a></li>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
           </ul>
         </div>
       </div>

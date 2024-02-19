@@ -320,6 +320,10 @@ button {
     width: 50%;
   } 
 
+  .footer-li {
+    margin: 10px auto;
+  }
+
   h2 {
     font-size: 1.6rem;
   }

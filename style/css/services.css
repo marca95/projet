@@ -373,6 +373,10 @@ h2{
     width: 50%;
   } 
 
+  .footer-li {
+    margin: 10px auto;
+  }
+  
   .main_h3 {
     font-size: 1.3rem;
   }

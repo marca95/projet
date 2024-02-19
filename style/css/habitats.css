@@ -81,7 +81,6 @@ nav ul li a:hover{
 /*-------------- MAIN /!\---------------------*/
 
 main {
-  background-color: rgba(0, 116, 0, 0.325);
   color: green;
 }
 
@@ -380,7 +379,11 @@ h6 {
 
   .footer-div {
     width: 50%;
-  } 
+  }   
+  
+  .footer-li {
+    margin: 10px auto;
+  }
 
   .btn_habitat {
     width: 500px;

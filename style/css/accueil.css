@@ -427,6 +427,11 @@ cite {
     width: 50%;
   } 
 
+  .footer-li {
+    margin: 10px auto;
+  }
+  
+
 }
 
 @media screen and (max-width: 650px) {

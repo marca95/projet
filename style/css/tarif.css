@@ -78,59 +78,71 @@ nav ul li a:hover{
   display: none;
 }
 /* -------------------------------MAIN------------------------------------ */
-.org_main {
-  background-image: url(../../img/contact/girafe.jpg);
-  background-repeat: no-repeat;
+
+.main_div{
+  background-image: url(../../img/tarif/tarif.jpg);
   background-size: cover;
-  width: 100%;
-  height: 800px;
+  background-repeat: no-repeat;
+  height: 40vh;
+  display: flex;
 }
 
-.title{
-  padding: 20px 20px;
-}
-
-.recy_img{
+.centr_logo1, .centr_logo2{
   display: flex;
   justify-content: center;
+}
+
+.img_title{
+  width: 100%;
+}
+
+.sec_div {
+  padding: 5px;
+  height: 10vh;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 4rem;
   color: white;
+  text-align: center;
+  font-size: 3rem;
+  padding: 20px 20px;
 }
 
-.btn {
-  height: 40px;
-  float: right;
+.org_div{
+  margin: 40px auto;
+  width: 60%;
 }
 
-.first_content {
-  width: 50%;
-  height: 800px;
+h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-size: 2rem;
+  padding-bottom: 30px;
 }
 
-.cent_btn{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
+.cat_div{
+  padding: 20px 20px;
 }
 
-form {
-  margin: 0 auto;
-  width: 80%;
+h6 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
 }
 
-.form-label, .form-text{
-  padding: 5px;
+.cat_age{
+  margin-left: 20px;
 }
 
-/* Important, do not resize the text box  */
-.form-control {
-  resize: none;
+.cat-price{
+  text-align: end;
+}
+
+.info_general{
+  text-align: end;
+  margin-top: 50px;
+  margin-right: 20px;
 }
 
 /* -------------------------------FOOTER------------------------------------ */
@@ -231,9 +243,10 @@ form {
     cursor: pointer;
   }
 
-  h2 {
-    font-size: 2.6rem;
+  .img_title {
+    width: 50%;
   }
+  
 }
 
 
@@ -267,23 +280,22 @@ form {
     font-size: 0.7rem;
   }
 
-  .org_main {
-    background-image: url(../../img/contact/lion.jpg);
+  h2 {
+    font-size: 2.2rem;
   }
 
-  .first_content {
-    width: 100%;
+  .centr_logo1{
+    justify-content: start;
   }
 
-  .form-label, .form-text{
-    color: white;
+  .centr_logo2{
+    justify-content: end;
   }
-
-  h2{
-    font-size: 3rem;
-    align-self: center;
+  
+  .img_title {
+    width: 40%;
   }
-
+  
 }
 
 
@@ -345,6 +357,13 @@ form {
     margin: 10px auto;
   }
 
+  .main_div{
+    background-image: url(../../img/tarif/pingouin.jpg);
+  }
+
+  .img_title {
+    width: 60%;
+  }
 }
 
 
@@ -367,14 +386,13 @@ form {
     display: flex;
   }
 
-  h2{
-    font-size: 2.2rem;
+  .img_title {
+    width: 80%;
   }
-
-  .title{
-    padding: 10px 0px;
+  
+  .org_div{
+    width: 80%;
   }
-
 }
 
 @media screen and (max-width: 576px) {
@@ -419,5 +437,9 @@ form {
   nav ul li {
     text-align: center;
     width: 100%;
+  }
+
+  h3 {
+    font-size: 1.8rem;
   }
 }

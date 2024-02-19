@@ -55,16 +55,16 @@ try {
         <form method="POST" action="./recevoir_contact.php">
           <div class="mb-3">
             <label for="title" class="form-label">Titre de votre demande :</label>
-            <input type="text" class="form-control" id="title">
+            <input type="text" class="form-control" id="title" name="title">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Adresse e-mail :</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="email" name="email">
             <div id="emailHelp" class="form-text">Nous vous répondrons sur cette adresse mail.</div>
           </div>
           <div class="mb-3">
             <label for="Description" class="form-label">Description</label>
-            <textarea class="form-control" id="contact_description" rows="8"></textarea>
+            <textarea class="form-control" id="contact_description" name="description" rows="8"></textarea>
             <div class="form-text">Le texte ne peut pas contenir plus de 1000 mots.</div>
           </div>
           <button type="submit" name="submit" class="btn btn-success">Envoyer</button>

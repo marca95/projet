@@ -3,9 +3,9 @@
 if (isset($_POST['submit'])) {
   if ((empty($_POST['title'])) || (empty($_POST['email'])) || (empty($_POST['description']))) {
     echo "<p>Veuillez remplir les champs</p>";
+  } else {
+    echo 'reussite';
   }
-} else {
-  echo 'reussite';
 
   // $title = $_POST['title'];
   // $email = $_POST['email'];
@@ -21,4 +21,6 @@ if (isset($_POST['submit'])) {
   // mail($recipient, $title, $content, $headers);
 
   // echo '<p>Votre message à bien été envoyé !</p>';
+} else {
+  die; // A Checker else if else..
 };

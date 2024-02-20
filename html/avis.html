@@ -35,15 +35,17 @@
         <h2>Nous souhaitons avoir votre avis</h2>
       </div>
 
-      <form action="../php/avis_formulaire.php" method="POST" id="form">
+      <form action="./accueil.html" method="POST" id="form">
         <div class="formulaire">
           <div class="mb-3">
             <label for="name" class="form-label">Prénom :</label>
             <input type="name" class="form-control" id="name">
+            <p id="errorName"></p>
           </div>
           <div class="mb-3">
             <label style="margin-bottom: 8px;" for="explication" form="form-label">Donnez nous votre avis :</label>
             <textarea id="textarea" class="form-control" rows="10"></textarea>
+            <p id="errorDesc"></p>
             <div class="form-text" id="condition">
               <!-- Attention insert condition in JS -->
               Vous ne pouvez pas dépasser les 1000 mots.
@@ -52,13 +54,8 @@
           <button type="submit" class="btn btn-success">Envoyer</button>
         </div>
       </form>
-
     </div>
-
   </main>
-
-
-
   <footer>
     <section class="section-footer">
       <div class="contenu-footer">
@@ -110,8 +107,6 @@
       <div class="footer-copyright">
         <p>Copyright © Arcadia 2024</p>
       </div>
-
-      <!--  -->
     </section>
   </footer>
 

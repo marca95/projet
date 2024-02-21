@@ -18,34 +18,43 @@ let habitatDescriptions = document.querySelectorAll("div.hidden");
 let lis = document.querySelectorAll("li.li_animals");
 let hidAnimals = document.querySelectorAll("div.hidAnimal");
 
-btns.forEach((btn, index) => {
-    btn.addEventListener('click', () => hideDiv(habitatDescriptions, index))
-})
+// btns.forEach((btn, index) => {
+//     btn.addEventListener('click', () => hideDiv(habitatDescriptions, index))
+// })
 
- lis.forEach((li, index) => {
-   li.addEventListener('click', () => {hideDiv(hidAnimals, index);}
-     )
- })
+//  lis.forEach((li, index) => {
+//    li.addEventListener('click', () => {hideDiv(hidAnimals, index);}
+//      )
+//  })
 
- function hideDiv(x, index) {
-   if(x[index].style.display == "block"){
-     x[index].style.display = "none";
- } else {
-   x[index].style.display = "block";
- }
- }
-
-
-//  function toggleAnimalDescriptions(index) {
-//    hideAllAnimals();
-//    showAnimal(index);
+//  function hideDiv(x, index) {
+//    if(x[index].style.display == "block"){
+//      x[index].style.display = "none";
+//  } else {
+//    x[index].style.display = "block";
 //  }
-//  function hideAllAnimals() {
-//    hidAnimals.forEach((description) => description.classList.add("hidAnimal"));
 //  }
-//  function showAnimal(index) {
-//    hidAnimals[index].classList.remove("hidAnimal");
-//  }
+
+function toggleDiv(divId) {
+  let selectedDiv = document.getElementById(divId);
+console.log(selectedDiv);
+
+ let habitatDescriptions = document.querySelectorAll("div.hidden");
+  console.log(habitatDescriptions);
+
+ habitatDescriptions.forEach(function(div) {
+   if(div !== selectedDiv) {
+     div.style.display = 'none';
+   }
+ });
+
+  if(selectedDiv.style.display == 'none' || selectedDiv.style.display == '') {
+    selectedDiv.style.display = 'block';
+  } else {
+    selectedDiv.style.display = 'none';
+  }
+}
+
 
 
 // Get destination animals 

@@ -51,18 +51,18 @@
             <div class="row d-flex mb-3">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">Le cerf</li>
-                <li class="li_animals">Les cochons</li>
-                <li class="li_animals">Les lapins</li>
-                <li class="li_animals">Les dains</li>
-                <li class="li_animals">Les poules</li>
-                <li class="li_animals">Les chevreuils</li>
-                <li class="li_animals">Les écureuils</li>
+                <li class="li_animals" onclick="toggleImg('cerf')">Le cerf</li>
+                <li class="li_animals" onclick="toggleImg('cochon')">Les cochons</li>
+                <li class="li_animals" onclick="toggleImg('lapin')">Les lapins</li>
+                <li class="li_animals" onclick="toggleImg('dain')">Les dains</li>
+                <li class="li_animals" onclick="toggleImg('poule')">Les poules</li>
+                <li class="li_animals" onclick="toggleImg('chevreuil')">Les chevreuils</li>
+                <li class="li_animals" onclick="toggleImg('ecureuil')">Les écureuils</li>
               </ul>
               <img class="col-7" src="../img/habitats/foret1.jpg" width="20%" title="zone forestière">
             </div>
 
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="cerf">
               <div class="descr_animal">
                 Prénom: Teddy<br>
                 Race: Cervus elaphus<br>
@@ -78,7 +78,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="cochon">
               <div class="descr_animal">
                 Prénom: Peggy et Dan<br>
                 Race: Gascon<br>
@@ -94,7 +94,7 @@
                 <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="lapin">
               <div class="descr_animal">
                 Prénom: Jayson et Olie<br>
                 Race: Bélier Hollandais<br>
@@ -110,7 +110,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="dain">
               <div class="descr_animal">
                 Prénom: Vinc et Carole<br>
                 Race: Européen<br>
@@ -126,7 +126,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="poule">
               <div class="descr_animal">
                 Prénom: Sabine et Jacky<br>
                 Race: Poules d'ornement<br>
@@ -142,7 +142,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="chevreuil">
               <div class="descr_animal">
                 Prénom: Banbi et Harry<br>
                 Race: Capreolus Pygargus<br>
@@ -158,7 +158,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="ecureuil">
               <div class="descr_animal">
                 Prénom: Bino et Clark<br>
                 Race: Roux d'Europe<br>
@@ -190,18 +190,18 @@
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">Les poissons Asiatique</li>
-                <li class="li_animals">Les tortues</li>
-                <li class="li_animals">Les flamands Rose</li>
-                <li class="li_animals">Les grenouilles</li>
-                <li class="li_animals">Les canards</li>
-                <li class="li_animals">Nos castors</li>
-                <li class="li_animals">Les oies</li>
+                <li class="li_animals" onclick="toggleImg('poisson')">Les poissons Asiatique</li>
+                <li class="li_animals" onclick="toggleImg('tortue1')">Les tortues</li>
+                <li class="li_animals" onclick="toggleImg('flamand')">Les flamands Rose</li>
+                <li class="li_animals" onclick="toggleImg('grenouille')">Les grenouilles</li>
+                <li class="li_animals" onclick="toggleImg('canard')">Les canards</li>
+                <li class="li_animals" onclick="toggleImg('castor')">Nos castors</li>
+                <li class="li_animals" onclick="toggleImg('oie')">Les oies</li>
               </ul>
               <img class="col-7 p-3" src="../img/habitats/etang1.jpg" width="20%" title="Nunéphare">
             </div>
 
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="poisson">
               <div class="descr_animal">
                 Race: Clown Loach<br>
                 Lieu: Asie<br>
@@ -216,7 +216,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="tortue1">
               <div class="descr_animal">
                 Prénom: Isa et Carolie<br>
                 Race: Grecque<br>
@@ -232,7 +232,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="flamand">
               <div class="descr_animal">
                 Race: Phoenicoptéridés<br>
                 Lieu: Europe<br>
@@ -247,7 +247,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="grenouille">
               <div class="descr_animal">
                 Race: Rieuse<br>
                 Lieu: Europe<br>
@@ -262,7 +262,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="canard">
               <div class="descr_animal">
                 Prénom: Billye et Mick<br>
                 Race: Coureur indien<br>
@@ -278,7 +278,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="castor">
               <div class="descr_animal">
                 Prénom: Djo et Bill<br>
                 Race: fiber<br>
@@ -294,7 +294,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="oie">
               <div class="descr_animal">
                 Prénom: Margaux et José<br>
                 Race: Bourbonnais<br>
@@ -328,17 +328,17 @@
             <div class="row test">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">L'araignée</li>
-                <li class="li_animals">Le caméléon</li>
-                <li class="li_animals">Le boa</li>
-                <li class="li_animals">Le crocodile</li>
-                <li class="li_animals">Le python</li>
-                <li class="li_animals">Les sauterelles</li>
-                <li class="li_animals">L'alligator</li>
+                <li class="li_animals" onclick="toggleImg('araignee')">L'araignée</li>
+                <li class="li_animals" onclick="toggleImg('cameleon')">Le caméléon</li>
+                <li class="li_animals" onclick="toggleImg('boa')">Le boa</li>
+                <li class="li_animals" onclick="toggleImg('crocodile')">Le crocodile</li>
+                <li class="li_animals" onclick="toggleImg('python')">Le python</li>
+                <li class="li_animals" onclick="toggleImg('sauterelle')">Les sauterelles</li>
+                <li class="li_animals" onclick="toggleImg('alligator')">L'alligator</li>
               </ul>
               <img class="col-7 p-3" src="../img/habitats/vivarium1.jpg" width="20%" title="Vivarium">
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="araignee">
               <div class="descr_animal">
                 Prénom: Spider <br>
                 Race: Actinopodidae<br>
@@ -370,7 +370,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="boa">
               <div class="descr_animal">
                 Prénom: Sniki<br>
                 Race: Boa constricteur<br>
@@ -386,7 +386,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="crocodile">
               <div class="descr_animal">
                 Prénom: Célio<br>
                 Race: Crocodile américain<br>
@@ -402,7 +402,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="python">
               <div class="descr_animal">
                 Prénom: Pico<br>
                 Race: Anchietae Bocage<br>
@@ -418,7 +418,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="sauterelle">
               <div class="descr_animal">
                 Race: Dectique verrucivore<br>
                 Lieu: Asie<br>
@@ -433,7 +433,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="alligator">
               <div class="descr_animal">
                 Prénom: Sabrola<br>
                 Race: Alligator de Chine<br>
@@ -464,18 +464,18 @@
             <div class="row d-flex mb-3">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">Le dauphin</li>
-                <li class="li_animals">Les tortues marines</li>
-                <li class="li_animals">Les hippocampes</li>
-                <li class="li_animals">Les phoques</li>
-                <li class="li_animals">Les pingouins</li>
-                <li class="li_animals">Le requin</li>
-                <li class="li_animals">Les méduses</li>
+                <li class="li_animals" onclick="toggleImg('dauphin')">Le dauphin</li>
+                <li class="li_animals" onclick="toggleImg('tortue')">Les tortues marines</li>
+                <li class="li_animals" onclick="toggleImg('hippocampe')">Les hippocampes</li>
+                <li class="li_animals" onclick="toggleImg('phoque')">Les phoques</li>
+                <li class="li_animals" onclick="toggleImg('pingouin')">Les pingouins</li>
+                <li class="li_animals" onclick="toggleImg('requin')">Le requin</li>
+                <li class="li_animals" onclick="toggleImg('meduse')">Les méduses</li>
               </ul>
               <img class="col-7" src="../img/habitats/oceanarium1.jpg" width="20%" title="zone forestière">
             </div>
 
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="dauphin">
               <div class="descr_animal">
                 Prénom: Willy<br>
                 Race: Tursiops aduncus<br>
@@ -507,7 +507,7 @@
                 <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="hippocampe">
               <div class="descr_animal">
                 Prénom: César et Juliette<br>
                 Race: Hippocampus kuda<br>
@@ -523,7 +523,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="phoque">
               <div class="descr_animal">
                 Prénom: Ben et Istas<br>
                 Race: Phoque à capuchon<br>
@@ -539,7 +539,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="pingouin">
               <div class="descr_animal">
                 Prénom: Tej et Tor<br>
                 Race: Alca torda<br>
@@ -555,13 +555,13 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="requin">
               <div class="descr_animal">
                 Prénom: Mamy<br>
                 Race: Requin du Groenland<br>
                 Lieu: Océan Article<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/crevette.jpg);">
+              <div class="img_animals" style="background-image: url(../img/habitats/requin.jpg);">
               </div>
               <div class="avis_veterinaire">
                 <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
@@ -571,7 +571,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="meduse">
               <div class="descr_animal">
                 Race: Roux d'Europe<br>
                 Lieu: Europe<br>
@@ -606,13 +606,13 @@
             <div class="row d-flex mb-3">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">Les bisons</li>
-                <li class="li_animals">Les vaches</li>
-                <li class="li_animals">Les girafes</li>
-                <li class="li_animals">Les moutons</li>
-                <li class="li_animals">Les antilopes</li>
-                <li class="li_animals">Les éléphants</li>
-                <li class="li_animals">Les chevaux</li>
+                <li class="li_animals" onclick="toggleImg('bison')">Les bisons</li>
+                <li class="li_animals" onclick="toggleImg('vache')">Les vaches</li>
+                <li class="li_animals" onclick="toggleImg('girafe')">Les girafes</li>
+                <li class="li_animals" onclick="toggleImg('mouton')">Les moutons</li>
+                <li class="li_animals" onclick="toggleImg('antilope')">Les antilopes</li>
+                <li class="li_animals" onclick="toggleImg('elephant')">Les éléphants</li>
+                <li class="li_animals" onclick="toggleImg('cheval')">Les chevaux</li>
               </ul>
               <img class="col-7" src="../img/habitats/pature1.jpg" width="20%" title="Pature">
             </div>
@@ -649,7 +649,7 @@
                 <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="girafe">
               <div class="descr_animal">
                 Prénom: Olav et Béné<br>
                 Race: Masaï<br>
@@ -665,7 +665,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="mouton">
               <div class="descr_animal">
                 Prénom: Jayson et Anne<br>
                 Race: Roux du Valais<br>
@@ -681,7 +681,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="antilope">
               <div class="descr_animal">
                 Prénom: Kev et Ana<br>
                 Race: Elanp du Cap<br>
@@ -697,7 +697,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="elephant">
               <div class="descr_animal">
                 Prénom: Tax et Dumbo<br>
                 Race: Elephant d'Asie<br>
@@ -713,7 +713,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="cheval">
               <div class="descr_animal">
                 Prénom: Cindy et Karl<br>
                 Race: Camarillo white<br>
@@ -743,18 +743,18 @@
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">Les lions</li>
-                <li class="li_animals">Les rhinocéroses</li>
-                <li class="li_animals">Les buffles</li>
-                <li class="li_animals">Les léopards</li>
-                <li class="li_animals">Les jaguars</li>
-                <li class="li_animals">Les loups</li>
-                <li class="li_animals">Les chameaux</li>
+                <li class="li_animals" onclick="toggleImg('lion')">Les lions</li>
+                <li class="li_animals" onclick="toggleImg('rhinoceros')">Les rhinocéroses</li>
+                <li class="li_animals" onclick="toggleImg('buffle')">Les buffles</li>
+                <li class="li_animals" onclick="toggleImg('leopard')">Les léopards</li>
+                <li class="li_animals" onclick="toggleImg('jaguar')">Les jaguars</li>
+                <li class="li_animals" onclick="toggleImg('loup')">Les loups</li>
+                <li class="li_animals" onclick="toggleImg('chameaux')">Les chameaux</li>
               </ul>
               <img class="col-7 p-3" src="../img/habitats/ranch1.jpg" width="20%" title="ranch">
             </div>
 
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="lion">
               <div class="descr_animal">
                 Prénom: Simba et Pumba<br>
                 Race: Lion du Sénégal<br>
@@ -770,7 +770,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="rhinoceros">
               <div class="descr_animal">
                 Prénom: Ave et Steve<br>
                 Race: Rhinocéros noir<br>
@@ -786,7 +786,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="buffle">
               <div class="descr_animal">
                 Prénom: Hulk et Batman<br>
                 Race: Syncerus caffer<br>
@@ -802,7 +802,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="leopard">
               <div class="descr_animal">
                 Prénom: Léo et Par<br>
                 Race: Panthera pardus<br>
@@ -818,7 +818,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="jaguar">
               <div class="descr_animal">
                 Prénom: Jola et Burdi<br>
                 Race: Jaguar Roux<br>
@@ -834,7 +834,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="loup">
               <div class="descr_animal">
                 Prénom: Louve et Francis<br>
                 Race: Loup sauvage<br>
@@ -850,7 +850,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="chameaux">
               <div class="descr_animal">
                 Prénom: Rob et Camal<br>
                 Race: Kharai<br>
@@ -883,17 +883,17 @@
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">Les ours brun</li>
-                <li class="li_animals">Les ours noir</li>
-                <li class="li_animals">L'oran-outang</li>
-                <li class="li_animals">Les gorilles</li>
-                <li class="li_animals">Les saïmiris</li>
-                <li class="li_animals">Les kangourous</li>
-                <li class="li_animals">L'ours polaire</li>
+                <li class="li_animals" onclick="toggleImg('ours_brun')">Les ours bruin</li>
+                <li class="li_animals" onclick="toggleImg('panda')">Les pandas</li>
+                <li class="li_animals" onclick="toggleImg('oran-outang')">L'oran-outang</li>
+                <li class="li_animals" onclick="toggleImg('gorille')">Les gorilles</li>
+                <li class="li_animals" onclick="toggleImg('saimiri')">Les saïmiris</li>
+                <li class="li_animals" onclick="toggleImg('kango')">Les kangourous</li>
+                <li class="li_animals" onclick="toggleImg('ours')">L'ours polaire</li>
               </ul>
               <img class="col-7 p-3" src="../img/habitats/taniere1.jpg" width="20%" title="taniere">
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="ours_brun">
               <div class="descr_animal">
                 Prénom: Daphnée et Yama <br>
                 Race: Ours brun<br>
@@ -925,7 +925,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="oran-outang">
               <div class="descr_animal">
                 Prénom: Mickey<br>
                 Race: Pango<br>
@@ -957,7 +957,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="saimiri">
               <div class="descr_animal">
                 Race: Singes-écureuils<br>
                 Lieu: Afrique<br>
@@ -1019,18 +1019,18 @@
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals">Le perroquet</li>
-                <li class="li_animals">Le toucan</li>
-                <li class="li_animals">L'aigle</li>
-                <li class="li_animals">Le faucon</li>
-                <li class="li_animals">Les autruches</li>
-                <li class="li_animals">Le hibou</li>
-                <li class="li_animals">La chouette</li>
+                <li class="li_animals" onclick="toggleImg('perroquet')">Le perroquet</li>
+                <li class="li_animals" onclick="toggleImg('toucan')">Le toucan</li>
+                <li class="li_animals" onclick="toggleImg('aigle')">L'aigle</li>
+                <li class="li_animals" onclick="toggleImg('oiseau')">Le faucon</li>
+                <li class="li_animals" onclick="toggleImg('autruche')">Les autruches</li>
+                <li class="li_animals" onclick="toggleImg('hibou')">Le hibou</li>
+                <li class="li_animals" onclick="toggleImg('chouette')">La chouette</li>
               </ul>
               <img class="col-7 p-3" src="../img/habitats/voliere1.jpg" width="20%" title="voliere">
             </div>
 
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="perroquet">
               <div class="descr_animal">
                 Prénom: Rico<br>
                 Race: Ara<br>
@@ -1046,7 +1046,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="toucan">
               <div class="descr_animal">
                 Prénom: Vilo<br>
                 Race: Toco<br>
@@ -1062,7 +1062,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="aigle">
               <div class="descr_animal">
                 Prénom: Jo<br>
                 Race: Royal<br>
@@ -1094,7 +1094,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="autruche">
               <div class="descr_animal">
                 Prénom: Tia et Milo<br>
                 Race: Autruche à nuque rouge<br>
@@ -1110,7 +1110,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="hibou">
               <div class="descr_animal">
                 Prénom: Ken<br>
                 Race: Grand-duc<br>
@@ -1126,7 +1126,7 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
+            <div class="hidAnimal" id="chouette">
               <div class="descr_animal">
                 Prénom: Bastil<br>
                 Race: Hulotte<br>
@@ -1142,21 +1142,11 @@
                 <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
               </div>
             </div>
-            <div class="hidAnimal">
-              <div class="descr_animal">
-                Prénom: Margaux et José<br>
-                Race: Bourbonnais<br>
-                Lieu: Europe<br>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
-
-
-
   <footer>
     <section class="section-footer">
       <div class="contenu-footer">
@@ -1208,8 +1198,6 @@
       <div class="footer-copyright">
         <p>Copyright © Arcadia 2024</p>
       </div>
-
-      <!--  -->
     </section>
   </footer>
 

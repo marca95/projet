@@ -12,48 +12,44 @@ links.forEach((link) => {
 });
 
  //get characteristic habitat
+ // To be reworked for improvement, 1 function in 2
 
-let btns = document.querySelectorAll("button");
-let habitatDescriptions = document.querySelectorAll("div.hidden");
-let lis = document.querySelectorAll("li.li_animals");
-let hidAnimals = document.querySelectorAll("div.hidAnimal");
+  function toggleDiv(divId) {
+    let selectedDiv = document.getElementById(divId);
 
-// btns.forEach((btn, index) => {
-//     btn.addEventListener('click', () => hideDiv(habitatDescriptions, index))
-// })
+   let habitatDescriptions = document.querySelectorAll("div.hidden");
 
-//  lis.forEach((li, index) => {
-//    li.addEventListener('click', () => {hideDiv(hidAnimals, index);}
-//      )
-//  })
+   habitatDescriptions.forEach(function(div) {
+     if(div !== selectedDiv) {
+       div.style.display = 'none';
+     }
+   });
 
-//  function hideDiv(x, index) {
-//    if(x[index].style.display == "block"){
-//      x[index].style.display = "none";
-//  } else {
-//    x[index].style.display = "block";
-//  }
-//  }
-
-function toggleDiv(divId) {
-  let selectedDiv = document.getElementById(divId);
-console.log(selectedDiv);
-
- let habitatDescriptions = document.querySelectorAll("div.hidden");
-  console.log(habitatDescriptions);
-
- habitatDescriptions.forEach(function(div) {
-   if(div !== selectedDiv) {
-     div.style.display = 'none';
-   }
- });
-
-  if(selectedDiv.style.display == 'none' || selectedDiv.style.display == '') {
-    selectedDiv.style.display = 'block';
-  } else {
-    selectedDiv.style.display = 'none';
+    if(selectedDiv.style.display == 'none' || selectedDiv.style.display == '') {
+      selectedDiv.style.display = 'block';
+    } else {
+      selectedDiv.style.display = 'none';
+    }
   }
-}
+
+  function toggleImg(divId) {
+   let selectedDiv = document.getElementById(divId);
+
+  let animalDescr = document.querySelectorAll("div.hidAnimal");
+
+  animalDescr.forEach(function(div) {
+    if(div !== selectedDiv) {
+      div.style.display = 'none';
+    }
+  });
+
+   if(selectedDiv.style.display == 'none' || selectedDiv.style.display == '') {
+     selectedDiv.style.display = 'block';
+   } else {
+     selectedDiv.style.display = 'none';
+   }
+ }
+
 
 
 

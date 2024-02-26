@@ -277,6 +277,20 @@ form {
 
   .org_main {
     background-image: url(../../img/contact/lion.jpg);
+    height: 850px;
+  }
+
+  form {
+    background-color: #454545c6;
+    border-radius: 20px;
+    padding: 10px;
+    height: auto;
+  }
+
+  .btn{
+    float: none;
+    position: relative;
+    left: 85%;
   }
 
   .first_content {
@@ -299,9 +313,7 @@ form {
   #errorTitle, #errorEmail, #errorDescr {
     margin: 2px;
     padding: 2px;
-    display: inline-block;
-    color: white;
-    background-color: red;
+    color: red;
   }
 
 }
@@ -365,6 +377,9 @@ form {
     margin: 10px auto;
   }
 
+  .btn{
+    left: 75%;
+  }
 }
 
 
@@ -440,4 +455,10 @@ form {
     text-align: center;
     width: 100%;
   }
+
+  .btn{
+    position: static;
+    width: 100%;
+  }
+
 }

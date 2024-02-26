@@ -16,16 +16,15 @@ links.forEach((link) => {
 let form = document.getElementById('form');
 let username = document.getElementById('name')
 let description = document.getElementById('textarea');
+let errorName = document.getElementById('errorName');
+let errorDesc = document.getElementById('errorDesc');
 
 form.addEventListener('submit', (e) => {
   let usernameValue = username.value.trim();
   let regexName = /^[a-zA-Z-\s]+$/;
-  let errorName = document.getElementById('errorName');
   let descriptionValue = description.value.trim();
   let regexDescription = /^[a-zA-Z0-9\s.,;:'"!?-]*$/;
   let maxwords = descriptionValue.split(/\s+/).length;
-  let errorDesc = document.getElementById('errorDesc');
-
 
   // Validation name
   
@@ -59,4 +58,12 @@ form.addEventListener('submit', (e) => {
   errorDesc.innerHTML = 'Il y a trop de caractères.'; 
   e.preventDefault(); 
 }
+});
+
+username.addEventListener('input', () => {
+  errorName.innerHTML = '';
+});
+
+description.addEventListener('input', () => {
+  errorDesc.innerHTML = '';
 });

@@ -12,24 +12,49 @@ links.forEach((link) => {
   });
 });
 
-//Change background-img 
-//Search function preload because it takes a long time
+// Condition form
 
+let form = document.getElementById('form');
+let email = document.getElementById('email');
+let password = document.getElementById('password');
 
-// let image = document.getElementById("image");
+form.addEventListener('submit', (e) => {
+  let emailValue = email.value.trim();
+  let passwordValue = password.value.trim();
+  let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  let errorEmail = document.getElementById('errorEmail');
+  let errorPassword = document.getElementById('errorPassword');
 
-// let images = ["../img/menu/cameleon.jpg", "../img/menu/alpaga.jpg", "../img/menu/lion.jpg"];
-// let n = 0;
+  // Validation email
 
-// function changeImage() {
-//   n++;
-//   if (n > images.length - 1) {
-//     n = 0;
-//   }
+  if(emailValue === '') {
+    errorEmail.innerHTML = 'Vous devez avoir une adresse mail.';
+    e.preventDefault(); // Empeche soumission du formulaire
+  } else if (emailValue.length > 50) {
+    errorEmail.innerHTML = 'Votre adresse mail est trop longue.';
+    email.value = '';
+    e.preventDefault(); 
+  } else if (!regexEmail.test(emailValue)) {
+    errorEmail.innerHTML = 'Votre adresse mail est invalide.';
+    e.preventDefault(); 
+  }
 
-//   image.style.backgroundImage = "url(" + images[n] + ")";
+  // Validation password 
 
-// }
+  if(passwordValue === '') {
+    errorPassword.innerHTML = 'N\'oubliez pas votre mot de passe.';
+    e.preventDefault(); 
+  } else if (passwordValue.length > 50) {
+    errorPassword.innerHTML = 'Votre mot de passe est trop long.';
+    password.value = '';
+    e.preventDefault(); 
+  } 
+});
 
-// changeImage();
-// setInterval(changeImage, 8000);
+email.addEventListener('input', () => {
+  errorEmail.innerHTML = '';
+});
+
+password.addEventListener('input', () => {
+  errorPassword.innerHTML = '';
+});

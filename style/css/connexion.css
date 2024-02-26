@@ -120,6 +120,14 @@ h2{
   display: none;
 }
 
+.form-select{
+  padding: 5px;
+}
+
+#errorEmail, #errorPassword {
+  color: red;
+}
+
 /* -------------------------------FOOTER------------------------------------ */
 
 .section-footer {
@@ -421,6 +429,11 @@ h2{
 
   nav ul li {
     text-align: center;
+    width: 100%;
+  }
+
+  .btn {
+    position: static;
     width: 100%;
   }
 }

@@ -16,9 +16,12 @@ links.forEach((link) => {
 // Condition form
 
 let form = document.getElementById('form');
-let title = document.getElementById('title')
+let title = document.getElementById('title');
 let email = document.getElementById('email');
-let description = document.getElementById('contact-description');
+let description = document.getElementById('description');
+let errorTitle = document.getElementById('errorTitle');
+let errorEmail = document.getElementById('errorEmail');
+let errorDesc = document.getElementById('errorDescr');
 
 form.addEventListener('submit', (e) => {
   let titleValue = title.value.trim();
@@ -27,21 +30,18 @@ form.addEventListener('submit', (e) => {
   let regexTitle = /^[a-zA-Z0-9\s.,;:'"!?-]*$/;
   let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   let maxwords = descValue.split(/\s+/).length;
-  let errorTitle = document.getElementById('errorTitle');
-  let errorEmail = document.getElementById('errorEmail');
-  let errorDesc = document.getElementById('errorDescr');
 
   // Validation title
 
   if(titleValue === '') {
     errorTitle.innerHTML = 'Vous devez avoir un titre.';
     e.preventDefault(); // Empeche soumission du formulaire
-  } else if (titleValue.length > 30) {
+  } else if (titleValue.length > 50) {
     errorTitle.innerHTML = 'Votre titre est trop long.';
     title.value = '';
     e.preventDefault(); 
   } else if (titleValue.length < 2) {
-    errorTitle.innerHTML = 'Votre titre doit contenir au moins 2 lettres.'; 
+    errorTitle.innerHTML = 'Votre titre est trop court.'; 
     e.preventDefault(); 
   } else if (!regexTitle.test(titleValue)) {
     errorTitle.innerHTML = 'Votre titre ne peut comporter que des lettres, des chiffres ou des points de ponctuations.';
@@ -53,7 +53,7 @@ form.addEventListener('submit', (e) => {
   if(emailValue === '') {
     errorEmail.innerHTML = 'Vous devez avoir une adresse mail.';
     e.preventDefault(); 
-  } else if (emailValue.length > 30) {
+  } else if (emailValue.length > 50) {
     errorEmail.innerHTML = 'Votre adresse mail est trop longue.';
     email.value = '';
     e.preventDefault(); 
@@ -65,7 +65,7 @@ form.addEventListener('submit', (e) => {
   // Validation description
 
   if (descValue === ''){
-    errorDesc.innerHTML = 'Vous devez écrire un avis pour envoyer le formulaire.'; 
+    errorDesc.innerHTML = 'Il doit y avoir une description.'; 
     e.preventDefault();
   } else if (!regexTitle.test(descValue)) {
     errorDesc.innerHTML = 'Vous ne pouvez utiliser que des chiffres, des lettres ou des points de ponctuactions'; 
@@ -77,4 +77,16 @@ form.addEventListener('submit', (e) => {
   errorDesc.innerHTML = 'Il y a trop de caractères.'; 
   e.preventDefault(); 
 }
+});
+
+title.addEventListener('input', () => {
+  errorTitle.innerHTML = '';
+});
+
+email.addEventListener('input', () => {
+  errorEmail.innerHTML = '';
+});
+
+description.addEventListener('input', () => {
+  errorDesc.innerHTML = '';
 });

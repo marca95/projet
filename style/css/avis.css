@@ -120,6 +120,10 @@ button {
   resize: none;
 }
 
+#errorName, #errorDesc {
+  color: red;
+}
+
 /* --------------------------- FOOTER /!\------------------------- */
 
 .section-footer {

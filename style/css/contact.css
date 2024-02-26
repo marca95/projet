@@ -137,6 +137,9 @@ form {
   width: 100%;
 }
 
+#errorTitle, #errorEmail, #errorDescr {
+  color: red;
+}
 
 /* -------------------------------FOOTER------------------------------------ */
 .section-footer {
@@ -291,6 +294,14 @@ form {
 
   .regl_img{
     width: 60%;
+  }
+
+  #errorTitle, #errorEmail, #errorDescr {
+    margin: 2px;
+    padding: 2px;
+    display: inline-block;
+    color: white;
+    background-color: red;
   }
 
 }

@@ -109,7 +109,7 @@ h2{
   border-radius: 20px;
   color: white;
   padding: 20px;
-  height: 340px;
+  height: auto;
 }
 
 .btn {

@@ -15,25 +15,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = $_POST['email'];
   $password = $_POST['password'];
   $id_role = $_POST['role'];
+
   if ($email !== ""  && $password !== "") {
-    $request = $pdo->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
-    $request->execute(array(':email' => $email, ':password' => $password));
+    $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $request->execute(array(':email' => $email));
     $response = $request->fetch();
-    var_dump($password);
-    if ($response) {
+    // PROBLEME AVEC LE HACHAGE DE MON MOT DE PASSE A RETRAVAILLER !!!!
+    if ($response && password_verify($password, $response['password'])) {
       switch ($id_role) {
         case 1:
           header("Location: administrateur.php");
           break;
-
         case 2:
           header("Location: veterinaire.php");
           break;
-
         case 3:
           header("Location: employe.php");
           break;
-
         default:
           header("Location: accueil.html");
           break;
@@ -44,10 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
-
-
-
-
 ?>
 
 <html lang="en">
@@ -88,12 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           pour un visiteur de créer un compte.</p>
         <div class="formulaire">
           <form id="form" method="POST" action="">
-            <label for="selectJob" class="form-label">Profession : </label>
-            <select class="form-select mb-3" name="role">
-              <option value="1">Administrateur</option>
-              <option value="2">Vétérinaire</option>
-              <option value="3">Employé(e)</option>
-            </select>
             <div class="mb-3">
               <label for="email" class="form-label">Adresse e-mail : </label>
               <input type="email" class="form-control" id="email" name="email">

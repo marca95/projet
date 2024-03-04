@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <?php
-session_start();
 $user = 'root';
 $passwordDB = 'pierre2';
 
 try {
   $pdo = new PDO('mysql:host=localhost;dbname=zoo', $user, $passwordDB);
-  if (isset($_POST['connect'])) {
-    if (!empty($_POST['email']) and (!empty($_POST['password']))) {
-      $recupUsers = $pdo->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
-      $email = htmlspecialchars($_POST['email']);
-      $password = htmlspecialchars($_POST['password']);
-
-      $recupUsers->execute(array($email, $password));
-
-      if ($recupUsers->rowCount() > 0) {
-        $user = $recupUsers->fetch();
-        if (password_verify($_POST['password'], $user['password'])) {
-          $_SESSION['email'] = $user['username'];
-          $_SESSION['id'] = $user['id'];
-          echo 'Connexion réussie';
-        }
-      } else {
-        echo 'error';
-      };
-    } else {
-      echo 'Veuillez compléter tous les champs..';
-    }
-  } else {
-    echo 'Probleme de formulaire';
-  };
+  // Gestion des erreurs
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-  echo 'Impossible de se connecter à la base de données. Veuillez avertir l\'administrateur du site.';
-  die;
+  echo "Erreur : " . $e->getMessage();
+};
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $id_role = $_POST['role'];
+  if ($email !== ""  && $password !== "") {
+    $request = $pdo->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
+    $request->execute(array(':email' => $email, ':password' => $password));
+    $response = $request->fetch();
+    var_dump($password);
+    if ($response) {
+      switch ($id_role) {
+        case 1:
+          header("Location: administrateur.php");
+          break;
+
+        case 2:
+          header("Location: veterinaire.php");
+          break;
+
+        case 3:
+          header("Location: employe.php");
+          break;
+
+        default:
+          header("Location: accueil.html");
+          break;
+      }
+      exit();
+    } else {
+      echo 'Erreur dans le mot de passe ou votre adresse mail.';
+    }
+  }
 }
+
+
+
 
 ?>
 
@@ -76,19 +89,19 @@ try {
         <div class="formulaire">
           <form id="form" method="POST" action="">
             <label for="selectJob" class="form-label">Profession : </label>
-            <select class="form-select mb-3">
-              <option value="1">Employé</option>
+            <select class="form-select mb-3" name="role">
+              <option value="1">Administrateur</option>
               <option value="2">Vétérinaire</option>
-              <option value="3">Administrateur</option>
+              <option value="3">Employé(e)</option>
             </select>
             <div class="mb-3">
               <label for="email" class="form-label">Adresse e-mail : </label>
-              <input type="email" class="form-control" id="email" name="email" autocomplete="off">
+              <input type="email" class="form-control" id="email" name="email">
               <p id="errorEmail"></p>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Mot de passe : </label>
-              <input type="password" class="form-control" id="password" name="password" autocomplete="off">
+              <input type="password" class="form-control" id="password" name="password">
               <p id="errorPassword"></p>
             </div>
             <button type="submit" name="connect" class="btn btn-success">Connexion</button>
@@ -154,7 +167,7 @@ try {
    (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
 
 
-  <script src="../js/connexio.js"></script>
+  <script src="../js/connexion.js"></script>
 </body>
 
 </html>

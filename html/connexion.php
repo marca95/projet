@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<!-- <?php
-
+<?php
+session_start();
 $user = 'root';
-$password = 'pierre2';
+$passwordDB = 'pierre2';
 
 try {
-  $db = new PDO('mysql:host=localhost;dbname=zoo', $user, $password);
+  $pdo = new PDO('mysql:host=localhost;dbname=zoo', $user, $passwordDB);
+  if (isset($_POST['connect'])) {
+    if (!empty($_POST['email']) and (!empty($_POST['password']))) {
+      $recupUsers = $pdo->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
+      $email = htmlspecialchars($_POST['email']);
+      $password = htmlspecialchars($_POST['password']);
+
+      $recupUsers->execute(array($email, $password));
+
+      if ($recupUsers->rowCount() > 0) {
+        $user = $recupUsers->fetch();
+        if (password_verify($_POST['password'], $user['password'])) {
+          $_SESSION['email'] = $user['username'];
+          $_SESSION['id'] = $user['id'];
+          echo 'Connexion réussie';
+        }
+      } else {
+        echo 'error';
+      };
+    } else {
+      echo 'Veuillez compléter tous les champs..';
+    }
+  } else {
+    echo 'Probleme de formulaire';
+  };
 } catch (PDOException $e) {
-  print "Erreur : " . $e->getMessage() . "<br/>";
+  echo 'Impossible de se connecter à la base de données. Veuillez avertir l\'administrateur du site.';
   die;
 }
 
-?> -->
+?>
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="../style/css/connexion.css" rel="styleSheet">
   <link href="../img/logo.png" rel="icon">
 </head>
@@ -50,7 +74,7 @@ try {
           donc impossible
           pour un visiteur de créer un compte.</p>
         <div class="formulaire">
-          <form id="form" method="POST" action="./accueil.html">
+          <form id="form" method="POST" action="">
             <label for="selectJob" class="form-label">Profession : </label>
             <select class="form-select mb-3">
               <option value="1">Employé</option>
@@ -59,15 +83,15 @@ try {
             </select>
             <div class="mb-3">
               <label for="email" class="form-label">Adresse e-mail : </label>
-              <input type="email" class="form-control" id="email">
+              <input type="email" class="form-control" id="email" name="email" autocomplete="off">
               <p id="errorEmail"></p>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Mot de passe : </label>
-              <input type="password" class="form-control" id="password">
+              <input type="password" class="form-control" id="password" name="password" autocomplete="off">
               <p id="errorPassword"></p>
             </div>
-            <button type="submit" class="btn btn-success">Connexion</button>
+            <button type="submit" name="connect" class="btn btn-success">Connexion</button>
           </form>
         </div>
       </div>
@@ -113,13 +137,10 @@ try {
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Suivez-nous</li>
-            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img
-                  src="../img/accueil/insta.png" width="30vh"></a>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
             </li> <br>
-            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img
-                  src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img
-                  src="../img/accueil/linkedin.png" width="30vh"></a></li>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
           </ul>
         </div>
       </div>
@@ -133,7 +154,7 @@ try {
    (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
 
 
-  <script src="../js/connexion.js"></script>
+  <script src="../js/connexio.js"></script>
 </body>
 
 </html>

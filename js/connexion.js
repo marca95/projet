@@ -17,13 +17,13 @@ links.forEach((link) => {
 let form = document.getElementById('form');
 let email = document.getElementById('email');
 let password = document.getElementById('password');
+let errorEmail = document.getElementById('errorEmail');
+let errorPassword = document.getElementById('errorPassword');
 
 form.addEventListener('submit', (e) => {
   let emailValue = email.value.trim();
   let passwordValue = password.value.trim();
   let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-  let errorEmail = document.getElementById('errorEmail');
-  let errorPassword = document.getElementById('errorPassword');
 
   // Validation email
 

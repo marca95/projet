@@ -58,3 +58,11 @@ email.addEventListener('input', () => {
 password.addEventListener('input', () => {
   errorPassword.innerHTML = '';
 });
+
+// Create waiting time
+// TO REWORK IF WAITING TIME
+// document.getElementById('submit').addEventListener('click', function () {
+//   setTimeout(function () {
+//     alert("Fonction exécutée après un délai de 2 secondes");
+//   }, 5000);
+// });

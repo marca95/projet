@@ -11,18 +11,24 @@ try {
   echo "Erreur : " . $e->getMessage();
 };
 
+// login session
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $id_role = $_POST['role'];
 
   if ($email !== ""  && $password !== "") {
     $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
     $request->execute(array(':email' => $email));
     $response = $request->fetch();
-    // PROBLEME AVEC LE HACHAGE DE MON MOT DE PASSE A RETRAVAILLER !!!!
     if ($response && password_verify($password, $response['password'])) {
-      switch ($id_role) {
+      $_SESSION['id_role'] = $response['id_role'];
+      $_SESSION['first_name_user'] = $response['first_name'];
+      $_SESSION['email'] = $email;
+      $_SESSION['password'] = $password;
+
+      switch ($response['id_role']) {
         case 1:
           header("Location: administrateur.php");
           break;
@@ -38,8 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
       exit();
     } else {
-      echo 'Erreur dans le mot de passe ou votre adresse mail.';
+      $errorCon = 'Erreur dans le mot de passe ou votre adresse mail.';
     }
+  } else {
+    $errorCon = "Vous n'avez pas entrez d'adresse mail ou de mot de passe.";
   }
 }
 ?>
@@ -92,7 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <input type="password" class="form-control" id="password" name="password">
               <p id="errorPassword"></p>
             </div>
-            <button type="submit" name="connect" class="btn btn-success">Connexion</button>
+            <?php if (isset($_POST['connect']) && !empty($errorCon)) :  ?>
+              <p class="errorConnection"><?php echo $errorCon; ?></p>
+            <?php endif; ?>
+            <button type="submit" id="submit" name="connect" class="btn btn-success">Connexion</button>
           </form>
         </div>
       </div>

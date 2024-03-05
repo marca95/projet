@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+
+// Connect DB
 $user = 'root';
 $passwordBD = 'pierre2';
 
@@ -11,6 +13,36 @@ try {
   echo "Erreur : " . $e->getMessage();
 };
 
+// Login session 
+
+session_start();
+$request = $pdo->prepare('SELECT * FROM users WHERE id_role = 1');
+$request->execute();
+$user = $request->fetch();
+if (
+  isset($_SESSION['id_role'], $_SESSION['email'], $_SESSION['password']) &&
+  $_SESSION['id_role'] == 1 &&
+  $_SESSION['email'] == $user['email'] &&
+  password_verify($_SESSION['password'], $user['password'])
+) {
+} else {
+  header("Location: connexion.php");
+}
+session_destroy();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Create registration form
 if (isset($_POST['inscription'])) {
   $name = $_POST['name'];
   $first_name = $_POST['first_name'];
@@ -57,7 +89,7 @@ if (isset($_POST['inscription'])) {
 </head>
 
 <body>
-  <h1>Admin</h1>
+  <h1>Bonjour <?php echo $_SESSION['first_name_user'] ?> </h1>
 
   <form method="POST" action="administrateur.php">
     <label for="name">Nom :</label>

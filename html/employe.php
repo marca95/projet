@@ -30,7 +30,7 @@ if (
   header("Location: connexion.php");
   exit();
 }
-session_destroy();
+// session_destroy();
 
 ?>
 

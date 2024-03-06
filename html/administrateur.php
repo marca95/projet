@@ -27,19 +27,8 @@ if (
 ) {
 } else {
   header("Location: connexion.php");
+  exit();
 }
-session_destroy();
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Create registration form
@@ -74,6 +63,12 @@ if (isset($_POST['inscription'])) {
     $success = 'Inscription réussie.';
   }
 }
+// btn logout session
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header("Location: connexion.php");
+  exit();
+}
 ?>
 
 
@@ -91,7 +86,7 @@ if (isset($_POST['inscription'])) {
 <body>
   <h1>Bonjour <?php echo $_SESSION['first_name_user'] ?> </h1>
 
-  <form method="POST" action="administrateur.php">
+  <form method="POST" action="">
     <label for="name">Nom :</label>
     <input type="text" name="name" required>
     <br>
@@ -105,7 +100,12 @@ if (isset($_POST['inscription'])) {
     <input type="password" name="password" required>
     <br>
     <label for="id_role">Id role :</label>
-    <input type="number" name="id_role" required>
+    <label>
+      <input type="radio" name="id_role" value="2" required> Vétérinaire
+    </label>
+    <label>
+      <input type="radio" name="id_role" value="3" required> Employé(e)
+    </label>
     <br>
     <label for="birthday">Anniversaire :</label>
     <input type="date" name="birthday" required>
@@ -123,6 +123,12 @@ if (isset($_POST['inscription'])) {
       <div style="color: green;"><?php echo $success; ?></div>
     <?php endif; ?>
   </form>
+
+  <!-- BTN DE DECONNEXION-->
+  <form method="POST" action="">
+    <button type="submit" name="logout">Déconnexion</button>
+  </form>
+  <script src="../js/administrateur.js"></script>
 </body>
 
 </html>

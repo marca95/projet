@@ -19,18 +19,26 @@ try {
 session_start();
 $request = $pdo->prepare('SELECT * FROM users WHERE id_role = 2');
 $request->execute();
-$user = $request->fetch();
-if (
-  isset($_SESSION['id_role'], $_SESSION['email'], $_SESSION['password']) &&
-  $_SESSION['id_role'] == 2 &&
-  $_SESSION['email'] == $user['email'] &&
-  password_verify($_SESSION['password'], $user['password'])
-) {
-} else {
+$vetUsers = $request->fetchAll(PDO::FETCH_ASSOC);
+
+$loggedIn = false;
+
+foreach ($vetUsers as $vetUser) {
+  if (
+    isset($_SESSION['id_role'], $_SESSION['email'], $_SESSION['password']) &&
+    $_SESSION['id_role'] == 2 &&
+    $_SESSION['email'] == $vetUser['email'] &&
+    password_verify($_SESSION['password'], $vetUser['password'])
+  ) {
+    $loggedIn = true;
+    break;
+  }
+}
+
+if (!$loggedIn) {
   header("Location: connexion.php");
   exit();
 }
-// session_destroy();
 
 ?>
 

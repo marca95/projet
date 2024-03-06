@@ -27,8 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_SESSION['first_name_user'] = $response['first_name'];
       $_SESSION['email'] = $email;
       $_SESSION['password'] = $password;
-
-      switch ($response['id_role']) {
+      switch ($_SESSION['id_role']) {
         case 1:
           header("Location: administrateur.php");
           break;

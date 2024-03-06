@@ -19,12 +19,12 @@ try {
 session_start();
 $request = $pdo->prepare('SELECT * FROM users WHERE id_role = 3');
 $request->execute();
-$user = $request->fetch();
+$empUser = $request->fetch();
 if (
   isset($_SESSION['id_role'], $_SESSION['email'], $_SESSION['password']) &&
   $_SESSION['id_role'] == 3 &&
-  $_SESSION['email'] == $user['email'] &&
-  password_verify($_SESSION['password'], $user['password'])
+  $_SESSION['email'] == $empUser['email'] &&
+  password_verify($_SESSION['password'], $empUser['password'])
 ) {
 } else {
   header("Location: connexion.php");

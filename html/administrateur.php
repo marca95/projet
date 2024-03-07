@@ -128,7 +128,8 @@ if (isset($_POST['logout'])) {
   <form method="POST" action="">
     <button type="submit" name="logout">Déconnexion</button>
   </form>
-  <script src="../js/administrateur.js"></script>
+  <script src="../js/administrateur.js">
+  </script>
 </body>
 
 </html>

@@ -19,18 +19,26 @@ try {
 session_start();
 $request = $pdo->prepare('SELECT * FROM users WHERE id_role = 3');
 $request->execute();
-$empUser = $request->fetch();
-if (
-  isset($_SESSION['id_role'], $_SESSION['email'], $_SESSION['password']) &&
-  $_SESSION['id_role'] == 3 &&
-  $_SESSION['email'] == $empUser['email'] &&
-  password_verify($_SESSION['password'], $empUser['password'])
-) {
-} else {
+$empUsers = $request->fetchAll(PDO::FETCH_ASSOC);
+
+$loggedIn = false;
+
+foreach ($empUsers as $empUser) {
+  if (
+    isset($_SESSION['id_role'], $_SESSION['email'], $_SESSION['password']) &&
+    $_SESSION['id_role'] == 3 &&
+    $_SESSION['email'] == $empUser['email'] &&
+    password_verify($_SESSION['password'], $empUser['password'])
+  ) {
+    $loggedIn = true;
+    break;
+  }
+}
+
+if (!$loggedIn) {
   header("Location: connexion.php");
   exit();
 }
-// session_destroy();
 
 ?>
 

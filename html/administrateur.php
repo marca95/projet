@@ -86,18 +86,18 @@ if (isset($_POST['logout'])) {
 <body>
   <h1>Bonjour <?php echo $_SESSION['first_name_user'] ?> </h1>
 
-  <form method="POST" action="">
+  <form method="POST" action="" id="form">
     <label for="name">Nom :</label>
-    <input type="text" name="name" required>
+    <input type="text" name="name" id="name" required>
     <br>
     <label for="first_name">Prénom :</label>
-    <input type="text" name="first_name" required>
+    <input type="text" name="first_name" id="first_name" required>
     <br>
     <label for="email">Email :</label>
-    <input type="email" name="email" required>
+    <input type="email" name="email" id="email" required>
     <br>
     <label for="password">Mot de passe :</label>
-    <input type="password" name="password" required>
+    <input type="password" name="password" id="password" required>
     <br>
     <label for="id_role">Id role :</label>
     <label>

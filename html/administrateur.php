@@ -33,34 +33,43 @@ if (
 
 // Create registration form
 if (isset($_POST['inscription'])) {
-  $name = $_POST['name'];
-  $first_name = $_POST['first_name'];
-  $email = $_POST['email'];
-  $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-  $id_role = $_POST['id_role'];
-  $birthday = $_POST['birthday'];
-  $hire = $_POST['hire'];
+  // Check DB only one unique mail
+  $onlyOneEmail = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+  $onlyOneEmail->execute(array('email' => $_POST['email']));
+  $oneEmail = $onlyOneEmail->fetchColumn();
 
-  $userOnlyAdmin = $pdo->prepare('SELECT COUNT(*) FROM users WHERE id_role = 1');
-  $userOnlyAdmin->execute();
-  $count = $userOnlyAdmin->fetchColumn();
-
-  if ($id_role == 1 && $count > 0) {
-    $error = 'Il ne peut y avoir qu\'un seul administrateur.';
+  if ($oneEmail) {
+    $error = 'Adresse mail déjà existante';
   } else {
-    $request = $pdo->prepare('INSERT INTO users(name, first_name, email, password, id_role, birthday, hire) VALUES (:name, :first_name, :email, :password, :id_role, :birthday, :hire)');
-    $request->execute(
-      array(
-        'name' => $name,
-        'first_name' => $first_name,
-        'email' => $email,
-        'password' => $password,
-        'id_role' => $id_role,
-        'birthday' => $birthday,
-        'hire' => $hire
-      )
-    );
-    $success = 'Inscription réussie.';
+    $name = $_POST['name'];
+    $first_name = $_POST['first_name'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $id_role = $_POST['id_role'];
+    $birthday = $_POST['birthday'];
+    $hire = $_POST['hire'];
+
+    $userOnlyAdmin = $pdo->prepare('SELECT COUNT(*) FROM users WHERE id_role = 1');
+    $userOnlyAdmin->execute();
+    $count = $userOnlyAdmin->fetchColumn();
+
+    if ($id_role == 1 && $count > 0) {
+      $error = 'Il ne peut y avoir qu\'un seul administrateur.';
+    } else {
+      $request = $pdo->prepare('INSERT INTO users(name, first_name, email, password, id_role, birthday, hire) VALUES (:name, :first_name, :email, :password, :id_role, :birthday, :hire)');
+      $request->execute(
+        array(
+          'name' => $name,
+          'first_name' => $first_name,
+          'email' => $email,
+          'password' => $password,
+          'id_role' => $id_role,
+          'birthday' => $birthday,
+          'hire' => $hire
+        )
+      );
+      $success = 'Inscription réussie.';
+    }
   }
 }
 // btn logout session
@@ -122,14 +131,15 @@ if (isset($_POST['logout'])) {
     <?php if (isset($_POST['inscription']) && !empty($success)) : ?>
       <div style="color: green;"><?php echo $success; ?></div>
     <?php endif; ?>
+    <p id="errorForm"></p>
   </form>
 
   <!-- BTN DE DECONNEXION-->
   <form method="POST" action="">
     <button type="submit" name="logout">Déconnexion</button>
   </form>
-  <script src="../js/administrateur.js">
-  </script>
+
+  <script src="../js/admin.js"></script>
 </body>
 
 </html>

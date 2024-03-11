@@ -1,11 +1,14 @@
 // Condition form 
-console.log('test');
 let form = document.getElementById('form');
 let nameInput = document.getElementById('name');
 let firstNameInput = document.getElementById('first_name');
+let emailInput2 = document.getElementById('email2');
 let emailInput = document.getElementById('email');
 let passwordInput = document.getElementById('password');
-let errorForm = document.getElementById('errorForm');
+let passwordInput2 = document.getElementById('password2');
+let birthDate = document.getElementById('birthday');
+let hiring = document.getElementById('hire');
+let errorInput = document.getElementById('errorInput');
 
 nameInput.addEventListener('input', function() {
   upperCaseFirstLetter(nameInput);
@@ -16,49 +19,96 @@ firstNameInput.addEventListener('input', function() {
 });
 
 form.addEventListener('submit', (e) => {
-
-  errorForm.value = '';
+  
+    let regex = /^[a-zA-Z\s-]+$/;
+  // Condition to be 18 years
+   let dateBirthday = new Date(birthDate.value);
+   let today = new Date();
+   let controlAge = today.getFullYear() - dateBirthday.getFullYear();
+   let dateHiring = new Date(hiring.value);
 
   if (nameInput.value.length === '') {
-    errorForm.innerHTML = 'Vous devez avoir un nom.';
+    errorInput.innerHTML = 'Vous devez avoir un nom.';
     e.preventDefault(); // Empeche soumission du formulaire
   } else if (nameInput.value.length > 50) {
-    errorForm.innerHTML = 'Votre nom est trop long.';
+    errorInput.innerHTML = 'Maximum 50 caractères.';
+    nameInput.value = '';
+    e.preventDefault(); 
+  } else if (!regex.test(nameInput.value)) {
+    errorInput.innerHTML = 'Vous ne pouvez utiliser que des lettres ou des -';
     nameInput.value = '';
     e.preventDefault(); 
   }
+
   if (firstNameInput.value.length === '') {
-    errorForm.innerHTML = 'Vous devez avoir un nom.';
+    errorInput.innerHTML = 'Vous devez avoir un prénom.';
     e.preventDefault(); 
   } else if (firstNameInput.value.length > 50) {
-    errorForm.innerHTML = 'Votre prénom est trop long.';
+    errorInput.innerHTML = 'Maximum 50 caractères.';
+    firstNameInput.value = '';
+    e.preventDefault(); 
+  } else if (!regex.test(firstNameInput.value)) {
+    errorInput.innerHTML = 'Vous ne pouvez utiliser que des lettres ou des -';
     firstNameInput.value = '';
     e.preventDefault(); 
   }
 
+  if (emailInput2.value.length === '') {
+    errorInput.innerHTML = 'Vous devez avoir une adresse mail.';
+    e.preventDefault(); 
+  } else if (emailInput2.value.length > 50) {
+    errorInput.innerHTML = 'Votre adresse mail est trop longue.';
+    emailInput2.value = '';
+    e.preventDefault(); 
+  }
+
   if (emailInput.value.length === '') {
-    errorForm.innerHTML = 'Vous devez avoir une adresse mail.';
+    errorInput.innerHTML = 'Vous devez avoir une adresse mail.';
     e.preventDefault(); 
   } else if (emailInput.value.length > 50) {
-    errorForm.innerHTML = 'Votre adresse mail est trop longue.';
+    errorInput.innerHTML = 'Votre adresse mail est trop longue.';
     emailInput.value = '';
     e.preventDefault(); 
   }
 
   if (passwordInput.value.length < 6) {
-    errorForm.innerHTML = 'Mot de passe trop court, il vous faut au minimum 6 caractères.';
+    errorInput.innerHTML = 'Mot de passe trop court, il vous faut au minimum 6 caractères.';
     e.preventDefault()
   } else if (passwordInput.value.length > 50) {
-    errorForm.innerHTML = 'Votre mot de passe est trop long.';
+    errorInput.innerHTML = 'Votre mot de passe est trop long.';
     passwordInput.value = '';
     e.preventDefault(); 
   }
-})
 
+  if (passwordInput2.value !== passwordInput.value) {
+    errorInput.innerHTML = 'Mot de passe pas identique.';
+    e.preventDefault()
+  }
+
+  if(dateBirthday > today) {
+    errorInput.innerHTML = 'Date invalide.';
+    e.preventDefault()
+  } else if(controlAge < 18) {
+    errorInput.innerHTML = 'Cette personne n\'est pas majeur.';
+    e.preventDefault()
+  }
+
+  if(dateHiring > today){
+    errorInput.innerHTML = 'Vous avez dépassé la date d\'aujourd\'hui.';
+    e.preventDefault()
+  }
+})
 
 function upperCaseFirstLetter(input) {
   let value = input.value.trim();
   value = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 
   input.value = value;
+}
+
+function clearSuccess() {
+  let successMessage = document.getElementById('success');
+    if (successMessage) {
+      successMessage.innerHTML = '';
+    } 
 }

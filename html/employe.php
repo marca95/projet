@@ -3,11 +3,11 @@
 <?php
 
 // Connect DB
-$user = 'root';
+$userDB = 'root';
 $passwordBD = 'pierre2';
 
 try {
-  $pdo = new PDO('mysql:host=localhost;dbname=zoo', $user, $passwordBD);
+  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordBD);
   // Gestion des erreurs
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
@@ -25,9 +25,9 @@ $loggedIn = false;
 
 foreach ($empUsers as $empUser) {
   if (
-    isset($_SESSION['id_role'], $_SESSION['email'], $_SESSION['password']) &&
+    isset($_SESSION['id_role'], $_SESSION['username'], $_SESSION['password']) &&
     $_SESSION['id_role'] == 3 &&
-    $_SESSION['email'] == $empUser['email'] &&
+    $_SESSION['username'] == $empUser['username'] &&
     password_verify($_SESSION['password'], $empUser['password'])
   ) {
     $loggedIn = true;

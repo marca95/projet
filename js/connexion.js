@@ -15,26 +15,26 @@ links.forEach((link) => {
 // Condition form
 
 let form = document.getElementById('form');
-let email = document.getElementById('email');
+let username = document.getElementById('username');
 let password = document.getElementById('password');
 let errorEmail = document.getElementById('errorEmail');
 let errorPassword = document.getElementById('errorPassword');
 
 form.addEventListener('submit', (e) => {
-  let emailValue = email.value.trim();
+  let usernameValue = username.value.trim();
   let passwordValue = password.value.trim();
   let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
   // Validation email
 
-  if(emailValue === '') {
+  if(usernameValue === '') {
     errorEmail.innerHTML = 'Vous devez avoir une adresse mail.';
     e.preventDefault(); // Empeche soumission du formulaire
-  } else if (emailValue.length > 50) {
+  } else if (usernameValue.length > 50) {
     errorEmail.innerHTML = 'Votre adresse mail est trop longue.';
     email.value = '';
     e.preventDefault(); 
-  } else if (!regexEmail.test(emailValue)) {
+  } else if (!regexEmail.test(usernameValue)) {
     errorEmail.innerHTML = 'Votre adresse mail est invalide.';
     e.preventDefault(); 
   }
@@ -51,18 +51,10 @@ form.addEventListener('submit', (e) => {
   } 
 });
 
-email.addEventListener('input', () => {
+username.addEventListener('input', () => {
   errorEmail.innerHTML = '';
 });
 
 password.addEventListener('input', () => {
   errorPassword.innerHTML = '';
 });
-
-// Create waiting time
-// TO REWORK IF WAITING TIME
-// document.getElementById('submit').addEventListener('click', function () {
-//   setTimeout(function () {
-//     alert("Fonction exécutée après un délai de 2 secondes");
-//   }, 5000);
-// });

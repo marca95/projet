@@ -79,6 +79,8 @@ form.addEventListener('submit', (e) => {
 }
 });
 
+
+// Peut etre essayé si j'essaye sur le form.addEventListener
 title.addEventListener('input', () => {
   errorTitle.innerHTML = '';
 });

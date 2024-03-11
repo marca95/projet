@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php
-$user = 'root';
+$userDB = 'root';
 $passwordDB = 'pierre2';
 
 try {
-  $pdo = new PDO('mysql:host=localhost;dbname=zoo', $user, $passwordDB);
+  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
   // Gestion des erreurs
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
@@ -15,16 +15,18 @@ try {
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $email = $_POST['email'];
+  $username = $_POST['username'];
   $password = $_POST['password'];
 
-  if ($email !== ""  && $password !== "") {
-    $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-    $request->execute(array(':email' => $email));
+  if ($username !== ""  && $password !== "") {
+    $request = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+    $request->execute(array(':username' => $username));
     $response = $request->fetch();
     if ($response && password_verify($password, $response['password'])) {
       $_SESSION['id_role'] = $response['id_role'];
+      $_SESSION['id_user'] = $response['id_user'];
       $_SESSION['first_name_user'] = $response['first_name'];
+      $_SESSION['username'] = $username;
       $_SESSION['email'] = $email;
       $_SESSION['password'] = $password;
       switch ($_SESSION['id_role']) {
@@ -90,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="formulaire">
           <form id="form" method="POST" action="">
             <div class="mb-3">
-              <label for="email" class="form-label">Adresse e-mail : </label>
-              <input type="email" class="form-control" id="email" name="email">
+              <label for="username" class="form-label">Adresse e-mail : </label>
+              <input type="email" class="form-control" id="username" name="username">
               <p id="errorEmail"></p>
             </div>
             <div class="mb-3">

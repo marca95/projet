@@ -20,6 +20,16 @@ let password = document.getElementById('password');
 let errorEmail = document.getElementById('errorEmail');
 let errorPassword = document.getElementById('errorPassword');
 
+
+username.addEventListener('input', () => {
+  errorEmail.innerHTML = '';
+});
+
+password.addEventListener('input', () => {
+  errorPassword.innerHTML = '';
+});
+
+
 form.addEventListener('submit', (e) => {
   let usernameValue = username.value.trim();
   let passwordValue = password.value.trim();
@@ -51,10 +61,4 @@ form.addEventListener('submit', (e) => {
   } 
 });
 
-username.addEventListener('input', () => {
-  errorEmail.innerHTML = '';
-});
 
-password.addEventListener('input', () => {
-  errorPassword.innerHTML = '';
-});

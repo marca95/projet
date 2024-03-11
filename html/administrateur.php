@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require '../divers/PHPMailer-master/src/Exception.php';
+require '../divers/PHPMailer-master/src/PHPMailer.php';
+require '../divers/PHPMailer-master/src/SMTP.php';
+
 // Connect DB
 $userDB = 'root';
 $passwordDB = 'pierre2';
@@ -71,9 +79,53 @@ if (isset($_POST['inscription'])) {
         )
       );
       $success = 'Inscription réussie.';
+
+      // send mail for username and password
+      $subject = 'Données du nouveau compte chez Arcadia';
+      $contentEmail = "Nom: $name\n";
+      $contentEmail .= "Prénom: $first_name\n";
+      $contentEmail .= "Username: $username\n";
+      $contentEmail .= "Role: $id_role\n";
+      $contentEmail .= "Date d'anniversaire: $birthday\n";
+      $contentEmail .= "Engagé(e) le: $hire\n";
+      $contentEmail .= "Pour le mot de passe, veuillez vous adressez au directeur du zoo.\n";
+
+      $mail = new PHPMailer(true);
+
+      try {
+        // Paramètres SMTP pour Gmail
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'monzooarcadia@gmail.com';
+        $mail->Password   = 'zooarcadia1995';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+        // OR 
+        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        // $mail->Port = 465;
+
+
+        // Destinataire
+        $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia Zoo');
+        $mail->addAddress('pierre.majerus@outlook.be', $name); // I need exist adress
+
+        // Contenu du message
+        $mail->isHTML(false);
+        $mail->Subject = $subject;
+        $mail->Body    = $contentEmail;
+
+
+        $mail->send();
+        echo 'Vous avez reçu un email avec vos données personnelles';
+      } catch (Exception $e) {
+        echo 'Il y a eu une erreur lors de l\'envoi du mail : ', $mail->ErrorInfo;
+        echo $mail->SMTPDebug = 1;
+      }
     }
   }
 }
+
 // btn logout session
 if (isset($_POST['logout'])) {
   session_destroy();

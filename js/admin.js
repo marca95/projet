@@ -2,7 +2,7 @@
 let form = document.getElementById('form');
 let nameInput = document.getElementById('name');
 let firstNameInput = document.getElementById('first_name');
-let emailInput2 = document.getElementById('email2');
+let usernameInput = document.getElementById('username');
 let emailInput = document.getElementById('email');
 let passwordInput = document.getElementById('password');
 let passwordInput2 = document.getElementById('password2');
@@ -53,12 +53,12 @@ form.addEventListener('submit', (e) => {
     e.preventDefault(); 
   }
 
-  if (emailInput2.value.length === '') {
+  if (usernameInput.value.length === '') {
     errorInput.innerHTML = 'Vous devez avoir une adresse mail.';
     e.preventDefault(); 
-  } else if (emailInput2.value.length > 50) {
+  } else if (usernameInput.value.length > 50) {
     errorInput.innerHTML = 'Votre adresse mail est trop longue.';
-    emailInput2.value = '';
+    usernameInput.value = '';
     e.preventDefault(); 
   }
 

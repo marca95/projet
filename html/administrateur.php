@@ -78,7 +78,7 @@ if (isset($_POST['inscription'])) {
           'hire' => $hire
         )
       );
-      $success = 'Inscription réussie.';
+      $successSignUp = 'Inscription réussie.';
 
       // send mail for username and password
       $subject = 'Données du nouveau compte chez Arcadia';
@@ -94,33 +94,29 @@ if (isset($_POST['inscription'])) {
 
       try {
         // Paramètres SMTP pour Gmail
+        $mail->SMTPDebug = 1;
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'monzooarcadia@gmail.com';
-        $mail->Password   = 'zooarcadia1995';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-        // OR 
-        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        // $mail->Port = 465;
-
-
+        // Password secure application
+        $mail->Password   = 'pboc fkwe gsyu hplk';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+        $mail->CharSet = 'UTF-8';
         // Destinataire
         $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia Zoo');
         $mail->addAddress('pierre.majerus@outlook.be', $name); // I need exist adress
 
         // Contenu du message
-        $mail->isHTML(false);
+        $mail->isHTML(true);
         $mail->Subject = $subject;
         $mail->Body    = $contentEmail;
 
-
         $mail->send();
-        echo 'Vous avez reçu un email avec vos données personnelles';
+        $successMail = 'Vous avez reçu un email avec vos données personnelles';
       } catch (Exception $e) {
-        echo 'Il y a eu une erreur lors de l\'envoi du mail : ', $mail->ErrorInfo;
-        echo $mail->SMTPDebug = 1;
+        $errorMail = 'Il y a eu une erreur lors de l\'envoi du mail : ' + $mail->ErrorInfo;
       }
     }
   }
@@ -186,10 +182,18 @@ if (isset($_POST['logout'])) {
       <p id="errorInput"></p>
       <br />
       <?php if (isset($success) && !empty($success)) : ?>
-        <p id="success"><?php echo $success; ?></p>
+        <p id="success">
+          <?php
+          echo $successSignUp;
+          echo $successMail;
+          ?></p>
       <?php endif; ?>
       <?php if (isset($error) && !empty($error)) : ?>
-        <p id="error"><?php echo $error; ?></p>
+        <p id="error">
+          <?php
+          echo $error;
+          echo $errorMail;
+          ?></p>
       <?php endif; ?>
       <br />
       <button type="submit" name="inscription">Inscription</button>

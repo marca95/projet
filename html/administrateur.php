@@ -94,7 +94,7 @@ if (isset($_POST['inscription'])) {
 
       try {
         // Paramètres SMTP pour Gmail
-        $mail->SMTPDebug = 1;
+        // $mail->SMTPDebug = 1; If I need disable
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
@@ -106,7 +106,7 @@ if (isset($_POST['inscription'])) {
         $mail->CharSet = 'UTF-8';
         // Destinataire
         $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia Zoo');
-        $mail->addAddress('pierre.majerus@outlook.be', $name); // I need exist adress
+        $mail->addAddress('pierre.majerus@outlook.be', $name); // I need exist adress, warning my users are not really
 
         // Contenu du message
         $mail->isHTML(true);
@@ -114,13 +114,62 @@ if (isset($_POST['inscription'])) {
         $mail->Body    = $contentEmail;
 
         $mail->send();
-        $successMail = 'Vous avez reçu un email avec vos données personnelles';
+        $successMail = 'Vous avez reçu un email avec vos données personnelles.';
       } catch (Exception $e) {
         $errorMail = 'Il y a eu une erreur lors de l\'envoi du mail : ' + $mail->ErrorInfo;
       }
     }
   }
 }
+// Update hourly
+
+$horaires = $pdo->prepare('SELECT * FROM horaires');
+$horaires->execute();
+$sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  $newMondayStart = $_POST['mondayStart'];
+  $newMondayEnd = $_POST['mondayEnd'];
+  $newMondayClosed = $_POST['mondayClosed'];
+  $newTuesdayStart = $_POST['tuesdayStart'];
+  $newTuesdayEnd = $_POST['tuesdayEnd'];
+  $newTuesdayClosed = $_POST['tuesdayClosed'];
+  $newWednesdayStart = $_POST['wednesdayStart'];
+  $newWednesdayEnd = $_POST['wednesdayEnd'];
+  $newWednesdayClosed = $_POST['wednesdayClosed'];
+  $newThursdayStart = $_POST['thursdayStart'];
+  $newThursdayEnd = $_POST['thursdayEnd'];
+  $newThursdayClosed = $_POST['thursdayClosed'];
+  $newFridayStart = $_POST['fridayStart'];
+  $newFridayEnd = $_POST['fridayEnd'];
+  $newFridayClosed = $_POST['fridayClosed'];
+  $newSaturdayStart = $_POST['saturdayStart'];
+  $newSaturdayEnd = $_POST['saturdayEnd'];
+  $newSaturdayClosed = $_POST['saturdayClosed'];
+  $newSundayStart = $_POST['sundayStart'];
+  $newSundayEnd = $_POST['sundayEnd'];
+  $newSundayClosed = $_POST['sundayClosed'];
+
+
+
+  $stmt = $pdo->prepare('UPDATE horaires SET start_time = :start_time, end_time = :end_time, is_closed = :is_closed WHERE day_week = :day_week');
+
+  $stmt->execute(['start_time' => $newMondayStart, 'end_time' => $newMondayEnd, 'is_closed' => $newMondayClosed, 'day_week' => 'Lundi']);
+  $stmt->execute(['start_time' => $newTuesdayStart, 'end_time' => $newTuesdayEnd, 'is_closed' => $newTuesdayClosed, 'day_week' => 'Mardi']);
+  $stmt->execute(['start_time' => $newWednesdayStart, 'end_time' => $newWednesdayEnd, 'is_closed' => $newWednesdayClosed, 'day_week' => 'Mercredi']);
+  $stmt->execute(['start_time' => $newThursdayStart, 'end_time' => $newThursdayEnd, 'is_closed' => $newThursdayClosed, 'day_week' => 'Jeudi']);
+  $stmt->execute(['start_time' => $newFridayStart, 'end_time' => $newFridayEnd, 'is_closed' => $newFridayClosed, 'day_week' => 'Vendredi']);
+  $stmt->execute(['start_time' => $newSaturdayStart, 'end_time' => $newSaturdayEnd, 'is_closed' => $newSaturdayClosed, 'day_week' => 'Samedi']);
+  $stmt->execute(['start_time' => $newSundayStart, 'end_time' => $newSundayEnd, 'is_closed' => $newSundayClosed, 'day_week' => 'Dimanche']);
+
+  $succesHour = 'Enregistrement validé.';
+} else {
+  $errorHour = 'Il y a eu un problème dans le changement d\'heures, veuillez réessayer plus tard.';
+}
+
+// View reports
+
 
 // btn logout session
 if (isset($_POST['logout'])) {
@@ -136,7 +185,7 @@ if (isset($_POST['logout'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zoo d'Arcadia en Br/etagne</title>
+  <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="../style/css/admin.css" rel="styleSheet">
   <link href="../img/logo.png" rel="icon">
@@ -200,7 +249,115 @@ if (isset($_POST['logout'])) {
       <br />
     </form>
   </section>
-  <section></section>
+  <section>
+    <!-- COMPLETER MODIFICATION DES SERVICES HORAIRE ANIMAUX-->
+  </section>
+  <section>
+    <h3>Modification des horaires</h3>
+    <?php
+    if ($sethoraires) {
+
+      foreach ($sethoraires as $sethoraire) {
+        $setDay = $sethoraire['day_week'];
+        $setIsClosed = $sethoraire['is_closed'];
+        $setStartTime = $sethoraire['start_time'];
+        $setEndTime = $sethoraire['end_time'];
+
+        echo "<li>$setDay : ";
+        echo $setIsClosed ? 'Fermé' : "$setStartTime à $setEndTime";
+        echo '</li>';
+      }
+    } else {
+      echo "Aucun horaire trouvé.";
+    }
+    ?>
+    <form action="" method="POST">
+
+      <label for="mondayClosed">Le lundi est :</label>
+      <select type="text" name="mondayClosed" id="mondayClosed">
+        <option value="0">Ouvert</option>
+        <option value="1" selected>Fermé</option>
+      </select>
+      <label for="mondayStart">Ouverture à :</label>
+      <input type="text" name="mondayStart" id="mondayStart" placeholder="Heure début">
+      <label for="mondayEnd">Fermeture à :</label>
+      <input type="text" name="mondayEnd" id="mondayEnd" placeholder="Heure fin">
+      <br />
+      <label for="tuesdayClosed">Le mardi est :</label>
+      <select type="text" name="tuesdayClosed" id="tuesdayClosed">
+        <option value="0">Ouvert</option>
+        <option value="1" selected>Fermé</option>
+      </select>
+      <label for="tuesdayStart">Ouverture à :</label>
+      <input type="text" name="tuesdayStart" id="tuesdayStart" placeholder="Heure début">
+      <label for="tuesdayEnd">Fermeture à :</label>
+      <input type="text" name="tuesdayEnd" id="tuesdayEnd" placeholder="Heure fin">
+      <br />
+      <label for="wednesdayClosed">Le mercredi est :</label>
+      <select type="text" name="wednesdayClosed" id="wednesdayClosed">
+        <option value="0">Ouvert</option>
+        <option value="1">Fermé</option>
+      </select>
+      <label for="wednesdayStart">Ouverture à :</label>
+      <input type="text" name="wednesdayStart" id="wednesdayStart" placeholder="Heure début" value="10h">
+      <label for="wednesdayEnd">Fermeture à :</label>
+      <input type="text" name="wednesdayEnd" id="wednesdayEnd" placeholder="Heure fin" value="19h">
+      <br />
+      <label for="thursdayClosed">Le jeudi est :</label>
+      <select type="text" name="thursdayClosed" id="thursdayClosed">
+        <option value="0">Ouvert</option>
+        <option value="1">Fermé</option>
+      </select>
+      <label for="thursdayStart">Ouverture à :</label>
+      <input type="text" name="thursdayStart" id="thursdayStart" placeholder="Heure début" value="10h">
+      <label for="thursdayEnd">Fermeture à :</label>
+      <input type="text" name="thursdayEnd" id="thursdayEnd" placeholder="Heure fin" value="19h">
+      <br />
+      <label for="fridayClosed">Le vendredi est :</label>
+      <select type="text" name="fridayClosed" id="fridayClosed">
+        <option value="0">Ouvert</option>
+        <option value="1">Fermé</option>
+      </select>
+      <label for="fridayStart">Ouverture à :</label>
+      <input type="text" name="fridayStart" id="fridayStart" placeholder="Heure début" value="10h">
+      <label for="fridayEnd">Fermeture à :</label>
+      <input type="text" name="fridayEnd" id="fridayEnd" placeholder="Heure fin" value="19h">
+      <br />
+      <label for="saturdayClosed">Le samedi est :</label>
+      <select type="text" name="saturdayClosed" id="saturdayClosed">
+        <option value="0">Ouvert</option>
+        <option value="1">Fermé</option>
+      </select>
+      <label for="saturdayStart">Ouverture à :</label>
+      <input type="text" name="saturdayStart" id="saturdayStart" placeholder="Heure début" value="10h">
+      <label for="saturdayEnd">Fermeture à :</label>
+      <input type="text" name="saturdayEnd" id="saturdayEnd" placeholder="Heure fin" value="19h">
+      <br />
+      <label for="sundayClosed">Le dimanche est :</label>
+      <select type="text" name="sundayClosed" id="sundayClosed">
+        <option value="0">Ouvert</option>
+        <option value="1">Fermé</option>
+      </select>
+      <label for="sundayStart">Ouverture à :</label>
+      <input type="text" name="sundayStart" id="sundayStart" placeholder="Heure début" value="10h">
+      <label for="sundayEnd">Fermeture à :</label>
+      <input type="text" name="sundayEnd" id="sundayEnd" placeholder="Heure fin" value="19h">
+      <br />
+      <?php if (isset($succesHour) && !empty($succesHour)) : ?>
+        <p id="success">
+          <?php
+          echo $succesHour;
+          ?></p>
+      <?php endif; ?>
+      <?php if (isset($errorHour) && !empty($errorHour)) : ?>
+        <p id="error">
+          <?php
+          echo $errorHour;
+          ?></p>
+      <?php endif; ?>
+      <button type="submit">Enregistrer les modifications</button>
+    </form>
+  </section>
 
 
 

@@ -11,6 +11,11 @@ try {
   echo "Erreur : " . $e->getMessage();
 };
 
+
+$horaires = $pdo->prepare('SELECT * FROM horaires');
+$horaires->execute();
+$sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
+
 // login session
 session_start();
 
@@ -72,11 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <img id="logo_nav" src="../img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="habitats.html">Habitats</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="habitats.php">Habitats</a></li>
+        <li><a href="services.php">Services</a></li>
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="accueil.php">Accueil</a></li>
       </ul>
       <div id="icon"></div>
     </nav>
@@ -129,22 +134,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Nos services</li>
-            <li class="footer-li"><a class="footer-a" href="./tarif.html">Nos tarifs</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#resto">Restaurant</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#habitat">Visite des habitats</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#train">Visite du Zoo en petit train</a></li>
+            <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#resto">Restaurant</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#habitat">Visite des habitats</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#train">Visite du Zoo en petit train</a></li>
           </ul>
         </div>
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Horaires</li>
-            <li>Lundi : Fermé</li>
-            <li>Mardi : Fermé</li>
-            <li>Mercredi : 10h à 19h</li>
-            <li>Jeudi : 10h à 19h</li>
-            <li>Vendredi : 10h à 19h</li>
-            <li>Samedi : 10h à 19h</li>
-            <li>Dimanche : 10h à 19h</li>
+            <?php
+            foreach ($sethoraires as $sethoraire) {
+              $setDay = $sethoraire['day_week'];
+              $setIsClosed = $sethoraire['is_closed'];
+              $setStartTime = $sethoraire['start_time'];
+              $setEndTime = $sethoraire['end_time'];
+
+              echo "<li>$setDay : ";
+              echo $setIsClosed ? 'Fermé' : "$setStartTime à $setEndTime";
+              echo '</li>';
+            }
+
+            ?>
           </ul>
         </div>
         <div class="footer-div">

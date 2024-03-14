@@ -1,12 +1,30 @@
 <!DOCTYPE html>
+
+<?php
+$userDB = 'root';
+$passwordDB = 'pierre2';
+
+try {
+  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
+  // Gestion des erreurs
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  echo "Erreur : " . $e->getMessage();
+};
+
+$horaires = $pdo->prepare('SELECT * FROM horaires');
+$horaires->execute();
+$sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="../style/css/accueil.css" rel="styleSheet">
   <link href="../style/font/font.css" rel="styleSheet">
   <link href="../img/logo.png" rel="icon">
@@ -21,9 +39,9 @@
       </div>
       <ul class="navigation">
         <li><a href="connexion.php">Connexion</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="habitats.html">Habitats</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="habitats.php">Habitats</a></li>
+        <li><a href="services.php">Services</a></li>
         <li><a href="menu.html">Menu</a></li>
       </ul>
       <div id="icon"></div>
@@ -60,29 +78,29 @@
       <p class="text-center fs-2">Découvez nos Animaux</p>
       <div class="row g-3">
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/vache.jpg');">
-            <a class="container-a" href="habitats.html#vache">
+          <div class="container-div" style="background-image: url('../img/accueil/vache.jpg');">
+            <a class="container-a" href="habitats.php#vache">
               <h3 class="container-titre">Le monde de la ferme</h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/tortue.jpg');">
-            <a class="container-a" href="habitats.html#tortue">
+          <div class="container-div" style="background-image: url('../img/accueil/tortue.jpg');">
+            <a class="container-a" href="habitats.php#tortue">
               <h3 class="container-titre">La vie aquatique</h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/panda.jpg');">
-            <a class="container-a" href="habitats.html#panda">
+          <div class="container-div" style="background-image: url('../img/accueil/panda.jpg');">
+            <a class="container-a" href="habitats.php#panda">
               <h3 class="container-titre">L'Asie</h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/ois-resp.png');">
-            <a class="container-a" href="habitats.html#oiseau">
+          <div class="container-div" style="background-image: url('../img/accueil/ois-resp.png');">
+            <a class="container-a" href="habitats.php#oiseau">
               <h3 class="container-titre">Les volatiles</h3>
             </a>
           </div>
@@ -90,29 +108,29 @@
       </div>
       <div class="row g-3 mt-1">
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/singe1.jpg');">
-            <a class="container-a" href="habitats.html#gorille">
+          <div class="container-div" style="background-image: url('../img/accueil/singe1.jpg');">
+            <a class="container-a" href="habitats.php#gorille">
               <h3 class="container-titre">Nos origines</h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/ours.jpg');">
-            <a class="container-a" href="habitats.html#ours">
+          <div class="container-div" style="background-image: url('../img/accueil/ours.jpg');">
+            <a class="container-a" href="habitats.php#ours">
               <h3 class="container-titre">Le continent blanc</h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/kango.jpg');">
-            <a class="container-a" href="habitats.html#kango">
+          <div class="container-div" style="background-image: url('../img/accueil/kango.jpg');">
+            <a class="container-a" href="habitats.php#kango">
               <h3 class="container-titre">L'Océanie</h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('../../img/accueil/reptile.jpg');">
-            <a class="container-a" href="habitats.html#cameleon">
+          <div class="container-div" style="background-image: url('../img/accueil/reptile.jpg');">
+            <a class="container-a" href="habitats.php#cameleon">
               <h3 class="container-titre">Les reptiles</h3>
             </a>
           </div>
@@ -122,29 +140,29 @@
     <div class="container row g-3 mt-1 pb-1">
       <p class="text-center m-1 fs-2">Leurs habitations</p>
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/foret.jpg');">
-          <a class="container-a" href="habitats.html#foret">
+        <div class="container-div" style="background-image: url('../img/accueil/foret.jpg');">
+          <a class="container-a" href="habitats.php#foret">
             <h3 class="container-titre">La fôret</h3>
           </a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/etang.jpg');">
-          <a class="container-a" href="habitats.html#etang">
+        <div class="container-div" style="background-image: url('../img/accueil/etang.jpg');">
+          <a class="container-a" href="habitats.php#etang">
             <h3 class="container-titre">L'étang</h3>
           </a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/terrarium.jpg');">
-          <a class="container-a" href="habitats.html#vivarium">
+        <div class="container-div" style="background-image: url('../img/accueil/terrarium.jpg');">
+          <a class="container-a" href="habitats.php#vivarium">
             <h3 class="container-titre">Vivarium</h3>
           </a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/pature.jpeg');">
-          <a class="container-a" href="habitats.html#pature">
+        <div class="container-div" style="background-image: url('../img/accueil/pature.jpeg');">
+          <a class="container-a" href="habitats.php#pature">
             <h3 class="container-titre">Pâture</h3>
           </a>
         </div>
@@ -152,29 +170,29 @@
     </div>
     <div class="container row g-3 mt-1 pb-5 border-bottom">
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/ranch.jpg');">
-          <a class="container-a" href="habitats.html#ranch">
+        <div class="container-div" style="background-image: url('../img/accueil/ranch.jpg');">
+          <a class="container-a" href="habitats.php#ranch">
             <h3 class="container-titre">Le ranch</h3>
           </a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/tanieres.jpg');">
-          <a class="container-a" href="habitats.html#taniere">
+        <div class="container-div" style="background-image: url('../img/accueil/tanieres.jpg');">
+          <a class="container-a" href="habitats.php#taniere">
             <h3 class="container-titre">Les tanières</h3>
           </a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/oceanarium.jpg');">
-          <a class="container-a" href="habitats.html#oceanarium">
+        <div class="container-div" style="background-image: url('../img/accueil/oceanarium.jpg');">
+          <a class="container-a" href="habitats.php#oceanarium">
             <h3 class="container-titre">L'océanarium</h3>
           </a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
-        <div class="container-div" style="background-image: url('../../img/accueil/ecologie.jpg');">
-          <a class="container-a" href="terre.html">
+        <div class="container-div" style="background-image: url('../img/accueil/ecologie.jpg');">
+          <a class="container-a" href="terre.php">
             <h3 class="container-titre">Une terre plus verte</h3>
           </a>
         </div>
@@ -186,7 +204,7 @@
         <img class="img_service col-12 col-lg-5 mt-2 p-0" src="../img/accueil/train.png">
         <div class="col-sm-4 col-lg-3">
           <p class="fs-6">Une balade du domaine en petit train avec notre pilote expérimenté René</p>
-          <a href="./services.html#train">
+          <a href="./services.php#train">
             <button type="button" class="service_btn btn btn-success mt-4 mb-2">Pour plus d'info</button>
           </a>
         </div>
@@ -200,7 +218,7 @@
             Nous utilisons le maximum de produits locaux afin de respecter notre conviction, <i>
               une planète plus verte.</i>
           </p>
-          <a href="./services.html#resto">
+          <a href="./services.php#resto">
             <button type="button" class="service_btn btn btn-success mb-2">Pour plus d'info</button>
           </a>
         </div>
@@ -214,7 +232,7 @@
             animaux inoffensifs,
             telles que des chèvres, des moutons, des ânes pour le bonheur des petits comme des grands!
           </p>
-          <a href="./services.html#habitat">
+          <a href="./services.php#habitat">
             <button type="button" class="service_btn btn btn-success mb-2">Pour plus d'info</button>
           </a>
         </div>
@@ -252,7 +270,7 @@
         </div>
         <br><br>
         <!-- Recréer la meme classe avis_para avec ligne pour ajouter ou supprimer un avis (pas oublier de recréer une row) -->
-        <a class="m-2" href="./avis.html">
+        <a class="m-2" href="./avis.php">
           <button type="button" class="btn btn-success float-end" width="30%">Votre avis est important pour nous
             !</button>
         </a>
@@ -276,34 +294,37 @@
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Nos services</li>
-            <li class="footer-li"><a class="footer-a" href="./tarif.html">Nos tarifs</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#resto">Restaurant</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#habitat">Visite des habitats</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#train">Visite du Zoo en petit train</a></li>
+            <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#resto">Restaurant</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#habitat">Visite des habitats</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#train">Visite du Zoo en petit train</a></li>
           </ul>
         </div>
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Horaires</li>
-            <li>Lundi : Fermé</li>
-            <li>Mardi : Fermé</li>
-            <li>Mercredi : 10h à 19h</li>
-            <li>Jeudi : 10h à 19h</li>
-            <li>Vendredi : 10h à 19h</li>
-            <li>Samedi : 10h à 19h</li>
-            <li>Dimanche : 10h à 19h</li>
+            <?php
+            foreach ($sethoraires as $sethoraire) {
+              $setDay = $sethoraire['day_week'];
+              $setIsClosed = $sethoraire['is_closed'];
+              $setStartTime = $sethoraire['start_time'];
+              $setEndTime = $sethoraire['end_time'];
+
+              echo "<li>$setDay : ";
+              echo $setIsClosed ? 'Fermé' : "$setStartTime à $setEndTime";
+              echo '</li>';
+            }
+
+            ?>
           </ul>
         </div>
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Suivez-nous</li>
-            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img
-                  src="../img/accueil/insta.png" width="30vh"></a>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
             </li> <br>
-            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img
-                  src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img
-                  src="../img/accueil/linkedin.png" width="30vh"></a></li>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
           </ul>
         </div>
       </div>

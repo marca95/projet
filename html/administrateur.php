@@ -127,6 +127,8 @@ $horaires = $pdo->prepare('SELECT * FROM horaires');
 $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
+$succesHour = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $newMondayStart = $_POST['mondayStart'];
@@ -151,8 +153,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $newSundayEnd = $_POST['sundayEnd'];
   $newSundayClosed = $_POST['sundayClosed'];
 
-
-
   $stmt = $pdo->prepare('UPDATE horaires SET start_time = :start_time, end_time = :end_time, is_closed = :is_closed WHERE day_week = :day_week');
 
   $stmt->execute(['start_time' => $newMondayStart, 'end_time' => $newMondayEnd, 'is_closed' => $newMondayClosed, 'day_week' => 'Lundi']);
@@ -164,12 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $stmt->execute(['start_time' => $newSundayStart, 'end_time' => $newSundayEnd, 'is_closed' => $newSundayClosed, 'day_week' => 'Dimanche']);
 
   $succesHour = 'Enregistrement validé.';
-} else {
-  $errorHour = 'Il y a eu un problème dans le changement d\'heures, veuillez réessayer plus tard.';
 }
-
-// View reports
-
 
 // btn logout session
 if (isset($_POST['logout'])) {
@@ -195,6 +190,7 @@ if (isset($_POST['logout'])) {
   <h1>Bonjour <?php echo $_SESSION['first_name_user'] ?> </h1>
   <!-- AJOUTER EMAIL PRIVE A LA BASE DE DONNEES  -->
   <section>
+    <h3>Enregistrer un nouveau membre :</h3>
     <form method="POST" action="" id="form">
       <label for="name">Nom :</label>
       <input type="text" name="name" id="name" oninput="clearSuccess()" required>
@@ -349,18 +345,9 @@ if (isset($_POST['logout'])) {
           echo $succesHour;
           ?></p>
       <?php endif; ?>
-      <?php if (isset($errorHour) && !empty($errorHour)) : ?>
-        <p id="error">
-          <?php
-          echo $errorHour;
-          ?></p>
-      <?php endif; ?>
       <button type="submit">Enregistrer les modifications</button>
     </form>
   </section>
-
-
-
 
   <!-- BTN DE DECONNEXION-->
   <form method="POST" action="">

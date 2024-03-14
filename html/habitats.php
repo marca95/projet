@@ -1,12 +1,30 @@
 <!DOCTYPE html>
+
+<?php
+$userDB = 'root';
+$passwordDB = 'pierre2';
+
+try {
+  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
+  // Gestion des erreurs
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  echo "Erreur : " . $e->getMessage();
+};
+
+$horaires = $pdo->prepare('SELECT * FROM horaires');
+$horaires->execute();
+$sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="../style/css/habitats.css" rel="styleSheet">
   <link href="../img/logo.png" rel="icon">
 </head>
@@ -20,10 +38,10 @@
       </div>
       <ul class="navigation">
         <li><a href="connexion.php">Connexion</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="services.php">Services</a></li>
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="accueil.php">Accueil</a></li>
       </ul>
       <div id="icon"></div>
     </nav>
@@ -37,8 +55,7 @@
     <div class="main_div container-fluid">
       <div class="row">
         <div class="col-12 col-lg-6 container mb-4">
-          <button onclick="toggleDiv('getClickForest')" class="btn_habitat"
-            style="background-image: url(../img/habitats/foret.jpg);">La
+          <button onclick="toggleDiv('getClickForest')" class="btn_habitat" style="background-image: url(../img/habitats/foret.jpg);">La
             foret
           </button>
           <div class="hidden container-fluid p-2" id="getClickForest">
@@ -177,8 +194,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickPond')" class="btn_habitat"
-            style="background-image: url(../img/habitats/etang.jpg);">L'étang
+          <button onclick="toggleDiv('getClickPond')" class="btn_habitat" style="background-image: url(../img/habitats/etang.jpg);">L'étang
           </button>
           <div class="hidden container-fluid p-2" id="getClickPond"><!--Div recupere anchor accueil/id-->
             <h5 class="p-1">La plage</h5>
@@ -315,8 +331,7 @@
       </div>
       <div class="row">
         <div class="container col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickVivarium')" class="btn_habitat"
-            style="background-image: url(../img/habitats/vivarium.jpg);">Nos
+          <button onclick="toggleDiv('getClickVivarium')" class="btn_habitat" style="background-image: url(../img/habitats/vivarium.jpg);">Nos
             vivariums
           </button>
           <div class="hidden container-fluid p-2" id="getClickVivarium"><!--Div recupere anchor accueil/id-->
@@ -452,8 +467,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickOcean')" class="btn_habitat"
-            style="background-image: url(../img/habitats/oceanarium.jpg);">L'océanarium
+          <button onclick="toggleDiv('getClickOcean')" class="btn_habitat" style="background-image: url(../img/habitats/oceanarium.jpg);">L'océanarium
           </button>
           <div class="hidden container-fluid p-2" id="getClickOcean"><!--Div recupere anchor accueil/id-->
             <h5 class="p-1">Le sous-marin :</h5>
@@ -594,8 +608,7 @@
 
       <div class="row">
         <div class="col-12 col-lg-6 container mb-4">
-          <button onclick="toggleDiv('getClickFarm')" class="btn_habitat"
-            style="background-image: url(../img/habitats/pature.jpg);">Notre
+          <button onclick="toggleDiv('getClickFarm')" class="btn_habitat" style="background-image: url(../img/habitats/pature.jpg);">Notre
             pâture
           </button>
           <div class="hidden container-fluid p-2" id="getClickFarm"><!-- Div recupere anchor accueil/id -->
@@ -732,8 +745,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickRanch')" class="btn_habitat"
-            style="background-image: url(../img/habitats/ranch.jpg);">Le ranch
+          <button onclick="toggleDiv('getClickRanch')" class="btn_habitat" style="background-image: url(../img/habitats/ranch.jpg);">Le ranch
           </button>
           <div class="hidden container-fluid p-2" id="getClickRanch">
             <h5 class="p-1">Le west-Arca</h5>
@@ -871,8 +883,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-lg-6 container mb-4">
-          <button onclick="toggleDiv('getClickTaniere')" class="btn_habitat"
-            style="background-image: url(../img/habitats/taniere.jpg);">Les tanières
+          <button onclick="toggleDiv('getClickTaniere')" class="btn_habitat" style="background-image: url(../img/habitats/taniere.jpg);">Les tanières
           </button>
           <div class="hidden container-fluid p-2" id="getClickTaniere"><!--Div recupere anchor accueil/id-->
             <h5 class="p-1">La pénombre</h5>
@@ -1007,8 +1018,7 @@
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickBird')" class="btn_habitat"
-            style="background-image: url(../img/habitats/voliere.jpg);">Les volières
+          <button onclick="toggleDiv('getClickBird')" class="btn_habitat" style="background-image: url(../img/habitats/voliere.jpg);">Les volières
           </button>
           <div class="hidden container-fluid p-2" id="getClickBird"><!--Div recupere anchor accueil/id-->
             <h5 class="p-1">Le ciel d'Arcadia</h5>
@@ -1164,34 +1174,37 @@
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Nos services</li>
-            <li class="footer-li"><a class="footer-a" href="./tarif.html">Nos tarifs</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#resto">Restaurant</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#habitat">Visite des habitats</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.html#train">Visite du Zoo en petit train</a></li>
+            <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#resto">Restaurant</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#habitat">Visite des habitats</a></li>
+            <li class="footer-li"><a class="footer-a" href="services.php#train">Visite du Zoo en petit train</a></li>
           </ul>
         </div>
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Horaires</li>
-            <li>Lundi : Fermé</li>
-            <li>Mardi : Fermé</li>
-            <li>Mercredi : 10h à 19h</li>
-            <li>Jeudi : 10h à 19h</li>
-            <li>Vendredi : 10h à 19h</li>
-            <li>Samedi : 10h à 19h</li>
-            <li>Dimanche : 10h à 19h</li>
+            <?php
+            foreach ($sethoraires as $sethoraire) {
+              $setDay = $sethoraire['day_week'];
+              $setIsClosed = $sethoraire['is_closed'];
+              $setStartTime = $sethoraire['start_time'];
+              $setEndTime = $sethoraire['end_time'];
+
+              echo "<li>$setDay : ";
+              echo $setIsClosed ? 'Fermé' : "$setStartTime à $setEndTime";
+              echo '</li>';
+            }
+
+            ?>
           </ul>
         </div>
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Suivez-nous</li>
-            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img
-                  src="../img/accueil/insta.png" width="30vh"></a>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
             </li> <br>
-            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img
-                  src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img
-                  src="../img/accueil/linkedin.png" width="30vh"></a></li>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
           </ul>
         </div>
       </div>

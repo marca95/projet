@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+session_start();
+
 $userDB = 'root';
 $passwordDB = 'pierre2';
 
@@ -17,7 +19,6 @@ $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
 // login session
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = $_POST['username'];

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <?php
+session_start();
 $userDB = 'root';
 $passwordDB = 'pierre2';
 
@@ -16,7 +17,92 @@ $horaires = $pdo->prepare('SELECT * FROM horaires');
 $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
-// Update home 
+// Update and Select homes
+// URL img homes
+$imgHomes = $pdo->prepare('SELECT * FROM img_homes');
+$imgHomes->execute();
+$rootHomes = $imgHomes->fetchAll(PDO::FETCH_ASSOC);
+
+$root = array();
+
+foreach ($rootHomes as $key => $rootHome) {
+  $root[$key + 1] = $rootHome['root'];
+}
+
+// URL img animals
+$imgAnimals = $pdo->prepare('SELECT * FROM img_animals');
+$imgAnimals->execute();
+$rootPets = $imgAnimals->fetchAll(PDO::FETCH_ASSOC);
+
+$rootAnimals = array();
+$animalStyle = array();
+
+foreach ($rootPets as $key => $rootPet) {
+  $rootAnimals[$key + 1] = $rootPet['root'];
+}
+
+foreach ($rootPets as $key => $rootPet) {
+  $animalStyle[$key + 1] = $rootPet['name'];
+}
+
+// Update articles 
+$updateArticles = $pdo->prepare('SELECT * FROM articles');
+$updateArticles->execute();
+$articles = $updateArticles->fetchAll(PDO::FETCH_ASSOC);
+
+$mainTitle = array();
+$secondTitle = array();
+$content = array();
+
+foreach ($articles as $key => $article) {
+  $mainTitle[$key + 1] = $article['main_title'];
+}
+
+foreach ($articles as $key => $article) {
+  $secondTitle[$key + 1] = $article['second_title'];
+}
+
+foreach ($articles as $key => $article) {
+  $content[$key + 1] = $article['content'];
+}
+
+// Update animals
+// USE INNER JOIN FOR CONNECT ANIMAL LOCATION /!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
+$updateAnimals = $pdo->prepare('SELECT * FROM animals');
+$updateAnimals->execute();
+$animals = $updateAnimals->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($animals as $key => $animal) {
+  $firstName[$key + 1] = $animal['name'];
+}
+
+foreach ($animals as $key => $animal) {
+  $race[$key + 1] = $animal['race'];
+}
+
+foreach ($animals as $key => $animal) {
+  $location[$key + 1] = $animal['id_location'];
+}
+
+
+// if ($_SESSION['id_role'] == 1) {
+//   echo '<button onclick="createArticle()">Créer un article</button>';
+//   echo '<button onclick="editArticle()">Modifier un article</button>';
+//   echo '<button onclick="deleteArticle()">Supprimer un article</button>';
+// }
+
+// function createArticle()
+// {
+// }
+
+// function editArticle()
+// {
+// }
+
+// function deleteArticle()
+// {
+// }
+
 
 ?>
 
@@ -57,44 +143,39 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
     <div class="main_div container-fluid">
       <div class="row">
         <div class="col-12 col-lg-6 container mb-4">
-          <button onclick="toggleDiv('getClickForest')" class="btn_habitat" style="background-image: url('<?php $root1 ?>');">La
-            foret
+          <button onclick="toggleDiv('getClickForest')" class="btn_habitat" style="background-image: url('<?php echo $root[1] ?>');"><?php echo $mainTitle[1] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickForest">
-            <h5 class="p-1">La foret d'Arcadia :</h5>
-            <p class="descr_p">Cette foret s'étend sur + de 3000m² où se cache de nombreux cervidés ainsi que rencontrer
-              quelques animaux de la ferme.
-              Vous pouvez vous y ballader en toute tranquillité, profitez du calme et des magnifiques hêtres de plus de
-              80ans. Ces animaux sont innofensifs, merci de respecter les silences et respecter leurs bien-être.
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[1] ?></h5>
+            <p class="descr_p"><?php echo $content[1] ?></p>
             <div class="row d-flex mb-3">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('cerf')">Le cerf</li>
-                <li class="li_animals" onclick="toggleImg('cochon')">Les cochons</li>
-                <li class="li_animals" onclick="toggleImg('lapin')">Les lapins</li>
-                <li class="li_animals" onclick="toggleImg('dain')">Les dains</li>
-                <li class="li_animals" onclick="toggleImg('poule')">Les poules</li>
-                <li class="li_animals" onclick="toggleImg('chevreuil')">Les chevreuils</li>
-                <li class="li_animals" onclick="toggleImg('ecureuil')">Les écureuils</li>
+                <li class="li_animals" onclick="toggleImg('cerf')"><?php echo $animalStyle[1] ?></li>
+                <li class="li_animals" onclick="toggleImg('cochon')"><?php echo $animalStyle[2] ?></li>
+                <li class="li_animals" onclick="toggleImg('lapin')"><?php echo $animalStyle[3] ?></li>
+                <li class="li_animals" onclick="toggleImg('dain')"><?php echo $animalStyle[4] ?></li>
+                <li class="li_animals" onclick="toggleImg('poule')"><?php echo $animalStyle[5] ?></li>
+                <li class="li_animals" onclick="toggleImg('chevreuil')"><?php echo $animalStyle[6] ?></li>
+                <li class="li_animals" onclick="toggleImg('ecureuil')"><?php echo $animalStyle[7] ?></li>
               </ul>
-              <img class="col-7" src='<?php $root2 ?>' width="20%">
+              <img class="col-7" src='<?php echo $root[2] ?>' width="20%">
             </div>
 
             <div class="hidAnimal" id="cerf">
               <div class="descr_animal">
-                Prénom: Teddy<br>
-                Race: Cervus elaphus<br>
-                Lieu: Europe-occidentale<br>
+                Prénom: <?php echo $firstName[1] ?><br>
+                Race: <?php echo $race[1] ?><br>
+                Lieu: <?php echo $location[1] ?><br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/cerf.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[1] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="cochon">
@@ -103,14 +184,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Gascon<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/cochon.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[2] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="lapin">
@@ -119,14 +200,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Bélier Hollandais<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/lapin.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[3] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="dain">
@@ -135,14 +216,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Européen<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/dains.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[4] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="poule">
@@ -151,14 +232,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Poules d'ornement<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/poule.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[5] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="chevreuil">
@@ -167,14 +248,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Capreolus Pygargus<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/chevreuil.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[6] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="ecureuil">
@@ -183,40 +264,36 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Roux d'Europe<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/ecureuil.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[7] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickPond')" class="btn_habitat" style="background-image: url('<?php $root3 ?>');">L'étang
+          <button onclick="toggleDiv('getClickPond')" class="btn_habitat" style="background-image: url('<?php echo $root[3] ?>');"><?php echo $mainTitle[2] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickPond"><!--Div recupere anchor accueil/id-->
-            <h5 class="p-1">La plage</h5>
-            <p class="descr_p">Grand bassin d'eau avec petite île au milieu pour que nos canards puissent se reposer
-              sans être déranger. Notre étang cache des nombreuses espèces.
-              La qualité de l'eau est controlé hebdomadairement par nos vétérinaire, afin de s'assurer le bien-être de
-              nos animaux.
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[2] ?></h5>
+            <p class="descr_p"><?php echo $content[2] ?></p>
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('poisson')">Les poissons Asiatique</li>
-                <li class="li_animals" onclick="toggleImg('tortue1')">Les tortues</li>
-                <li class="li_animals" onclick="toggleImg('flamand')">Les flamands Rose</li>
-                <li class="li_animals" onclick="toggleImg('grenouille')">Les grenouilles</li>
-                <li class="li_animals" onclick="toggleImg('canard')">Les canards</li>
-                <li class="li_animals" onclick="toggleImg('castor')">Nos castors</li>
-                <li class="li_animals" onclick="toggleImg('oie')">Les oies</li>
+                <li class="li_animals" onclick="toggleImg('poisson')"><?php echo $animalStyle[8] ?></li>
+                <li class="li_animals" onclick="toggleImg('tortue1')"><?php echo $animalStyle[9] ?></li>
+                <li class="li_animals" onclick="toggleImg('flamand')"><?php echo $animalStyle[10] ?></li>
+                <li class="li_animals" onclick="toggleImg('grenouille')"><?php echo $animalStyle[11] ?></li>
+                <li class="li_animals" onclick="toggleImg('canard')"><?php echo $animalStyle[12] ?></li>
+                <li class="li_animals" onclick="toggleImg('castor')"><?php echo $animalStyle[13] ?></li>
+                <li class="li_animals" onclick="toggleImg('oie')"><?php echo $animalStyle[14] ?></li>
               </ul>
-              <img class="col-7 p-3" src='<?php $root4 ?>' width="20%">
+              <img class="col-7 p-3" src='<?php echo $root[4] ?>' width="20%">
             </div>
 
             <div class="hidAnimal" id="poisson">
@@ -224,14 +301,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Clown Loach<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/poisson.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[8] ?>">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="tortue1">
@@ -240,14 +317,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Grecque<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/tortue.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[9] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="flamand">
@@ -255,14 +332,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Phoenicoptéridés<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/flamand.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[10] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="grenouille">
@@ -270,14 +347,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Rieuse<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/grenouille.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[11] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="canard">
@@ -286,14 +363,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Coureur indien<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/canard.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[12] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="castor">
@@ -302,14 +379,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: fiber<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/castor.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[13] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="oie">
@@ -318,14 +395,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Bourbonnais<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/oie.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[14] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>
@@ -333,27 +410,23 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="row">
         <div class="container col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickVivarium')" class="btn_habitat" style="background-image: url('<?php $root5 ?>');">Nos
-            vivariums
+          <button onclick="toggleDiv('getClickVivarium')" class="btn_habitat" style="background-image: url('<?php echo $root[5] ?>');"><?php echo $mainTitle[3] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickVivarium"><!--Div recupere anchor accueil/id-->
-            <h5 class="p-1">La zone de danger</h5>
-            <p class="descr_p">Nous appelons la zone de danger, le lieu où se situe tous nos vivariums. Nous habritons
-              des animaux qui, sur une piqûre ou une moruse de ceux-ci peuvent être fatal pour l'homme. Les animaux sont
-              dans des vivariums adéquat avec une température idéal pour chaque.
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[3] ?></h5>
+            <p class="descr_p"><?php echo $content[3] ?></p>
             <div class="row test">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('araignee')">L'araignée</li>
-                <li class="li_animals" onclick="toggleImg('cameleon')">Le caméléon</li>
-                <li class="li_animals" onclick="toggleImg('boa')">Le boa</li>
-                <li class="li_animals" onclick="toggleImg('crocodile')">Le crocodile</li>
-                <li class="li_animals" onclick="toggleImg('python')">Le python</li>
-                <li class="li_animals" onclick="toggleImg('sauterelle')">Les sauterelles</li>
-                <li class="li_animals" onclick="toggleImg('alligator')">L'alligator</li>
+                <li class="li_animals" onclick="toggleImg('araignee')"><?php echo $animalStyle[15] ?></li>
+                <li class="li_animals" onclick="toggleImg('cameleon')"><?php echo $animalStyle[16] ?></li>
+                <li class="li_animals" onclick="toggleImg('boa')"><?php echo $animalStyle[17] ?></li>
+                <li class="li_animals" onclick="toggleImg('crocodile')"><?php echo $animalStyle[18] ?></li>
+                <li class="li_animals" onclick="toggleImg('python')"><?php echo $animalStyle[19] ?></li>
+                <li class="li_animals" onclick="toggleImg('sauterelle')"><?php echo $animalStyle[20] ?></li>
+                <li class="li_animals" onclick="toggleImg('alligator')"><?php echo $animalStyle[21] ?></li>
               </ul>
-              <img class="col-7 p-3" src='<?php $root6 ?>' width="20%">
+              <img class="col-7 p-3" src='<?php echo $root[6] ?>' width="20%">
             </div>
             <div class="hidAnimal" id="araignee">
               <div class="descr_animal">
@@ -361,14 +434,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Actinopodidae<br>
                 Lieu: Amérique central<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/araignee.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[15] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="cameleon">
@@ -377,14 +450,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Furcifer<br>
                 Lieu: Afrique central<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/cameleon.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[16] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="boa">
@@ -393,14 +466,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Boa constricteur<br>
                 Lieu: Afrique de l'est<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/boa.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[17] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="crocodile">
@@ -409,14 +482,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Crocodile américain<br>
                 Lieu: Amérique central<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/crocodile.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[18] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="python">
@@ -425,14 +498,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Anchietae Bocage<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/python.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[19] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="sauterelle">
@@ -440,14 +513,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Dectique verrucivore<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/sauterelle.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[20] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="alligator">
@@ -456,39 +529,36 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Alligator de Chine<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/alligator.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[21] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickOcean')" class="btn_habitat" style="background-image: url('<?php $root13 ?>');">L'océanarium
+          <button onclick="toggleDiv('getClickOcean')" class="btn_habitat" style="background-image: url('<?php echo $root[13] ?>');"><?php echo $mainTitle[4] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickOcean"><!--Div recupere anchor accueil/id-->
-            <h5 class="p-1">Le sous-marin :</h5>
-            <p class="descr_p">Magnifique espace vitrée où se situe également un tunnel de + de 50m de long pour rentrer
-              dans le monde de l'océan. Cette espace est l'une de plus grande fierté du patron car il habrite des
-              spécimen rare et très ancien.
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[4] ?></h5>
+            <p class="descr_p"><?php echo $content[4] ?></p>
             <div class="row d-flex mb-3">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('dauphin')">Le dauphin</li>
-                <li class="li_animals" onclick="toggleImg('tortue')">Les tortues marines</li>
-                <li class="li_animals" onclick="toggleImg('hippocampe')">Les hippocampes</li>
-                <li class="li_animals" onclick="toggleImg('phoque')">Les phoques</li>
-                <li class="li_animals" onclick="toggleImg('pingouin')">Les pingouins</li>
-                <li class="li_animals" onclick="toggleImg('requin')">Le requin</li>
-                <li class="li_animals" onclick="toggleImg('meduse')">Les méduses</li>
+                <li class="li_animals" onclick="toggleImg('dauphin')"><?php echo $animalStyle[22] ?></li>
+                <li class="li_animals" onclick="toggleImg('tortue')"><?php echo $animalStyle[23] ?></li>
+                <li class="li_animals" onclick="toggleImg('hippocampe')"><?php echo $animalStyle[24] ?></li>
+                <li class="li_animals" onclick="toggleImg('phoque')"><?php echo $animalStyle[25] ?></li>
+                <li class="li_animals" onclick="toggleImg('pingouin')"><?php echo $animalStyle[26] ?></li>
+                <li class="li_animals" onclick="toggleImg('requin')"><?php echo $animalStyle[27] ?></li>
+                <li class="li_animals" onclick="toggleImg('meduse')"><?php echo $animalStyle[28] ?></li>
               </ul>
-              <img class="col-7" src='<?php $root14 ?>' width="20%">
+              <img class="col-7" src='<?php echo $root[14] ?>' width="20%">
             </div>
 
             <div class="hidAnimal" id="dauphin">
@@ -497,14 +567,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Tursiops aduncus<br>
                 Lieu: Océan indien / pacifique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/dauphin.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[22] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="tortue">
@@ -513,14 +583,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Caouanne<br>
                 Lieu: Partout sauf ocean Article<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/tortue1.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[23] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal</p>
               </div>
             </div>
             <div class="hidAnimal" id="hippocampe">
@@ -529,14 +599,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Hippocampus kuda<br>
                 Lieu: Océan Pacifique ou mer rouge<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/hippocampe.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[24] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="phoque">
@@ -545,14 +615,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Phoque à capuchon<br>
                 Lieu: Océan Arctique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/phoques.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[25] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="pingouin">
@@ -561,14 +631,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Alca torda<br>
                 Lieu: Sur les cotes de l'Arctique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/pingouin.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[26] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="requin">
@@ -577,14 +647,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Requin du Groenland<br>
                 Lieu: Océan Arctique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/requin.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[27] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="meduse">
@@ -592,14 +662,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Roux d'Europe<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/meduse.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[28] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>
@@ -610,26 +680,23 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="row">
         <div class="col-12 col-lg-6 container mb-4">
-          <button onclick="toggleDiv('getClickFarm')" class="btn_habitat" style="background-image: url('<?php $root7 ?>');">Notre
-            pâture
+          <button onclick="toggleDiv('getClickFarm')" class="btn_habitat" style="background-image: url('<?php echo $root[7] ?>');"><?php echo $mainTitle[5] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickFarm"><!-- Div recupere anchor accueil/id -->
-            <h5 class="p-1">L'espace vert :</h5>
-            <p class="descr_p">Cet immense champs vert ou sont stockés également nos installations pour l'énergie verte
-              est l'habitat de beaucoup de gros animaux, autant d'Afrique que d'Amérique.
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[5] ?></h5>
+            <p class="descr_p"><?php echo $content[5] ?></p>
             <div class="row d-flex mb-3">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('bison')">Les bisons</li>
-                <li class="li_animals" onclick="toggleImg('vache')">Les vaches</li>
-                <li class="li_animals" onclick="toggleImg('girafe')">Les girafes</li>
-                <li class="li_animals" onclick="toggleImg('mouton')">Les moutons</li>
-                <li class="li_animals" onclick="toggleImg('antilope')">Les antilopes</li>
-                <li class="li_animals" onclick="toggleImg('elephant')">Les éléphants</li>
-                <li class="li_animals" onclick="toggleImg('cheval')">Les chevaux</li>
+                <li class="li_animals" onclick="toggleImg('bison')"><?php echo $animalStyle[29] ?></li>
+                <li class="li_animals" onclick="toggleImg('vache')"><?php echo $animalStyle[30] ?></li>
+                <li class="li_animals" onclick="toggleImg('girafe')"><?php echo $animalStyle[31] ?></li>
+                <li class="li_animals" onclick="toggleImg('mouton')"><?php echo $animalStyle[32] ?></li>
+                <li class="li_animals" onclick="toggleImg('antilope')"><?php echo $animalStyle[33] ?></li>
+                <li class="li_animals" onclick="toggleImg('elephant')"><?php echo $animalStyle[34] ?></li>
+                <li class="li_animals" onclick="toggleImg('cheval')"><?php echo $animalStyle[35] ?></li>
               </ul>
-              <img class="col-7" src='<?php $root8 ?>' width="20%">
+              <img class="col-7" src='<?php echo $root[8] ?>' width="20%">
             </div>
 
             <div class="hidAnimal" id="bison">
@@ -638,14 +705,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Bison d'Amérique<br>
                 Lieu: Amérique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/bison.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[29] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="vache">
@@ -654,14 +721,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Watusi<br>
                 Lieu: Amérique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/vache.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[30] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal</p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal</p>
               </div>
             </div>
             <div class="hidAnimal" id="girafe">
@@ -670,14 +737,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Masaï<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/girafe.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[31] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="mouton">
@@ -686,14 +753,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Roux du Valais<br>
                 Lieu: Europe de l'est<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/mouton.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[32] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="antilope">
@@ -702,14 +769,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Elanp du Cap<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/antilope.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[33] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="elephant">
@@ -718,14 +785,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Elephant d'Asie<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/elephant.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[34] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="cheval">
@@ -734,38 +801,36 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Camarillo white<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/cheval.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[35] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickRanch')" class="btn_habitat" style="background-image: url('<?php $root9 ?>');">Le ranch
+          <button onclick="toggleDiv('getClickRanch')" class="btn_habitat" style="background-image: url('<?php echo $root[9] ?>');"><?php echo $mainTitle[6] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickRanch">
-            <h5 class="p-1">Le west-Arca</h5>
-            <p class="descr_p">Vous allez rentrer dans le monde du western, avec les décorations en bois ancien. Vous
-              allez également découvrir le roi de la jungle ainsi que le big Five d'Afrique.
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[6] ?></h5>
+            <p class="descr_p"><?php echo $content[6] ?></p>
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('lion')">Les lions</li>
-                <li class="li_animals" onclick="toggleImg('rhinoceros')">Les rhinocéroses</li>
-                <li class="li_animals" onclick="toggleImg('buffle')">Les buffles</li>
-                <li class="li_animals" onclick="toggleImg('leopard')">Les léopards</li>
-                <li class="li_animals" onclick="toggleImg('jaguar')">Les jaguars</li>
-                <li class="li_animals" onclick="toggleImg('loup')">Les loups</li>
-                <li class="li_animals" onclick="toggleImg('chameaux')">Les chameaux</li>
+                <li class="li_animals" onclick="toggleImg('lion')"><?php echo $animalStyle[36] ?></li>
+                <li class="li_animals" onclick="toggleImg('rhinoceros')"><?php echo $animalStyle[37] ?></li>
+                <li class="li_animals" onclick="toggleImg('buffle')"><?php echo $animalStyle[38] ?></li>
+                <li class="li_animals" onclick="toggleImg('leopard')"><?php echo $animalStyle[39] ?></li>
+                <li class="li_animals" onclick="toggleImg('jaguar')"><?php echo $animalStyle[40] ?></li>
+                <li class="li_animals" onclick="toggleImg('loup')"><?php echo $animalStyle[41] ?></li>
+                <li class="li_animals" onclick="toggleImg('chameaux')"><?php echo $animalStyle[42] ?></li>
               </ul>
-              <img class="col-7 p-3" src='<?php $root10 ?>' width="20%">
+              <img class="col-7 p-3" src='<?php echo $root[10] ?>' width="20%">
             </div>
 
             <div class="hidAnimal" id="lion">
@@ -774,14 +839,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Lion du Sénégal<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/lion.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[36] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="rhinoceros">
@@ -790,14 +855,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Rhinocéros noir<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/rhinoceros.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[37] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="buffle">
@@ -806,14 +871,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Syncerus caffer<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/buffle.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[38] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="leopard">
@@ -822,14 +887,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Panthera pardus<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/leopard.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[39] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="jaguar">
@@ -838,14 +903,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Jaguar Roux<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/jaguar.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[40] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="loup">
@@ -854,14 +919,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Loup sauvage<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/loup.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[41] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="chameaux">
@@ -870,14 +935,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Kharai<br>
                 Lieu: Afrique du Nord<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/chameau.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[42] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>
@@ -885,26 +950,23 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="row">
         <div class="col-12 col-lg-6 container mb-4">
-          <button onclick="toggleDiv('getClickTaniere')" class="btn_habitat" style="background-image: url('<?php $root11 ?>');">Les tanières
+          <button onclick="toggleDiv('getClickTaniere')" class="btn_habitat" style="background-image: url('<?php echo $root[11] ?>');"><?php echo $mainTitle[7] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickTaniere"><!--Div recupere anchor accueil/id-->
-            <h5 class="p-1">La pénombre</h5>
-            <p class="descr_p">Certains animaux préfèrent rester dans l'obscurité aux abris des regards. D'autres
-              justement préfèrent rester au soleil et rentrer dans leur tanière le soir afin de ne pas être à découvert.
-              Vous y découvrirez des animaux venus de tout autour du monde!
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[7] ?></h5>
+            <p class="descr_p"><?php echo $content[7] ?></p>
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('ours_brun')">Les ours brun</li>
-                <li class="li_animals" onclick="toggleImg('panda')">Les pandas</li>
-                <li class="li_animals" onclick="toggleImg('oran-outang')">L'oran-outang</li>
-                <li class="li_animals" onclick="toggleImg('gorille')">Les gorilles</li>
-                <li class="li_animals" onclick="toggleImg('saimiri')">Les saïmiris</li>
-                <li class="li_animals" onclick="toggleImg('kango')">Les kangourous</li>
-                <li class="li_animals" onclick="toggleImg('ours')">L'ours polaire</li>
+                <li class="li_animals" onclick="toggleImg('ours_brun')"><?php echo $animalStyle[43] ?></li>
+                <li class="li_animals" onclick="toggleImg('panda')"><?php echo $animalStyle[44] ?></li>
+                <li class="li_animals" onclick="toggleImg('oran-outang')"><?php echo $animalStyle[45] ?></li>
+                <li class="li_animals" onclick="toggleImg('gorille')"><?php echo $animalStyle[46] ?></li>
+                <li class="li_animals" onclick="toggleImg('saimiri')"><?php echo $animalStyle[47] ?></li>
+                <li class="li_animals" onclick="toggleImg('kango')"><?php echo $animalStyle[48] ?></li>
+                <li class="li_animals" onclick="toggleImg('ours')"><?php echo $animalStyle[49] ?></li>
               </ul>
-              <img class="col-7 p-3" src='<?php $root12 ?>' width="20%">
+              <img class="col-7 p-3" src='<?php echo $root[12] ?>' width="20%">
             </div>
             <div class="hidAnimal" id="ours_brun">
               <div class="descr_animal">
@@ -912,14 +974,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Ours brun<br>
                 Lieu: Russie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/ours.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[43] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="panda">
@@ -928,14 +990,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Panda Géant<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/panda.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[44] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="oran-outang">
@@ -944,14 +1006,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Pango<br>
                 Lieu: Chine<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/orang-outang.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[45] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="gorille">
@@ -960,14 +1022,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Gorille de l'Est<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/gorille.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[46] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="saimiri">
@@ -975,14 +1037,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Singes-écureuils<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/saimiri.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[47] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="kango">
@@ -991,14 +1053,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Kangourou roux<br>
                 Lieu: Océanie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/kangourou.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[48] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="ours">
@@ -1007,39 +1069,36 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Grolar<br>
                 Lieu: Arctique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/ours-polaire.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[49] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-lg-6 mb-4">
-          <button onclick="toggleDiv('getClickBird')" class="btn_habitat" style="background-image: url('<?php $root15 ?> ');">Les volières
+          <button onclick="toggleDiv('getClickBird')" class="btn_habitat" style="background-image: url('<?php echo $root[15] ?> ');"><?php echo $mainTitle[8] ?>
           </button>
           <div class="hidden container-fluid p-2" id="getClickBird"><!--Div recupere anchor accueil/id-->
-            <h5 class="p-1">Le ciel d'Arcadia</h5>
-            <p class="descr_p">Notre volière accueil jusqu'à 50 espèces de volatiles différents. Ici, nous allons vous
-              montrez les animaux ayant le plus de succès auprès de nos visiteurs, mais croyez nous, tous, sont en très
-              bonne santé et vivent "leur best life".
-            </p>
+            <h5 class="p-1"><?php echo $secondTitle[8] ?></h5>
+            <p class="descr_p"><?php echo $content[8] ?></p>
             <div class="row d-flex">
               <h6>Vous pouvez rencontrer :</h6>
               <ul class="list_animals col-4 ms-3">
-                <li class="li_animals" onclick="toggleImg('perroquet')">Le perroquet</li>
-                <li class="li_animals" onclick="toggleImg('toucan')">Le toucan</li>
-                <li class="li_animals" onclick="toggleImg('aigle')">L'aigle</li>
-                <li class="li_animals" onclick="toggleImg('oiseau')">Le faucon</li>
-                <li class="li_animals" onclick="toggleImg('autruche')">Les autruches</li>
-                <li class="li_animals" onclick="toggleImg('hibou')">Le hibou</li>
-                <li class="li_animals" onclick="toggleImg('chouette')">La chouette</li>
+                <li class="li_animals" onclick="toggleImg('perroquet')"><?php echo $animalStyle[50] ?></li>
+                <li class="li_animals" onclick="toggleImg('toucan')"><?php echo $animalStyle[51] ?></li>
+                <li class="li_animals" onclick="toggleImg('aigle')"><?php echo $animalStyle[52] ?></li>
+                <li class="li_animals" onclick="toggleImg('oiseau')"><?php echo $animalStyle[53] ?></li>
+                <li class="li_animals" onclick="toggleImg('autruche')"><?php echo $animalStyle[54] ?></li>
+                <li class="li_animals" onclick="toggleImg('hibou')"><?php echo $animalStyle[55] ?></li>
+                <li class="li_animals" onclick="toggleImg('chouette')"><?php echo $animalStyle[56] ?></li>
               </ul>
-              <img class="col-7 p-3" src='<?php $root16 ?>' width="20%">
+              <img class="col-7 p-3" src='<?php echo $root[16] ?>' width="20%">
             </div>
 
             <div class="hidAnimal" id="perroquet">
@@ -1048,14 +1107,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Ara<br>
                 Lieu: Brésil<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/perroquet.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[50] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="toucan">
@@ -1064,14 +1123,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Toco<br>
                 Lieu: Brésil<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/toucan.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[51] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="aigle">
@@ -1080,14 +1139,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Royal<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/aigle.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[52] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="oiseau">
@@ -1096,14 +1155,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Lanier<br>
                 Lieu: Europe de l'est<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/faucon.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[53] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="autruche">
@@ -1112,14 +1171,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Autruche à nuque rouge<br>
                 Lieu: Afrique<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/autruche.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[54] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="hibou">
@@ -1128,14 +1187,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Grand-duc<br>
                 Lieu: Asie<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/hibou.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[55] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
             <div class="hidAnimal" id="chouette">
@@ -1144,14 +1203,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 Race: Hulotte<br>
                 Lieu: Europe<br>
               </div>
-              <div class="img_animals" style="background-image: url(../img/habitats/chouette.jpg);">
+              <div class="img_animals" style="background-image: url(<?php echo $rootAnimals[56] ?>);">
               </div>
               <div class="avis_veterinaire">
-                <p>Etat de l'animal: </p> <!--RECUPERER AVIS VETERINAIRE -->
-                <p>Sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Le grammage de sa nourriture: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Date de passage: </p><!--RECUPERER AVIS VETERINAIRE -->
-                <p>Détail de l'état de l'animal: </p><!--RECUPERER AVIS VETERINAIRE -->
+                <p>Etat de l'animal: </p>
+                <p>Sa nourriture: </p>
+                <p>Le grammage de sa nourriture: </p>
+                <p>Date de passage: </p>
+                <p>Détail de l'état de l'animal: </p>
               </div>
             </div>
           </div>

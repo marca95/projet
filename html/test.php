@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
+// session_start();
 $userDB = 'root';
 $passwordDB = 'pierre2';
 
@@ -17,24 +17,6 @@ $horaires = $pdo->prepare('SELECT * FROM horaires');
 $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
-
-// if ($_SESSION['id_role'] == 1) {
-//   echo '<button onclick="createArticle()">Créer un article</button>';
-//   echo '<button onclick="editArticle()">Modifier un article</button>';
-//   echo '<button onclick="deleteArticle()">Supprimer un article</button>';
-// }
-
-// function createArticle()
-// {
-// }
-
-// function editArticle()
-// {
-// }
-
-// function deleteArticle()
-// {
-// }
 
 
 ?>
@@ -71,10 +53,10 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
   <main>
     <?php
 
-    // Fetch data artiicles
+    // Fetch data articles
     function getArticlesData($pdo)
     {
-      $itemsArticles = 'SELECT articles.main_title, articles.second_title, articles.third_title, articles.content, homes.name AS lieu,
+      $itemsArticles = 'SELECT articles.id_article, articles.main_title, articles.second_title, articles.third_title, articles.content, homes.name AS lieu,
        img_homes.main_root, img_homes.second_root, articles.id_home
       FROM articles 
       INNER JOIN homes ON homes.id_home = articles.id_home
@@ -107,9 +89,13 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
     <h2>Bienvenue à la maison</h2>
-
     <div class="main_div container-fluid">
       <div class="row">
+        <?php if (isset($user['id_role']) && $user['id_role'] == '1') : ?>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-success mb-4" onclick="createAnimal(<?php echo $article['id_article']; ?>)">Créer un article</button>
+          </div>
+        <?php endif; ?>
         <?php foreach ($articles as $article) : ?>
           <div class="col-12 col-lg-6 container mb-4">
             <button onclick="toggleDiv('<?php echo $article['lieu'] ?>')" class="btn_habitat" style="background-image: url('<?php echo $article['main_root'] ?>');"><?php echo $article['main_title'] ?></button>
@@ -132,32 +118,66 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                   ?>
                 </ul>
                 <img class="col-7" src='<?php echo $article['second_root'] ?>' width="20%">
-              </div>
-              <?php foreach ($animals as $animal) : ?>
-                <?php if ($animal['id_home'] == $article['id_home']) : ?>
-                  <div class="hidAnimal" id="<?php echo $animal['type']; ?>">
-                    <div class="descr_animal">
-                      Prénom: <?php echo $animal['prenom']; ?><br>
-                      Race: <?php echo $animal['race']; ?><br>
-                      Lieu: <?php echo $animal['pays']; ?><br>
-                    </div>
-                    <div class="img_animals" style="background-image: url(<?php echo $animal['root']; ?>);">
-                    </div>
-                    <div class="avis_veterinaire">
-                      <p>Etat de l'animal: <?php echo $animal['state']; ?></p>
-                      <p>Sa nourriture: <?php echo $animal['food']; ?></p>
-                      <p>Le grammage de sa nourriture: <?php echo $animal['grams']; ?> gr</p>
-                      <p>Date de passage: <?php echo $animal['passage']; ?></p>
-                      <p>Détail de l'état de l'animal: <?php echo $animal['detail']; ?></p>
-                    </div>
+                <?php if (isset($user['id_role']) && $user['id_role'] == '1') : ?>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary mt-2" onclick="updateArticle(<?php echo $article['id_article']; ?>)">Modifier l'article</button>
+                    <button class="btn btn-danger mt-2" onclick="deleteArticle(<?php echo $article['id_article']; ?>)">Supprimer l'article</button>
                   </div>
                 <?php endif; ?>
+              </div>
+              <?php
+              $animals_by_race = array();
+              foreach ($animals as $animal) {
+                $race = $animal['race'];
+                if (!isset($animals_by_race[$race])) {
+                  $animals_by_race[$race] = array();
+                }
+                $animals_by_race[$race][] = $animal;
+              }
+              ?>
+              <?php foreach ($animals_by_race as $race => $animals_group) : ?>
+                <?php foreach ($animals_group as $animal) : ?>
+                  <?php if ($animal['id_home'] == $article['id_home']) : ?>
+                    <div class="hidAnimal" id="<?php echo $animal['type']; ?>">
+                      <div class="descr_animal">
+                        Prénom: <?php echo $animal['prenom']; ?>
+                        <?php
+                        foreach ($animals_group as $other_animal) {
+                          if ($other_animal['prenom'] != $animal['prenom']) {
+                            echo ' + ' . $other_animal['prenom'];
+                          }
+                        }
+                        ?>
+                        <br>
+                        Race: <?php echo $animal['race']; ?><br>
+                        Lieu: <?php echo $animal['pays']; ?><br>
+                      </div>
+                      <div class="img_animals" style="background-image: url(<?php echo $animal['root']; ?>);">
+                      </div>
+                      <div class="avis_veterinaire">
+                        <p>Etat de l'animal: <?php echo $animal['state']; ?></p>
+                        <p>Sa nourriture: <?php echo $animal['food']; ?></p>
+                        <p>Le grammage de sa nourriture: <?php echo $animal['grams']; ?> gr</p>
+                        <p>Date de passage: <?php echo $animal['passage']; ?></p>
+                        <p>Détail de l'état de l'animal: <?php echo $animal['detail']; ?></p>
+                      </div>
+                      <?php if (isset($user['id_role']) && $user['id_role'] == '1') : ?>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                          <button class="btn btn-success mt-2" onclick="createAnimal(<?php echo $article['id_article']; ?>)">Créer un animal</button>
+                          <button class="btn btn-primary mt-2" onclick="updateAnimal(<?php echo $article['id_article']; ?>)">Modifier l'animal</button>
+                          <button class="btn btn-danger mt-2" onclick="deleteAanimal(<?php echo $article['id_article']; ?>)">Supprimer l'animal</button>
+                        </div>
+                      <?php endif; ?>
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
               <?php endforeach; ?>
             </div>
           </div>
         <?php endforeach; ?>
       </div>
     </div>
+
   </main>
   <footer>
     <section class="section-footer">

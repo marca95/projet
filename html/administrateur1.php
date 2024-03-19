@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-
+session_start();
 // Connect DB
 $userDB = 'root';
 $passwordDB = 'pierre2';
@@ -15,7 +15,6 @@ try {
 
 // Login session 
 
-session_start();
 $request = $pdo->prepare('SELECT * FROM users WHERE id_role = 1');
 $request->execute();
 $user = $request->fetch();
@@ -28,6 +27,35 @@ if (
 } else {
   header("Location: connexion.php");
   exit();
+}
+
+if ($_SESSION['id_role'] == 1) {
+  echo '<button onclick="createArticle()">Créer un article</button>';
+  echo '<button onclick="editArticle()">Modifier un article</button>';
+  echo '<button onclick="deleteArticle()">Supprimer un article</button>';
+}
+
+function createArticle()
+{
+}
+
+function updateArticle()
+{
+}
+
+function deleteArticle()
+{
+}
+function createAnimal()
+{
+}
+
+function updateAnimal()
+{
+}
+
+function deleteAnimal()
+{
 }
 ?>
 <html lang="en">
@@ -43,7 +71,7 @@ if (
   <?php
   include 'test.php';
   ?>
-  <h3>Modifier foret</h3>
+
 </body>
 
 </html>

@@ -93,7 +93,7 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       <div class="row">
         <?php if (isset($user['id_role']) && $user['id_role'] == '1') : ?>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-success mb-4" onclick="createAnimal(<?php echo $article['id_article']; ?>)">Créer un article</button>
+            <button class="btn btn-success mb-4" id='createArticle'>Créer un article</button>
           </div>
         <?php endif; ?>
         <?php foreach ($articles as $article) : ?>
@@ -120,8 +120,8 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                 <img class="col-7" src='<?php echo $article['second_root'] ?>' width="20%">
                 <?php if (isset($user['id_role']) && $user['id_role'] == '1') : ?>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary mt-2" onclick="updateArticle(<?php echo $article['id_article']; ?>)">Modifier l'article</button>
-                    <button class="btn btn-danger mt-2" onclick="deleteArticle(<?php echo $article['id_article']; ?>)">Supprimer l'article</button>
+                    <button class="btn btn-primary mt-2" id='updateArticle'>Modifier l'article</button>
+                    <button class="btn btn-danger mt-2" id='deleteArticle'>Supprimer l'article</button>
                   </div>
                 <?php endif; ?>
               </div>
@@ -163,9 +163,9 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
                       </div>
                       <?php if (isset($user['id_role']) && $user['id_role'] == '1') : ?>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                          <button class="btn btn-success mt-2" onclick="createAnimal(<?php echo $article['id_article']; ?>)">Créer un animal</button>
-                          <button class="btn btn-primary mt-2" onclick="updateAnimal(<?php echo $article['id_article']; ?>)">Modifier l'animal</button>
-                          <button class="btn btn-danger mt-2" onclick="deleteAanimal(<?php echo $article['id_article']; ?>)">Supprimer l'animal</button>
+                          <button class="btn btn-success mt-2" id='createAnimal'>Créer un animal</button>
+                          <button class="btn btn-primary mt-2" id='updateAnimal'>Modifier l'animal</button>
+                          <button class="btn btn-danger mt-2" id='deleteAnimal'>Supprimer l'animal</button>
                         </div>
                       <?php endif; ?>
                     </div>
@@ -236,7 +236,48 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </section>
   </footer>
-  <script src="../js/habitats.js"></script>
+  <script src="../js/habitats.js">
+    // Get bouton CRUD articles/animals
+
+    const createArticle = document.getElementById('createArticle');
+    const updateArticle = document.getElementById('updateArticle');
+    const deleteArticle = document.getElementById('deleteArticle');
+    const createAnimal = document.getElementById('createAnimal');
+    const updateAnimal = document.getElementById('updateAnimal');
+    const deleteAnimal = document.getElementById('deleteAnimal');
+
+    createArticle.addEventListener('click', () => {
+      <?php
+      $newAnimal = $pdo->prepare('INSERT INTO animals(name, type, race, id_location, id_home) VALUES (:name, :type, :race, :id_location, :id_home)');
+      $newAnimal->bindValue(':name', $name);
+      $newAnimal->bindValue(':type', $type);
+      $newAnimal->bindValue(':race', $race);
+      $newAnimal->bindValue(':id_location', $id_location);
+      $newAnimal->bindValue(':id_home', $id_home);
+
+      ?>
+    })
+
+    updateArticle.addEventListener('click', () => {
+      console.log('updateArticle ok');
+    })
+
+    deleteArticle.addEventListener('click', () => {
+      console.log('deleteArticle ok');
+    })
+
+    createAnimal.addEventListener('click', () => {
+      console.log('createAnimal ok');
+    })
+
+    updateAnimal.addEventListener('click', () => {
+      console.log('updateAnimal ok');
+    })
+
+    deleteAnimal.addEventListener('click', () => {
+      console.log('deleteAnimal ok');
+    })
+  </script>
 </body>
 
 </html>

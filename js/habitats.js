@@ -143,3 +143,36 @@ switch(url) {
     getForest.style.border = 'yellow 3px solid';
   break
 }
+
+// Get bouton CRUD articles/animals
+
+const createArticle = document.getElementById('#createArticle');
+const updateArticle = document.getElementById('#updateArticle');
+const deleteArticle = document.getElementById('#deleteArticle');
+const createAnimal = document.getElementById('#createAnimal');
+const updateAnimal = document.getElementById('#updateAnimal');
+const deleteAnimal = document.getElementById('#deleteAnimal');
+
+createArticle.addEventListener('click', () => {
+  console.log('create article ok');
+})
+
+updateArticle.addEventListener('click', () => {
+  console.log('updateArticle ok');
+})
+
+deleteArticle.addEventListener('click', () => {
+  console.log('deleteArticle ok');
+})
+
+createAnimal.addEventListener('click', () => {
+  console.log('createAnimal ok');
+})
+
+updateAnimal.addEventListener('click', () => {
+  console.log('updateAnimal ok');
+})
+
+deleteAnimal.addEventListener('click', () => {
+  console.log('deleteAnimal ok');
+})

@@ -29,34 +29,13 @@ if (
   exit();
 }
 
-if ($_SESSION['id_role'] == 1) {
-  echo '<button onclick="createArticle()">Créer un article</button>';
-  echo '<button onclick="editArticle()">Modifier un article</button>';
-  echo '<button onclick="deleteArticle()">Supprimer un article</button>';
-}
+require_once('../form/create_animal.php');
+require_once('../form/create_article.php');
+require_once('../form/update_animal.php');
+require_once('../form/update_article.php');
+require_once('../form/delete_animal.php');
+require_once('../form/delete_article.php');
 
-function createArticle()
-{
-}
-
-function updateArticle()
-{
-}
-
-function deleteArticle()
-{
-}
-function createAnimal()
-{
-}
-
-function updateAnimal()
-{
-}
-
-function deleteAnimal()
-{
-}
 ?>
 <html lang="en">
 
@@ -72,6 +51,33 @@ function deleteAnimal()
   include 'test.php';
   ?>
 
+  <!-- enctype sert spécifier comment les données du formulaire sont encodées aux serveur
+multipart/form data est souvent utilisé quand il contient des fichiers -->
+
+  <form action="" method="POST" enctype="multipart/form-data">
+    <label for="name">Nom de l'animal :</label>
+    <input type="text" name="name">
+    <br />
+    <label for="type">Le type d'animal :</label>
+    <input type="text" name="type">
+    <br />
+    <label for="race">Race de l'animal :</label>
+    <input type="text" name="race">
+    <br />
+    <label for="location">Lieu d'origine de l'animal :</label>
+    <input type="text" name="location">
+    <br />
+    <label for="home">Dans quelle habitat va se trouver l'animal :</label>
+    <input type="text" name="home">
+    <br />
+    <label for="commonName">Nom commun de ou des animaux :</label>
+    <input type="text" name="commonName">
+    <br />
+    <label for="upload">Sélectionner une image</label>
+    <input type="file" name="upload">
+    <br />
+    <button type="submit" name="createNewAnimal">Inscrire le nouvelle animal</button>
+  </form>
 </body>
 
 </html>

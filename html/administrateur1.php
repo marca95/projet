@@ -29,6 +29,8 @@ if (
   exit();
 }
 
+
+
 require_once('../form/create_animal.php');
 require_once('../form/create_article.php');
 require_once('../form/update_animal.php');
@@ -53,7 +55,7 @@ require_once('../form/delete_article.php');
 
   <!-- enctype sert spécifier comment les données du formulaire sont encodées aux serveur
 multipart/form data est souvent utilisé quand il contient des fichiers -->
-
+  <h3>Créer un animal </h3>
   <form action="" method="POST" enctype="multipart/form-data">
     <label for="name">Nom de l'animal :</label>
     <input type="text" name="name">
@@ -65,10 +67,18 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <input type="text" name="race">
     <br />
     <label for="location">Lieu d'origine de l'animal :</label>
-    <input type="text" name="location">
+    <select name="location" id="location">
+      <?php foreach ($optionsLocations as $optionsLocation) : ?>
+        <option value="<?php echo $optionsLocation['id_location']; ?>"><?php echo $optionsLocation['NAME']; ?></option>
+      <?php endforeach; ?>
+    </select>
     <br />
     <label for="home">Dans quelle habitat va se trouver l'animal :</label>
-    <input type="text" name="home">
+    <select name="home" id="home">
+      <?php foreach ($optionsHomes as $optionsHome) : ?>
+        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+      <?php endforeach; ?>
+    </select>
     <br />
     <label for="commonName">Nom commun de ou des animaux :</label>
     <input type="text" name="commonName">
@@ -79,5 +89,6 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <button type="submit" name="createNewAnimal">Inscrire le nouvelle animal</button>
   </form>
 </body>
+
 
 </html>

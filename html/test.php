@@ -57,10 +57,9 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
     function getArticlesData($pdo)
     {
       $itemsArticles = 'SELECT articles.id_article, articles.main_title, articles.second_title, articles.third_title, articles.content, homes.name AS lieu,
-       img_homes.main_root, img_homes.second_root, articles.id_home
+       homes.main_root, homes.second_root, articles.id_home
       FROM articles 
-      INNER JOIN homes ON homes.id_home = articles.id_home
-      INNER JOIN img_homes ON img_homes.id_home = articles.id_home';
+      INNER JOIN homes ON homes.id_home = articles.id_home';
       $stmt = $pdo->prepare($itemsArticles);
       $stmt->execute();
       $articlesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -71,13 +70,12 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
     function getAnimalsData($pdo)
     {
       $itemsAnimals = 'SELECT animals.name AS prenom, animals.type, animals.race, locations.NAME AS pays, states.state, states.detail,
-       foods.food, foods.grams, foods.date_pass AS passage, img_animals.root, img_animals.name AS categorie, animals.id_home
+       foods.food, foods.grams, foods.date_pass AS passage, animals.root, animals.commonName AS categorie, animals.id_home
       FROM animals
       INNER JOIN homes ON homes.id_home = animals.id_home
       INNER JOIN locations ON locations.id_location = animals.id_location
       INNER JOIN foods ON foods.id_animal = animals.id_animal
-      INNER JOIN states ON states.id_animal = animals.id_animal
-      INNER JOIN img_animals ON img_animals.id_animal = animals.id_animal';
+      INNER JOIN states ON states.id_animal = animals.id_animal';
       $stmt = $pdo->prepare($itemsAnimals);
       $stmt->execute();
       $animalsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -247,15 +245,7 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
     const deleteAnimal = document.getElementById('deleteAnimal');
 
     createArticle.addEventListener('click', () => {
-      <?php
-      $newAnimal = $pdo->prepare('INSERT INTO animals(name, type, race, id_location, id_home) VALUES (:name, :type, :race, :id_location, :id_home)');
-      $newAnimal->bindValue(':name', $name);
-      $newAnimal->bindValue(':type', $type);
-      $newAnimal->bindValue(':race', $race);
-      $newAnimal->bindValue(':id_location', $id_location);
-      $newAnimal->bindValue(':id_home', $id_home);
 
-      ?>
     })
 
     updateArticle.addEventListener('click', () => {

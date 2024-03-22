@@ -48,7 +48,7 @@ require_once('../form_admin/delete_home.php');
 <body>
 
   <h3>Créer un habitat</h3>
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
     <label for="name">Nom de l'habitat :</label>
     <input type="text" name="name">
     <br />
@@ -58,6 +58,13 @@ require_once('../form_admin/delete_home.php');
     <label for="second_img">Image secondaire :</label>
     <input type="file" name="second_img">
     <br />
+    <button type="submit" name="createNewHome">Ajouter une nouvelle habitation</button>
+  </form>
+  <br />
+  <br />
+  <br />
+  <h3>Créer un article</h3>
+  <form action="" method="POST">
     <label for="main_title">Titre principal :</label>
     <input type="text" name="main_title">
     <br />
@@ -65,14 +72,48 @@ require_once('../form_admin/delete_home.php');
     <input type="text" name="second_title">
     <br />
     <label for="content">Contenu :</label>
-    <input type="text" name="content">
+    <textarea rows="5" cols="50" name="content"></textarea>
+    <br />
+    <label for="homes">Habitation :</label>
+    <select name="homes" id="homes">
+      <?php foreach ($optionsHomes as $optionsHome) : ?>
+        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+      <?php endforeach; ?>
+    </select>
     <br />
     <label for="third_title">Troisième titre :</label>
     <input type="text" name="third_title">
     <br />
-    <button type="submit" name="createNewHome">Ajouter une nouvelle habitation</button>
+    <button type="submit" name="createNewArticle">Ajouter un nouvel article</button>
+  </form>
+  <br />
+  <br />
+  <br />
+  <h3>Modifier un habitat / article</h3>
+  <form action="" method="POST" id="update_form">
+    <label for="habitat">Selectionner l'habitat à modifier :</label>
+    <select name="habitat" id="habitat">
+      <?php foreach ($optionsHomes as $optionsHome) : ?>
+        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+      <?php endforeach; ?>
+    </select>
+    <br />
+    <label for="choose">Que souhaitez-vous modifier :</label>
+    <select name="choose" id="choose">
+      <option value="1">Le nom de l'habitat</option>
+      <option value="2">La photo principal</option>
+      <option value="3">La photo secondaire</option>
+      <option value="4">Le titre principal</option>
+      <option value="5">Le second titre</option>
+      <option value="6">Le contenu</option>
+      <option value="7">Le troisième titre</option>
+    </select>
+    <div id="chooseAdmin"></div>
+    <br />
+    <button type="submit" name="updateHome">Modifier l'habitat</button>
   </form>
 
+  <script src="../js/admin_home.js"></script>
 </body>
 
 </html>

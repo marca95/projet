@@ -29,14 +29,9 @@ if (
   exit();
 }
 
-
-
-require_once('../form/create_animal.php');
-require_once('../form/create_article.php');
-require_once('../form/update_animal.php');
-require_once('../form/update_article.php');
-require_once('../form/delete_animal.php');
-require_once('../form/delete_article.php');
+require_once('../form_admin/create_animal.php');
+require_once('../form_admin/update_animal.php');
+require_once('../form_admin/delete_animal.php');
 
 ?>
 <html lang="en">
@@ -44,7 +39,10 @@ require_once('../form/delete_article.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrateur</title>
+  <title>Zoo d'Arcadia en Bretagne</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="../style/css/admin.css" rel="styleSheet">
+  <link href="../img/logo.png" rel="icon">
 </head>
 
 <body>
@@ -88,6 +86,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <br />
     <button type="submit" name="createNewAnimal">Inscrire le nouvelle animal</button>
   </form>
+
 </body>
 
 

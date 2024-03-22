@@ -1,5 +1,15 @@
 <?php
 
+// Fetch option form for homes
+$recupHomes = $pdo->prepare('SELECT * FROM homes');
+$recupHomes->execute();
+$optionsHomes = $recupHomes->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetch option form for locations
+$recuplocations = $pdo->prepare('SELECT * FROM locations');
+$recuplocations->execute();
+$optionsLocations = $recuplocations->fetchAll(PDO::FETCH_ASSOC);
+
 if (isset($_POST['createNewAnimal']) && isset($_FILES['upload']) && $_FILES['upload']['error'] === 0) {
   $name = $_POST['name'];
   $type = $_POST['type'];

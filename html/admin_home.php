@@ -100,6 +100,7 @@ require_once('../form_admin/delete_home.php');
     <br />
     <label for="choose">Que souhaitez-vous modifier :</label>
     <select name="choose" id="choose">
+      <option value="">Choix par défaut</option>
       <option value="1">Le nom de l'habitat</option>
       <option value="2">La photo principal</option>
       <option value="3">La photo secondaire</option>

@@ -69,7 +69,7 @@ choose.addEventListener('change', function() {
       let input4 = document.createElement("input");
       input4.setAttribute("type", "text");
       input4.setAttribute("id", "input")
-      input4.setAttribute("name", "updateName");
+      input4.setAttribute("name", "update_main_title");
 
       chooseAdmin.appendChild(label4);
       chooseAdmin.appendChild(input4);

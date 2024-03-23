@@ -90,7 +90,7 @@ require_once('../form_admin/delete_home.php');
   <br />
   <br />
   <h3>Modifier un habitat / article</h3>
-  <form action="" method="POST" id="update_form">
+  <form action="" method="POST" id="update_form" enctype="multipart/form-data">
     <label for="habitat">Selectionner l'habitat à modifier :</label>
     <select name="habitat" id="habitat">
       <?php foreach ($optionsHomes as $optionsHome) : ?>

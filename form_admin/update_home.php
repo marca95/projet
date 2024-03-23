@@ -6,33 +6,43 @@ $fetchArticles->execute();
 $viewAllArticles = $fetchArticles->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['updateHome'])) {
-  $idHome = $_POST['habitat'];
-  $updateName = $_POST['update_name'];
-  $updateMainImg = $_POST['main_image'];
-  $updateSecondImg = $_POST['second_image'];
-  $updateMainTitle = $_POST['update_main_title'];
-  $updateSecondTitle = $_POST['update_second_title'];
-  $updateContent = $_POST['update_content'];
-  $updateThirdTitle = $_POST['update_third_title'];
+  $idHome = isset($_POST['habitat']) ? $_POST['habitat'] : '';
+  $updateName = isset($_POST['update_name']) ? $_POST['update_name'] : '';
+  $updateMainImg = isset($_FILES['main_image']['tmp_name']) ? $_FILES['main_image']['tmp_name'] : '';
+  $updateSecondImg = isset($_FILES['second_image']['tmp_name']) ? $_FILES['second_image']['tmp_name'] : '';
+  $updateMainTitle = isset($_POST['update_main_title']) ? $_POST['update_main_title'] : '';
+  $updateSecondTitle = isset($_POST['update_second_title']) ? $_POST['update_second_title'] : '';
+  $updateContent = isset($_POST['update_content']) ? $_POST['update_content'] : '';
+  $updateThirdTitle = isset($_POST['update_third_title']) ? $_POST['update_third_title'] : '';
 
-  $updateValue = [];
   if (!empty($updateName)) {
     $stmt = $pdo->prepare('UPDATE homes SET name = :updateName WHERE id_home = :idHome');
     $stmt->bindValue(':updateName', $updateName);
     $stmt->bindValue(':idHome', $idHome);
     $stmt->execute();
   }
-  if (!empty($updateMainImg)) {
+  if ((!empty($updateMainImg)) && $_FILES['main_image']['error'] === 0) {
+    $destinationMainImg = "../img/habitats/" . $_FILES['main_image']['name'];
     $stmt = $pdo->prepare('UPDATE homes SET main_root = :updateMainImg WHERE id_home = :idHome');
-    $stmt->bindValue(':updateMainImg', $updateMainImg);
+    $stmt->bindValue(':updateMainImg', $destinationMainImg);
     $stmt->bindValue(':idHome', $idHome);
     $stmt->execute();
+    if (move_uploaded_file($updateMainImg, $destinationMainImg)) {
+      echo 'Succès';
+    } else {
+      echo 'Il y a eu un problème lors du téléchargement de l\'image.';
+    }
   }
-  if (!empty($updateSecondImg)) {
+  if ((!empty($updateSecondImg)) && $_FILES['second_image']['error'] === 0) {
+    $destinationSecondImg = "../img/habitats/" . $_FILES['second_image']['name'];
     $stmt = $pdo->prepare('UPDATE homes SET second_root = :updateSecondImg WHERE id_home = :idHome');
-    $stmt->bindValue(':updateSecondImg', $updateSecondImg);
+    $stmt->bindValue(':updateSecondImg', $destinationSecondImg);
     $stmt->bindValue(':idHome', $idHome);
-    $stmt->execute();
+    if (move_uploaded_file($updateSecondImg, $destinationSecondImg)) {
+      $stmt->execute();
+    } else {
+      echo 'Il y a eu un problème lors du téléchargement de l\'image.';
+    }
   }
   if (!empty($updateMainTitle)) {
     $stmt = $pdo->prepare('UPDATE articles SET main_title = :updateMainTitle WHERE id_home = :idHome');
@@ -58,6 +68,8 @@ if (isset($_POST['updateHome'])) {
     $stmt->bindValue(':idHome', $idHome);
     $stmt->execute();
   }
+
+  echo 'Les données ont été modifiées avec succès.';
 }
   // if (empty($updateValue)) {
   //   echo 'Aucune valeur n\'a été remplie.';

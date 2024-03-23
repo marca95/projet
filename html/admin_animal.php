@@ -48,7 +48,7 @@ require_once('../form_admin/delete_animal.php');
 <body>
   <h3>Modification des habitats et des animaux</h3>
   <?php
-  include 'test.php';
+  // include 'test.php';
   ?>
 
   <!-- enctype sert spécifier comment les données du formulaire sont encodées aux serveur
@@ -87,6 +87,33 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <button type="submit" name="createNewAnimal">Inscrire le nouvelle animal</button>
   </form>
 
+
+  <h3>Modifier un animal </h3>
+  <form action="" method="POST" enctype="multipart/form-data" id="form_update_animal">
+    <label for="choice_animal">Choissisez votre animal :</label>
+    <select name="choice_animal" id="choice_animal">
+      <?php foreach ($viewAllAnimals as $viewAnimal) : ?>
+        <option value="<?php echo $viewAnimal['id_animal']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
+      <?php endforeach; ?>
+    </select>
+    <br />
+    <label for="attribut_animal">Que souhaitez-vous modifier :</label>
+    <select name="attribut_animal" id="attribut_animal">
+      <option value="1">Son nom</option>
+      <option value="2">Son type</option>
+      <option value="3">Sa race</option>
+      <option value="4">Son origine</option>
+      <option value="5">Son habitat</option>
+      <option value="6">Sa photo</option>
+      <option value="7">Son nom commun</option>
+    </select>
+    <div id="show_choice"></div>
+    <br />
+    <button type="submit" name="createNewAnimal">Inscrire le nouvelle animal</button>
+  </form>
+
+
+  <script src="../js/admin_animal.js"></script>
 </body>
 
 

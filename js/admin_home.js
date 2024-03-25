@@ -120,3 +120,14 @@ choose.addEventListener('change', function() {
       break;
   }
 })
+
+// form delete habitat
+
+function confirmDelete() {
+  let confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet habitat ?");
+  if (confirmation) {
+    return true;
+  } else {
+    return false;
+  }
+}

@@ -1,5 +1,12 @@
 <?php
 
+// Fetch homes for options form and check if name home exist
+$fetchHomes = $pdo->prepare('SELECT * FROM homes');
+$fetchHomes->execute();
+$optionsHomes = $fetchHomes->fetchAll(PDO::FETCH_ASSOC);
+
+$messageCreate = '';
+
 if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['main_img']['error'] === 0 && isset($_FILES['second_img']) && $_FILES['second_img']['error'] === 0) {
   $name = $_POST['name'];
   $mainRoot = $_FILES['main_img']['tmp_name'];
@@ -7,29 +14,39 @@ if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['mai
   $destinationMainImg = "../img/habitats/" . $_FILES['main_img']['name'];
   $destinationSecondImg = "../img/habitats/" . $_FILES['second_img']['name'];
 
-  // Insert root img home
-  $newImgHome = $pdo->prepare('INSERT INTO homes(name, main_root, second_root) VALUES (:name, :main_root, :second_root)');
-  $newImgHome->bindValue(':name', $name);
-  $newImgHome->bindValue(':main_root', $destinationMainImg);
-  $newImgHome->bindValue(':second_root', $destinationSecondImg);
+  // Check if name exist (Unique in DB)
+  $nameExists = false;
+  foreach ($optionsHomes as $option) {
+    if ($option['name'] === $name) {
+      $nameExists = true;
+      break;
+    }
+  }
 
-  if (move_uploaded_file($mainRoot, $destinationMainImg) && move_uploaded_file($secondRoot, $destinationSecondImg)) {
-    if ($newImgHome->execute()) {
-      echo 'Nouvelle habitation créée avec succès';
+  if (!$nameExists) {
+    $newHome = $pdo->prepare('INSERT INTO homes(name, main_root, second_root) VALUES (:name, :main_root, :second_root)');
+    $newHome->bindValue(':name', $name);
+    $newHome->bindValue(':main_root', $destinationMainImg);
+    $newHome->bindValue(':second_root', $destinationSecondImg);
+
+    if (move_uploaded_file($mainRoot, $destinationMainImg) && move_uploaded_file($secondRoot, $destinationSecondImg)) {
+      if ($newHome->execute()) {
+        $messageCreate = 'Nouvelle habitation créée avec succès';
+      } else {
+        $messageCreate = 'Erreur lors de la création de la nouvelle habitation';
+      }
     } else {
-      echo 'Erreur lors de la création de la nouvelle habitation';
+      $messageCreate = 'Erreur lors du téléchargement des images';
     }
   } else {
-    echo 'Erreur lors du téléchargement des images';
+    $messageCreate = 'Nom déjà utilisé dans la base de données, veuillez changer le nom de l\habitation';
   }
 }
 
-// Fetch homes for options form
-$fetchHomes = $pdo->prepare('SELECT * FROM homes');
-$fetchHomes->execute();
-$optionsHomes = $fetchHomes->fetchAll(PDO::FETCH_ASSOC);
-
 // Soumisson form 
+
+$messageArticle = '';
+
 if (isset($_POST['createNewArticle'])) {
   $mainTitle = $_POST['main_title'];
   $secondTitle = $_POST['second_title'];
@@ -46,8 +63,8 @@ if (isset($_POST['createNewArticle'])) {
   $addNewArticles->bindValue(':third_title', $thirdTitle);
 
   if ($addNewArticles->execute()) {
-    echo 'Nouvel article ajouté avec succès';
+    $messageArticle = 'Nouvel article ajouté avec succès';
   } else {
-    echo 'Il y a eu un probleme lors de la création de l\'article';
+    $messageArticle = 'Il y a eu un probleme lors de la création de l\'article';
   }
 }

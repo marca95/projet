@@ -59,6 +59,7 @@ require_once('../form_admin/delete_home.php');
     <input type="file" name="second_img">
     <br />
     <button type="submit" name="createNewHome">Ajouter une nouvelle habitation</button>
+    <?php echo $messageCreate ?>
   </form>
   <br />
   <br />
@@ -85,20 +86,22 @@ require_once('../form_admin/delete_home.php');
     <input type="text" name="third_title">
     <br />
     <button type="submit" name="createNewArticle">Ajouter un nouvel article</button>
+    <br />
+    <?php echo $messageArticle ?>
   </form>
   <br />
   <br />
   <br />
   <h3>Modifier un habitat / article</h3>
   <form action="" method="POST" id="update_form" enctype="multipart/form-data">
-    <label for="habitat">Selectionner l'habitat à modifier :</label>
+    <label for="habitat">Selectionner l'habitat à modifier : </label>
     <select name="habitat" id="habitat">
       <?php foreach ($optionsHomes as $optionsHome) : ?>
         <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
       <?php endforeach; ?>
     </select>
     <br />
-    <label for="choose">Que souhaitez-vous modifier :</label>
+    <label for="choose">Que souhaitez-vous modifier : </label>
     <select name="choose" id="choose">
       <option value="">Choix par défaut</option>
       <option value="1">Le nom de l'habitat</option>
@@ -112,6 +115,24 @@ require_once('../form_admin/delete_home.php');
     <div id="chooseAdmin"></div>
     <br />
     <button type="submit" name="updateHome">Modifier l'habitat</button>
+    <br />
+    <?php echo $updateMessage ?>
+  </form>
+  <br />
+  <br />
+  <br />
+  <h3>Suppression d'un habitat / article </h3>
+  <form action="" method="POST" id="update_form" onsubmit="return confirmDelete()">
+    <label for="delete_habitat">Supprimer l'habitat : </label>
+    <select name="delete_habitat" id="habitat">
+      <?php foreach ($optionsHomes as $optionsHome) : ?>
+        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+      <?php endforeach; ?>
+    </select>
+    <br />
+    <button type="submit" name="deleteHome">Supprimer l'habitat</button>
+    <br />
+    <?php echo $messageDeleteHome ?>
   </form>
 
   <script src="../js/admin_home.js"></script>

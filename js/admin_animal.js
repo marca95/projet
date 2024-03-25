@@ -1,10 +1,10 @@
 
 const updateForm = document.getElementById("form_update_animal");
-const choiceAnimal = document.getElementById('choice_animal');
+const attributAnimal = document.getElementById('attribut_animal');
 const showChoice = document.getElementById('show_choice');
 
-choiceAnimal.addEventListener('change', function() {
-  const chooseValue = choiceAnimal.value;
+attributAnimal.addEventListener('change', function() {
+  const attributValue = attributAnimal.value;
 
   let oldLabel = document.getElementById("label");
   let oldInput = document.getElementById("input");
@@ -16,7 +16,7 @@ choiceAnimal.addEventListener('change', function() {
     oldInput.remove();
   }
  
-  switch (chooseValue) {
+  switch (attributValue) {
     case "1":
       let label1 = document.createElement("label");
       label1.setAttribute("for", "update_name");
@@ -78,7 +78,7 @@ choiceAnimal.addEventListener('change', function() {
         let label5 = document.createElement("label");
         label5.setAttribute("for", "update_habitat");
         label5.setAttribute("id", "label")
-        label5.textContent = "Sa nouvelle origine :";
+        label5.textContent = "Son habitat :";
   
         let input5 = document.createElement("input");
         input5.setAttribute("type", "text");

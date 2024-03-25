@@ -47,6 +47,21 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
     </nav>
   </header>
 
+  <?php
+
+  function getServices($pdo)
+  {
+    $itemsServices = 'SELECT * FROM services';
+    $stmt = $pdo->prepare($itemsServices);
+    $stmt->execute();
+    $serviceData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $serviceData;
+  }
+
+  $services = getServices($pdo);
+  ?>
+
   <main class="container-fluid">
     <div class="row">
       <div class="principal col-3 col-sm-2 col-md-3 col-lg-2">
@@ -61,71 +76,32 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <div class="main_div row">
+
+
+
       <section class="main_section col-12 col-sm-6 col-md-4" id="train">
         <h3 class="main_h3">Petit tour en train</h3>
         <div class="img_train row">
-          <img class="pic_train col-12 col-lg-6" src="../img/services/train.jpg" title="train" width="50%">
-          <div class="structure_div col-12 col-lg-6">
-            <h5 class="main_h5">Tarifs pour 45min</h5>
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="15px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-              </svg>
-              Adulte: 8€
-            </p>
-            <p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-              </svg>
-              Enfant de 4 à 12ans: 5€
-            </p>
-            <p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-              </svg>
-              Enfant de - 4ans: Gratuit
-            </p>
-            <p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-              </svg>
-              Place réservé pour personne à mobilité reduite
-            </p>
-          </div>
-        </div>
-        <br>
-        <div class="structure_div2 row">
-          <div class="col-6">
-            <h6 class="main_h6">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
-              </svg>
-              Départ-Arrivée
-            </h6>
-            <p>Le départ se fera à coté de l'accueil principal.</p>
-            <p>Vous verrez les animaux dans leurs habitats ainsi que notre magnifique lac où nous logeons des espèces de
-              poissons venu tout droit d'Asie.
-            </p>
-            <p>N'hésitez surtout pas à faire part de vos impressions et vous envie auprès de notre chauffeur René qui
-              sera avec vous tout au long de se voyage!</p>
-          </div>
-          <div class="col-6">
-            <h6 class="main_h6">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
-              </svg>
-              Durée
-            </h6>
-            <p>Le train roulera de 11h à 17h</p>
-            <p>La promenade dure +/- 45min.</p>
-            <p>Elle démarrera a toutes les heures pleines de 11h à 18h du mercredi au dimanche. </p>
-            <p>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
-              </svg>
-              En fonction des conditions climatique, il est possible que le petit train reste au chaud. L'accueil vous
-              préviendra lors de votre arrivé.
-            </p>
-          </div>
+          <img src="../img/services/train.jpg" title="train" width="100%">
+          <h5 class="main_h5">Tarifs pour 45min</h5>
+          <p>
+            -> Adulte: 8€
+            <br />
+            -> Enfant de 4 à 12ans: 5€
+            <br />
+            -> Enfant de - 4ans: Gratuit
+            <br />
+            -> Place réservé pour personne à mobilité reduite
+          </p>
+          <h5 class="main_h5">Durée</h5>
+          <p>
+            Le train roulera de 11h à 17h
+            La promenade dure +/- 45min.
+            Le départ se fera à coté de l'accueil principal.
+            Elle démarrera a toutes les heures pleines de 11h à 18h du mercredi au dimanche.
+            En fonction des conditions climatique, il est possible que le petit train reste au chaud. L'accueil vous
+            préviendra lors de votre arrivé.
+          </p>
         </div>
       </section>
       <section class="main_section col-12 col-sm-6 col-md-4" id="habitat">
@@ -241,10 +217,6 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       <!--  -->
     </section>
   </footer>
-
-  <!-- ATTENTION la partie de JS Bootstrap n'est pas mise
-   (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
-
 
   <script src="../js/services.js"></script>
 </body>

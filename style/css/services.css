@@ -121,10 +121,11 @@ h2{
 
 .main_h5 {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 700;
   text-decoration: underline;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .main_h6 {
@@ -296,7 +297,7 @@ h2{
   }
 
   .main_h5 {
-    margin: 20px auto;
+    margin: 10px auto;
   }
 
   h2 {
@@ -306,11 +307,6 @@ h2{
   .img_train{
     display: flex;
     justify-content: center;
-  }
-
-  .pic_train {
-    width: 280px;
-    height: 200px;
   }
 
   .main_h3{
@@ -379,10 +375,6 @@ h2{
   
   .main_h3 {
     font-size: 1.3rem;
-  }
-
-  .pic_train {
-    width: 50%;
   }
 
   .btn1 {

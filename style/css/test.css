@@ -10,6 +10,7 @@ body {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   width: 100%;
+  color: green;
 }
 /* -------------------------------NAVBAR------------------------------------ */
 nav {
@@ -144,11 +145,6 @@ h2{
   cursor: pointer;
   background-color: #45454555;
 }
-
-#terre_verte {
-  border-radius: 20px;
-}
-
 
 /* -------------------------------FOOTER------------------------------------ */
 .section-footer {

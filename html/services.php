@@ -25,7 +25,7 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/services.css" rel="styleSheet">
+  <link href="../style/css/test.css" rel="stylesheet">
   <link href="../img/logo.png" rel="icon">
 </head>
 
@@ -130,78 +130,9 @@ LEFT JOIN
           </div>
         </section>
       <?php endforeach; ?>
-
-
-      <!-- <section class="main_section col-12 col-sm-6 col-md-4" id="train">
-        <img src="../img/services/train.jpg" alt="train" width="100%">
-        <h5 class="main_h5">Tarifs pour 45min</h5>
-        <p>
-          -> Adulte: 8€
-          <br />
-          -> Enfant de 4 à 12ans: 5€
-          <br />
-          -> Enfant de - 4ans: Gratuit
-          <br />
-          -> Place réservé pour personne à mobilité reduite
-        </p>
-        <h5 class="main_h5">Durée</h5>
-        <p>
-          Le train roulera de 11h à 17h
-          La promenade dure +/- 45min.
-          Le départ se fera à coté de l'accueil principal.
-          Elle démarrera a toutes les heures pleines de 11h à 18h du mercredi au dimanche.
-          En fonction des conditions climatique, il est possible que le petit train reste au chaud. L'accueil vous
-          préviendra lors de votre arrivé.
-        </p>
-      </section>
-      <section class="main_section col-12 col-sm-6 col-md-4" id="habitat">
-        <h3 class="main_h3">Visite des habitats</h3>
-        <img src="../img/services/guide.jpg" alt="habitat" width="100%">
-        <p class="pt-3">Rendez-vous avec notre guide Arcadia tous les jours de la semaine de 10h30 à 12h et de 14h à
-          16h.
-          Vous aurez la chance d'accéder à notre volière où vivent des centaines de différentes sortent
-          d'oiseaux.
-          Vous découvrirez sous un autre angle les animaux australiens comme le kangourous, ainsi que
-          quelques animaux africains comme les samïris, la
-          girafe ou les gorilles. <b>Activité gratuite !</b>
-        </p>
-        <p>
-          Il est <b>strictement interdit </b> de donner de la nourriture aux animaux pendant la visite. La nourriture
-          est soigneusement préparée et pesée par nos soigneurs. Une quantité trop élévé de nourriture non autorisé
-          peut blesser l'animal, même pire dans certain cas. Merci d'écouter attentivement les consignes de sécurité
-          du guide durant la visite.
-        </p>
-
-      </section>
-      <section class="main_section col-12 col-md-4" id="resto">
-        <h3 class="main_h3">Restaurant</h3>
-        <img src="../img/services/restaurant.jpg" alt="resto" width="100%">
-        <p class="pt-3">
-          Notre magnifique restaurant avec 200 places intérieur et 50 places extérieur avec vue sur notre lac, vous
-          accompagne de 11h à 15h tous les jours de la semaine.
-        </p>
-        <p>
-          Nous vous proposons une cuisine 0 déchet et où nous favorisons les produits locaux. Des assiettes saine,
-          riche et savoureuse préparé par nos chefs
-          Le restaurant ressemble à notre physionomie: Mettre tout en notre pouvoir pour contribuer à un planète plus
-          verte pour le biens de nos animaux.
-        </p>
-        <div class="row">
-          <div class="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
-            <a class="main_a" href="./terre.php">
-              <img src="../img/accueil/ecologie.jpg" width="200px" style="border-radius: 20px;">
-            </a>
-          </div>
-          <div class="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
-            <a class="main_a " href="../img/services/carte_restaurant.pdf" target="_blank">
-              <button class="btn btn-success">Découvrez la carte du restaurant</button>
-            </a>
-          </div>
-
-        </div>
-      </section> 
     </div>
   </main>
+
   <footer>
     <section class="section-footer">
       <div class="contenu-footer">
@@ -257,11 +188,11 @@ LEFT JOIN
         <p>Copyright © Arcadia 2024</p>
       </div>
 
-      <!--  -->
-      </section>
-      </footer>
 
-      <script src="../js/services.js"></script>
+    </section>
+  </footer>
+
+  <script src="../js/services.js"></script>
 </body>
 
 </html>

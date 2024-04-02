@@ -25,7 +25,7 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/test.css" rel="stylesheet">
+  <link href="../style/css/services.css" rel="stylesheet">
   <link href="../img/logo.png" rel="icon">
 </head>
 
@@ -51,35 +51,22 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
   function getServices($pdo)
   {
-    // Seulement si je veux recuperer ceux de 3 tableaux (Inner join)
-    // SELECT services.main_title, services.second_title, services.img_root AS main_img, services.content, 
-    // services.third_title, services.second_content, services.NAME AS name, services.link_services AS id_link, services.btn_services AS id_btn,
-    // btn_services.classes AS btn_classes, btn_services.link_url AS btn_link_url, btn_services.title_btn, link_services.classes AS link_classes, 
-    // link_services.link_url, link_services.img_root AS link_img_root FROM services 
-    // INNER JOIN link_services ON link_services.id_link = services.link_services,
-    // INNER JOIN btn_services ON btn_services.id_btn = services.btn_services
     $itemsServices = 'SELECT 
-    services.main_title, 
-    services.second_title, 
-    services.img_root AS main_img, 
-    services.content, 
-    services.third_title, 
-    services.second_content, 
-    services.NAME AS name, 
-    services.link_services AS id_link, 
-    services.btn_services AS id_btn,
-    btn_services.classes AS btn_classes, 
-    btn_services.link_url AS btn_link_url, 
-    btn_services.title_btn, 
-    link_services.classes AS link_classes, 
-    link_services.link_url, 
-    link_services.img_root AS link_img_root 
+    main_title, 
+    second_title, 
+    img_root AS main_img, 
+    content, 
+    third_title, 
+    second_content, 
+    NAME AS name, 
+    link_class,
+    link_url, 
+    img_root_link, 
+    btn_class, 
+    btn_url, 
+    btn_title
 FROM 
-    services 
-LEFT JOIN 
-    link_services ON link_services.id_link = services.link_services
-LEFT JOIN 
-    btn_services ON btn_services.id_btn = services.btn_services;';
+    services';
     $stmt = $pdo->prepare($itemsServices);
     $stmt->execute();
     $serviceData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -114,16 +101,16 @@ LEFT JOIN
           <p class="pt-3"><?php echo $service['second_content']; ?></p>
           <div class="row">
             <?php if ($service['link_url'] !== null) : ?>
-              <div class="<?php echo $service['link_classes']; ?>">
+              <div class="<?php echo $service['link_class']; ?>">
                 <a class="main_a" href="<?php echo $service['link_url']; ?>">
-                  <img src="<?php echo $service['link_img_root']; ?>" width="200px" style="border-radius: 20px;">
+                  <img src="<?php echo $service['img_root_link']; ?>" class="img_btn">
                 </a>
               </div>
             <?php endif; ?>
-            <?php if ($service['btn_link_url'] !== null) : ?>
-              <div class="<?php echo $service['btn_classes']; ?>">
-                <a class="main_a " href="<?php echo $service['btn_link_url']; ?>" target="_blank">
-                  <button class="btn btn-success"><?php echo $service['title_btn']; ?></button>
+            <?php if ($service['btn_url'] !== null) : ?>
+              <div class="<?php echo $service['btn_class']; ?>">
+                <a class="main_a " href="<?php echo $service['btn_url']; ?>" target="_blank">
+                  <button class="btn btn-success"><?php echo $service['btn_title']; ?></button>
                 </a>
               </div>
             <?php endif; ?>

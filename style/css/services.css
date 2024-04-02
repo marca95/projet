@@ -10,7 +10,6 @@ body {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   width: 100%;
-  color: green;
 }
 /* -------------------------------NAVBAR------------------------------------ */
 nav {
@@ -146,6 +145,11 @@ h2{
   background-color: #45454555;
 }
 
+.img_btn{
+  width: 100%;
+  border-radius: 20px;
+}
+
 /* -------------------------------FOOTER------------------------------------ */
 .section-footer {
   overflow: hidden;
@@ -259,6 +263,16 @@ h2{
   p {
     font-size: 0.9rem;
   }
+
+  .main_a{
+  display: flex;
+  justify-content: center;
+  }
+
+  .img_btn{
+    width: 50%;
+  }
+
 }
 
 
@@ -307,6 +321,10 @@ h2{
 
   .main_h3{
     font-size: 1.1rem;
+  }
+
+  .img_btn{
+    width: 70%;
   }
 }
 
@@ -383,6 +401,10 @@ h2{
 
   .btn2, .btn3 {
     font-size: 0.8rem;
+  }
+
+  .img_btn{
+    width: 100%;
   }
 }
 

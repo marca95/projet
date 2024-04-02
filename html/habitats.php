@@ -17,6 +17,10 @@ $horaires = $pdo->prepare('SELECT * FROM horaires');
 $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
+$viewServices = $pdo->prepare('SELECT * FROM services');
+$viewServices->execute();
+$services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <html lang="en">
@@ -67,14 +71,6 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
     // Fetch data animals
     function getAnimalsData($pdo)
     {
-      // INNER JOIN SEULEMENT si je veux les animaux dans les 4 tableaux  
-      //   SELECT animals.name AS prenom, animals.type, animals.race, locations.NAME AS pays, states.state, states.detail,
-      //   foods.food, foods.grams, foods.date_pass AS passage, animals.root, animals.commonName AS categorie, animals.id_home
-      //  FROM animals
-      //  INNER JOIN homes ON homes.id_home = animals.id_home
-      //  INNER JOIN locations ON locations.id_location = animals.id_location
-      //  INNER JOIN foods ON foods.id_animal = animals.id_animal
-      //  INNER JOIN states ON states.id_animal = animals.id_animal
       $itemsAnimals = 'SELECT 
       animals.name AS prenom, 
       animals.type, 
@@ -199,9 +195,9 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
           <ul class="footer-ul">
             <li class="footer-titre">Nos services</li>
             <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#resto">Restaurant</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#habitat">Visite des habitats</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#train">Visite du Zoo en petit train</a></li>
+            <?php foreach ($services as $service) : ?>
+              <li class="footer-li"><a class="footer-a" href="services.php#<?php echo $service['NAME'] ?>"><?php echo $service['main_title'] ?></a></li>
+            <?php endforeach; ?>
           </ul>
         </div>
         <div class="footer-div">

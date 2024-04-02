@@ -1,6 +1,5 @@
 
 const choose = document.getElementById('choose');
-const updateForm = document.getElementById("update_form");
 const chooseAdmin = document.getElementById('chooseAdmin');
 
 choose.addEventListener('change', function() {
@@ -117,6 +116,34 @@ choose.addEventListener('change', function() {
 
       chooseAdmin.appendChild(label7);
       chooseAdmin.appendChild(input7);
+      break;
+    case "8":
+      let label8 = document.createElement("label");
+      label8.setAttribute("for", "update_img_accueil");
+      label8.setAttribute("id", "label")
+      label8.textContent = "L'image de l'accueil :";
+  
+      let input8 = document.createElement("input");
+      input8.setAttribute("type", "file");
+      input8.setAttribute("id", "input")
+      input8.setAttribute("name", "update_img_accueil");
+  
+      chooseAdmin.appendChild(label8);
+      chooseAdmin.appendChild(input8);
+      break;
+    case "9":
+      let label9 = document.createElement("label");
+      label9.setAttribute("for", "update_common_name");
+      label9.setAttribute("id", "label")
+      label9.textContent = "Le titre pour l'accueil :";
+    
+      let input9 = document.createElement("input");
+      input9.setAttribute("type", "text");
+      input9.setAttribute("id", "input")
+      input9.setAttribute("name", "update_common_name");
+    
+      chooseAdmin.appendChild(label9);
+      chooseAdmin.appendChild(input9);
       break;
   }
 })

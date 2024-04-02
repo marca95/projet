@@ -16,6 +16,10 @@ $horaires = $pdo->prepare('SELECT * FROM horaires');
 $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
+$viewServices = $pdo->prepare('SELECT * FROM services');
+$viewServices->execute();
+$services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <html lang="en">
@@ -156,14 +160,14 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       <div class="col-sm-6 col-lg-3">
         <div class="container-div" style="background-image: url('../img/accueil/terrarium.jpg');">
           <a class="container-a" href="habitats.php#vivarium">
-            <h3 class="container-titre">Vivarium</h3>
+            <h3 class="container-titre">Le vivarium</h3>
           </a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-3">
         <div class="container-div" style="background-image: url('../img/accueil/pature.jpeg');">
           <a class="container-a" href="habitats.php#pature">
-            <h3 class="container-titre">Pâture</h3>
+            <h3 class="container-titre">Les pâtures</h3>
           </a>
         </div>
       </div>
@@ -295,9 +299,9 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
           <ul class="footer-ul">
             <li class="footer-titre">Nos services</li>
             <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#resto">Restaurant</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#habitat">Visite des habitats</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#train">Visite du Zoo en petit train</a></li>
+            <?php foreach ($services as $service) : ?>
+              <li class="footer-li"><a class="footer-a" href="services.php#<?php echo $service['NAME'] ?>"><?php echo $service['main_title'] ?></a></li>
+            <?php endforeach; ?>
           </ul>
         </div>
         <div class="footer-div">

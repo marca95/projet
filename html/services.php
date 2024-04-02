@@ -16,6 +16,10 @@ $horaires = $pdo->prepare('SELECT * FROM horaires');
 $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
+$viewServices = $pdo->prepare('SELECT * FROM services');
+$viewServices->execute();
+$services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <html lang="en">
@@ -138,9 +142,9 @@ FROM
           <ul class="footer-ul">
             <li class="footer-titre">Nos services</li>
             <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#resto">Restaurant</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#habitat">Visite des habitats</a></li>
-            <li class="footer-li"><a class="footer-a" href="services.php#train">Visite du Zoo en petit train</a></li>
+            <?php foreach ($services as $service) : ?>
+              <li class="footer-li"><a class="footer-a" href="services.php#<?php echo $service['name'] ?>"><?php echo $service['main_title'] ?></a></li>
+            <?php endforeach; ?>
           </ul>
         </div>
         <div class="footer-div">

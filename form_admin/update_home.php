@@ -16,6 +16,9 @@ if (isset($_POST['updateHome'])) {
   $updateSecondTitle = isset($_POST['update_second_title']) ? $_POST['update_second_title'] : '';
   $updateContent = isset($_POST['update_content']) ? $_POST['update_content'] : '';
   $updateThirdTitle = isset($_POST['update_third_title']) ? $_POST['update_third_title'] : '';
+  $updateImgAccueil = isset($_POST['update_img_accueil']['tmp_name']) ? $_POST['update_img_accueil']['tmp_name'] : '';
+  $updateCommonName = isset($_POST['update_common_name']) ? $_POST['update_common_name'] : '';
+
 
   if (!empty($updateName)) {
     $stmt = $pdo->prepare('UPDATE homes SET name = :updateName WHERE id_home = :idHome');
@@ -44,6 +47,23 @@ if (isset($_POST['updateHome'])) {
     } else {
       $updateMessage = 'Il y a eu un problème lors du téléchargement de l\'image.';
     }
+  }
+  if ((!empty($updateImgAccueil)) && $_FILES['update_img_accueil']['error'] === 0) {
+    $destinationImgAccueil = "../img/accueil/" . $_FILES['update_img_accueil']['name'];
+    $stmt = $pdo->prepare('UPDATE homes SET url_img_accueil = :url_img_accueil WHERE id_home = :idHome');
+    $stmt->bindValue(':update_img_accueil', $destinationImgAccueil);
+    $stmt->bindValue(':idHome', $idHome);
+    if (move_uploaded_file($updateImgAccueil, $destinationImgAccueil)) {
+      $stmt->execute();
+    } else {
+      $updateMessage = 'Il y a eu un problème lors du téléchargement de l\'image.';
+    }
+  }
+  if (!empty($updateCommonName)) {
+    $stmt = $pdo->prepare('UPDATE homes SET commonName = :commonName WHERE id_home = :idHome');
+    $stmt->bindValue(':commonName', $updateCommonName);
+    $stmt->bindValue(':idHome', $idHome);
+    $stmt->execute();
   }
   if (!empty($updateMainTitle)) {
     $stmt = $pdo->prepare('UPDATE articles SET main_title = :updateMainTitle WHERE id_home = :idHome');

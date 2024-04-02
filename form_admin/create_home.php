@@ -11,8 +11,11 @@ if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['mai
   $name = $_POST['name'];
   $mainRoot = $_FILES['main_img']['tmp_name'];
   $secondRoot = $_FILES['second_img']['tmp_name'];
+  $imgAccueil = $_FILES['url_image_accueil']['tmp_name'];
+  $commonName = $_POST['commonName'];
   $destinationMainImg = "../img/habitats/" . $_FILES['main_img']['name'];
   $destinationSecondImg = "../img/habitats/" . $_FILES['second_img']['name'];
+  $destinatonImgAccueil = "../img/accueil/" . $_FILES['url_image_accueil']['name'];
 
   // Check if name exist (Unique in DB)
   $nameExists = false;
@@ -24,12 +27,14 @@ if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['mai
   }
 
   if (!$nameExists) {
-    $newHome = $pdo->prepare('INSERT INTO homes(name, main_root, second_root) VALUES (:name, :main_root, :second_root)');
+    $newHome = $pdo->prepare('INSERT INTO homes(name, main_root, second_root, url_img_accueil, commonName) VALUES (:name, :main_root, :second_root, :url_img_accueil, :commonName)');
     $newHome->bindValue(':name', $name);
     $newHome->bindValue(':main_root', $destinationMainImg);
     $newHome->bindValue(':second_root', $destinationSecondImg);
+    $newHome->bindValue(':url_img_accueil', $destinatonImgAccueil);
+    $newHome->bindValue(':commonName', $commonName);
 
-    if (move_uploaded_file($mainRoot, $destinationMainImg) && move_uploaded_file($secondRoot, $destinationSecondImg)) {
+    if (move_uploaded_file($mainRoot, $destinationMainImg) && move_uploaded_file($secondRoot, $destinationSecondImg) && move_uploaded_file($imgAccueil, $destinatonImgAccueil)) {
       if ($newHome->execute()) {
         $messageCreate = 'Nouvelle habitation créée avec succès';
       } else {

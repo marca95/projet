@@ -130,16 +130,19 @@ require_once('../form_admin/delete_services.php');
     <div id="inputAndLabel"></div>
     <button type="submit" name="updateService">Modifier un service</button>
   </form>
+  <?php echo $updateMessage; ?>
 
   <form action="" method="POST" id="formDelete">
-    <label for="choiceService">Quel service souhaitez-vous supprimer ?</label>
-    <select name="" id="">
-      <option value=""></option>
+    <label for="chooseDeleteService">Quel service souhaitez-vous supprimer ?</label>
+    <select name="chooseDeleteService" id="chooseDeleteService">
+      <?php foreach ($viewService as $service) : ?>
+        <option value="<?php echo $service['id_service'] ?>"><?php echo $service['main_title'] ?></option>
+      <?php endforeach; ?>
     </select>
     <br />
-    <div id="inputAndLabel"></div>
     <button type="submit" name="deleteService">Supprimer un service</button>
   </form>
+  <?php echo $messageDeleteService; ?>
 
   <script src="../js/admin_services.js"></script>
 </body>

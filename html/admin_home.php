@@ -58,6 +58,12 @@ require_once('../form_admin/delete_home.php');
     <label for="second_img">Image secondaire :</label>
     <input type="file" name="second_img">
     <br />
+    <label for="url_image_accueil">Image accueil :</label>
+    <input type="file" name="url_image_accueil">
+    <br />
+    <label for="commonName">Nom commun de l'habitation :</label>
+    <input type="text" name="commonName">
+    <br />
     <button type="submit" name="createNewHome">Ajouter une nouvelle habitation</button>
     <?php echo $messageCreate ?>
   </form>
@@ -111,6 +117,8 @@ require_once('../form_admin/delete_home.php');
       <option value="5">Le second titre</option>
       <option value="6">Le contenu</option>
       <option value="7">Le troisième titre</option>
+      <option value="8">L'image de l'accueil</option>
+      <option value="9">Le nom pour l'accueil</option>
     </select>
     <div id="chooseAdmin"></div>
     <br />

@@ -57,6 +57,7 @@ require_once('../form_admin/delete_services.php');
   </select>
 
   <form action="" method="POST" id="formCreate" enctype="multipart/form-data">
+    <h5>Création d'un service</h5>
     <label for="main_title">Titre principal* : </label>
     <input type="text" name="main_title">
     <br />
@@ -101,7 +102,34 @@ require_once('../form_admin/delete_services.php');
   </form>
   <?php echo $messageCreate ?>
 
+  <form action="" method="POST" id="formCreateAccueil" enctype="multipart/form-data">
+    <h5>Création d'un service à la page d'accueil</h5>
+    <label for="chooseService">Quel service souhaitez-vous afficher à la page d'accueil?</label>
+    <select name="chooseService">
+      <option></option>
+      <?php foreach ($viewService as $service) : ?>
+        <option value="<?php echo $service['id_service'] ?>"><?php echo $service['main_title'] ?></option>
+      <?php endforeach; ?>
+    </select>
+    <br />
+    <label for="accueil_content">Contenu :</label>
+    <textarea name="accueil_content" id="accueil_content" rows="5" cols="50"></textarea>
+    <br />
+    <label for="accueil_img1">Première image : </label>
+    <input type="file" name="accueil_img1">
+    <br />
+    <label for="accueil_img2">Deuxième image : </label>
+    <input type="file" name="accueil_img2">
+    <br />
+    <label for="accueil_btn">Titre du bouton : </label>
+    <input type="text" name="accueil_btn">
+    <br />
+    <button type="submit" name="createServiceAccueil">Créer un service à la page d'accueil</button>
+  </form>
+  <?php echo $messageCreateAccueil; ?>
+
   <form action="" method="POST" id="formModify" enctype="multipart/form-data">
+    <h5>Modification d'un service</h5>
     <label for="choiceService">Quel service souhaitez-vous modifier ?</label>
     <select name="selectedService" id="selectedService">
       <?php foreach ($viewService as $service) : ?>
@@ -133,6 +161,7 @@ require_once('../form_admin/delete_services.php');
   <?php echo $updateMessage; ?>
 
   <form action="" method="POST" id="formDelete">
+    <h5>Suppression d'un service</h5>
     <label for="chooseDeleteService">Quel service souhaitez-vous supprimer ?</label>
     <select name="chooseDeleteService" id="chooseDeleteService">
       <?php foreach ($viewService as $service) : ?>

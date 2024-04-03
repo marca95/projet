@@ -187,6 +187,13 @@ if (isset($_POST['logout'])) {
 </head>
 
 <body>
+  <nav>
+    <li><a href="./admin_animal.php">Animaux</a></li>
+    <li><a href="./admin_home.php">Habitations</a></li>
+    <li><a href="./admin_services.php">Services</a></li>
+    <li><a href="./admin_reports.php">Comptes rendus</a></li>
+    <li><a href="./admin_dashboard.php">Dashboard</a></li>
+  </nav>
   <h1>Bonjour <?php echo $_SESSION['first_name_user'] ?> </h1>
   <!-- AJOUTER EMAIL PRIVE A LA BASE DE DONNEES  -->
   <section>

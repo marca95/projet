@@ -20,8 +20,6 @@ if (isset($_POST['createService']) && isset($_FILES['main_img']) && $_FILES['mai
   $destinationMainImg = "../img/services/" . $_FILES['main_img']['name'];
   $destinationLinkImgRoot = "../img/services/" . $_FILES['link_img_root']['name'];
 
-  $messageCreate = 'ok';
-
   if (empty($mainTitle) || empty($content) || empty($name)) {
     $messageCreate = 'Vous n\'avez pas rempli tous les champs.';
   } elseif (empty($mainImg)) {
@@ -50,6 +48,48 @@ if (isset($_POST['createService']) && isset($_FILES['main_img']) && $_FILES['mai
       }
     } else {
       $messageCreate = 'Erreur lors de la création du nouveau service.';
+    }
+  }
+}
+
+// Create service accueil
+$viewServices = $pdo->prepare('SELECT * FROM accueil_services');
+$viewServices->execute();
+$accueilServices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
+
+$messageCreateAccueil = '';
+
+if (isset($_POST['createServiceAccueil']) && isset($_FILES['accueil_img1']) && $_FILES['accueil_img1']['error'] === 0 && isset($_FILES['accueil_img2']) && $_FILES['accueil_img2']['error'] === 0) {
+  $accueilServiceId = isset($_POST['chooseService']) ? $_POST['chooseService'] : '';
+  $accueilContent = isset($_POST['accueil_content']) ? $_POST['accueil_content'] : '';
+  $accueilBtn = isset($_POST['accueil_btn']) ? $_POST['accueil_btn'] : '';
+
+  $accueilImg1 = isset($_FILES['accueil_img1']['tmp_name']) ? $_FILES['accueil_img1']['tmp_name'] : '';
+  $accueilImg2 = isset($_FILES['accueil_img2']['tmp_name']) ? $_FILES['accueil_img2']['tmp_name'] : '';
+
+  $destinationAccueilImg1 = "../img/accueil/" . $_FILES['accueil_img1']['name'];
+  $destinationAccueilImg2 = "../img/accueil/" . $_FILES['accueil_img2']['name'];
+
+  if (empty($accueilServiceId) || empty($accueilContent) || empty($accueilBtn)) {
+    $messageCreateAccueil = 'Vous n\'avez pas rempli tous les champs.';
+  } elseif (empty($accueilImg1) || empty($accueilImg2)) {
+    $messageCreateAccueil = 'Vous devez télécharger une image.';
+  } else {
+    $newAccueilServices = $pdo->prepare('INSERT INTO accueil_services(id_service, content, img1, img2, title_btn) VALUES (:id_service, :content, :img1, :img2, :title_btn)');
+    $newAccueilServices->bindValue(':id_service', $accueilServiceId);
+    $newAccueilServices->bindValue(':content', $accueilContent);
+    $newAccueilServices->bindValue(':img1', $destinationAccueilImg1);
+    $newAccueilServices->bindValue(':img2', $destinationAccueilImg2);
+    $newAccueilServices->bindValue(':title_btn', $accueilBtn);
+
+    if (move_uploaded_file($accueilImg1, $destinationAccueilImg1) && move_uploaded_file($accueilImg2, $destinationAccueilImg2)) {
+      if ($newAccueilServices->execute()) {
+        $messageCreateAccueil = 'Nouveau service créé avec succès';
+      } else {
+        $messageCreateAccueil = "Erreur lors de l'insertion dans la base de données";
+      }
+    } else {
+      $messageCreateAccueil = 'Erreur lors de l\'upload des images.';
     }
   }
 }

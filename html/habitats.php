@@ -17,6 +17,7 @@ $horaires = $pdo->prepare('SELECT * FROM horaires');
 $horaires->execute();
 $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
+// Update services
 $viewServices = $pdo->prepare('SELECT * FROM services');
 $viewServices->execute();
 $services = $viewServices->fetchAll(PDO::FETCH_ASSOC);

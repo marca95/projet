@@ -3,6 +3,7 @@ document.getElementById('action').addEventListener('change', function() {
   let action = this.value;
 
   document.getElementById('formCreate').style.display = (action === 'create') ? 'block' : 'none';
+  document.getElementById('formCreateAccueil').style.display = (action === 'create') ? 'block' : 'none';
   document.getElementById('formModify').style.display = (action === 'modify') ? 'block' : 'none';
   document.getElementById('formDelete').style.display = (action === 'delete') ? 'block' : 'none';
 });

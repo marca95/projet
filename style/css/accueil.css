@@ -138,12 +138,6 @@ cite {
   border-right: 1px solid rgba(205, 205, 205, 0.651) ;
 }
 
-.rounded-img1, .rounded-img2{
-  width: 30%;
-  height: 40%;
-  border-radius: 100%;
-}
-
 .img_service {
   border-radius: 5%;
 }
@@ -323,17 +317,6 @@ cite {
     width: 10%;
   }
 
-  .rounded-img1 {
-    height: 50%;
-    width: 40%;
-  }
-
-  .rounded-img2 {
-    width: 80%;
-    height: 50%;
-    margin-right: 15px;
-  }
-
   .avis_séparation1, .avis_séparation2{
     height: 30vh;
   }
@@ -416,11 +399,6 @@ cite {
 
   .avis_séparation2{
     margin-top: 40px;
-  }
-
-  .rounded-img2{
-    height: 55%;
-    margin-right: 10px;
   }
 
   .footer-div {
@@ -519,10 +497,4 @@ cite {
     font-size: 0.9rem;
   }
   
-}
-
-@media screen and (max-width: 450px) {
-.rounded-img1, .rounded-img2 {
-  display: none;
-}
 }

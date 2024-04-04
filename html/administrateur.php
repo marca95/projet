@@ -129,29 +129,29 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 
 $succesHour = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['setHours'])) {
 
-  $newMondayStart = $_POST['mondayStart'];
-  $newMondayEnd = $_POST['mondayEnd'];
-  $newMondayClosed = $_POST['mondayClosed'];
-  $newTuesdayStart = $_POST['tuesdayStart'];
-  $newTuesdayEnd = $_POST['tuesdayEnd'];
-  $newTuesdayClosed = $_POST['tuesdayClosed'];
-  $newWednesdayStart = $_POST['wednesdayStart'];
-  $newWednesdayEnd = $_POST['wednesdayEnd'];
-  $newWednesdayClosed = $_POST['wednesdayClosed'];
-  $newThursdayStart = $_POST['thursdayStart'];
-  $newThursdayEnd = $_POST['thursdayEnd'];
-  $newThursdayClosed = $_POST['thursdayClosed'];
-  $newFridayStart = $_POST['fridayStart'];
-  $newFridayEnd = $_POST['fridayEnd'];
-  $newFridayClosed = $_POST['fridayClosed'];
-  $newSaturdayStart = $_POST['saturdayStart'];
-  $newSaturdayEnd = $_POST['saturdayEnd'];
-  $newSaturdayClosed = $_POST['saturdayClosed'];
-  $newSundayStart = $_POST['sundayStart'];
-  $newSundayEnd = $_POST['sundayEnd'];
-  $newSundayClosed = $_POST['sundayClosed'];
+  $newMondayStart = isset($_POST['mondayStart']) ? $_POST['mondayStart'] : '';
+  $newMondayEnd = isset($_POST['mondayEnd']) ? $_POST['mondayEnd'] : '';
+  $newMondayClosed = isset($_POST['mondayClosed']) ? $_POST['mondayClosed'] : '';
+  $newTuesdayStart = isset($_POST['tuesdayStart']) ? $_POST['tuesdayStart'] : '';
+  $newTuesdayEnd = isset($_POST['tuesdayEnd']) ? $_POST['tuesdayEnd'] : '';
+  $newTuesdayClosed = isset($_POST['tuesdayClosed']) ? $_POST['tuesdayClosed'] : '';
+  $newWednesdayStart = isset($_POST['wednesdayStart']) ? $_POST['wednesdayStart'] : '';
+  $newWednesdayEnd = isset($_POST['wednesdayEnd']) ? $_POST['wednesdayEnd'] : '';
+  $newWednesdayClosed = isset($_POST['wednesdayClosed']) ? $_POST['wednesdayClosed'] : '';
+  $newThursdayStart = isset($_POST['thursdayStart']) ? $_POST['thursdayStart'] : '';
+  $newThursdayEnd = isset($_POST['thursdayEnd']) ? $_POST['thursdayEnd'] : '';
+  $newThursdayClosed = isset($_POST['thursdayClosed']) ? $_POST['thursdayClosed'] : '';
+  $newFridayStart = isset($_POST['fridayStart']) ? $_POST['fridayStart'] : '';
+  $newFridayEnd = isset($_POST['fridayEnd']) ? $_POST['fridayEnd'] : '';
+  $newFridayClosed = isset($_POST['fridayClosed']) ? $_POST['fridayClosed'] : '';
+  $newSaturdayStart = isset($_POST['saturdayStart']) ? $_POST['saturdayStart'] : '';
+  $newSaturdayEnd = isset($_POST['saturdayEnd']) ? $_POST['saturdayEnd'] : '';
+  $newSaturdayClosed = isset($_POST['saturdayClosed']) ? $_POST['saturdayClosed'] : '';
+  $newSundayStart = isset($_POST['sundayStart']) ? $_POST['sundayStart'] : '';
+  $newSundayEnd = isset($_POST['sundayEnd']) ? $_POST['sundayEnd'] : '';
+  $newSundayClosed = isset($_POST['sundayClosed']) ? $_POST['sundayClosed'] : '';
 
   $stmt = $pdo->prepare('UPDATE horaires SET start_time = :start_time, end_time = :end_time, is_closed = :is_closed WHERE day_week = :day_week');
 
@@ -182,13 +182,14 @@ if (isset($_POST['logout'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/admin.css" rel="styleSheet">
+  <link href="../style/css/administration.css" rel="stylesheet">
   <link href="../img/logo.png" rel="icon">
 </head>
 
 <body>
 
   <nav>
+    <div id="icon"></div>
     <ul>
       <li><a href="./administrateur.php" class="active">Page principal</a></li>
       <li><a href="./admin_animal.php">Animaux</a></li>
@@ -197,6 +198,11 @@ if (isset($_POST['logout'])) {
       <li><a href="./admin_reports.php">Comptes rendus</a></li>
       <li><a href="./admin_dashboard.php">Dashboard</a></li>
     </ul>
+    <form method="POST" action="" class="form_logout">
+      <button type="submit" name="logout" class="logout" title="déconnexion"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width='25px'><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
+        </svg></button>
+    </form>
   </nav>
 
   <h1>Bonjour <?php echo $_SESSION['first_name_user'] ?> </h1>
@@ -357,14 +363,12 @@ if (isset($_POST['logout'])) {
           echo $succesHour;
           ?></p>
       <?php endif; ?>
-      <button type="submit">Enregistrer les modifications</button>
+      <button type="submit" name="setHours">Enregistrer les modifications</button>
     </form>
   </section>
 
-  <!-- BTN DE DECONNEXION-->
-  <form method="POST" action="">
-    <button type="submit" name="logout">Déconnexion</button>
-  </form>
+
+
 
   <script src="../js/admin.js"></script>
 </body>

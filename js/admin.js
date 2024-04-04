@@ -1,13 +1,14 @@
-// Navbar 
-const icon = document.getElementById('icon');
-const nav = document.querySelector('nav');
+// Bar nivagation responsive "icon".
+const links = document.querySelectorAll('nav li');
 
 icon.addEventListener("click", () => {
-  if (nav.classList.toggle("active")) {
-    nav.querySelector('ul').style.display = 'block';
-  } else {
-    nav.querySelector('ul').style.display = 'none'; 
-  }
+  nav.classList.toggle("active");
+})
+
+links.forEach((link) => {
+  link.addEventListener('click', () => {
+    nav.classList.remove("active");
+  });
 });
 
 // Condition form 

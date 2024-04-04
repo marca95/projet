@@ -41,13 +41,19 @@ if (
 
 // Create registration form
 if (isset($_POST['inscription'])) {
+  // Check DB only one unique username
+  $onlyOneUsername = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+  $onlyOneUsername->execute(['username' => $_POST['username']]);
+  $oneUsername = $onlyOneUsername->rowCount();
   // Check DB only one unique mail
-  $onlyOneEmail = $pdo->prepare('SELECT * FROM users WHERE username = :username');
-  $onlyOneEmail->execute(array('username' => $_POST['username']));
-  $oneEmail = $onlyOneEmail->fetchColumn();
+  $onlyOneEmail = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+  $onlyOneEmail->execute(['email' => $_POST['email']]);
+  $oneEmail = $onlyOneEmail->rowCount();
 
-  if ($oneEmail) {
-    $error = 'Adresse mail déjà existante.';
+  if ($oneUsername > 0) {
+    $error = 'Username déjà existant dans la base de données.';
+  } else if ($oneEmail > 0) {
+    $error = 'Email déja existant dans la base de données.';
   } else {
     $name = $_POST['name'];
     $first_name = $_POST['first_name'];
@@ -116,7 +122,7 @@ if (isset($_POST['inscription'])) {
         $mail->send();
         $successMail = 'Vous avez reçu un email avec vos données personnelles.';
       } catch (Exception $e) {
-        $errorMail = 'Il y a eu une erreur lors de l\'envoi du mail : ' + $mail->ErrorInfo;
+        $error = 'Il y a eu une erreur lors de l\'envoi du mail : ' + $mail->ErrorInfo;
       }
     }
   }
@@ -187,49 +193,48 @@ if (isset($_POST['logout'])) {
 </head>
 
 <body>
-
-  <nav>
-    <div id="icon"></div>
-    <ul>
-      <li><a href="./administrateur.php" class="active">Page principal</a></li>
-      <li><a href="./admin_animal.php">Animaux</a></li>
-      <li><a href="./admin_home.php">Habitations</a></li>
-      <li><a href="./admin_services.php">Services</a></li>
-      <li><a href="./admin_reports.php">Comptes rendus</a></li>
-      <li><a href="./admin_dashboard.php">Dashboard</a></li>
-    </ul>
-    <form method="POST" action="" class="form_logout">
-      <button type="submit" name="logout" class="logout" title="déconnexion"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width='25px'><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-          <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
-        </svg></button>
-    </form>
-  </nav>
-
+  <header>
+    <nav id="nav">
+      <div id="icon"></div>
+      <ul class="navigation">
+        <li><a href="./admin_animal.php">Animaux</a></li>
+        <li><a href="./admin_home.php">Habitations</a></li>
+        <li><a href="./admin_services.php">Services</a></li>
+        <li><a href="./admin_reports.php">Comptes rendus</a></li>
+        <li><a href="./admin_dashboard.php">Dashboard</a></li>
+      </ul>
+      <form method="POST" action="" class="form_logout">
+        <button type="submit" name="logout" class="logout" title="déconnexion"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width='25px'><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
+          </svg></button>
+      </form>
+    </nav>
+  </header>
   <h1>Bonjour <?php echo $_SESSION['first_name_user'] ?> </h1>
   <!-- AJOUTER EMAIL PRIVE A LA BASE DE DONNEES  -->
-  <section>
+  <section class="register">
     <h3>Enregistrer un nouveau membre :</h3>
-    <form method="POST" action="" id="form">
-      <label for="name">Nom :</label>
+
+    <form method="POST" action="" id="form" class="form_register">
+      <label for="name">Nom :</label> <br />
       <input type="text" name="name" id="name" oninput="clearSuccess()" required>
       <br />
-      <label for="first_name">Prénom :</label>
+      <label for="first_name">Prénom :</label><br />
       <input type="text" name="first_name" id="first_name" oninput="clearSuccess()" required>
       <br />
-      <label for="email">Email (Privé) :</label>
+      <label for="email">Email (Privé) :</label><br />
       <input type="email" name="email" id="email" oninput="clearSuccess()" required>
       <br />
-      <label for="username">Username :</label>
+      <label for="username">Username :</label><br />
       <input type="email" name="username" id="username" oninput="clearSuccess()" required>
       <br />
-      <label for="password">Mot de passe :</label>
+      <label for="password">Mot de passe :</label><br />
       <input type="password" name="password" id="password" oninput="clearSuccess()" required>
       <br />
-      <br />
-      <label for="password2">Vérification du mot de passe :</label>
+      <label for="password2">Vérification du mot de passe :</label><br />
       <input type="password" name="password2" id="password2" oninput="clearSuccess()" required>
       <br />
-      <label for="id_role">Id role :</label>
+      <label for="id_role">Id role :</label><br />
       <label>
         <input type="radio" name="id_role" value="2" required> Vétérinaire
       </label>
@@ -237,14 +242,14 @@ if (isset($_POST['logout'])) {
         <input type="radio" name="id_role" value="3" required> Employé(e)
       </label>
       <br />
-      <label for="birthday">Anniversaire :</label>
+      <label for="birthday">Anniversaire :</label><br />
       <input type="date" name="birthday" id="birthday" oninput="clearSuccess()" required>
       <br />
-      <label for="hire">Engagé(e) :</label>
+      <label for="hire">Engagé(e) :</label><br />
       <input type="date" name="hire" id="hire" oninput="clearSuccess()" required>
       <p id="errorInput"></p>
       <br />
-      <?php if (isset($success) && !empty($success)) : ?>
+      <?php if (isset($successSignUp) && !empty($successSignUp)) : ?>
         <p id="success">
           <?php
           echo $successSignUp;
@@ -255,107 +260,113 @@ if (isset($_POST['logout'])) {
         <p id="error">
           <?php
           echo $error;
-          echo $errorMail;
           ?></p>
       <?php endif; ?>
-      <br />
-      <button type="submit" name="inscription">Inscription</button>
+      <button type="submit" name="inscription" class="btn_inscription">Inscription</button>
       <br />
     </form>
   </section>
-  <section>
-    <!-- COMPLETER MODIFICATION DES SERVICES HORAIRE ANIMAUX-->
-  </section>
-  <section>
+
+  <section class="setHours">
     <h3>Modification des horaires</h3>
-    <?php
-    if ($sethoraires) {
 
-      foreach ($sethoraires as $sethoraire) {
-        $setDay = $sethoraire['day_week'];
-        $setIsClosed = $sethoraire['is_closed'];
-        $setStartTime = $sethoraire['start_time'];
-        $setEndTime = $sethoraire['end_time'];
+    <div class="day_week">
+      <?php
+      if ($sethoraires) {
+        foreach ($sethoraires as $sethoraire) {
+          $setDay = $sethoraire['day_week'];
+          $setIsClosed = $sethoraire['is_closed'];
+          $setStartTime = $sethoraire['start_time'];
+          $setEndTime = $sethoraire['end_time'];
 
-        echo "<li>$setDay : ";
-        echo $setIsClosed ? 'Fermé' : "$setStartTime à $setEndTime";
-        echo '</li>';
+          echo "<li>$setDay : ";
+          echo $setIsClosed ? 'Fermé' : "$setStartTime à $setEndTime";
+          echo '</li>';
+        }
+      } else {
+        echo "Aucun horaire trouvé.";
       }
-    } else {
-      echo "Aucun horaire trouvé.";
-    }
-    ?>
-    <form action="" method="POST">
+      ?>
+    </div>
+
+    <form action="" method="POST" class="form_hour">
 
       <label for="mondayClosed">Le lundi est :</label>
       <select type="text" name="mondayClosed" id="mondayClosed">
         <option value="0">Ouvert</option>
         <option value="1" selected>Fermé</option>
       </select>
+      <br />
       <label for="mondayStart">Ouverture à :</label>
-      <input type="text" name="mondayStart" id="mondayStart" placeholder="Heure début">
-      <label for="mondayEnd">Fermeture à :</label>
-      <input type="text" name="mondayEnd" id="mondayEnd" placeholder="Heure fin">
+      <input type="text" name="mondayStart" id="mondayStart" value="<?php echo $sethoraires[0]['start_time'] ?>">
+      <label for=" mondayEnd">Fermeture à :</label>
+      <input type="text" name="mondayEnd" id="mondayEnd" value="<?php echo $sethoraires[0]['end_time'] ?>">
       <br />
       <label for="tuesdayClosed">Le mardi est :</label>
       <select type="text" name="tuesdayClosed" id="tuesdayClosed">
         <option value="0">Ouvert</option>
         <option value="1" selected>Fermé</option>
       </select>
+      <br />
       <label for="tuesdayStart">Ouverture à :</label>
-      <input type="text" name="tuesdayStart" id="tuesdayStart" placeholder="Heure début">
-      <label for="tuesdayEnd">Fermeture à :</label>
-      <input type="text" name="tuesdayEnd" id="tuesdayEnd" placeholder="Heure fin">
+      <input type="text" name="tuesdayStart" id="tuesdayStart" value="<?php echo $sethoraires[1]['start_time'] ?>">
+      <label for=" tuesdayEnd">Fermeture à :</label>
+      <input type="text" name="tuesdayEnd" id="tuesdayEnd" value="<?php echo $sethoraires[1]['end_time'] ?>">
       <br />
       <label for="wednesdayClosed">Le mercredi est :</label>
       <select type="text" name="wednesdayClosed" id="wednesdayClosed">
         <option value="0">Ouvert</option>
         <option value="1">Fermé</option>
       </select>
+      <br />
       <label for="wednesdayStart">Ouverture à :</label>
-      <input type="text" name="wednesdayStart" id="wednesdayStart" placeholder="Heure début" value="10h">
-      <label for="wednesdayEnd">Fermeture à :</label>
-      <input type="text" name="wednesdayEnd" id="wednesdayEnd" placeholder="Heure fin" value="19h">
+      <input type="text" name="wednesdayStart" id="wednesdayStart" value="<?php echo $sethoraires[2]['start_time'] ?>">
+      <label for=" wednesdayEnd">Fermeture à :</label>
+      <input type="text" name="wednesdayEnd" id="wednesdayEnd" value="<?php echo $sethoraires[2]['end_time'] ?>">
       <br />
       <label for="thursdayClosed">Le jeudi est :</label>
       <select type="text" name="thursdayClosed" id="thursdayClosed">
         <option value="0">Ouvert</option>
         <option value="1">Fermé</option>
       </select>
+      <br />
       <label for="thursdayStart">Ouverture à :</label>
-      <input type="text" name="thursdayStart" id="thursdayStart" placeholder="Heure début" value="10h">
-      <label for="thursdayEnd">Fermeture à :</label>
-      <input type="text" name="thursdayEnd" id="thursdayEnd" placeholder="Heure fin" value="19h">
+      <input type="text" name="thursdayStart" id="thursdayStart" value="<?php echo $sethoraires[3]['start_time'] ?>">
+      <label for=" thursdayEnd">Fermeture à :</label>
+      <input type="text" name="thursdayEnd" id="thursdayEnd" value="<?php echo $sethoraires[3]['end_time'] ?>">
       <br />
       <label for="fridayClosed">Le vendredi est :</label>
       <select type="text" name="fridayClosed" id="fridayClosed">
         <option value="0">Ouvert</option>
         <option value="1">Fermé</option>
       </select>
+      <br />
       <label for="fridayStart">Ouverture à :</label>
-      <input type="text" name="fridayStart" id="fridayStart" placeholder="Heure début" value="10h">
-      <label for="fridayEnd">Fermeture à :</label>
-      <input type="text" name="fridayEnd" id="fridayEnd" placeholder="Heure fin" value="19h">
+      <input type="text" name="fridayStart" id="fridayStart" value="<?php echo $sethoraires[4]['start_time'] ?>">
+      <label for=" fridayEnd">Fermeture à :</label>
+      <input type="text" name="fridayEnd" id="fridayEnd" value="<?php echo $sethoraires[4]['end_time'] ?>">
       <br />
       <label for="saturdayClosed">Le samedi est :</label>
       <select type="text" name="saturdayClosed" id="saturdayClosed">
         <option value="0">Ouvert</option>
         <option value="1">Fermé</option>
       </select>
+      <br />
       <label for="saturdayStart">Ouverture à :</label>
-      <input type="text" name="saturdayStart" id="saturdayStart" placeholder="Heure début" value="10h">
-      <label for="saturdayEnd">Fermeture à :</label>
-      <input type="text" name="saturdayEnd" id="saturdayEnd" placeholder="Heure fin" value="19h">
+      <input type="text" name="saturdayStart" id="saturdayStart" value="<?php echo $sethoraires[5]['start_time'] ?>">
+      <label for=" saturdayEnd">Fermeture à :</label>
+      <input type="text" name="saturdayEnd" id="saturdayEnd" value="<?php echo $sethoraires[5]['end_time'] ?>">
       <br />
       <label for="sundayClosed">Le dimanche est :</label>
       <select type="text" name="sundayClosed" id="sundayClosed">
         <option value="0">Ouvert</option>
         <option value="1">Fermé</option>
       </select>
+      <br />
       <label for="sundayStart">Ouverture à :</label>
-      <input type="text" name="sundayStart" id="sundayStart" placeholder="Heure début" value="10h">
+      <input type="text" name="sundayStart" id="sundayStart" value="<?php echo $sethoraires[6]['start_time'] ?>">
       <label for="sundayEnd">Fermeture à :</label>
-      <input type="text" name="sundayEnd" id="sundayEnd" placeholder="Heure fin" value="19h">
+      <input type="text" name="sundayEnd" id="sundayEnd" value="<?php echo $sethoraires[6]['end_time'] ?>">
       <br />
       <?php if (isset($succesHour) && !empty($succesHour)) : ?>
         <p id="success">
@@ -363,13 +374,9 @@ if (isset($_POST['logout'])) {
           echo $succesHour;
           ?></p>
       <?php endif; ?>
-      <button type="submit" name="setHours">Enregistrer les modifications</button>
+      <button type="submit" name="setHours" class="btn_inscription">Enregistrer les modifications</button>
     </form>
   </section>
-
-
-
-
   <script src="../js/admin.js"></script>
 </body>
 

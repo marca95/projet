@@ -3,54 +3,34 @@ nav {
   height: 40px;
   background-color: maroon;
   font-weight: 600;
+  display: flex;
 }
 
 nav ul {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 50px 0px 50px;
+  padding: 0px;
   list-style-type: none;
   text-decoration: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  height: 100%;
-  width: 80%;
-}
-
-nav ul li {
-  width: 100%;
-  align-content: center;
-  justify-items: space-between;
 }
 
 nav ul li a {
+  font-size: 1rem;
+  font-weight: 700;
   text-decoration: none;
   color: white;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  padding: 10px;
+  transition: 0.5s;
 }
 
-nav ul li:hover {
-  background-color: black;
-}
-
-nav ul li a.active {
-  background-color: black;
-  pointer-events: none;
-}
-
-.form_logout{
-  position: absolute;
-  right: 10px;
-  top: 5px;
-}
-
-.logout{
-background: none;
-border: none;
-color: white;
-padding: 0;
+nav ul li a:hover {
+  color: green;
+  padding: 10px;
+  cursor: pointer;
 }
 
 #icon {
@@ -58,79 +38,62 @@ padding: 0;
   display: none;
 }
 
+.form_logout {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.logout {
+  background-color: transparent;
+  border: none;
+}
+
 #formCreate, #formModify, #formDelete {
   display: none;
 }
 
-@media screen and (max-width: 992px) {
-
-  nav {
-    font-weight: 400;
-  }
-
-  nav ul {
-    width: 95%;
-  }
-}
-
 @media screen and (max-width: 767px) {
-
-  nav {
-    background-color: rgb(0, 171, 0);
-  }
-
-  nav ul {
-    display: none;
-    background-color: rgb(0, 171, 0);
-  }
-  nav ul li {
-    width: 140px;
-    background-color: rgb(0, 171, 0);
-    padding: 15px;
-    position: relative;
-    top: 40px;
-    left: 0px;
-  }
-
-  nav ul li:hover {
-    background-color: rgb(0, 171, 0);
-  }
-
-  nav ul li a{
-    display: block;
-    color: black;
-    font-weight: 600;
-  }
-
-  nav ul li a.active {
-    background-color: transparent;
-    pointer-events: none;
-
-  }
-
   #icon {
+    margin-top: 10px;
+    margin-left: 10px;
     display: block;
-    width: 25px;
   }
 
   #icon:before {
     content: "\2630";
     color: black;
-    position: absolute;
-    left: 10px;
-    top: 8px;
   }
 
   .active #icon:before {
     content: "\2715";
     color: black;
-    position: absolute;
-    left: 10px;
-    top: 8px;
   }
 
-  nav ul li a:hover {
-    color: white;
+  nav.active ul {
+    left: -60px;
+    top: 40px;
+    width: 30%;
+  }
+
+  .navigation {
+    position: absolute;
+    background: maroon;
+    right: 100%;
+    top: 40px;
+    flex-direction: column;
+    width: 25%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  nav ul li {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+  }
+
+  nav ul li a {
+    font-weight: normal;
   }
 }
-

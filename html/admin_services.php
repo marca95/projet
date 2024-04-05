@@ -71,17 +71,20 @@ if (isset($_POST['logout'])) {
     </nav>
   </header>
 
-  <h3>Créer, modifier ou supprimer un service</h3>
+  <h1>Créer, modifier ou supprimer un service</h1>
 
-  <select id="action">
-    <option></option>
-    <option value="create">Créer</option>
-    <option value="modify">Modifier</option>
-    <option value="delete">Supprimer</option>
-  </select>
+  <div class="centrage">
+    <select id="action">
+      <option></option>
+      <option value="create">Créer</option>
+      <option value="modify">Modifier</option>
+      <option value="delete">Supprimer</option>
+    </select>
+  </div>
+
 
   <form action="" method="POST" id="formCreate" enctype="multipart/form-data">
-    <h5>Création d'un service</h5>
+    <h3>Création d'un service</h3>
     <label for="main_title">Titre principal* : </label>
     <input type="text" name="main_title">
     <br />
@@ -122,12 +125,12 @@ if (isset($_POST['logout'])) {
     <input type="text" name="link_classes" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
     <p>Valeur par défaut</p>
     <p>Les champs avec (*) sont obligatoire.</p>
-    <button type="submit" name="createService">Créer un service</button>
+    <button type="submit" name="createService" class="btn btn-success">Créer un service</button>
   </form>
   <?php echo $messageCreate ?>
 
   <form action="" method="POST" id="formCreateAccueil" enctype="multipart/form-data">
-    <h5>Création d'un service à la page d'accueil</h5>
+    <h3>Création d'un service à la page d'accueil</h3>
     <label for="chooseService">Quel service souhaitez-vous afficher à la page d'accueil?</label>
     <select name="chooseService">
       <option></option>
@@ -148,12 +151,12 @@ if (isset($_POST['logout'])) {
     <label for="accueil_btn">Titre du bouton : </label>
     <input type="text" name="accueil_btn">
     <br />
-    <button type="submit" name="createServiceAccueil">Créer un service à la page d'accueil</button>
+    <button type="submit" name="createServiceAccueil" class="btn btn-success">Créer un service à la page d'accueil</button>
   </form>
   <?php echo $messageCreateAccueil; ?>
 
   <form action="" method="POST" id="formModify" enctype="multipart/form-data">
-    <h5>Modification d'un service</h5>
+    <h3>Modification d'un service</h3>
     <label for="choiceService">Quel service souhaitez-vous modifier ?</label>
     <select name="selectedService" id="selectedService">
       <?php foreach ($viewService as $service) : ?>
@@ -180,12 +183,12 @@ if (isset($_POST['logout'])) {
     </select>
     <br />
     <div id="inputAndLabel"></div>
-    <button type="submit" name="updateService">Modifier un service</button>
+    <button type="submit" name="updateService" class="btn btn-primary">Modifier un service</button>
   </form>
   <?php echo $updateMessage; ?>
 
   <form action="" method="POST" id="formDelete">
-    <h5>Suppression d'un service</h5>
+    <h3>Suppression d'un service</h3>
     <label for="chooseDeleteService">Quel service souhaitez-vous supprimer ?</label>
     <select name="chooseDeleteService" id="chooseDeleteService">
       <?php foreach ($viewService as $service) : ?>
@@ -193,7 +196,7 @@ if (isset($_POST['logout'])) {
       <?php endforeach; ?>
     </select>
     <br />
-    <button type="submit" name="deleteService">Supprimer un service</button>
+    <button type="submit" name="deleteService" class="btn btn-danger">Supprimer un service</button>
   </form>
   <?php echo $messageDeleteService; ?>
 

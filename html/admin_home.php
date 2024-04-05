@@ -72,102 +72,105 @@ if (isset($_POST['logout'])) {
       </form>
     </nav>
   </header>
-  <h3>Créer un habitat</h3>
-  <form action="" method="POST" enctype="multipart/form-data">
-    <label for="name">Nom de l'habitat :</label>
-    <input type="text" name="name">
-    <br />
-    <label for="main_img">Image principal :</label>
-    <input type="file" name="main_img">
-    <br />
-    <label for="second_img">Image secondaire :</label>
-    <input type="file" name="second_img">
-    <br />
-    <label for="url_image_accueil">Image accueil :</label>
-    <input type="file" name="url_image_accueil">
-    <br />
-    <label for="commonName">Nom commun de l'habitation :</label>
-    <input type="text" name="commonName">
-    <br />
-    <button type="submit" name="createNewHome">Ajouter une nouvelle habitation</button>
-    <?php echo $messageCreate ?>
-  </form>
+  <h1>Gestion des habitats et articles</h1>
+  <div class="row">
+    <section class="col-md-6 create_home">
+      <h3>Créer un habitat</h3>
+      <form action="" method="POST" enctype="multipart/form-data">
+        <label for="name">Nom de l'habitat :</label>
+        <input type="text" name="name">
+        <br />
+        <label for="main_img">Image principal :</label>
+        <input type="file" name="main_img">
+        <br />
+        <label for="second_img">Image secondaire :</label>
+        <input type="file" name="second_img">
+        <br />
+        <label for="url_image_accueil">Image accueil :</label>
+        <input type="file" name="url_image_accueil">
+        <br />
+        <label for="commonName">Nom commun de l'habitation :</label>
+        <input type="text" name="commonName">
+        <br />
+        <button type="submit" name="createNewHome" class="btn btn-success">Ajouter une nouvelle habitation</button>
+        <?php echo $messageCreate ?>
+      </form>
+    </section>
+    <section class="col-md-6 create_article">
+      <h3>Créer un article</h3>
+      <form action="" method="POST">
+        <label for="main_title">Titre principal :</label>
+        <input type="text" name="main_title">
+        <br />
+        <label for="second_title">Second titre :</label>
+        <input type="text" name="second_title">
+        <br />
+        <label for="content">Contenu :</label>
+        <textarea rows="5" cols="50" name="content"></textarea>
+        <br />
+        <label for="homes">Habitation :</label>
+        <select name="homes" id="homes">
+          <?php foreach ($optionsHomes as $optionsHome) : ?>
+            <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+          <?php endforeach; ?>
+        </select>
+        <label for="third_title">Troisième titre :</label>
+        <input type="text" name="third_title">
+        <?php echo $messageArticle ?>
+        <button type="submit" name="createNewArticle" class="btn btn-primary">Ajouter un nouvel article</button>
+        <br />
+      </form>
+    </section>
+  </div>
   <br />
-  <br />
-  <br />
-  <h3>Créer un article</h3>
-  <form action="" method="POST">
-    <label for="main_title">Titre principal :</label>
-    <input type="text" name="main_title">
+  <div class="row">
+    <section class="col-md-6 update_article">
+      <h3>Modifier un habitat / article</h3>
+      <form action="" method="POST" id="update_form" enctype="multipart/form-data">
+        <label for="habitat">Selectionner l'habitat à modifier : </label>
+        <select name="habitat" id="habitat">
+          <?php foreach ($optionsHomes as $optionsHome) : ?>
+            <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+          <?php endforeach; ?>
+        </select>
+        <br />
+        <label for="choose">Que souhaitez-vous modifier : </label>
+        <select name="choose" id="choose">
+          <option value="">Choix par défaut</option>
+          <option value="1">Le nom de l'habitat</option>
+          <option value="2">La photo principal</option>
+          <option value="3">La photo secondaire</option>
+          <option value="4">Le titre principal</option>
+          <option value="5">Le second titre</option>
+          <option value="6">Le contenu</option>
+          <option value="7">Le troisième titre</option>
+          <option value="8">L'image de l'accueil</option>
+          <option value="9">Le nom pour l'accueil</option>
+        </select>
+        <div id="chooseAdmin"></div>
+        <br />
+        <button type="submit" name="updateHome" class="btn btn-secondary">Modifier l'habitat</button>
+        <br />
+        <?php echo $updateMessage ?>
+      </form>
+    </section>
     <br />
-    <label for="second_title">Second titre :</label>
-    <input type="text" name="second_title">
-    <br />
-    <label for="content">Contenu :</label>
-    <textarea rows="5" cols="50" name="content"></textarea>
-    <br />
-    <label for="homes">Habitation :</label>
-    <select name="homes" id="homes">
-      <?php foreach ($optionsHomes as $optionsHome) : ?>
-        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
-      <?php endforeach; ?>
-    </select>
-    <br />
-    <label for="third_title">Troisième titre :</label>
-    <input type="text" name="third_title">
-    <br />
-    <button type="submit" name="createNewArticle">Ajouter un nouvel article</button>
-    <br />
-    <?php echo $messageArticle ?>
-  </form>
-  <br />
-  <br />
-  <br />
-  <h3>Modifier un habitat / article</h3>
-  <form action="" method="POST" id="update_form" enctype="multipart/form-data">
-    <label for="habitat">Selectionner l'habitat à modifier : </label>
-    <select name="habitat" id="habitat">
-      <?php foreach ($optionsHomes as $optionsHome) : ?>
-        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
-      <?php endforeach; ?>
-    </select>
-    <br />
-    <label for="choose">Que souhaitez-vous modifier : </label>
-    <select name="choose" id="choose">
-      <option value="">Choix par défaut</option>
-      <option value="1">Le nom de l'habitat</option>
-      <option value="2">La photo principal</option>
-      <option value="3">La photo secondaire</option>
-      <option value="4">Le titre principal</option>
-      <option value="5">Le second titre</option>
-      <option value="6">Le contenu</option>
-      <option value="7">Le troisième titre</option>
-      <option value="8">L'image de l'accueil</option>
-      <option value="9">Le nom pour l'accueil</option>
-    </select>
-    <div id="chooseAdmin"></div>
-    <br />
-    <button type="submit" name="updateHome">Modifier l'habitat</button>
-    <br />
-    <?php echo $updateMessage ?>
-  </form>
-  <br />
-  <br />
-  <br />
-  <h3>Suppression d'un habitat / article </h3>
-  <form action="" method="POST" id="update_form" onsubmit="return confirmDelete()">
-    <label for="delete_habitat">Supprimer l'habitat : </label>
-    <select name="delete_habitat" id="habitat">
-      <?php foreach ($optionsHomes as $optionsHome) : ?>
-        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
-      <?php endforeach; ?>
-    </select>
-    <br />
-    <button type="submit" name="deleteHome">Supprimer l'habitat</button>
-    <br />
-    <?php echo $messageDeleteHome ?>
-  </form>
-
+    <section class="col-md-6 delete_article">
+      <h3>Suppression d'un habitat / article </h3>
+      <form action="" method="POST" id="update_form" onsubmit="return confirmDelete()">
+        <label for="delete_habitat">Supprimer l'habitat : </label>
+        <select name="delete_habitat" id="habitat">
+          <?php foreach ($optionsHomes as $optionsHome) : ?>
+            <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+          <?php endforeach; ?>
+        </select>
+        <br />
+        <button type="submit" name="deleteHome" class="btn btn-danger">Supprimer l'habitat</button>
+        <br />
+        <?php echo $messageDeleteHome ?>
+      </form>
+    </section>
+  </div>
   <script src="../js/admin_home.js"></script>
 </body>
 

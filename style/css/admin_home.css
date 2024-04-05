@@ -49,6 +49,63 @@ nav ul li a:hover {
   border: none;
 }
 
+h1{
+  text-align: center;
+  margin: 40px auto 40px auto;
+  font-size: 3.2rem;
+}
+
+section {
+  margin: 20px auto 20px auto;
+  padding: 10px;
+  border-radius: 30px;
+  width: 60%;
+  display: block;
+}
+
+.create_home{
+  background-color: #ff5e196a;
+}
+
+.create_article{
+  background-color: #20ff4159;
+}
+
+.update_article{
+  background-color: #3d2fff89;
+}
+
+.delete_article{
+  background-color: #9b9b9b84;
+}
+
+h3{
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+  margin-bottom: 40px;
+}
+
+label{
+  padding-left: 20px;
+  padding-bottom: 10px;
+  font-weight: 700;
+  display: block;
+}
+
+input, select, textarea{
+  margin-left: 30px;
+  width: 80%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.btn{
+margin: 30px 0 20px 40px;
+}
+
+
 @media screen and (max-width: 767px) {
   #icon {
     margin-top: 10px;
@@ -91,5 +148,26 @@ nav ul li a:hover {
 
   nav ul li a {
     font-weight: normal;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  
+  label{
+    padding-left: 10px;
+  }
+
+  .btn{
+    float: none;
+    margin-left: 50px;
+    width: 80%;
+  }
+
+  h1{
+    font-size: 2rem;
   }
 }

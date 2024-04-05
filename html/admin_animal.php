@@ -72,7 +72,7 @@ if (isset($_POST['logout'])) {
       </form>
     </nav>
   </header>
-  <h1>Modification des habitats et des animaux</h1>
+  <h1>Gestion des animaux</h1>
 
   <section class="create_animal">
     <h3>Créer un animal </h3>
@@ -126,6 +126,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <h3>Modifier un animal </h3>
     <form action="" method="POST" enctype="multipart/form-data" id="form_update_animal">
       <label for="choice_animal">Choissisez votre animal :</label>
+      <br />
       <select name="choice_animal" id="choice_animal">
         <?php foreach ($viewAllAnimals as $viewAnimal) : ?>
           <option value="<?php echo $viewAnimal['id_animal']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
@@ -133,6 +134,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       </select>
       <br />
       <label for="attribut_animal">Que souhaitez-vous modifier :</label>
+      <br />
       <select name="attribut_animal" id="attribut_animal">
         <option value="0"></option>
         <option value="1">Son nom</option>
@@ -144,12 +146,16 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
         <option value="7">Son nom commun</option>
       </select>
       <div id="result_value"></div>
-      <div id="show_choice">
+      <div id="show_choice_origin">
+        <label for="update_origin">Sa nouvelle origine : </label>
         <select name="update_origin" id="option_location">
           <?php foreach ($optionsLocations as $optionsLocation) : ?>
             <option value="<?php echo $optionsLocation['id_location']; ?>"><?php echo $optionsLocation['NAME']; ?></option>
           <?php endforeach; ?>
         </select>
+      </div>
+      <div id="show_choice_home">
+        <label for="update_habitat">Son nouveau habitat : </label>
         <select name="update_habitat" id="option_home">
           <?php foreach ($optionsHomes as $optionsHome) : ?>
             <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
@@ -157,7 +163,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
         </select>
       </div>
       <br />
-      <button type="submit" name="formUpdateAnimal">Modifier l'animal</button>
+      <button type="submit" name="formUpdateAnimal" class="btn btn-secondary">Modifier l'animal</button>
       <br />
       <?php echo isset($updateAnimal) ? $updateAnimal : '' ?>
     </form>
@@ -174,7 +180,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       </select>
       <br />
       <div id="confirm_message"></div>
-      <button type="submit" name="formDeleteAnimal">Supprimer l'animal</button>
+      <button type="submit" name="formDeleteAnimal" class="btn btn-danger">Supprimer l'animal</button>
       <br />
       <?php echo isset($message) ? $message : '' ?>
     </form>

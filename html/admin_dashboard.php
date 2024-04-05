@@ -36,6 +36,18 @@ if (isset($_POST['logout'])) {
   exit();
 }
 
+// MongoDB library
+
+// require '../divers/mongo-php-library-master';
+
+$client = new MongoDB\Client("mongodb://localhost:27017");
+$database = $client->zoo;
+$collection = $database->animals;
+
+$result = $collection->insertOne(['name' => 'John', 'age' => 30]);
+
+var_dump($result->getInsertedId());
+
 ?>
 
 <html lang="en">

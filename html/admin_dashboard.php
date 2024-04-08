@@ -38,7 +38,9 @@ if (isset($_POST['logout'])) {
 
 // MongoDB library
 
-// require '../divers/mongo-php-library-master';
+require_once '../divers/mongo-php-library-master/src/Client.php';
+require_once '../divers/mongo-php-library-master/src/functions.php';
+require_once '../divers/mongo-php-library-master/src/'
 
 $client = new MongoDB\Client("mongodb://localhost:27017");
 $database = $client->zoo;

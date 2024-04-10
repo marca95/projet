@@ -1,0 +1,12 @@
+{
+  "description": "Mon projet utilisant MongoDB avec PHP",
+  "type": "project",
+  "require": {
+      "mongodb/mongodb": "^1.18"
+  },
+  "autoload": {
+      "psr-4": {
+          "MonProjet\\": "src/"
+      }
+  }
+}

@@ -22,6 +22,33 @@ $viewServices = $pdo->prepare('SELECT * FROM services');
 $viewServices->execute();
 $services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
 
+
+// MongoDB library
+require '../vendor/autoload.php';
+
+use MongoDB\Client;
+use MongoDB\BSON\ObjectID;
+
+// Connexion à MongoDB
+$mongoClient = new MongoDB\Client("mongodb://localhost:27017");
+$collection = $mongoClient->zoo->animals;
+
+if (isset($_GET['id_animal'])) {
+  $id_animal = $_GET['id_animal'];
+
+  // Mettre à jour le nombre de vues de l'animal correspondant
+  $updateResult = $collection->updateOne(
+    ['id_animal' => $id_animal],
+    ['$inc' => ['nbr_view' => 1]]
+  );
+
+  if ($updateResult->getModifiedCount() === 1) {
+    echo "Le nombre de vues de l'animal a été incrémenté avec succès.";
+  } else {
+    echo "Une erreur s'est produite lors de l'incrémentation du nombre de vues de l'animal.";
+  }
+}
+
 ?>
 
 <html lang="en">
@@ -76,6 +103,7 @@ $services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       animals.name AS prenom, 
       animals.type, 
       animals.race, 
+      animals.id_animal, 
       locations.NAME AS pays, 
       states.state, 
       states.detail,
@@ -122,7 +150,7 @@ $services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
                   foreach ($animals as $animal) :
                     if ($animal['id_home'] == $article['id_home'] && !in_array($animal['type'], $animal_types)) :
                   ?>
-                      <li class="li_animals" onclick="toggleImg('<?php echo $animal['type']; ?>')"><?php echo $animal['categorie']; ?></li>
+                      <li class="li_animals" onclick="toggleImg('<?php echo $animal['type']; ?>'); showId('<?php echo $animal['id_animal']; ?>')"><?php echo $animal['categorie']; ?></li>
                   <?php
                       $animal_types[] = $animal['type'];
                     endif;
@@ -236,6 +264,24 @@ $services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
     </section>
   </footer>
   <script src="../js/habitats.js"></script>
+  <script>
+    function showId(animalId) {
+      console.log("ID de l'animal :", animalId);
+
+      // Envoi de l'ID de l'animal au serveur PHP pour l'incrémentation
+      fetch(`habitats.php?id_animal=${animalId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Une erreur s\'est produite.');
+          }
+          return response.text();
+        })
+        .catch(error => {
+          console.error('Erreur :', error);
+        });
+    }
+  </script>
+
 </body>
 
 </html>

@@ -37,18 +37,15 @@ if (isset($_POST['logout'])) {
 }
 
 // MongoDB library
+require '../vendor/autoload.php';
 
-require_once '../divers/mongo-php-library-master/src/Client.php';
-require_once '../divers/mongo-php-library-master/src/functions.php';
-require_once '../divers/mongo-php-library-master/src/'
+use MongoDB\Client;
 
 $client = new MongoDB\Client("mongodb://localhost:27017");
 $database = $client->zoo;
 $collection = $database->animals;
 
-$result = $collection->insertOne(['name' => 'John', 'age' => 30]);
-
-var_dump($result->getInsertedId());
+$cursor = $collection->find();
 
 ?>
 
@@ -80,6 +77,26 @@ var_dump($result->getInsertedId());
       </form>
     </nav>
   </header>
+  <main>
+
+
+
+    <?php
+
+    // Parcourir le curseur pour afficher le nom de chaque animal
+    foreach ($cursor as $document) {
+      if (isset($document['name'])) {
+        echo $document['name'] . ' (' . $document['type'] . "), \n";
+      } else {
+        echo ' (' . $document['type'] . " ), \n";
+      }
+    }
+
+
+    ?>
+
+
+  </main>
   <script src="../js/admin_dashboard.js">
   </script>
 </body>

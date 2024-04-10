@@ -1,27 +1,10 @@
 <!DOCTYPE html>
 
 <?php
-// session_start();
-$userDB = 'root';
-$passwordDB = 'pierre2';
 
-try {
-  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
-  // Gestion des erreurs
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo "Erreur : " . $e->getMessage();
-};
-// Update hours
-$horaires = $pdo->prepare('SELECT * FROM horaires');
-$horaires->execute();
-$sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
-
-// Update services
-$viewServices = $pdo->prepare('SELECT * FROM services');
-$viewServices->execute();
-$services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
-
+require_once '../mariadb/connect.php';
+require_once '../mariadb/hours.php';
+require_once '../mariadb/services.php';
 
 // MongoDB library
 require '../vendor/autoload.php';
@@ -33,12 +16,12 @@ use MongoDB\BSON\ObjectID;
 $mongoClient = new MongoDB\Client("mongodb://localhost:27017");
 $collection = $mongoClient->zoo->animals;
 
-if (isset($_GET['id_animal'])) {
-  $id_animal = $_GET['id_animal'];
+if (isset($_GET['type'])) {
+  $animal_type = $_GET['type'];
 
   // Mettre à jour le nombre de vues de l'animal correspondant
   $updateResult = $collection->updateOne(
-    ['id_animal' => $id_animal],
+    ['type' => $animal_type],
     ['$inc' => ['nbr_view' => 1]]
   );
 
@@ -150,7 +133,7 @@ if (isset($_GET['id_animal'])) {
                   foreach ($animals as $animal) :
                     if ($animal['id_home'] == $article['id_home'] && !in_array($animal['type'], $animal_types)) :
                   ?>
-                      <li class="li_animals" onclick="toggleImg('<?php echo $animal['type']; ?>'); showId('<?php echo $animal['id_animal']; ?>')"><?php echo $animal['categorie']; ?></li>
+                      <li class="li_animals" onclick="toggleImg('<?php echo $animal['type']; ?>'); showType('<?php echo $animal['type']; ?>')"><?php echo $animal['categorie']; ?></li>
                   <?php
                       $animal_types[] = $animal['type'];
                     endif;
@@ -265,11 +248,8 @@ if (isset($_GET['id_animal'])) {
   </footer>
   <script src="../js/habitats.js"></script>
   <script>
-    function showId(animalId) {
-      console.log("ID de l'animal :", animalId);
-
-      // Envoi de l'ID de l'animal au serveur PHP pour l'incrémentation
-      fetch(`habitats.php?id_animal=${animalId}`)
+    function showType(animalType) {
+      fetch(`habitats.php?type=${animalType}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Une erreur s\'est produite.');

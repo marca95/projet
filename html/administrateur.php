@@ -1,183 +1,13 @@
 <!DOCTYPE html>
 <?php
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-require '../divers/PHPMailer-master/src/Exception.php';
-require '../divers/PHPMailer-master/src/PHPMailer.php';
-require '../divers/PHPMailer-master/src/SMTP.php';
-
-// Connect DB
-$userDB = 'root';
-$passwordDB = 'pierre2';
-
-try {
-  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
-  // Gestion des erreurs
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo "Erreur : " . $e->getMessage();
-};
-
-// Login session 
-
 session_start();
-$request = $pdo->prepare('SELECT * FROM users WHERE id_role = 1');
-$request->execute();
-$user = $request->fetch();
-if (
-  isset($_SESSION['id_role'], $_SESSION['username'], $_SESSION['password']) &&
-  $_SESSION['id_role'] == 1 &&
-  $_SESSION['username'] == $user['username'] &&
-  password_verify($_SESSION['password'], $user['password'])
-) {
-} else {
-  header("Location: connexion.php");
-  exit();
-}
 
+require_once '../mariadb/connect.php';
+require_once '../mariadb/login_admin.php';
+require_once '../mariadb/set_hours.php';
+require_once '../mariadb/disconnect.php';
+require_once '../mariadb/register.php';
 
-// Create registration form
-if (isset($_POST['inscription'])) {
-  // Check DB only one unique username
-  $onlyOneUsername = $pdo->prepare('SELECT * FROM users WHERE username = :username');
-  $onlyOneUsername->execute(['username' => $_POST['username']]);
-  $oneUsername = $onlyOneUsername->rowCount();
-  // Check DB only one unique mail
-  $onlyOneEmail = $pdo->prepare('SELECT * FROM users WHERE email = :email');
-  $onlyOneEmail->execute(['email' => $_POST['email']]);
-  $oneEmail = $onlyOneEmail->rowCount();
-
-  if ($oneUsername > 0) {
-    $error = 'Username déjà existant dans la base de données.';
-  } else if ($oneEmail > 0) {
-    $error = 'Email déja existant dans la base de données.';
-  } else {
-    $name = $_POST['name'];
-    $first_name = $_POST['first_name'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $id_role = $_POST['id_role'];
-    $birthday = $_POST['birthday'];
-    $hire = $_POST['hire'];
-
-    $userOnlyAdmin = $pdo->prepare('SELECT COUNT(*) FROM users WHERE id_role = 1');
-    $userOnlyAdmin->execute();
-    $count = $userOnlyAdmin->fetchColumn();
-
-    if ($id_role == 1 && $count > 0) {
-      $error = 'Il ne peut y avoir qu\'un seul administrateur.';
-    } else {
-      $request = $pdo->prepare('INSERT INTO users(name, first_name, username, email, password, id_role, birthday, hire) VALUES (:name, :first_name, :username, :email, :password, :id_role, :birthday, :hire)');
-      $request->execute(
-        array(
-          'name' => $name,
-          'first_name' => $first_name,
-          'username' => $username,
-          'email' => $email,
-          'password' => $password,
-          'id_role' => $id_role,
-          'birthday' => $birthday,
-          'hire' => $hire
-        )
-      );
-      $successSignUp = 'Inscription réussie.';
-
-      // send mail for username and password
-      $subject = 'Données du nouveau compte chez Arcadia';
-      $contentEmail = "Nom: $name\n";
-      $contentEmail .= "Prénom: $first_name\n";
-      $contentEmail .= "Username: $username\n";
-      $contentEmail .= "Role: $id_role\n";
-      $contentEmail .= "Date d'anniversaire: $birthday\n";
-      $contentEmail .= "Engagé(e) le: $hire\n";
-      $contentEmail .= "Pour le mot de passe, veuillez vous adressez au directeur du zoo.\n";
-
-      $mail = new PHPMailer(true);
-
-      try {
-        // Paramètres SMTP pour Gmail
-        // $mail->SMTPDebug = 1; If I need disable
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'monzooarcadia@gmail.com';
-        // Password secure application
-        $mail->Password   = 'pboc fkwe gsyu hplk';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
-        $mail->CharSet = 'UTF-8';
-        // Destinataire
-        $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia Zoo');
-        $mail->addAddress('pierre.majerus@outlook.be', $name); // I need exist adress, warning my users are not really
-
-        // Contenu du message
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body    = $contentEmail;
-
-        $mail->send();
-        $successMail = 'Vous avez reçu un email avec vos données personnelles.';
-      } catch (Exception $e) {
-        $error = 'Il y a eu une erreur lors de l\'envoi du mail : ' + $mail->ErrorInfo;
-      }
-    }
-  }
-}
-// Update hourly
-
-$horaires = $pdo->prepare('SELECT * FROM horaires');
-$horaires->execute();
-$sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
-
-$succesHour = '';
-
-if (isset($_POST['setHours'])) {
-
-  $newMondayStart = isset($_POST['mondayStart']) ? $_POST['mondayStart'] : '';
-  $newMondayEnd = isset($_POST['mondayEnd']) ? $_POST['mondayEnd'] : '';
-  $newMondayClosed = isset($_POST['mondayClosed']) ? $_POST['mondayClosed'] : '';
-  $newTuesdayStart = isset($_POST['tuesdayStart']) ? $_POST['tuesdayStart'] : '';
-  $newTuesdayEnd = isset($_POST['tuesdayEnd']) ? $_POST['tuesdayEnd'] : '';
-  $newTuesdayClosed = isset($_POST['tuesdayClosed']) ? $_POST['tuesdayClosed'] : '';
-  $newWednesdayStart = isset($_POST['wednesdayStart']) ? $_POST['wednesdayStart'] : '';
-  $newWednesdayEnd = isset($_POST['wednesdayEnd']) ? $_POST['wednesdayEnd'] : '';
-  $newWednesdayClosed = isset($_POST['wednesdayClosed']) ? $_POST['wednesdayClosed'] : '';
-  $newThursdayStart = isset($_POST['thursdayStart']) ? $_POST['thursdayStart'] : '';
-  $newThursdayEnd = isset($_POST['thursdayEnd']) ? $_POST['thursdayEnd'] : '';
-  $newThursdayClosed = isset($_POST['thursdayClosed']) ? $_POST['thursdayClosed'] : '';
-  $newFridayStart = isset($_POST['fridayStart']) ? $_POST['fridayStart'] : '';
-  $newFridayEnd = isset($_POST['fridayEnd']) ? $_POST['fridayEnd'] : '';
-  $newFridayClosed = isset($_POST['fridayClosed']) ? $_POST['fridayClosed'] : '';
-  $newSaturdayStart = isset($_POST['saturdayStart']) ? $_POST['saturdayStart'] : '';
-  $newSaturdayEnd = isset($_POST['saturdayEnd']) ? $_POST['saturdayEnd'] : '';
-  $newSaturdayClosed = isset($_POST['saturdayClosed']) ? $_POST['saturdayClosed'] : '';
-  $newSundayStart = isset($_POST['sundayStart']) ? $_POST['sundayStart'] : '';
-  $newSundayEnd = isset($_POST['sundayEnd']) ? $_POST['sundayEnd'] : '';
-  $newSundayClosed = isset($_POST['sundayClosed']) ? $_POST['sundayClosed'] : '';
-
-  $stmt = $pdo->prepare('UPDATE horaires SET start_time = :start_time, end_time = :end_time, is_closed = :is_closed WHERE day_week = :day_week');
-
-  $stmt->execute(['start_time' => $newMondayStart, 'end_time' => $newMondayEnd, 'is_closed' => $newMondayClosed, 'day_week' => 'Lundi']);
-  $stmt->execute(['start_time' => $newTuesdayStart, 'end_time' => $newTuesdayEnd, 'is_closed' => $newTuesdayClosed, 'day_week' => 'Mardi']);
-  $stmt->execute(['start_time' => $newWednesdayStart, 'end_time' => $newWednesdayEnd, 'is_closed' => $newWednesdayClosed, 'day_week' => 'Mercredi']);
-  $stmt->execute(['start_time' => $newThursdayStart, 'end_time' => $newThursdayEnd, 'is_closed' => $newThursdayClosed, 'day_week' => 'Jeudi']);
-  $stmt->execute(['start_time' => $newFridayStart, 'end_time' => $newFridayEnd, 'is_closed' => $newFridayClosed, 'day_week' => 'Vendredi']);
-  $stmt->execute(['start_time' => $newSaturdayStart, 'end_time' => $newSaturdayEnd, 'is_closed' => $newSaturdayClosed, 'day_week' => 'Samedi']);
-  $stmt->execute(['start_time' => $newSundayStart, 'end_time' => $newSundayEnd, 'is_closed' => $newSundayClosed, 'day_week' => 'Dimanche']);
-
-  $succesHour = 'Enregistrement validé.';
-}
-
-// btn logout session
-if (isset($_POST['logout'])) {
-  session_destroy();
-  header("Location: connexion.php");
-  exit();
-}
 ?>
 
 
@@ -189,7 +19,7 @@ if (isset($_POST['logout'])) {
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="../style/css/administration.css" rel="stylesheet">
-  <link href="../img/logo.png" rel="icon">
+  <link href="../img/accueil/logo.png" rel="icon">
 </head>
 
 <body>

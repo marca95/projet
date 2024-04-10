@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 
 <?php
-$userDB = 'root';
-$passwordDB = 'pierre2';
 
-try {
-  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
-  // Gestion des erreurs
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo "Erreur : " . $e->getMessage();
-};
+require_once '../mariadb/connect.php';
+require_once '../mariadb/hours.php';
+require_once '../mariadb/services.php';
+require_once '../mariadb/homes.php';
 
 // recovers the first animal of each house 
 $viewAnimals = $pdo->prepare('SELECT * FROM animals GROUP BY id_home');
 $viewAnimals->execute();
 $animals = $viewAnimals->fetchAll(PDO::FETCH_ASSOC);
 
-$viewHomes = $pdo->prepare('SELECT * FROM homes');
-$viewHomes->execute();
-$homes = $viewHomes->fetchAll(PDO::FETCH_ASSOC);
-
 $viewServices = $pdo->prepare('SELECT * FROM accueil_services');
 $viewServices->execute();
-$services = $viewServices->fetchAll(PDO::FETCH_ASSOC);
+$accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
 
-$manageServices = $pdo->prepare('SELECT * FROM services');
-$manageServices->execute();
-$setServices = $manageServices->fetchAll(PDO::FETCH_ASSOC);
-
-$horaires = $pdo->prepare('SELECT * FROM horaires');
-$horaires->execute();
-$sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <html lang="en">
@@ -119,12 +103,12 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
       <div class="container mt-1 pb-1">
         <p class="text-center m-4 fs-2">Nous vous proposons :</p>
 
-        <?php foreach ($services as $service) : ?>
+        <?php foreach ($accueilservices as $service) : ?>
           <div class="row text-center mb-4 align-items-center">
             <img class="img_service col-12 col-lg-5 mt-2 p-0" src="<?php echo $service['img1'] ?>">
             <div class="col-sm-4 col-lg-3">
               <p class="fs-6"><?php echo $service['content'] ?></p>
-              <?php foreach ($setServices as $setService) : ?>
+              <?php foreach ($services as $setService) : ?>
                 <?php if ($setService['id_service'] === $service['id_service']) : ?>
                   <a href="./services.php#<?php echo $setService['NAME'] ?>">
                     <button type="button" class="service_btn btn btn-success mt-4 mb-2"><?php echo $service['title_btn'] ?></button>
@@ -192,7 +176,7 @@ $sethoraires = $horaires->fetchAll(PDO::FETCH_ASSOC);
           <ul class="footer-ul">
             <li class="footer-titre">Nos services</li>
             <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
-            <?php foreach ($setServices as $setService) : ?>
+            <?php foreach ($services as $setService) : ?>
               <li class="footer-li"><a class="footer-a" href="services.php#<?php echo $setService['NAME'] ?>"><?php echo $setService['main_title'] ?></a></li>
             <?php endforeach; ?>
           </ul>

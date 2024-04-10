@@ -1,40 +1,10 @@
 <!DOCTYPE html>
 <?php
 session_start();
-// Connect DB
-$userDB = 'root';
-$passwordDB = 'pierre2';
 
-try {
-  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
-  // Gestion des erreurs
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo "Erreur : " . $e->getMessage();
-};
-
-// Login session 
-
-$request = $pdo->prepare('SELECT * FROM users WHERE id_role = 1');
-$request->execute();
-$user = $request->fetch();
-if (
-  isset($_SESSION['id_role'], $_SESSION['username'], $_SESSION['password']) &&
-  $_SESSION['id_role'] == 1 &&
-  $_SESSION['username'] == $user['username'] &&
-  password_verify($_SESSION['password'], $user['password'])
-) {
-} else {
-  header("Location: connexion.php");
-  exit();
-}
-
-// btn logout session
-if (isset($_POST['logout'])) {
-  session_destroy();
-  header("Location: connexion.php");
-  exit();
-}
+require_once '../mariadb/connect.php';
+require_once '../mariadb/login_admin.php';
+require_once '../mariadb/disconnect.php';
 
 // MongoDB library
 require '../vendor/autoload.php';
@@ -78,24 +48,47 @@ $cursor = $collection->find();
     </nav>
   </header>
   <main>
+    <h1>Dashboard vue animaux</h1>
 
+    <table>
+      <thead class="head_table">
+        <tr>
+          <th>Type d'animal :</th>
+          <th>Nombres de vues :</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $animals = array();
+        foreach ($cursor as $document) {
+          $animals[] = $document;
+        }
 
+        // Function compare growing nbr
+        function compareByNbrView($a, $b)
+        {
+          return $b['nbr_view'] - $a['nbr_view'];
+        }
 
-    <?php
+        usort($animals, 'compareByNbrView');
+        $encounteredCommonNames = array();
 
-    // Parcourir le curseur pour afficher le nom de chaque animal
-    foreach ($cursor as $document) {
-      if (isset($document['name'])) {
-        echo $document['name'] . ' (' . $document['type'] . "), \n";
-      } else {
-        echo ' (' . $document['type'] . " ), \n";
-      }
-    }
+        foreach ($animals as $document) {
+          $commonName = $document['commonName'];
 
-
-    ?>
-
-
+          if (!in_array($commonName, $encounteredCommonNames)) {
+        ?>
+            <tr>
+              <td><?php echo $commonName ?></td>
+              <td><?php echo $document['nbr_view'] ?></td>
+            </tr>
+        <?php
+            $encounteredCommonNames[] = $commonName;
+          }
+        }
+        ?>
+      </tbody>
+    </table>
   </main>
   <script src="../js/admin_dashboard.js">
   </script>

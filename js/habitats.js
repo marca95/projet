@@ -145,8 +145,8 @@
     }
     // Gestionnaire d'événements pour le clic sur $animal['type']
 
-    function showId(animalId) {
-      fetch(`habitats.php?id_animal=${animalId}`)
+    function showType(animalType) {
+      fetch(`habitats.php?type=${animalType}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Une erreur s\'est produite.');

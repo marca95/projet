@@ -49,47 +49,101 @@ nav ul li a:hover {
   border: none;
 }
 
-@media screen and (max-width: 767px) {
-  #icon {
-    margin-top: 10px;
-    margin-left: 10px;
-    display: block;
-  }
+h1{
+  text-align: center;
+  margin: 40px auto 40px auto;
+  font-size: 3.2rem;
+}
 
-  #icon:before {
-    content: "\2630";
-    color: black;
-  }
-
-  .active #icon:before {
-    content: "\2715";
-    color: black;
-  }
-
-  nav.active ul {
-    left: -60px;
-    top: 40px;
-    width: 30%;
-  }
-
-  .navigation {
-    position: absolute;
-    background: maroon;
-    right: 100%;
-    top: 40px;
-    flex-direction: column;
-    width: 25%;
+  table{
+    width: 90%;
+    border: 5px solid black;
+    height: auto;
+    margin: 0 auto;
+    border-collapse: collapse;
+  } 
+  
+  .head_table{
+    background-color: rgba(183, 183, 183, 0.5);
     text-align: center;
-    transition: 0.3s;
+    font-size: 1.2rem;
+  }
+  
+  th, td {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 8px;
+    font-weight: 700;
   }
 
-  nav ul li {
-    text-align: center;
-    width: 100%;
-    padding: 10px;
+  tr:nth-child(even) {
+    background-color: rgba(71, 71, 255, 0.44);
+  }
+  
+  tbody > tr:nth-child(odd) {
+    background-color: rgba(86, 255, 86, 0.44);
+  } 
+
+  tr:nth-child(0){
+    background-color: rgba(183, 183, 183, 0.5);
   }
 
-  nav ul li a {
-    font-weight: normal;
+  @media screen and (max-width: 767px) {
+    #icon {
+      margin-top: 10px;
+      margin-left: 10px;
+      display: block;
+    }
+  
+    #icon:before {
+      content: "\2630";
+      color: black;
+    }
+  
+    .active #icon:before {
+      content: "\2715";
+      color: black;
+    }
+  
+    nav.active ul {
+      left: -60px;
+      top: 40px;
+      width: 30%;
+    }
+  
+    .navigation {
+      position: absolute;
+      background: maroon;
+      right: 100%;
+      top: 40px;
+      flex-direction: column;
+      width: 25%;
+      text-align: center;
+      transition: 0.3s;
+    }
+  
+    nav ul li {
+      text-align: center;
+      width: 100%;
+      padding: 10px;
+    }
+  
+    nav ul li a {
+      font-weight: normal;
+    }
   }
+
+@media screen and (max-width: 650) {
+  h1{
+    font-size: 2.6rem;
+  }
+  .head_table{
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 576) {
+h1{
+  font-size: 2rem;
+}
 }

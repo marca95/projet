@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <?php
 session_start();
-// Connect DB
-$userDB = 'root';
-$passwordDB = 'pierre2';
 
-try {
-  $pdo = new PDO('mysql:host=localhost;port=5353;dbname=zoo', $userDB, $passwordDB);
-  // Gestion des erreurs
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo "Erreur : " . $e->getMessage();
-};
-
-// Login session 
-
-$request = $pdo->prepare('SELECT * FROM users WHERE id_role = 1');
-$request->execute();
-$user = $request->fetch();
-if (
-  isset($_SESSION['id_role'], $_SESSION['username'], $_SESSION['password']) &&
-  $_SESSION['id_role'] == 1 &&
-  $_SESSION['username'] == $user['username'] &&
-  password_verify($_SESSION['password'], $user['password'])
-) {
-} else {
-  header("Location: connexion.php");
-  exit();
-}
+require_once '../mariadb/connect.php';
+require_once '../mariadb/login_admin.php';
+require_once '../mariadb/disconnect.php';
 
 require_once('../form_admin/create_animal.php');
 require_once('../form_admin/update_animal.php');
 require_once('../form_admin/delete_animal.php');
 
-// btn logout session
-if (isset($_POST['logout'])) {
-  session_destroy();
-  header("Location: connexion.php");
-  exit();
+
+// MongoDB library
+require '../vendor/autoload.php';
+
+use MongoDB\Client;
+
+$client = new MongoDB\Client("mongodb://localhost:27017");
+$database = $client->zoo;
+$collection = $database->animals;
+
+// Vérification et ajout de l'animal
+if (isset($_POST['createNewAnimal'])) {
+  $name = $_POST['name'];
+  $type = $_POST['type'];
+  $commonName = $_POST['commonName'];
+
+  // Incrémenter le compteur d'identifiant
+  $result = $database->command([
+    'findAndModify' => 'counters',
+    'query' => ['_id' => 'id_animal'],
+    'update' => ['$inc' => ['seq' => 1]],
+    'new' => true,
+  ]);
+
+  // Vérifiez si la mise à jour a réussi
+  if (isset($result->value['seq'])) {
+    $id_animal = $result->value['seq'];
+    // Utilisez $id_animal comme nouvel identifiant incrémenté
+  } else {
+    // Gérer l'erreur si la mise à jour a échoué
+    echo "Erreur lors de l'incrémentation de l'identifiant de l'animal.";
+  }
+
+  // Insérer l'animal dans la collection MongoDB
+  $insertResult = $collection->insertOne([
+    'id_animal' => $id_animal,
+    'name' => $name,
+    'type' => $type,
+    'commonName' => $commonName,
+    'nbr_view' => 1
+  ]);
+
+  if ($insertResult->getInsertedCount() === 1) {
+    echo "L'animal a été ajouté avec succès à la base de données.";
+  } else {
+    echo "Une erreur s'est produite lors de l'ajout de l'animal dans MongoDB.";
+  }
 }
 
 ?>
+
 <html lang="en">
 
 <head>
@@ -120,7 +140,6 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <?php echo isset($inscriptionAnimal) ? $inscriptionAnimal : '' ?>
     </form>
   </section>
-
 
   <section class="update_animal">
     <h3>Modifier un animal </h3>

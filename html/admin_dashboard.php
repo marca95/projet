@@ -58,36 +58,37 @@ $cursor = $collection->find();
         </tr>
       </thead>
       <tbody>
+
         <?php
-        $animals = array();
+        $nbrViews = [];
+
         foreach ($cursor as $document) {
-          $animals[] = $document;
-        }
-
-        // Function compare growing nbr
-        function compareByNbrView($a, $b)
-        {
-          return $b['nbr_view'] - $a['nbr_view'];
-        }
-
-        usort($animals, 'compareByNbrView');
-        $encounteredCommonNames = array();
-
-        foreach ($animals as $document) {
           $commonName = $document['commonName'];
+          $nbrView = $document['nbr_view'];
 
-          if (!in_array($commonName, $encounteredCommonNames)) {
-        ?>
-            <tr>
-              <td><?php echo $commonName ?></td>
-              <td><?php echo $document['nbr_view'] ?></td>
-            </tr>
-        <?php
-            $encounteredCommonNames[] = $commonName;
+          $nbrViews[$commonName] = ($nbrViews[$commonName] ?? 0) + $nbrView;
+        }
+
+        foreach ($nbrViews as $commonName => $views) {
+          if (count(array_keys($nbrViews, $commonName)) > 1) {
+            $views = ceil($views / 2);
           }
         }
+
+        arsort($nbrViews);
+
+        foreach ($nbrViews as $commonName => $nbrView) {
         ?>
+          <tr>
+            <td><?= $commonName ?> </td>
+            <td><?= $nbrView ?> </td>
+          </tr>
+        <?php
+        }
+        ?>
+
       </tbody>
+
     </table>
   </main>
   <script src="../js/admin_dashboard.js">

@@ -2,10 +2,12 @@
 <?php
 session_start();
 
+// Maria DB
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_admin.php';
 require_once '../mariadb/disconnect.php';
 
+// All forms Admin
 require_once('../form_admin/create_animal.php');
 require_once('../form_admin/update_animal.php');
 require_once('../form_admin/delete_animal.php');
@@ -14,10 +16,9 @@ require_once('../form_admin/delete_animal.php');
 // MongoDB library
 require '../vendor/autoload.php';
 
-use MongoDB\Client;
+$mongoClient = new MongoDB\Client("mongodb://localhost:27017");
 
-$client = new MongoDB\Client("mongodb://localhost:27017");
-$database = $client->zoo;
+$database = $mongoClient->selectDatabase("zoo");
 $collection = $database->animals;
 
 // Vérification et ajout de l'animal
@@ -28,28 +29,24 @@ if (isset($_POST['createNewAnimal'])) {
 
   // Incrémenter le compteur d'identifiant
   $result = $database->command([
-    'findAndModify' => 'counters',
+    'findAndModify' => 'id_animal',
     'query' => ['_id' => 'id_animal'],
     'update' => ['$inc' => ['seq' => 1]],
     'new' => true,
   ]);
 
-  // Vérifiez si la mise à jour a réussi
   if (isset($result->value['seq'])) {
     $id_animal = $result->value['seq'];
-    // Utilisez $id_animal comme nouvel identifiant incrémenté
   } else {
-    // Gérer l'erreur si la mise à jour a échoué
     echo "Erreur lors de l'incrémentation de l'identifiant de l'animal.";
   }
 
-  // Insérer l'animal dans la collection MongoDB
   $insertResult = $collection->insertOne([
     'id_animal' => $id_animal,
     'name' => $name,
     'type' => $type,
     'commonName' => $commonName,
-    'nbr_view' => 1
+    'nbr_view' => 0
   ]);
 
   if ($insertResult->getInsertedCount() === 1) {
@@ -58,6 +55,26 @@ if (isset($_POST['createNewAnimal'])) {
     echo "Une erreur s'est produite lors de l'ajout de l'animal dans MongoDB.";
   }
 }
+
+// DELETE WITH MONGODB 
+
+if (isset($_POST['formDeleteAnimal'])) {
+  if (isset($_POST['animal_delete'])) {
+    $selectedAnimal = explode('|', $_POST['animal_delete']);
+    $name = $selectedAnimal[1];
+    $type = $selectedAnimal[2];
+
+    $collection->deleteOne([
+      "name" => $name,
+      "type" => $type
+    ]);
+
+    $message = "L'animal $name de type $type a été supprimé avec succès dans la base de données MongoDB.";
+  } else {
+    $message = "Veuillez sélectionner un animal à supprimer.";
+  }
+}
+
 
 ?>
 
@@ -194,7 +211,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <label for="animal_delete">Quel animal voulez-vous supprimer?</label>
       <select name="animal_delete" id="choice_animal">
         <?php foreach ($viewAllAnimals as $viewAnimal) : ?>
-          <option value="<?php echo $viewAnimal['id_animal']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
+          <option value="<?php echo $viewAnimal['id_animal'] . '|' . $viewAnimal['name'] . '|' . $viewAnimal['type']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
         <?php endforeach; ?>
       </select>
       <br />

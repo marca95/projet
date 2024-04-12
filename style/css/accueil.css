@@ -128,14 +128,24 @@ cite {
   font-size: 1.2rem;
   }
 
+  .container-avis{
+    margin-bottom: 30px;
+  }
+
+  .container-avis1{
+    margin-bottom: 30px;
+    line-height: 30px;
+  }
+
 .container-titre:hover {
   opacity: 1; 
   background-color: #4545457a;
   border-radius: 10px;
   }
 
-.container-avis{
-  border-right: 1px solid rgba(205, 205, 205, 0.651) ;
+.avis{
+  font-size: 2.1rem;
+  text-decoration: underline;
 }
 
 .img_service {
@@ -268,10 +278,6 @@ cite {
     width: 20%;
     margin-bottom: 40px
   }
-
-.container-avis{
-    border-right: none ;
-  }
   
   .avis_para {
     justify-content: center;
@@ -314,11 +320,16 @@ cite {
   }
 
   .img-responsive {
-    width: 10%;
+    width: 30%;
   }
 
-  .avis_séparation1, .avis_séparation2{
-    height: 30vh;
+  .container-avis1{
+    margin-bottom: 20px;
+    height: auto;
+  }
+
+  .avis_séparation1{
+    height: auto;
   }
 
   .footer-titre {
@@ -365,6 +376,10 @@ cite {
     width: 40px;
   }
 
+  .avis{
+    font-size: 1.6rem;
+  }
+
   .img_presentation{
     height: 40vh;
   }
@@ -391,14 +406,6 @@ cite {
 
   .container-avis{
     border-width: 0px;
-  }
-
-  .avis_séparation1{
-    margin-bottom: 40px;
-  }
-
-  .avis_séparation2{
-    margin-top: 40px;
   }
 
   .footer-div {
@@ -493,7 +500,7 @@ cite {
    display: none; 
   }
 
-  .avis_séparation1, .avis_séparation2{
+  .avis_séparation1{
     font-size: 0.9rem;
   }
   

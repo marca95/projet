@@ -21,9 +21,9 @@ let errorDesc = document.getElementById('errorDesc');
 
 form.addEventListener('submit', (e) => {
   let usernameValue = username.value.trim();
-  let regexName = /^[a-zA-Z-\s]+$/;
+  let regexName = /^[a-zA-Z0-9\s.,;:'"éàè!?-]*$/;
   let descriptionValue = description.value.trim();
-  let regexDescription = /^[a-zA-Z0-9\s.,;:'"!?-]*$/;
+  let regexDescription = /^[a-zA-Z0-9\s.,;:'"éàè!?-]*$/;
   let maxwords = descriptionValue.split(/\s+/).length;
 
   // Validation name

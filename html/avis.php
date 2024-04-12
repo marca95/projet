@@ -5,6 +5,7 @@
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
+require_once '../mariadb/form_avis.php';
 
 ?>
 
@@ -43,24 +44,25 @@ require_once '../mariadb/services.php';
         <h2>Nous souhaitons avoir votre avis</h2>
       </div>
 
-      <form action="./accueil.php" method="POST" id="form">
+      <form action="" method="POST" id="form">
         <div class="formulaire">
           <div class="mb-3">
             <label for="name" class="form-label">Prénom :</label>
-            <input type="name" class="form-control" id="name">
+            <input type="name" name="name" class="form-control" id="name">
             <p id="errorName"></p>
           </div>
           <div class="mb-3">
             <label style="margin-bottom: 8px;" for="explication" form="form-label">Donnez nous votre avis :</label>
-            <textarea id="textarea" class="form-control" rows="10"></textarea>
+            <textarea id="textarea" name="explication" class="form-control" rows="10"></textarea>
             <p id="errorDesc"></p>
             <div class="form-text" id="condition">
               Vous ne pouvez pas dépasser les 1000 mots.
             </div>
           </div>
-          <button type="submit" class="btn btn-success">Envoyer</button>
+          <button type="submit" name="submit_avis" class="btn btn-success">Envoyer</button>
         </div>
       </form>
+      <p class="message"><?php echo isset($message) ? $message : ''; ?></p>
     </div>
   </main>
   <footer>

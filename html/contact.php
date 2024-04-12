@@ -47,7 +47,7 @@ require_once '../mariadb/services.php';
           <h2 class="col-6 col-xl-8">Contact</h2>
           <a href="./tarif.php" class="cent_btn col-3 col-xl-2"><button class="btn btn-success" type="button">Tarifs</button></a>
         </div>
-        <form method="POST" action="mailto:monzooarcadia@gmail.com" id="form">
+        <form method="POST" action="./contact.php" id="form">
           <div class="mb-3">
             <label for="title" class="form-label">Titre de votre demande :</label>
             <input type="text" class="form-control" id="title" name="title">
@@ -66,10 +66,65 @@ require_once '../mariadb/services.php';
             <p id="errorDescr"></p>
           </div>
           <button type="submit" name="submit" class="btn btn-success">Envoyer</button>
+          <p><?php echo isset($message) ? $message : '' ?></p>
         </form>
       </div>
     </div>
   </main>
+
+  <?php
+
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\SMTP;
+  use PHPMailer\PHPMailer\Exception;
+
+  require '../divers/PHPMailer-master/src/Exception.php';
+  require '../divers/PHPMailer-master/src/PHPMailer.php';
+  require '../divers/PHPMailer-master/src/SMTP.php';
+
+  // Create registration form
+  if (isset($_POST['submit'])) {
+
+    $title = isset($_POST['title']) ? $_POST['title'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $description = isset($_POST['description']) ? $_POST['description'] : '';
+
+    // send mail for username and password
+    $subject = 'Formulaire de contact';
+    $contentEmail = "Titre de la demande : $title\n";
+    $contentEmail .= "Adresse de l'expéditeur : $email\n";
+    $contentEmail .= "Descriptif : $description\n";
+
+    $mail = new PHPMailer(true);
+
+    try {
+      $mail->isSMTP();
+      $mail->Host       = 'smtp.gmail.com';
+      $mail->SMTPAuth   = true;
+      $mail->Username   = 'monzooarcadia@gmail.com';
+      // Password secure application
+      $mail->Password   = 'pboc fkwe gsyu hplk';
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+      $mail->Port = 465;
+      $mail->CharSet = 'UTF-8';
+      // Destinataire
+      $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia formulaire de contact');
+      $mail->addAddress('pierre.majerus@outlook.be'); // I need exist adress, warning my users are not really
+
+      // Contenu du message
+      $mail->isHTML(true);
+      $mail->Subject = $subject;
+      $mail->Body    = $contentEmail;
+
+      $mail->send();
+      $message = "Email bien envoyé, nous vous répondrons dans les plus bref délais";
+    } catch (Exception $e) {
+      $message = "Problème lors de l'envoi du mail : </p>" + $mail->ErrorInfo;
+    }
+  }
+
+
+  ?>
   <footer>
     <section class="section-footer">
       <div class="contenu-footer">

@@ -124,6 +124,13 @@ button {
   color: red;
 }
 
+.message{
+  color: white;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
 /* --------------------------- FOOTER /!\------------------------- */
 
 .section-footer {
@@ -330,6 +337,10 @@ button {
 
   h2 {
     font-size: 1.6rem;
+  }
+
+  .message{
+    font-size: 1rem;
   }
 }
 

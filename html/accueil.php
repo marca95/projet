@@ -6,6 +6,7 @@ require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
 require_once '../mariadb/homes.php';
+require_once '../mariadb/avis.php';
 
 // recovers the first animal of each house 
 $viewAnimals = $pdo->prepare('SELECT * FROM animals GROUP BY id_home');
@@ -25,8 +26,8 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/accueil.css" rel="styleSheet">
-  <link href="../style/font/font.css" rel="styleSheet">
+  <link href="../style/css/accueil.css" rel="stylesheet">
+  <link href="../style/font/font.css" rel="stylesheet">
   <link href="../img/logo.png" rel="icon">
 </head>
 
@@ -123,34 +124,16 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       <hr>
       <div class="container mt-5">
         <div class="avis_para row">
-          <div class="container-avis col-xl-2 col-md-12 text-center">
-            <p class="avis fs-4">Votre avis compte</p>
-            <img class="img-responsive center-block" src="../img/accueil/logo.png" width="70%">
+          <div class="container-avis col-12 text-center">
+            <p class="avis">Vos témoignages nous aide à grandir :</p>
+            <img class="img-responsive center-block" src="../img/accueil/logo.png" width="10%">
           </div>
-          <div class="avis_séparation1 col-12 col-xl-5 col-lg-6 d-flex">
-            <p class="container-avis1 p-2"><b>Nathalie :</b>
-              Le Zoo d'Arcadia est un espace où les visiteurs peuvent admirer des
-              milliers
-              d'animaux
-              dans un
-              immense
-              parc. L'accueil est bon avec le cadre bienveillant et bien aménagé. Le zoo se distingue par sa grande
-              diversité
-              animalière avec des centaines et des centaines d'espèces venues de tous les continents. Découverte et
-              émerveillement sont donc les mots qui résument les avis des visiteurs du Zoo de
-              Arcadia.</p>
-          </div>
-          <div class="avis_séparation2 col-12 col-xl-5 col-lg-6 d-flex">
-            <p class="p-2"><b>Eric :</b>
-              Zoo très écolo où les animaux semblent bien traités et heureux de gambader. Ils ont de l'espace et tout
-              semble fait pour qu'ils soient bien. Le milieu asiatique ressemble tellement à la foret Amazonienne. Un
-              zoo
-              <i>éco responsable</i>,
-              très agréable de s'y promener !!! A refaire, en famille!
-            </p>
-          </div>
-          <br><br>
-          <!-- Recréer la meme classe avis_para avec ligne pour ajouter ou supprimer un avis (pas oublier de recréer une row) -->
+          <?php foreach ($allAvis as $avis) : ?>
+            <div class="avis_séparation1 col-12 col-lg-6">
+              <p class="container-avis1 p-2"><b><?php echo $avis['first_name']; ?> :</b>
+                <?php echo $avis['content']; ?></p>
+            </div>
+          <?php endforeach; ?>
           <a class="m-2" href="./avis.php">
             <button type="button" class="btn btn-success float-end" width="30%">Votre avis est important pour nous
               !</button>

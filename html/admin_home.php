@@ -47,48 +47,29 @@ require_once('../form_admin/delete_home.php');
     <section class="col-md-6 create_home">
       <h3>Créer un habitat</h3>
       <form action="" method="POST" enctype="multipart/form-data">
-        <label for="name">Nom de l'habitat :</label>
-        <input type="text" name="name">
+        <label for="name">Lieu de l'habitat :</label>
+        <input type="text" name="name" required>
+        <br />
+        <label for="description">Description :</label>
+        <textarea type="text" name="description" rows="8" cols="10" required></textarea>
         <br />
         <label for="main_img">Image principal :</label>
-        <input type="file" name="main_img">
+        <input type="file" name="main_img" required>
         <br />
         <label for="second_img">Image secondaire :</label>
-        <input type="file" name="second_img">
+        <input type="file" name="second_img" required>
         <br />
         <label for="url_image_accueil">Image accueil :</label>
-        <input type="file" name="url_image_accueil">
+        <input type="file" name="url_image_accueil" required>
         <br />
-        <label for="commonName">Nom commun de l'habitation :</label>
-        <input type="text" name="commonName">
+        <label for="commonName">Nom complet de l'habitation :</label>
+        <input type="text" name="commonName" required>
+        <br />
+        <label for="second_title">2ième nom de l'habitation :</label>
+        <input type="text" name="second_title" required>
         <br />
         <button type="submit" name="createNewHome" class="btn btn-success">Ajouter une nouvelle habitation</button>
         <?php echo $messageCreate ?>
-      </form>
-    </section>
-    <section class="col-md-6 create_article">
-      <h3>Créer un article</h3>
-      <form action="" method="POST">
-        <label for="main_title">Titre principal :</label>
-        <input type="text" name="main_title">
-        <br />
-        <label for="second_title">Second titre :</label>
-        <input type="text" name="second_title">
-        <br />
-        <label for="content">Contenu :</label>
-        <textarea rows="5" cols="50" name="content"></textarea>
-        <br />
-        <label for="homes">Habitation :</label>
-        <select name="homes" id="homes">
-          <?php foreach ($optionsHomes as $optionsHome) : ?>
-            <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
-          <?php endforeach; ?>
-        </select>
-        <label for="third_title">Troisième titre :</label>
-        <input type="text" name="third_title">
-        <?php echo $messageArticle ?>
-        <button type="submit" name="createNewArticle" class="btn btn-primary">Ajouter un nouvel article</button>
-        <br />
       </form>
     </section>
   </div>
@@ -98,15 +79,16 @@ require_once('../form_admin/delete_home.php');
       <h3>Modifier un habitat / article</h3>
       <form action="" method="POST" id="update_form" enctype="multipart/form-data">
         <label for="habitat">Selectionner l'habitat à modifier : </label>
-        <select name="habitat" id="habitat">
-          <?php foreach ($optionsHomes as $optionsHome) : ?>
-            <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+        <select name="habitat" id="habitat" required>
+          <option></option>
+          <?php foreach ($homes as $home) : ?>
+            <option value="<?php echo $home['id_home']; ?>"><?php echo $home['name']; ?></option>
           <?php endforeach; ?>
         </select>
         <br />
         <label for="choose">Que souhaitez-vous modifier : </label>
-        <select name="choose" id="choose">
-          <option value="">Choix par défaut</option>
+        <select name="choose" id="choose" required>
+          <option></option>
           <option value="1">Le nom de l'habitat</option>
           <option value="2">La photo principal</option>
           <option value="3">La photo secondaire</option>
@@ -129,9 +111,10 @@ require_once('../form_admin/delete_home.php');
       <h3>Suppression d'un habitat / article </h3>
       <form action="" method="POST" id="update_form" onsubmit="return confirmDelete()">
         <label for="delete_habitat">Supprimer l'habitat : </label>
-        <select name="delete_habitat" id="habitat">
-          <?php foreach ($optionsHomes as $optionsHome) : ?>
-            <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+        <select name="delete_habitat" id="habitat" required>
+          <option></option>
+          <?php foreach ($homes as $home) : ?>
+            <option value="<?php echo $home['id_home']; ?>"><?php echo $home['name']; ?></option>
           <?php endforeach; ?>
         </select>
         <br />

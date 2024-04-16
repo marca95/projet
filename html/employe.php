@@ -20,7 +20,7 @@ require_once '../form_admin/update_services.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employé</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/i.css" rel="stylesheet">
+  <link href="../style/css/employe.css" rel="stylesheet">
   <link href="../img/accueil/logo.png" rel="icon">
   <style>
 
@@ -32,7 +32,7 @@ require_once '../form_admin/update_services.php';
     <h1>Arcadia</h1>
     <h2>Bonjour <?php echo $empUser['first_name'] ?> !</h2>
     <form method="POST" action="" class="form_logout">
-      <button type="submit" name="logout" class="logout" title="déconnexion"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="35px"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+      <button type="submit" name="logout" class="logout" title="déconnexion"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
           <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z" />
         </svg></button>
     </form>
@@ -72,14 +72,15 @@ require_once '../form_admin/update_services.php';
       <form action="" method="POST" id="formModify" enctype="multipart/form-data">
         <div class="d-flex row">
           <label for="choiceService" class="label">Quel service souhaitez-vous modifier ?</label>
-          <select name="selectedService" id="selectedService">
+          <select name="selectedService" id="selectedService" required>
+            <option></option>
             <?php foreach ($viewService as $service) : ?>
               <option value="<?php echo $service['id_service'] ?>"><?php echo $service['main_title'] ?></option>
             <?php endforeach; ?>
           </select>
           <br />
           <label for="selectedPartService" class="label">Quelle partie du service souhaitez-vous modifier?</label>
-          <select name="selectedPartService" id="selectedPartService">
+          <select name="selectedPartService" id="selectedPartService" required>
             <option value="0"></option>
             <option value="1">Le titre principal </option>
             <option value="2">Le deuxième titre </option>
@@ -111,7 +112,7 @@ require_once '../form_admin/update_services.php';
         <div class="row">
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="nameAnimal" class="foodLabel">Sélectionner le nom de l'animal :</label>
-            <select name="nameAnimal" class="foodInput">
+            <select name="nameAnimal" class="foodInput" required>
               <option></option>
               <?php foreach ($viewAllAnimals as $animal) : ?>
                 <option value="<?php echo $animal['id_animal']; ?>"><?php echo $animal['name'] . ' (' . $animal['type'] . ')'; ?></option>
@@ -120,17 +121,17 @@ require_once '../form_admin/update_services.php';
           </div>
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="food" class="foodLabel">Sa nourriture :</label>
-            <input type="text" name="food" class="foodInput">
+            <input type="text" name="food" class="foodInput" required>
           </div>
         </div>
         <div class="row">
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="grams" class="foodLabel">Combien de grammes :</label>
-            <input type="number" name="grams" class="foodInput">
+            <input type="number" name="grams" class="foodInput" required>
           </div>
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="datePass" class="foodLabel">Date et heure de repas :</label>
-            <input type="datetime-local" name="datePass" class="foodInput">
+            <input type="datetime-local" name="datePass" class="foodInput" required>
           </div>
         </div>
         <div class="but">

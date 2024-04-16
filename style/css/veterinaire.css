@@ -1,41 +1,54 @@
-nav {
-  width: 100%;
-  height: 40px;
-  background-color: maroon;
-  font-weight: 600;
-  display: flex;
+header{
+  background-image: url('../../img/veterinaire/vache.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 460px;
 }
 
-nav ul {
-  width: 80%;
+h1 {
+  padding-left: 20px;
+  padding-top: 20px;
+  font-size: 3.8rem;
+}
+
+h2 {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  height: 100%;
+  justify-content: center;
   align-items: center;
-  margin: 0px 50px 0px 50px;
-  padding: 0px;
-  list-style-type: none;
-  text-decoration: none;
-}
-
-nav ul li a {
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
+  font-size: 4.5rem;
   color: white;
-  padding: 10px;
-  transition: 0.5s;
 }
 
-nav ul li a:hover {
-  color: green;
-  padding: 10px;
+#search_data{
+  display: flex;
+  justify-content: center;
+}
+  
+#input_search{
+  width: 40%;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #d8d8d89c;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+  
+.btn_search_bar{
+  height: 100%;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
 }
 
-#icon {
-  cursor: pointer;
-  display: none;
+h3 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 
 .form_logout {
@@ -49,47 +62,89 @@ nav ul li a:hover {
   border: none;
 }
 
-@media screen and (max-width: 767px) {
-  #icon {
-    margin-top: 10px;
-    margin-left: 10px;
-    display: block;
-  }
+table{
+  width: 90%;
+  border: 5px solid black;
+  height: auto;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-bottom: 80px;
+} 
 
-  #icon:before {
-    content: "\2630";
-    color: black;
-  }
+.head_table{
+  background-color: rgba(183, 183, 183, 0.5);
+}
 
-  .active #icon:before {
-    content: "\2715";
-    color: black;
-  }
+th, td {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: 8px;
+}
 
-  nav.active ul {
-    left: -60px;
-    top: 40px;
-    width: 30%;
-  }
+td{
+  background-color: beige;
+}
 
-  .navigation {
-    position: absolute;
-    background: maroon;
-    right: 100%;
-    top: 40px;
-    flex-direction: column;
-    width: 25%;
-    text-align: center;
-    transition: 0.3s;
-  }
+fieldset {
+  border: 2px #014e79 solid;
+  border-radius: 5px;
+}
 
-  nav ul li {
-    text-align: center;
-    width: 100%;
-    padding: 10px;
-  }
+button {
+  border-radius: 10px;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 0.7em 1em;
+  font-size: 1em;
+  border: none;
+}
 
-  nav ul li a {
-    font-weight: normal;
-  }
+button:hover {
+  background-color: #014e79;
+  transition-duration: 0.5s;
+}
+
+.form{
+  display: block;
+  justify-content: center;
+  border: 1px solid cornflowerblue;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 30px;
+  width: 80%;
+}
+
+h4{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-size: 2.4rem;
+}
+
+label{
+  margin-left: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+select, textarea {
+  display: flex;
+  margin-left: 70px;
+  padding: 5px;
+  border: 1px solid cornflowerblue;
+  border-radius: 3px;
+}
+
+textarea {
+  padding: 10px;
+}
+
+.but{
+  text-align: end;
+}
+
+p{
+  color: green;
+  margin-left: 50px;
+  margin-top: 20px;
 }

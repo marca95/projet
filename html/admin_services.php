@@ -56,16 +56,16 @@ require_once('../form_admin/delete_services.php');
   <form action="" method="POST" id="formCreate" enctype="multipart/form-data">
     <h3>Création d'un service</h3>
     <label for="main_title">Titre principal* : </label>
-    <input type="text" name="main_title">
+    <input type="text" name="main_title" required>
     <br />
     <label for="second_title">Second titre : </label>
     <input type="text" name="second_title">
     <br />
     <label for="main_img">Image du service* : </label>
-    <input type="file" name="main_img">
+    <input type="file" name="main_img" required>
     <br />
     <label for="content">Contenu* : </label>
-    <input type="text" name="content">
+    <input type="text" name="content" required>
     <br />
     <label for="third_title">Troisième titre : </label>
     <input type="text" name="third_title">
@@ -74,7 +74,7 @@ require_once('../form_admin/delete_services.php');
     <input type="text" name="second_content">
     <br />
     <label for="name">Nom bref de l'activité* : </label>
-    <input type="text" name="name">
+    <input type="text" name="name" required>
     <br />
     <label for="btn_link_url">Lien de l'URL du bouton : </label>
     <input type="text" name="btn_link_url">
@@ -128,14 +128,15 @@ require_once('../form_admin/delete_services.php');
   <form action="" method="POST" id="formModify" enctype="multipart/form-data">
     <h3>Modification d'un service</h3>
     <label for="choiceService">Quel service souhaitez-vous modifier ?</label>
-    <select name="selectedService" id="selectedService">
+    <select name="selectedService" id="selectedService" required>
+      <option></option>
       <?php foreach ($viewService as $service) : ?>
         <option value="<?php echo $service['id_service'] ?>"><?php echo $service['main_title'] ?></option>
       <?php endforeach; ?>
     </select>
     <br />
     <label for="selectedPartService">Quelle partie du service souhaitez-vous modifier?</label>
-    <select name="selectedPartService" id="selectedPartService">
+    <select name="selectedPartService" id="selectedPartService" required>
       <option value="0"></option>
       <option value="1">Le titre principal </option>
       <option value="2">Le deuxième titre </option>
@@ -160,7 +161,8 @@ require_once('../form_admin/delete_services.php');
   <form action="" method="POST" id="formDelete">
     <h3>Suppression d'un service</h3>
     <label for="chooseDeleteService">Quel service souhaitez-vous supprimer ?</label>
-    <select name="chooseDeleteService" id="chooseDeleteService">
+    <select name="chooseDeleteService" id="chooseDeleteService" required>
+      <option></option>
       <?php foreach ($viewService as $service) : ?>
         <option value="<?php echo $service['id_service'] ?>"><?php echo $service['main_title'] ?></option>
       <?php endforeach; ?>

@@ -5,6 +5,7 @@
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
+require_once '../mariadb/homes.php';
 
 // MongoDB library
 require '../vendor/autoload.php';
@@ -66,19 +67,6 @@ if (isset($_GET['type'])) {
   <main>
     <?php
 
-    // Fetch data articles
-    function getArticlesData($pdo)
-    {
-      $itemsArticles = 'SELECT articles.id_article, articles.main_title, articles.second_title, articles.third_title, articles.content, homes.name AS lieu,
-       homes.main_root, homes.second_root, articles.id_home
-      FROM articles 
-      INNER JOIN homes ON homes.id_home = articles.id_home';
-      $stmt = $pdo->prepare($itemsArticles);
-      $stmt->execute();
-      $articlesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      return $articlesData;
-    }
-
     // Fetch data animals
     function getAnimalsData($pdo)
     {
@@ -112,26 +100,25 @@ if (isset($_GET['type'])) {
       return $animalsData;
     }
 
-    $articles = getArticlesData($pdo);
     $animals = getAnimalsData($pdo);
     ?>
 
     <h2>Bienvenue à la maison</h2>
     <div class="main_div container-fluid">
       <div class="row">
-        <?php foreach ($articles as $article) : ?>
+        <?php foreach ($homes as $home) : ?>
           <div class="col-12 col-lg-6 container mb-4">
-            <button onclick="toggleDiv('<?php echo $article['lieu'] ?>')" class="btn_habitat" style="background-image: url('<?php echo $article['main_root'] ?>');"><?php echo $article['main_title'] ?></button>
-            <div class="hidden container-fluid p-2" id="<?php echo $article['lieu'] ?>">
-              <h5 class="p-1"><?php echo $article['second_title'] ?></h5>
-              <p class="descr_p"><?php echo $article['content'] ?></p>
+            <button onclick="toggleDiv('<?php echo $home['name'] ?>')" class="btn_habitat" style="background-image: url('<?php echo $home['main_root'] ?>');"><?php echo $home['commonName'] ?></button>
+            <div class="hidden container-fluid p-2" id="<?php echo $home['name'] ?>">
+              <h5 class="p-1"><?php echo $home['second_title'] ?> :</h5>
+              <p class="descr_p"><?php echo $home['description'] ?></p>
               <div class="row d-flex mb-3">
-                <h6><?php echo $article['third_title'] ?></h6>
+                <h6>Vous pouvez rencontrer :</h6>
                 <ul class="list_animals col-4 ms-3">
                   <?php
                   $animal_types = array();
                   foreach ($animals as $animal) :
-                    if ($animal['id_home'] == $article['id_home'] && !in_array($animal['type'], $animal_types)) :
+                    if ($animal['id_home'] == $home['id_home'] && !in_array($animal['type'], $animal_types)) :
                   ?>
                       <li class="li_animals" onclick="toggleImg('<?php echo $animal['type']; ?>'); showType('<?php echo $animal['type']; ?>')"><?php echo $animal['categorie']; ?></li>
                   <?php
@@ -140,7 +127,7 @@ if (isset($_GET['type'])) {
                   endforeach;
                   ?>
                 </ul>
-                <img class="col-7" src='<?php echo $article['second_root'] ?>' width="20%">
+                <img class="col-7" src='<?php echo $home['second_root'] ?>' width="20%">
               </div>
               <?php
               $animals_by_race = array();
@@ -154,7 +141,7 @@ if (isset($_GET['type'])) {
               ?>
               <?php foreach ($animals_by_race as $race => $animals_group) : ?>
                 <?php foreach ($animals_group as $animal) : ?>
-                  <?php if ($animal['id_home'] == $article['id_home']) : ?>
+                  <?php if ($animal['id_home'] == $home['id_home']) : ?>
                     <div class="hidAnimal" id="<?php echo $animal['type']; ?>">
                       <div class="descr_animal">
                         Prénom: <?php echo $animal['prenom']; ?>

@@ -118,19 +118,20 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <form action="" method="POST" enctype="multipart/form-data" class="form_create_animal">
       <label for="name">Nom de l'animal :</label>
       <br />
-      <input type="text" name="name">
+      <input type="text" name="name" required>
       <br />
       <label for="type">Le type d'animal :</label>
       <br />
-      <input type="text" name="type">
+      <input type="text" name="type" required>
       <br />
       <label for="race">Race de l'animal :</label>
       <br />
-      <input type="text" name="race">
+      <input type="text" name="race" required>
       <br />
       <label for="location">Lieu d'origine de l'animal :</label>
       <br />
-      <select name="location" id="location">
+      <select name="location" id="location" required>
+        <option></option>
         <?php foreach ($optionsLocations as $optionsLocation) : ?>
           <option value="<?php echo $optionsLocation['id_location']; ?>"><?php echo $optionsLocation['NAME']; ?></option>
         <?php endforeach; ?>
@@ -138,7 +139,8 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <br />
       <label for="home">Dans quelle habitat va se trouver l'animal :</label>
       <br />
-      <select name="home" id="home">
+      <select name="home" id="home" required>
+        <option></option>
         <?php foreach ($optionsHomes as $optionsHome) : ?>
           <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
         <?php endforeach; ?>
@@ -146,11 +148,11 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <br />
       <label for="commonName">Nom commun de ou des animaux :</label>
       <br />
-      <input type="text" name="commonName">
+      <input type="text" name="commonName" required>
       <br />
       <label for="upload">Sélectionner une image</label>
       <br />
-      <input type="file" name="upload" class="upload_file">
+      <input type="file" name="upload" class="upload_file" required>
       <br />
       <button type="submit" name="createNewAnimal" class="btn btn-success">Inscrire le nouvelle animal</button>
       <br />
@@ -163,7 +165,8 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <form action="" method="POST" enctype="multipart/form-data" id="form_update_animal">
       <label for="choice_animal">Choissisez votre animal :</label>
       <br />
-      <select name="choice_animal" id="choice_animal">
+      <select name="choice_animal" id="choice_animal" required>
+        <option></option>
         <?php foreach ($viewAllAnimals as $viewAnimal) : ?>
           <option value="<?php echo $viewAnimal['id_animal']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
         <?php endforeach; ?>
@@ -171,7 +174,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <br />
       <label for="attribut_animal">Que souhaitez-vous modifier :</label>
       <br />
-      <select name="attribut_animal" id="attribut_animal">
+      <select name="attribut_animal" id="attribut_animal" required>
         <option value="0"></option>
         <option value="1">Son nom</option>
         <option value="2">Son type</option>
@@ -209,7 +212,8 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <h3>Supprimer un animal </h3>
     <form action="" method="POST" id="form_delete_animal" onsubmit="return confirmDelete()">
       <label for="animal_delete">Quel animal voulez-vous supprimer?</label>
-      <select name="animal_delete" id="choice_animal">
+      <select name="animal_delete" id="choice_animal" required>
+        <option></option>
         <?php foreach ($viewAllAnimals as $viewAnimal) : ?>
           <option value="<?php echo $viewAnimal['id_animal'] . '|' . $viewAnimal['name'] . '|' . $viewAnimal['type']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
         <?php endforeach; ?>

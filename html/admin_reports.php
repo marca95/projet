@@ -3,39 +3,10 @@
 <?php
 session_start();
 
-
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_admin.php';
+require_once '../mariadb/stmt.php';
 require_once '../mariadb/disconnect.php';
-// REMPLACER PAR INNER JOIN SI TOUS LES ANIMAUX SONT COMPLETER 
-
-$viewData = $pdo->prepare('SELECT animals.name, animals.type, 
-foods.food, foods.grams, foods.date_pass, 
-states.state, states.detail, 
-user_employed.username as nom_employe_employed,
-user_vete.username as nom_employe_vete
-FROM animals 
-LEFT JOIN foods ON animals.id_animal = foods.id_animal
-LEFT JOIN states ON animals.id_animal = states.id_animal
-LEFT JOIN users as user_employed ON foods.id_employed = user_employed.id_user
-LEFT JOIN users as user_vete ON states.id_vete = user_vete.id_user;');
-$viewData->execute();
-$datas = $viewData->fetchAll(PDO::FETCH_ASSOC);
-
-// States homes
-$viewHomes = $pdo->prepare('SELECT homes.name, homes.description, status_home.opinion_state, status_home.improvement, users.username
-FROM homes
-LEFT JOIN status_home ON status_home.id_home = homes.id_home
-LEFT JOIN users ON users.id_user = status_home.id_veto');
-$viewHomes->execute();
-$homes = $viewHomes->fetchAll(PDO::FETCH_ASSOC);
-
-// btn logout session
-if (isset($_POST['logout'])) {
-  session_destroy();
-  header("Location: connexion.php");
-  exit();
-}
 
 ?>
 
@@ -114,7 +85,6 @@ if (isset($_POST['logout'])) {
     <thead class="head_table">
       <tr>
         <th>Nom de l'habitat</th>
-        <th>Description de l'habitat</th>
         <th>Avis sur l'état</th>
         <th>Amélioration</th>
         <th>Nom du vétérinaire</th>
@@ -123,8 +93,7 @@ if (isset($_POST['logout'])) {
     <tbody>
       <?php foreach ($homes as $home) : ?>
         <tr>
-          <td><?php echo $home['name']; ?></td>
-          <td><?php echo $home['description']; ?></td>
+          <td><?php echo $home['commonName']; ?></td>
           <td><?php echo $home['opinion_state']; ?></td>
           <td><?php echo $home['improvement']; ?></td>
           <td><?php echo $home['username']; ?></td>

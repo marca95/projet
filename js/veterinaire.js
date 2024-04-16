@@ -1,13 +1,22 @@
-// Bar nivagation responsive "icon".
+// search bar 
 
-const links = document.querySelectorAll('nav li');
+// document.getElementById('input_search').addEventListener('keyup', (e) => {
+// let keyword = e.target.value.toLowerCase().trim();  
+// let rows = document.querySelectorAll('tbody tr');
+  
+// rows.forEach(row => {
+//   let nameAnimal = row.querySelector('td:nth-child(1)');
+//   let typeAnimal = row.querySelector('td:nth-child(2)');
+//   let found = false;
 
-icon.addEventListener("click", () => {
- nav.classList.toggle("active");
-})
+//   if (isNaN(keyword) && nameAnimal.textContent.toLowerCase().includes(keyword) || typeAnimal.textContent.toLowerCase().includes(keyword)) {
+//     found = true;
+//   }
 
-links.forEach((link) => {
-  link.addEventListener('click', () => {
-    nav.classList.remove("active");
-  });
-});
+//   if (found) {
+//     row.style.display = '';
+//   } else {
+//     row.style.display = 'none';
+//   }
+//   });
+// });

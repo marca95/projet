@@ -16,7 +16,7 @@ $viewData->execute();
 $datas = $viewData->fetchAll(PDO::FETCH_ASSOC);
 
 // States homes
-$viewHomes = $pdo->prepare('SELECT homes.name, homes.description, status_home.opinion_state, status_home.improvement, users.username
+$viewHomes = $pdo->prepare('SELECT homes.id_home, homes.commonName, status_home.opinion_state, status_home.improvement, users.username
 FROM homes
 LEFT JOIN status_home ON status_home.id_home = homes.id_home
 LEFT JOIN users ON users.id_user = status_home.id_veto');

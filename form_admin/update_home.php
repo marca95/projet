@@ -1,10 +1,5 @@
 <?php
 
-// Fetch articles
-$fetchArticles = $pdo->prepare('SELECT * FROM articles');
-$fetchArticles->execute();
-$viewAllArticles = $fetchArticles->fetchAll(PDO::FETCH_ASSOC);
-
 $updateMessage = '';
 
 if (isset($_POST['updateHome'])) {
@@ -15,7 +10,6 @@ if (isset($_POST['updateHome'])) {
   $updateMainTitle = isset($_POST['update_main_title']) ? $_POST['update_main_title'] : '';
   $updateSecondTitle = isset($_POST['update_second_title']) ? $_POST['update_second_title'] : '';
   $updateContent = isset($_POST['update_content']) ? $_POST['update_content'] : '';
-  $updateThirdTitle = isset($_POST['update_third_title']) ? $_POST['update_third_title'] : '';
   $updateImgAccueil = isset($_POST['update_img_accueil']['tmp_name']) ? $_POST['update_img_accueil']['tmp_name'] : '';
   $updateCommonName = isset($_POST['update_common_name']) ? $_POST['update_common_name'] : '';
 
@@ -65,27 +59,15 @@ if (isset($_POST['updateHome'])) {
     $stmt->bindValue(':idHome', $idHome);
     $stmt->execute();
   }
-  if (!empty($updateMainTitle)) {
-    $stmt = $pdo->prepare('UPDATE articles SET main_title = :updateMainTitle WHERE id_home = :idHome');
-    $stmt->bindValue(':updateMainTitle', $updateMainTitle);
-    $stmt->bindValue(':idHome', $idHome);
-    $stmt->execute();
-  }
   if (!empty($updateSecondTitle)) {
-    $stmt = $pdo->prepare('UPDATE articles SET second_title = :updateSecondTitle WHERE id_home = :idHome');
+    $stmt = $pdo->prepare('UPDATE homes SET second_title = :updateSecondTitle WHERE id_home = :idHome');
     $stmt->bindValue(':updateSecondTitle', $updateSecondTitle);
     $stmt->bindValue(':idHome', $idHome);
     $stmt->execute();
   }
   if (!empty($updateContent)) {
-    $stmt = $pdo->prepare('UPDATE articles SET content = :updateContent WHERE id_home = :idHome');
+    $stmt = $pdo->prepare('UPDATE homes SET description = :updateContent WHERE id_home = :idHome');
     $stmt->bindValue(':updateContent', $updateContent);
-    $stmt->bindValue(':idHome', $idHome);
-    $stmt->execute();
-  }
-  if (!empty($updateThirdTitle)) {
-    $stmt = $pdo->prepare('UPDATE articles SET third_title = :updateThirdTitle WHERE id_home = :idHome');
-    $stmt->bindValue(':updateThirdTitle', $updateThirdTitle);
     $stmt->bindValue(':idHome', $idHome);
     $stmt->execute();
   }

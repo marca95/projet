@@ -5,9 +5,8 @@ header{
   height: 300px;
 }
 
-#icon {
-  cursor: pointer;
-  display: none;
+svg {
+  width: 35px;
 }
 
 .form_logout {
@@ -131,6 +130,16 @@ margin-right: 20px;
 
 .foodInput{
   justify-content: center;
+}
+@media screen and (max-width: 767px) {
+ svg {
+  width: 30px;
+ }
+
+ h2 {
+  margin-top: 50px;
+  font-size: 2.6rem;
+ }
 }
 
 @media screen and (max-width: 576px) {

@@ -50,18 +50,18 @@ require_once '../mariadb/services.php';
         <form method="POST" action="./contact.php" id="form">
           <div class="mb-3">
             <label for="title" class="form-label">Titre de votre demande :</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" required>
             <p id="errorTitle"></p>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Adresse e-mail :</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email" required>
             <div id="emailHelp" class="form-text">Nous vous répondrons sur cette adresse mail.</div>
             <p id="errorEmail"></p>
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description :</label>
-            <textarea class="form-control" id="description" name="description" rows="8"></textarea>
+            <textarea class="form-control" id="description" name="description" rows="8" required></textarea>
             <div class="form-text">Le texte ne peut pas contenir plus de 1000 mots.</div>
             <p id="errorDescr"></p>
           </div>

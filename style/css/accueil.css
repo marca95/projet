@@ -7,7 +7,6 @@
 }
 
 body {
-
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   width: 100%;
@@ -96,7 +95,7 @@ cite {
 }
 
 .img_recyclage1, .img_recyclage2 {
-  height: 15vh;
+  height: 120px;
 }
 
 .container {
@@ -109,7 +108,8 @@ cite {
   text-align: center;
   background-size: cover;
   border-radius: 10px;
-  height: 22vh;
+  height: 200px;
+  max-width: 100%;
 }
 
 .container-a{
@@ -206,6 +206,11 @@ cite {
   text-align: center;
 } 
 
+img{
+  max-width: 100%;
+  height: auto;
+}
+
 /* -------------------------------MEADIA QUERIES------------------------------------ */
 
 @media screen and (max-width: 1400px) {
@@ -259,7 +264,7 @@ cite {
   }
 
   .img_recyclage1, .img_recyclage2 {
-    height: 14vh;
+    height: 90px;
   }
 
   blockquote {
@@ -307,7 +312,7 @@ cite {
   }
 
   .img_recyclage1, .img_recyclage2 {
-    height: 12vh;
+    height: 80px;
   }
 
   blockquote {
@@ -381,7 +386,7 @@ cite {
   }
 
   .img_presentation{
-    height: 40vh;
+    height: 320px;
   }
 
  .contenu-footer {

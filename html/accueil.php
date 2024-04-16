@@ -62,8 +62,8 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       <img class="img_recyclage2 col-3 col-sm-2" src="../img/accueil/recyclage2.png" alt="recyclage">
     </div>
     <div class="row m-0">
-      <img class="img_presentation col-sm-6  p-0" src="../img/accueil/conservatoir.jpg" height="400vh">
-      <img class="img_presentation col-sm-6  p-0" src="../img/accueil/lac.jpg" height="400vh">
+      <img class="img_presentation col-sm-6  p-0" src="../img/accueil/conservatoir.jpg" height="600px">
+      <img class="img_presentation col-sm-6  p-0" src="../img/accueil/lac.jpg" height="600px">
       <p class="p-4 m-0 border-bottom">Arcadia est un zoo situé en France près de la forêt de Brocéliande, en bretagne
         depuis 1960.
         Ils possèdent tout un panel d'animaux, réparti par habitat (savane, jungle, marais) et font <i>extrêment</i>

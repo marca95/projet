@@ -14,7 +14,7 @@ body {
  background-image: url('../../img/menu/nuage2.jpg');
  background-size: 100%;
  background-repeat: no-repeat;
- height: 10%;
+ height: 80px;
  align-items: flex-start;
 }
 
@@ -180,40 +180,4 @@ footer {
   .btn1 {
     font-size: 0.9rem;
   }
-}
-
-/*-------------- MEDIA SCREEN HEIGHT /!\---------------------*/
-@media screen and (max-height: 758px) {
-  .setup {
-    border-radius: 1200px/400px;
-    height: 400px;
-  }
-
-  .main_div1, .main_div2, .main_div3, .main_div4 {
-    height: 200px;
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .setup {
-    border-radius: 1400px/300px;
-    height: 300px;
-    width: 1400px;
-  }
-
-  .main_div1, .main_div2, .main_div3, .main_div4 {
-    height: 150px;
-  }
-}
-
-@media screen and (max-height: 455px) {
-  .header_div {
-    height: 20vh;
-   }
-  .main_title {
-    font-size: 3rem;
-  }
-  .logo_nav {
-    width: 20%;
-  } 
 }

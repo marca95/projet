@@ -35,7 +35,7 @@ require_once '../mariadb/stmt.php';
       <h3>Comptes rendus des animaux</h3>
       <form action="" method="POST" id="search_data">
         <label for="searchBar" class="search_label"></label>
-        <input type="text" name="searchBar" id="input_search" placeholder="Recherche par animal ou le type d'animal">
+        <input type="text" name="searchBar" id="input_search" placeholder="Recherche nom de l'animal ou son type">
         <button type="submit" class="btn_search_bar"><svg xmlns="http://www.w3.org/2000/svg" width="25px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
             <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
           </svg></button>
@@ -57,14 +57,14 @@ require_once '../mariadb/stmt.php';
         <tbody>
           <?php foreach ($viewStates as $states) : ?>
             <tr>
-              <td><?php echo $states['name']; ?></td>
-              <td><?php echo $states['type']; ?></td>
-              <td><?php echo $states['food']; ?></td>
-              <td><?php echo $states['grams']; ?></td>
-              <td><?php echo $states['date_pass']; ?></td>
-              <td><?php echo $states['state']; ?></td>
-              <td><?php echo $states['detail']; ?></td>
-              <td><?php echo $states['nom_employe'] . ' ' . $states['prenom_employe']; ?></td>
+              <td data-label="Nom animal"><?php echo $states['name']; ?></td>
+              <td data-label="Type"><?php echo $states['type']; ?></td>
+              <td data-label="Nourriture"><?php echo $states['food']; ?></td>
+              <td data-label="Gr"><?php echo $states['grams']; ?></td>
+              <td data-label="Date pass."><?php echo $states['date_pass']; ?></td>
+              <td data-label="Etat"><?php echo $states['state']; ?></td>
+              <td data-label="Détails"><?php echo $states['detail']; ?></td>
+              <td data-label="Employe"><?php echo $states['nom_employe'] . ' ' . $states['prenom_employe']; ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -82,10 +82,10 @@ require_once '../mariadb/stmt.php';
         </select>
         <br>
         <label for="state">Etat de l'animal :</label>
-        <textarea type="text" name="state" rows="5" cols="80" placeholder="Décrire l'état de l'animal..." required></textarea>
+        <textarea type="text" name="state" rows="5" placeholder="Décrire l'état de l'animal..." required></textarea>
         <br>
         <label for="detail">Détails sur l'animal (facultatif) :</label>
-        <textarea type="text" name="detail" rows="5" cols="80" placeholder="Décrire le détail de l'animal..."></textarea>
+        <textarea type="text" name="detail" rows="5" placeholder="Décrire le détail de l'animal..."></textarea>
         <br>
         <div class="but">
           <button type="submit" name="sendData">Envoyer</button>
@@ -107,10 +107,10 @@ require_once '../mariadb/stmt.php';
         <tbody>
           <?php foreach ($homes as $home) : ?>
             <tr>
-              <td><?php echo $home['commonName']; ?></td>
-              <td><?php echo $home['opinion_state']; ?></td>
-              <td><?php echo $home['improvement']; ?></td>
-              <td><?php echo $home['username']; ?></td>
+              <td data-label="Nom"><?php echo $home['commonName']; ?></td>
+              <td data-label="Opinion"><?php echo $home['opinion_state']; ?></td>
+              <td data-label="Développement"><?php echo $home['improvement']; ?></td>
+              <td data-label="Mail vété"><?php echo $home['username']; ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

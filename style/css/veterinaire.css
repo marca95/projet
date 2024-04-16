@@ -85,11 +85,6 @@ td{
   background-color: beige;
 }
 
-fieldset {
-  border: 2px #014e79 solid;
-  border-radius: 5px;
-}
-
 button {
   border-radius: 10px;
   background-color: cornflowerblue;
@@ -137,6 +132,7 @@ select, textarea {
 
 textarea {
   padding: 10px;
+  width: 80%;
 }
 
 .but{
@@ -147,4 +143,95 @@ p{
   color: green;
   margin-left: 50px;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  h1{
+    font-size: 3rem;
+  }
+
+  h2{
+    font-size: 2.6rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  #input_search{
+    width: 70%;
+  }
+
+ table, thead, tbody, tr, th, td {
+  display: block;
+ }
+
+ thead{
+  display: none;
+ }
+
+ td{
+  padding-left: 150px;
+  position: relative;
+  height: 7vh;
+ }
+
+ td::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  background-color: rgba(183, 183, 183, 0.5);
+  padding-left: 5px;
+  border-right: 3px solid black;
+ }
+
+ tr{
+  margin-bottom: 1rem;
+ }
+
+ label {
+  margin-left: 20px;
+ }
+
+ textarea, select{
+  margin-left: 30px;
+ }
+}
+
+@media screen and (max-width: 650px) {
+  header{
+    background-image: url('../../img/veterinaire/vache.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+  }
+  
+  h1{
+    color: white;
+  }
+
+  h2 {
+    height: 80px;
+    align-items: top;
+  }
+
+  h4{
+  font-size: 2.1rem;
+}
+}
+
+@media screen and (max-width: 576px) {
+  
+  h3{
+    font-size: 2rem
+  }
+  
+  h4{
+  font-size: 1.6rem;
+}
 }

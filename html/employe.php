@@ -64,7 +64,9 @@ require_once '../form_admin/update_services.php';
           <button class="btn btn-primary" type="submit" name="update_avis">Valider les changements</button>
         </div>
       </form>
-      <p class="messageAvis"><?php echo isset($messageAvis) ? $messageAvis : "" ?></p>
+      <?php if ((isset($messageAvis)) && (!empty($messageAvis))) : ?>
+        <p class="message"><?php echo $messageAvis; ?></p>
+      <?php endif; ?>
     </section>
 
     <section class="service">
@@ -102,8 +104,10 @@ require_once '../form_admin/update_services.php';
         <div class="but">
           <button type="submit" name="updateService" class="btn btn-primary">Modifier un service</button>
         </div>
+        <?php if ((isset($updateMessage)) && (!empty($updateMessage))) : ?>
+          <p class="message"><?php echo $updateMessage; ?></p>
+        <?php endif; ?>
       </form>
-      <?php echo $updateMessage; ?>
     </section>
 
     <section class="food">
@@ -135,8 +139,11 @@ require_once '../form_admin/update_services.php';
           </div>
         </div>
         <div class="but">
-          <button type="submit" name="sendDatas" class="btn btn-primary">Envoie des données</button>
+          <button type="submit" name="sendDatas" class="btn btn-primary">Envoi des données</button>
         </div>
+        <?php if ((isset($updateAnimal)) && (!empty($updateAnimal))) : ?>
+          <p class="message"><?php echo $updateAnimal; ?></p>
+        <?php endif; ?>
       </form>
     </section>
 

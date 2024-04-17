@@ -90,7 +90,9 @@ require_once '../mariadb/stmt.php';
         <div class="but">
           <button type="submit" name="sendData">Envoyer</button>
         </div>
-        <p><?php isset($message) ? $message : ''; ?></p>
+        <?php if ((isset($message)) && (!empty($message))) : ?>
+          <p class="message"><?php echo $message; ?></p>
+        <?php endif; ?>
       </form>
     </section>
     <section>
@@ -136,33 +138,13 @@ require_once '../mariadb/stmt.php';
         <div class="but">
           <button type="submit" name="sendHab">Envoyer</button>
         </div>
-        <p><?php isset($messageHabitat) ? $messageHabitat : ''; ?></p>
+        <?php if ((isset($messageHabitat)) && (!empty($messageHabitat))) : ?>
+          <p class="message"><?php echo $messageHabitat; ?></p>
+        <?php endif; ?>
       </form>
     </section>
   </main>
-  <!-- <script src="../js/veterinaire.js"></script> -->
-  <script>
-    document.getElementById('input_search').addEventListener('keyup', (e) => {
-      let keyword = e.target.value.toLowerCase().trim();
-      let rows = document.querySelectorAll('#firstTable tbody tr');
-
-      rows.forEach(row => {
-        let nameAnimal = row.querySelector('td:nth-child(1)');
-        let typeAnimal = row.querySelector('td:nth-child(2)');
-        let found = false;
-
-        if (isNaN(keyword) && nameAnimal.textContent.toLowerCase().includes(keyword) || typeAnimal.textContent.toLowerCase().includes(keyword)) {
-          found = true;
-        }
-
-        if (found) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      });
-    });
-  </script>
+  <script src="../js/veterinaire.js"></script>
 </body>
 
 </html>

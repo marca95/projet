@@ -127,14 +127,15 @@ border-radius: 20px;
   color: red;
 }
 
-#successForm{
-  color: green;
+#success, #successHour {
   padding-left: 20px;
+  font-weight: bold;
 }
 
 #errorForm, #error{
   color: red;
   padding-left: 20px;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 992px) {

@@ -20,6 +20,11 @@ h2 {
   color: white;
 }
 
+.message{
+  padding-left: 15px;
+  font-weight: bold;
+}
+
 #search_data{
   display: flex;
   justify-content: center;

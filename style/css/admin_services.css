@@ -119,6 +119,11 @@ margin: 30px 0 20px 40px;
   padding: 0;
 }
 
+.message{
+  padding-left: 15px;
+  font-weight: bold;
+}
+
 #action {
   border: 3px solid black;
   background-color: #ffc972;

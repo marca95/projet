@@ -69,7 +69,9 @@ require_once('../form_admin/delete_home.php');
         <input type="text" name="second_title" required>
         <br />
         <button type="submit" name="createNewHome" class="btn btn-success">Ajouter une nouvelle habitation</button>
-        <?php echo $messageCreate ?>
+        <?php if ((isset($messageCreate)) && (!empty($messageCreate))) : ?>
+          <p class="message"><?php echo $messageCreate; ?></p>
+        <?php endif; ?>
       </form>
     </section>
   </div>
@@ -103,7 +105,9 @@ require_once('../form_admin/delete_home.php');
         <br />
         <button type="submit" name="updateHome" class="btn btn-secondary">Modifier l'habitat</button>
         <br />
-        <?php echo $updateMessage ?>
+        <?php if ((isset($updateMessage)) && (!empty($updateMessage))) : ?>
+          <p class="message"><?php echo $updateMessage; ?></p>
+        <?php endif; ?>
       </form>
     </section>
     <br />
@@ -120,7 +124,9 @@ require_once('../form_admin/delete_home.php');
         <br />
         <button type="submit" name="deleteHome" class="btn btn-danger">Supprimer l'habitat</button>
         <br />
-        <?php echo $messageDeleteHome ?>
+        <?php if ((isset($messageDeleteHome)) && (!empty($messageDeleteHome))) : ?>
+          <p class="message"><?php echo $messageDeleteHome; ?></p>
+        <?php endif; ?>
       </form>
     </section>
   </div>

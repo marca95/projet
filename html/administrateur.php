@@ -18,7 +18,7 @@ require_once '../mariadb/register.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/administration.css" rel="stylesheet">
+  <link href="../style/css/administrateur.css" rel="stylesheet">
   <link href="../img/accueil/logo.png" rel="icon">
 </head>
 
@@ -82,8 +82,7 @@ require_once '../mariadb/register.php';
       <?php if (isset($successSignUp) && !empty($successSignUp)) : ?>
         <p id="success">
           <?php
-          echo $successSignUp;
-          echo $successMail;
+          echo $successSignUp . ' ' . $successMail;
           ?></p>
       <?php endif; ?>
       <?php if (isset($error) && !empty($error)) : ?>
@@ -123,83 +122,82 @@ require_once '../mariadb/register.php';
 
       <label for="mondayClosed">Le lundi est :</label>
       <select type="text" name="mondayClosed" id="mondayClosed">
-        <option value="0">Ouvert</option>
-        <option value="1" selected>Fermé</option>
+        <option value="0" <?php echo ($sethoraires[0]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>
+        <option value="1" <?php echo ($sethoraires[0]['is_closed'] === 1) ? 'selected' : ''; ?>>Fermé</option>
       </select>
       <br />
       <label for="mondayStart">Ouverture à :</label>
-      <input type="text" name="mondayStart" id="mondayStart" value="<?php echo $sethoraires[0]['start_time'] ?>">
+      <input type="text" name="mondayStart" id="mondayStart" <?php echo ($sethoraires[0]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[0]['start_time'] . '"'; ?>>
       <label for=" mondayEnd">Fermeture à :</label>
-      <input type="text" name="mondayEnd" id="mondayEnd" value="<?php echo $sethoraires[0]['end_time'] ?>">
+      <input type="text" name="mondayEnd" id="mondayEnd" <?php echo ($sethoraires[0]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[0]['end_time'] . '"'; ?>>
       <br />
       <label for="tuesdayClosed">Le mardi est :</label>
       <select type="text" name="tuesdayClosed" id="tuesdayClosed">
-        <option value="0">Ouvert</option>
-        <option value="1" selected>Fermé</option>
+        <option value="0" <?php echo ($sethoraires[1]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>
+        <option value="1" <?php echo ($sethoraires[1]['is_closed'] === 1) ? 'selected' : ''; ?>>Fermé</option>
       </select>
       <br />
       <label for="tuesdayStart">Ouverture à :</label>
-      <input type="text" name="tuesdayStart" id="tuesdayStart" value="<?php echo $sethoraires[1]['start_time'] ?>">
+      <input type="text" name="tuesdayStart" id="tuesdayStart" <?php echo ($sethoraires[1]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[1]['start_time'] . '"'; ?>>
       <label for=" tuesdayEnd">Fermeture à :</label>
-      <input type="text" name="tuesdayEnd" id="tuesdayEnd" value="<?php echo $sethoraires[1]['end_time'] ?>">
+      <input type="text" name="tuesdayEnd" id="tuesdayEnd" <?php echo ($sethoraires[1]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[1]['end_time'] . '"'; ?>>
       <br />
       <label for="wednesdayClosed">Le mercredi est :</label>
       <select type="text" name="wednesdayClosed" id="wednesdayClosed">
-        <option value="0">Ouvert</option>
-        <option value="1">Fermé</option>
+        <option value="0" <?php echo ($sethoraires[2]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>
+        <option value="1" <?php echo ($sethoraires[2]['is_closed'] === 1) ? 'selected' : ''; ?>>Fermé</option>
       </select>
       <br />
       <label for="wednesdayStart">Ouverture à :</label>
-      <input type="text" name="wednesdayStart" id="wednesdayStart" value="<?php echo $sethoraires[2]['start_time'] ?>">
+      <input type="text" name="wednesdayStart" id="wednesdayStart" <?php echo ($sethoraires[2]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[2]['start_time'] . '"'; ?>>
       <label for=" wednesdayEnd">Fermeture à :</label>
-      <input type="text" name="wednesdayEnd" id="wednesdayEnd" value="<?php echo $sethoraires[2]['end_time'] ?>">
+      <input type="text" name="wednesdayEnd" id="wednesdayEnd" <?php echo ($sethoraires[2]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[2]['end_time'] . '"'; ?>>
       <br />
       <label for="thursdayClosed">Le jeudi est :</label>
       <select type="text" name="thursdayClosed" id="thursdayClosed">
-        <option value="0">Ouvert</option>
-        <option value="1">Fermé</option>
+        <option value="0" <?php echo ($sethoraires[3]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>
+        <option value="1" <?php echo ($sethoraires[3]['is_closed'] === 1) ? 'selected' : ''; ?>>Fermé</option>
       </select>
       <br />
       <label for="thursdayStart">Ouverture à :</label>
-      <input type="text" name="thursdayStart" id="thursdayStart" value="<?php echo $sethoraires[3]['start_time'] ?>">
-      <label for=" thursdayEnd">Fermeture à :</label>
-      <input type="text" name="thursdayEnd" id="thursdayEnd" value="<?php echo $sethoraires[3]['end_time'] ?>">
-      <br />
+      <input type="text" name="thursdayStart" id="thursdayStart" <?php echo ($sethoraires[3]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[3]['start_time'] . '"'; ?>>
+      <label for="thursdayEnd">Fermeture à :</label>
+      <input type="text" name="thursdayEnd" id="thursdayEnd" <?php echo ($sethoraires[3]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[3]['end_time'] . '"'; ?>>
       <label for="fridayClosed">Le vendredi est :</label>
       <select type="text" name="fridayClosed" id="fridayClosed">
-        <option value="0">Ouvert</option>
-        <option value="1">Fermé</option>
+        <option value="0" <?php echo ($sethoraires[4]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>
+        <option value="1" <?php echo ($sethoraires[4]['is_closed'] === 1) ? 'selected' : ''; ?>>Fermé</option>
       </select>
       <br />
       <label for="fridayStart">Ouverture à :</label>
-      <input type="text" name="fridayStart" id="fridayStart" value="<?php echo $sethoraires[4]['start_time'] ?>">
+      <input type="text" name="fridayStart" id="fridayStart" <?php echo ($sethoraires[4]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[4]['start_time'] . '"'; ?>>
       <label for=" fridayEnd">Fermeture à :</label>
-      <input type="text" name="fridayEnd" id="fridayEnd" value="<?php echo $sethoraires[4]['end_time'] ?>">
+      <input type="text" name="fridayEnd" id="fridayEnd" <?php echo ($sethoraires[4]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[4]['end_time'] . '"'; ?>>
       <br />
       <label for="saturdayClosed">Le samedi est :</label>
       <select type="text" name="saturdayClosed" id="saturdayClosed">
-        <option value="0">Ouvert</option>
-        <option value="1">Fermé</option>
+        <option value="0" <?php echo ($sethoraires[5]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>
+        <option value="1" <?php echo ($sethoraires[5]['is_closed'] === 1) ? 'selected' : ''; ?>>Fermé</option>
       </select>
       <br />
       <label for="saturdayStart">Ouverture à :</label>
-      <input type="text" name="saturdayStart" id="saturdayStart" value="<?php echo $sethoraires[5]['start_time'] ?>">
+      <input type="text" name="saturdayStart" id="saturdayStart" <?php echo ($sethoraires[5]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[5]['start_time'] . '"'; ?>>
       <label for=" saturdayEnd">Fermeture à :</label>
-      <input type="text" name="saturdayEnd" id="saturdayEnd" value="<?php echo $sethoraires[5]['end_time'] ?>">
+      <input type="text" name="saturdayEnd" id="saturdayEnd" <?php echo ($sethoraires[5]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[5]['end_time'] . '"'; ?>>
       <br />
       <label for="sundayClosed">Le dimanche est :</label>
       <select type="text" name="sundayClosed" id="sundayClosed">
-        <option value="0">Ouvert</option>
-        <option value="1">Fermé</option>
+        <option value="0" <?php echo ($sethoraires[6]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>
+        <option value="1" <?php echo ($sethoraires[6]['is_closed'] === 1) ? 'selected' : ''; ?>>Fermé</option>
       </select>
       <br />
       <label for="sundayStart">Ouverture à :</label>
-      <input type="text" name="sundayStart" id="sundayStart" value="<?php echo $sethoraires[6]['start_time'] ?>">
+      <input type="text" name="sundayStart" id="sundayStart" <?php echo ($sethoraires[6]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[6]['start_time'] . '"'; ?>>
       <label for="sundayEnd">Fermeture à :</label>
-      <input type="text" name="sundayEnd" id="sundayEnd" value="<?php echo $sethoraires[6]['end_time'] ?>">
+      <input type="text" name="sundayEnd" id="sundayEnd" <?php echo ($sethoraires[6]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[6]['end_time'] . '"'; ?>>
       <br />
       <?php if (isset($succesHour) && !empty($succesHour)) : ?>
-        <p id="success">
+        <p id="successHour">
           <?php
           echo $succesHour;
           ?></p>

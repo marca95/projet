@@ -97,7 +97,9 @@ require_once('../form_admin/delete_services.php');
     <p>Les champs avec (*) sont obligatoire.</p>
     <button type="submit" name="createService" class="btn btn-success">Créer un service</button>
   </form>
-  <?php echo $messageCreate ?>
+  <?php if ((isset($messageCreate)) && (!empty($messageCreate))) : ?>
+    <p class="message"><?php echo $messageCreate ?></p>
+  <?php endif; ?>
 
   <form action="" method="POST" id="formCreateAccueil" enctype="multipart/form-data">
     <h3>Création d'un service à la page d'accueil</h3>
@@ -123,7 +125,9 @@ require_once('../form_admin/delete_services.php');
     <br />
     <button type="submit" name="createServiceAccueil" class="btn btn-success">Créer un service à la page d'accueil</button>
   </form>
-  <?php echo $messageCreateAccueil; ?>
+  <?php if ((isset($messageCreateAccueil)) && (!empty($messageCreateAccueil))) : ?>
+    <p class="message"><?php echo $messageCreateAccueil ?></p>
+  <?php endif; ?>
 
   <form action="" method="POST" id="formModify" enctype="multipart/form-data">
     <h3>Modification d'un service</h3>
@@ -156,7 +160,9 @@ require_once('../form_admin/delete_services.php');
     <div id="inputAndLabel"></div>
     <button type="submit" name="updateService" class="btn btn-primary">Modifier un service</button>
   </form>
-  <?php echo $updateMessage; ?>
+  <?php if ((isset($updateMessage)) && (!empty($updateMessage))) : ?>
+    <p class="message"><?php echo $updateMessage ?></p>
+  <?php endif; ?>
 
   <form action="" method="POST" id="formDelete">
     <h3>Suppression d'un service</h3>
@@ -170,7 +176,10 @@ require_once('../form_admin/delete_services.php');
     <br />
     <button type="submit" name="deleteService" class="btn btn-danger">Supprimer un service</button>
   </form>
-  <?php echo $messageDeleteService; ?>
+  <?php if ((isset($messageDeleteService)) && (!empty($messageDeleteService))) : ?>
+    <p class="message"><?php echo $messageDeleteService ?></p>
+  <?php endif; ?>
+
 
   <script src="../js/admin_services.js"></script>
 </body>

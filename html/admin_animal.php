@@ -37,12 +37,9 @@ if (isset($_POST['createNewAnimal'])) {
 
   if (isset($result->value['seq'])) {
     $id_animal = $result->value['seq'];
-  } else {
-    echo "Erreur lors de l'incrémentation de l'identifiant de l'animal.";
   }
 
   $insertResult = $collection->insertOne([
-    'id_animal' => $id_animal,
     'name' => $name,
     'type' => $type,
     'commonName' => $commonName,
@@ -50,9 +47,9 @@ if (isset($_POST['createNewAnimal'])) {
   ]);
 
   if ($insertResult->getInsertedCount() === 1) {
-    echo "L'animal a été ajouté avec succès à la base de données.";
+    $messageAnimal = "L'animal a été ajouté avec succès à la base de données.";
   } else {
-    echo "Une erreur s'est produite lors de l'ajout de l'animal dans MongoDB.";
+    $messageAnimal = "Une erreur s'est produite lors de l'ajout de l'animal dans MongoDB.";
   }
 }
 
@@ -137,7 +134,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
         <?php endforeach; ?>
       </select>
       <br />
-      <label for="home">Dans quelle habitat va se trouver l'animal :</label>
+      <label for="home">Dans quel habitat va se trouver l'animal :</label>
       <br />
       <select name="home" id="home" required>
         <option></option>
@@ -156,7 +153,9 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <br />
       <button type="submit" name="createNewAnimal" class="btn btn-success">Inscrire le nouvelle animal</button>
       <br />
-      <?php echo isset($inscriptionAnimal) ? $inscriptionAnimal : '' ?>
+      <?php if (isset($messageAnimal) && (!empty($messageAnimal))) : ?>
+        <p class="message"><?php echo $messageAnimal; ?></p>
+      <?php endif; ?>
     </form>
   </section>
 
@@ -204,7 +203,9 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <br />
       <button type="submit" name="formUpdateAnimal" class="btn btn-secondary">Modifier l'animal</button>
       <br />
-      <?php echo isset($updateAnimal) ? $updateAnimal : '' ?>
+      <?php if (isset($updateAnimal) && (!empty($updateAnimal))) : ?>
+        <p class="message"><?php echo $updateAnimal; ?></p>
+      <?php endif; ?>
     </form>
   </section>
 
@@ -222,7 +223,9 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <div id="confirm_message"></div>
       <button type="submit" name="formDeleteAnimal" class="btn btn-danger">Supprimer l'animal</button>
       <br />
-      <?php echo isset($message) ? $message : '' ?>
+      <?php if (isset($message) && (!empty($message))) : ?>
+        <p class="message"><?php echo $message; ?></p>
+      <?php endif; ?>
     </form>
   </section>
 

@@ -55,6 +55,11 @@ h1{
   font-size: 3.2rem;
 }
 
+.message{
+  padding-left: 15px;
+  font-weight: bold;
+}
+
 section {
   margin: 20px auto 20px auto;
   padding: 10px;

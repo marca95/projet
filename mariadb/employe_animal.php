@@ -32,8 +32,8 @@ if (isset($_POST['sendDatas'])) {
   $updateFoods->bindValue(':id_animal', $nameAnimal);
 
   if ($updateFoods->execute()) {
-    echo "Données bien enregistrées.";
+    $updateAnimal = "Données bien enregistrées.";
   } else {
-    echo "Problème lors de l'enregistrement des données";
+    $updateAnimal = "Problème lors de l'enregistrement des données";
   }
 }

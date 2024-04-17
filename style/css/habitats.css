@@ -46,7 +46,7 @@ nav .titre-principal {
 }
 
 #logo_nav {
-  width: 30%;
+  width: 60px;
 }
 
 nav ul {
@@ -239,10 +239,6 @@ h6 {
 
 @media screen and (max-width: 1399px) {
 
-  #logo_nav {
-    width: 50%;
-  }
-
   .btn_habitat {
     width: 480px;
   }
@@ -278,10 +274,6 @@ h6 {
   .nav-div {
     width: 20%;
     justify-content: left; 
-  }
-
-  #logo_nav {
-    width: 22%;
   }
 
   nav ul li a:hover{
@@ -368,7 +360,7 @@ h6 {
   }
 
   #logo_nav{
-    width: 40px;
+    width: 50px;
   }
 
  .contenu-footer {

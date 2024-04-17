@@ -45,7 +45,7 @@ nav .titre-principal {
 }
 
 #logo_nav {
-  width: 30%;
+  width: 60px;
 }
 
 nav ul {
@@ -192,13 +192,6 @@ button {
 
 /* -------------------------------MEADIA QUERIES------------------------------------ */
 
-@media screen and (max-width: 1400px) {
-
-  #logo_nav {
-    width: 50%;
-  }
-}
-
 @media screen and (max-width: 1199px) {
 
   nav .titre-principal { 
@@ -225,10 +218,6 @@ button {
   .nav-div {
     width: 20%;
     justify-content: left; 
-  }
-
-  #logo_nav {
-    width: 22%;
   }
 
   nav ul li a:hover{
@@ -319,7 +308,7 @@ button {
   }
 
   #logo_nav{
-    width: 40px;
+    width: 50px;
   }
 
  .contenu-footer {

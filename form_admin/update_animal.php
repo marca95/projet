@@ -5,10 +5,9 @@ $recupAnimals = $pdo->prepare('SELECT * FROM animals');
 $recupAnimals->execute();
 $viewAllAnimals = $recupAnimals->fetchAll(PDO::FETCH_ASSOC);
 
+$updateAnimal = '';
 
-$formUpdateAnimal = isset($_POST['formUpdateAnimal']);
-
-if (isset($formUpdateAnimal)) {
+if (isset($_POST['formUpdateAnimal'])) {
   $choiceAnimal = isset($_POST['choice_animal']) ? $_POST['choice_animal'] : '';
   // USE ONLY JAVASCRIPT $attributAnimal = $_POST['attribut_animal'];
   $input1 = isset($_POST['update_name']) ? $_POST['update_name'] : '';
@@ -25,28 +24,24 @@ if (isset($formUpdateAnimal)) {
     $stmt->bindValue(':update_name', $input1);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     $stmt->execute();
-    $updateAnimal = 'Le nom à été modifié avec succès';
   }
   if (!empty($input2)) {
     $stmt = $pdo->prepare('UPDATE animals SET type = :update_type WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':update_type', $input2);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     $stmt->execute();
-    $updateAnimal = 'Le type à été modifié avec succès';
   }
   if (!empty($input3)) {
     $stmt = $pdo->prepare('UPDATE animals SET race = :update_race WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':update_race', $input3);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     $stmt->execute();
-    $updateAnimal = 'La race à été modifié avec succès';
   }
   if (!empty($input7)) {
     $stmt = $pdo->prepare('UPDATE animals SET commonName = :update_common_name WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':update_common_name', $input7);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     $stmt->execute();
-    $updateAnimal = 'Le nom commun à été modifié avec succès';
   }
   if ((!empty($files)) && $_FILES['image']['error'] === 0) {
     $destinationImage = "../img/habitats/" . $_FILES['image']['name'];
@@ -55,9 +50,8 @@ if (isset($formUpdateAnimal)) {
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     if (move_uploaded_file($files, $destinationImage)) {
       $stmt->execute();
-      $updateAnimal = 'L\'image à été modifié avec succès';
     } else {
-      echo 'Il y a eu un problème lors du téléchargement de l\'image.';
+      $updateAnimal = 'Il y a eu un problème lors du téléchargement de l\'image.';
     }
   }
   if (!empty($updateOrigin)) {
@@ -65,13 +59,12 @@ if (isset($formUpdateAnimal)) {
     $stmt->bindValue(':origin', $updateOrigin);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     $stmt->execute();
-    $updateAnimal = 'La location à été modifiée avec succès';
   }
   if (!empty($updateHome)) {
     $stmt = $pdo->prepare('UPDATE animals SET id_home = :home WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':home', $updateHome);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     $stmt->execute();
-    $updateAnimal = 'L\'habitation à été modifiée avec succès';
   }
+  $updateAnimal = 'La mise à jour à été éffectuée avec succès.';
 };

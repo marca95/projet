@@ -14,6 +14,8 @@ $viewStates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Update states
 
+$message = '';
+
 if (isset($_POST['sendData'])) {
   $idAnimal = isset($_POST['idAnimal']) ? $_POST['idAnimal'] : '';
   $state = isset($_POST['state']) ? $_POST['state'] : '';
@@ -49,6 +51,8 @@ if (isset($_POST['sendData'])) {
 $request = $pdo->prepare('SELECT id_home FROM status_home');
 $request->execute();
 $habitats = $request->fetchAll(PDO::FETCH_COLUMN);
+
+$messageHabitat = '';
 
 if (isset($_POST['sendHab'])) {
   $idHabitat = isset($_POST['idHabitat']) ? $_POST['idHabitat'] : '';

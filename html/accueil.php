@@ -56,8 +56,8 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         <blockquote class="text-center lh-sm">Il ne sert de rien à l'homme de gagner la Lune s'il vient à
           perdre la
           Terre
-          <cite class="float-end">François Mauriac</cite>
         </blockquote>
+        <cite class="float-end">François Mauriac</cite>
       </div>
       <img class="img_recyclage2 col-3 col-sm-2" src="../img/accueil/recyclage2.png" alt="recyclage">
     </div>

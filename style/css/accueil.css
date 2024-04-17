@@ -184,7 +184,7 @@ cite {
 
 .footer-ul{
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .footer-li {
@@ -264,11 +264,11 @@ img{
   }
 
   .img_recyclage1, .img_recyclage2 {
-    height: 90px;
+    height: 110px;
   }
 
   blockquote {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     margin-bottom: 10px;
   }
 
@@ -301,6 +301,10 @@ img{
    .nav-div {
     width: 25%;
   }
+
+  .contenu-footer{
+    width: 100%;
+  }
   
   nav ul li {
     padding-right: 5px;
@@ -309,10 +313,6 @@ img{
   
   nav ul li a {
     font-size: 0.9rem;
-  }
-
-  .img_recyclage1, .img_recyclage2 {
-    height: 80px;
   }
 
   blockquote {
@@ -342,7 +342,8 @@ img{
   }
 
   .footer-ul{
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+    padding-left: 10px;
   }
 }
 

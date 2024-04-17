@@ -162,7 +162,7 @@ button {
 
 .footer-ul{
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .footer-li {
@@ -262,12 +262,16 @@ button {
     font-size: 0.9rem;
   }
 
-  .footer-titre {
-    font-size: 0.9rem;
+  .contenu-footer{
+    width: 100%;
   }
 
   .footer-ul{
-    font-size: 0.7rem;
+    padding-left: 10px;
+  }
+
+  .footer-titre {
+    font-size: 0.9rem;
   }
 
   h2 {

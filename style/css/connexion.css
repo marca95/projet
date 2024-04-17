@@ -161,7 +161,7 @@ h2{
 
 .footer-ul{
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .footer-li {
@@ -269,10 +269,6 @@ h2{
     font-size: 0.9rem;
   }
 
-  .footer-ul{
-    font-size: 0.7rem;
-  }
-
   .img{
     display: none;
   }
@@ -293,6 +289,14 @@ h2{
     background-size: cover;
     background-repeat: no-repeat;
     height: 400px;
+  }
+
+  .contenu-footer{
+    width: 100%;
+  }
+
+  .footer-ul{
+    padding-left: 10px;
   }
 }
 

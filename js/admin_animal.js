@@ -16,7 +16,6 @@ links.forEach((link) => {
 const updateForm = document.getElementById('form_update_animal');
 const attributAnimal = document.getElementById('attribut_animal');
 const resultValue = document.getElementById('result_value');
-    // const showValue = document.getElementById('show_choice');
 const optionLocation = document.getElementById('show_choice_origin');
 const optionHome = document.getElementById('show_choice_home');
 

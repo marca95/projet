@@ -112,6 +112,5 @@ if (isset($_POST['updateService'])) {
     $stmt->bindValue(':id_service', $selectedService);
     $stmt->execute();
   }
-
   $updateMessage = "Modification éffectuée avec succès";
 }

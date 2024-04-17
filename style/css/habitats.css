@@ -6,10 +6,15 @@
 }
 
 body {
-
-  font-family: 'Poppins', sans-serif;
+ font-family: 'Poppins', sans-serif;
   display: inline-block;
   width: 100%;
+}
+
+h1,h2,h3,h4 {
+  font-family: "Lumanosimo", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /*-------------- NAV /!\---------------------*/

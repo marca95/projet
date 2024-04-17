@@ -76,7 +76,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       </p>
     </div>
     <div class="container-lg my-5 pb-5 border-bottom">
-      <p class="text-center fs-2">Découvez nos Animaux</p>
+      <h3 class="text-center fs-2">Découvez nos Animaux</h3>
       <div class="row g-3">
         <?php foreach ($animals as $animal) : ?>
           <div class="col-sm-6 col-lg-3">
@@ -90,7 +90,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <div class="container row g-3 mt-1 pb-3">
-      <p class="text-center m-1 fs-2">Leurs habitations</p>
+      <h3 class="text-center m-1 fs-2">Leurs habitations</h3>
       <?php foreach ($homes as $home) : ?>
         <div class="col-sm-6 col-lg-3">
           <div class="container-div" style="background-image: url('<?php echo $home['url_img_accueil'] ?>');">
@@ -102,7 +102,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       <?php endforeach; ?>
       <hr>
       <div class="container mt-1 pb-1">
-        <p class="text-center m-4 fs-2">Nous vous proposons :</p>
+        <h3 class="text-center m-4 fs-2">Nous vous proposons :</h3>
 
         <?php foreach ($accueilservices as $service) : ?>
           <div class="row text-center mb-4 align-items-center">
@@ -125,7 +125,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       <div class="container mt-5">
         <div class="avis_para row">
           <div class="container-avis col-12 text-center">
-            <p class="avis">Vos témoignages nous aide à grandir :</p>
+            <h3 class="avis">Vos témoignages nous aide à grandir :</h3>
             <img class="img-responsive center-block" src="../img/accueil/logo.png" width="10%">
           </div>
           <?php foreach ($allAvis as $avis) : ?>

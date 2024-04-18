@@ -2,8 +2,8 @@
 
 try {
   // With Heroku
-  if (getenv('JAWSDB') !== false) {
-    $dbparts = parse_url(getenv('JAWSDB'));
+  if (getenv('JAWSDB_URL') !== false) {
+    $dbparts = parse_url(getenv('JAWSDB_URL'));
 
     $hostname = $dbparts['host'];
     $username = $dbparts['user'];

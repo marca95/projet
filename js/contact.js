@@ -27,7 +27,7 @@ form.addEventListener('submit', (e) => {
   let titleValue = title.value.trim();
   let emailValue = email.value.trim();
   let descValue = description.value.trim();
-  let regexTitle = /^[a-zA-Z0-9\s.,;:'"!?-]*$/;
+  let regexTitle = /^[a-zA-Z0-9\s.,;:'"éàè!?-]*$/;
   let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   let maxwords = descValue.split(/\s+/).length;
 

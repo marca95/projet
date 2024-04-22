@@ -9,5 +9,10 @@
       "psr-4": {
           "MonProjet\\": "src/"
       }
+  }, 
+  "scripts": {
+    "compile": [
+        "php bin/console doctrine:migrations:migrate"
+    ]
   }
 }

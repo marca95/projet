@@ -42,15 +42,17 @@ try {
   <a href="./accueil.php">ALLER A LA PAGE D'ACCUEIL</a>
 
   <img src="../img/connexion/lama.jpg">
+  <!-- 404  -->
   <p>Option 1</p>
 
-  <img src="/img/connexion/lama.jpg">
+  <img src="{{ url_for('static', filename='img/accueil/lama.jpg' ) }}">
   <p>Option 2</p>
 
   <img src="./img/connexion/lama.jpg">
   <p>Option 3</p>
 
   <img src=".../img/connexion/lama.jpg">
+  <!-- IMPOSSIBLE -->
   <p>Option 4</p>
 </body>
 

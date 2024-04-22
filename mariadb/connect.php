@@ -1,7 +1,9 @@
 <?php
 
-if (getenv('JAWSDB') !== false) {
-  $dbparts = parse_url(getenv('JAWSDB'));
+use PDO;
+
+if (getenv('JAWSDB_URL') !== false) {
+  $dbparts = parse_url(getenv('JAWSDB_URL'));
 
   $hostname = $dbparts['host'];
   $port = $dbparts['port'];

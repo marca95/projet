@@ -2,13 +2,13 @@
 
 try {
   // With Heroku
-  if (getenv('JAWSDB') !== false) {
-    $dbparts = parse_url(getenv('JAWSDB'));
+  if (getenv('JAWSDB_URL') !== false) {
+    $dbparts = parse_url(getenv('JAWSDB_URL'));
 
-    $hostname = $dbparts['host'];
-    $username = $dbparts['user'];
-    $password = $dbparts['pass'];
-    $database = ltrim($dbparts['path'], '/');
+    $hostname = $dbparts['cxmgkzhk95kfgbq4.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'];
+    $username = $dbparts['zvv65igt98n68w6t'];
+    $password = $dbparts['cxmgkzhk95kfgbq4'];
+    $database = ltrim($dbparts['coi8vzror4dadlrt'], '/');
   } else {
     // Connect DB
     $userDB = 'root';

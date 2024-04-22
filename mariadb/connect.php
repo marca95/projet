@@ -1,7 +1,7 @@
 <?php
 
-if (getenv('JAWSDB_URL') !== false) {
-  $dbparts = parse_url(getenv('JAWSDB_URL'));
+if (getenv('JAWSDB_MARIA_URL') !== false) {
+  $dbparts = parse_url(getenv('JAWSDB_MARIA_URL'));
 
   $hostname = $dbparts['host'];
   $port = $dbparts['port'];

@@ -16,8 +16,7 @@
 
 
 -- Listage de la structure de la base pour zoo
-CREATE DATABASE IF NOT EXISTS `zoo` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
-USE `zoo`;
+
 
 -- Listage de la structure de la table zoo. accueil_services
 CREATE TABLE IF NOT EXISTS `accueil_services` (

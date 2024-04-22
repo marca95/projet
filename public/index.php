@@ -3,6 +3,7 @@
 
 <?php
 
+
 if (getenv('JAWSDB') !== false) {
   $dbparts = parse_url(getenv('JAWSDB'));
 
@@ -40,7 +41,7 @@ try {
 
   <a href="./accueil.php">ALLER A LA PAGE D'ACCUEIL</a>
 
-  <img src="./../img/accueil/kango.jpg">
+  <img src="/img/accueil/kango.jpg">
 </body>
 
 </html>

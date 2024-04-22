@@ -41,7 +41,17 @@ try {
 
   <a href="./accueil.php">ALLER A LA PAGE D'ACCUEIL</a>
 
-  <img src="/img/accueil/kango.jpg">
+  <img src="../img/connexion/lama.jpg">
+  <p>Option 1</p>
+
+  <img src="/img/connexion/lama.jpg">
+  <p>Option 2</p>
+
+  <img src="./img/connexion/lama.jpg">
+  <p>Option 3</p>
+
+  <img src=".../img/connexion/lama.jpg">
+  <p>Option 4</p>
 </body>
 
 </html>

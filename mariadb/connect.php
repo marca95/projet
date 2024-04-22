@@ -1,7 +1,5 @@
 <?php
 
-use PDO;
-
 if (getenv('JAWSDB_URL') !== false) {
   $dbparts = parse_url(getenv('JAWSDB_URL'));
 

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+require_once '../mariadb/connect.php';
+?>
 
 <head>
   <meta charset="UTF-8">

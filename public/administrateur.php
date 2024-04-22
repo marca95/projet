@@ -163,6 +163,7 @@ require_once '../mariadb/register.php';
       <input type="text" name="thursdayStart" id="thursdayStart" <?php echo ($sethoraires[3]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[3]['start_time'] . '"'; ?>>
       <label for="thursdayEnd">Fermeture à :</label>
       <input type="text" name="thursdayEnd" id="thursdayEnd" <?php echo ($sethoraires[3]['is_closed'] === 1) ? 'value=""' : 'value="' . $sethoraires[3]['end_time'] . '"'; ?>>
+      <br />
       <label for="fridayClosed">Le vendredi est :</label>
       <select type="text" name="fridayClosed" id="fridayClosed">
         <option value="0" <?php echo ($sethoraires[4]['is_closed'] === 0) ? 'selected' : ''; ?>>Ouvert</option>

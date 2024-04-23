@@ -446,6 +446,7 @@ form {
     width: 25%;
     text-align: center;
     transition: 0.3s;
+    z-index: 3;
   }
 
   nav ul li {
@@ -456,6 +457,7 @@ form {
   .btn{
     width: 100%;
     margin-right: 5px;
+    z-index: 1;
   }
 
 }

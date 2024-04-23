@@ -145,34 +145,15 @@
     }
     // Gestionnaire d'événements pour le clic sur $animal['type']
 
-    // function showType(animalType) {
-    //   fetch(`habitats.php?type=${animalType}`)
-    //     .then(response => {
-    //       if (!response.ok) {
-    //         throw new Error('Une erreur s\'est produite.');
-    //       }
-    //       return response.text();
-    //     })
-    //     .catch(error => {
-    //       console.error('Erreur :', error);
-    //     });
-    // }
-
     function showType(animalType) {
-      fetch('habitats.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `type=${encodeURIComponent(animalType)}`,
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Une erreur s\'est produite.');
-        }
-        return response.text();
-      })
-      .catch(error => {
-        console.error('Erreur :', error);
-      });
+      fetch(`habitats.php?type=${animalType}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Une erreur s\'est produite.');
+          }
+          return response.text();
+        })
+        .catch(error => {
+          console.error('Erreur :', error);
+        });
     }

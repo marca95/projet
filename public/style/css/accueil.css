@@ -352,6 +352,10 @@ img{
     width: 100%;
   }
 
+  h1{
+    font-size: 2rem;
+  }
+
   nav .titre-principal { 
     font-size: 2.4rem;
     padding-left: 10px;
@@ -373,7 +377,7 @@ img{
   }
 
  .nav-div {
-    width: 10%;
+    width: 5%;
     margin-left: 3px;
   }
 

@@ -17,7 +17,7 @@ require_once '../mariadb/services.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="./style/css/contact.css" rel="stylesheet">
   <link href="./img/accueil/logo.png" rel="icon">
-  <link rel="fontsheet" href="./style/font/font.css">
+  <link href="./style/font/font.css" rel="stylesheet">
 </head>
 
 <body>
@@ -92,7 +92,7 @@ require_once '../mariadb/services.php';
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $description = isset($_POST['description']) ? $_POST['description'] : '';
 
-    // send mail for username and password
+    // Send mail for username and password
     $subject = 'Formulaire de contact';
     $contentEmail = "Titre de la demande : $title\n";
     $contentEmail .= "Adresse de l'expéditeur : $email\n";
@@ -110,11 +110,11 @@ require_once '../mariadb/services.php';
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
       $mail->Port = 465;
       $mail->CharSet = 'UTF-8';
-      // Destinataire
+      // From
       $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia formulaire de contact');
       $mail->addAddress('pierre.majerus@outlook.be'); // I need exist adress, warning my users are not really
 
-      // Contenu du message
+      // Message content
       $mail->isHTML(true);
       $mail->Subject = $subject;
       $mail->Body    = $contentEmail;

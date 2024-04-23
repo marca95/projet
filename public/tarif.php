@@ -16,7 +16,7 @@ require_once '../mariadb/services.php';
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="./style/css/tarif.css" rel="stylesheet">
-  <link rel="fontsheet" href="./style/font/font.css">
+  <link href="./style/font/font.css" rel="stylesheet">
   <link href="./img/accueil/logo.png" rel="icon">
 </head>
 
@@ -165,12 +165,7 @@ require_once '../mariadb/services.php';
       </div>
     </section>
   </footer>
-
-  <!-- ATTENTION la partie de JS Bootstrap n'est pas mise
-   (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
-
-
-  <script src="../js/tarif.js"></script>
+  <script src="./js/tarif.js"></script>
 </body>
 
 </html>

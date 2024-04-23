@@ -105,7 +105,6 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="container mt-1 pb-1">
       <h3 class="text-center m-4 fs-2">Nous vous proposons :</h3>
-
       <?php foreach ($accueilservices as $service) : ?>
         <div class="row text-center mb-4 align-items-center">
           <img class="img_service col-12 col-lg-5 mt-2" src="<?php echo $service['img1'] ?>">
@@ -197,15 +196,8 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       <div class="footer-copyright">
         <p>Copyright © Arcadia 2024</p>
       </div>
-
-      <!--  -->
     </section>
   </footer>
-
-  <!-- ATTENTION la partie de JS Bootstrap n'est pas mise
-   (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
-
-
   <script src="./js/accueil.js"></script>
 </body>
 

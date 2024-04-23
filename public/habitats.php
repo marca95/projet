@@ -117,7 +117,9 @@ if (isset($_GET['type'])) {
       <div class="row">
         <?php foreach ($homes as $home) : ?>
           <div class="col-12 col-lg-6 container mb-4">
-            <button onclick="toggleDiv('<?php echo $home['name'] ?>')" class="btn_habitat" style="background-image: url('<?php echo $home['main_root'] ?>');"><?php echo $home['commonName'] ?></button>
+            <button onclick="toggleDiv('<?php echo $home['name'] ?>')" class="btn_habitat" style="background-image: url('<?php echo $home['main_root'] ?>');">
+              <h3><?php echo $home['commonName'] ?></h3>
+            </button>
             <div class="hidden container-fluid p-2" id="<?php echo $home['name'] ?>">
               <h5 class="p-1"><?php echo $home['second_title'] ?> :</h5>
               <p class="descr_p"><?php echo $home['description'] ?></p>
@@ -258,96 +260,6 @@ if (isset($_GET['type'])) {
     </section>
   </footer>
   <script src="./js/habitats.js"></script>
-  <script>
-    // let animalType = window.location.hash.substring(1);
-
-    // switch (animalType) {
-    //   case 'foret':
-    //     toggleDisplay('foret');
-    //     break;
-    //   case 'etang':
-    //     toggleDisplay('etang');
-    //     break;
-    //   case 'vivarium':
-    //     toggleDisplay('vivarium');
-    //     break;
-    //   case 'pature':
-    //     toggleDisplay('pature');
-    //     break;
-    //   case 'ranch':
-    //     toggleDisplay('ranch');
-    //     break;
-    //   case 'taniere':
-    //     toggleDisplay('taniere');
-    //     break;
-    //   case 'oceanarium':
-    //     toggleDisplay('oceanarium');
-    //     break;
-    //   case 'voliere':
-    //     toggleDisplay('voliere');
-    //     break;
-    //   case 'cerf':
-    //     toggleDisplay('foret');
-    //     toggleDisplay('cerf');
-    //     break;
-    //   case 'poisson':
-    //     toggleDisplay('etang');
-    //     toggleDisplay('poisson');
-    //     break;
-    //   case 'araignée':
-    //     toggleDisplay('vivarium');
-    //     toggleDisplay('araignée');
-    //     break;
-    //   case 'bison':
-    //     toggleDisplay('pature');
-    //     toggleDisplay('bison');
-    //     break;
-    //   case 'ours':
-    //     toggleDisplay('taniere');
-    //     toggleDisplay('ours');
-    //     break;
-    //   case 'dauphin':
-    //     toggleDisplay('oceanarium');
-    //     toggleDisplay('dauphin');
-    //     break;
-    //   case 'lion':
-    //     toggleDisplay('ranch');
-    //     toggleDisplay('lion');
-    //     break;
-    //   case 'perroquet':
-    //     toggleDisplay('voliere');
-    //     toggleDisplay('perroquet');
-    //     break;
-    //   default:
-    //     break;
-    // }
-
-    // function toggleDisplay(elementId) {
-    //   const element = document.getElementById(elementId);
-    //   if (element) {
-    //     element.style.display = 'block';
-    //   }
-    // }
-
-    const habitats = <?php echo json_encode($habitatsJS); ?>;
-    const animaux = <?php echo json_encode($animalsJS); ?>;
-
-    // Récupération de l'animal ou de l'habitat à afficher depuis l'URL
-    let animalType = window.location.hash.substring(1);
-
-    // Vérification si l'élément existe dans la liste des habitats ou des animaux, puis affichage
-    if (habitats.includes(animalType) || animaux.includes(animalType)) {
-      toggleDisplay(animalType);
-    }
-
-    // Fonction pour afficher un élément
-    function toggleDisplay(elementId) {
-      const element = document.getElementById(elementId);
-      if (element) {
-        element.style.display = 'block';
-      }
-    }
-  </script>
 
 </body>
 

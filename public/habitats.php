@@ -26,6 +26,8 @@ if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1'
 if (isset($_GET['type'])) {
   $animal_type = $_GET['type'];
 
+  $collection = $client->selectDatabase("zoo")->selectCollection("animals");
+
   // Mettre à jour le nombre de vues de l'animal correspondant
   $updateResult = $collection->updateOne(
     ['type' => $animal_type],

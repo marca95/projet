@@ -23,11 +23,8 @@ if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1'
   $client = new MongoDB\Client($uri);
 }
 
-// if (isset($_GET['type'])) {
-//   $animal_type = $_GET['type'];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $animal_type = $_POST['type'];
+if (isset($_GET['type'])) {
+  $animal_type = $_GET['type'];
 
   // Mettre à jour le nombre de vues de l'animal correspondant
   $updateResult = $collection->updateOne(

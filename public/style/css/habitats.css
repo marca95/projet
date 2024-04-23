@@ -9,6 +9,8 @@ body {
  font-family: 'Poppins', sans-serif;
   display: inline-block;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 h1,h2,h3,h4 {
@@ -487,11 +489,11 @@ h6 {
   }
 
   .btn_habitat {
-    width: 400px;
+    width: 90%;
   }
 
   .hidden{
-    width: 400px;
+    width: 90%;
   }
 
   .descr_p, .list_animals{

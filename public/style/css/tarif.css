@@ -9,6 +9,8 @@ body {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 h1,h2,h3,h4 {
@@ -360,7 +362,7 @@ h6 {
   }
 
   .img_title {
-    width: 30%;
+    width: 70%;
   }
 }
 
@@ -385,7 +387,7 @@ h6 {
   }
 
   .img_title {
-    width: 40%;
+    height: 100px;
   }
   
   .org_div{
@@ -439,5 +441,9 @@ h6 {
 
   h3 {
     font-size: 1.8rem;
+  }
+
+  .img_title {
+    width: 90%;
   }
 }

@@ -9,6 +9,8 @@ body {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 h1,h2,h3,h4 {

@@ -180,7 +180,7 @@ h6 {
 
 .footer-ul{
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
 }
 
 .footer-li {
@@ -360,7 +360,7 @@ h6 {
   }
 
   .img_title {
-    width: 60%;
+    width: 30%;
   }
 }
 
@@ -385,7 +385,7 @@ h6 {
   }
 
   .img_title {
-    width: 80%;
+    width: 40%;
   }
   
   .org_div{

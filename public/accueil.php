@@ -106,7 +106,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
 
         <?php foreach ($accueilservices as $service) : ?>
           <div class="row text-center mb-4 align-items-center">
-            <img class="img_service col-12 col-lg-5 mt-2 p-0" src="<?php echo $service['img1'] ?>">
+            <img class="img_service col-12 col-lg-5 mt-2" src="<?php echo $service['img1'] ?>">
             <div class="col-sm-4 col-lg-3">
               <p class="fs-6"><?php echo $service['content'] ?></p>
               <?php foreach ($services as $setService) : ?>
@@ -117,7 +117,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
                 <?php endif; ?>
               <?php endforeach; ?>
             </div>
-            <img class="img_service col-sm-8 col-lg-4 mt-2 p-0" src="<?php echo $service['img2'] ?>">
+            <img class="img_service col-sm-8 col-lg-4 mt-2" src="<?php echo $service['img2'] ?>">
           </div>
         <?php endforeach; ?>
       </div>

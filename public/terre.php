@@ -15,9 +15,9 @@ require_once '../mariadb/services.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/terre.css" rel="stylesheet">
-  <link href="../img/accueil/logo.png" rel="icon">
-  <link rel="fontsheet" href="../style/font/font.css">
+  <link href="./style/css/terre.css" rel="stylesheet">
+  <link rel="fontsheet" href="./style/font/font.css">
+  <link href="./img/accueil/logo.png" rel="icon">
 </head>
 
 <body>
@@ -25,7 +25,7 @@ require_once '../mariadb/services.php';
     <nav id="nav">
       <h1 class="titre-principal">Arcadia</h1>
       <div class="nav-div">
-        <img id="logo_nav" src="../img/accueil/logo.png" alt="erreur">
+        <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
         <li><a href="connexion.php">Connexion</a></li>
@@ -52,13 +52,13 @@ require_once '../mariadb/services.php';
           afin d'arriver à cette fierté de ne rien jeter. Nous favorisons les produits locaux afin que vous proposez des
           assiettes saine, riche et savoureuse.</p>
         <div class="row">
-          <img class="img_logo col-6 col-sm-3" src="../img/accueil/ecologie.jpg" alt="Terre plus verte">
-          <img class="img_logo col-6 col-sm-3" src="../img/accueil/recyclage1.png" alt="Recyclage">
-          <img class="img_logo col-6 col-sm-3" src="../img/accueil/recyclage2.png" alt="Protection de la nature">
-          <img class="img_logo col-6 col-sm-3" src="../img/accueil/logo.png" alt="Logo principal">
+          <img class="img_logo col-6 col-sm-3" src="./img/accueil/ecologie.jpg" alt="Terre plus verte">
+          <img class="img_logo col-6 col-sm-3" src="./img/accueil/recyclage1.png" alt="Recyclage">
+          <img class="img_logo col-6 col-sm-3" src="./img/accueil/recyclage2.png" alt="Protection de la nature">
+          <img class="img_logo col-6 col-sm-3" src="./img/accueil/logo.png" alt="Logo principal">
         </div>
       </div>
-      <img class="img_eolienne" src="../img/terre/eolienne.jpg" alt="éolienne">
+      <img class="img_eolienne" src="./img/terre/eolienne.jpg" alt="éolienne">
     </main>
     <footer>
       <section class="section-footer">
@@ -104,10 +104,10 @@ require_once '../mariadb/services.php';
           <div class="footer-div">
             <ul class="footer-ul">
               <li class="footer-titre">Suivez-nous</li>
-              <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
+              <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="./img/accueil/insta.png" width="30vh"></a>
               </li> <br>
-              <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-              <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
+              <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="./img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+              <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="./img/accueil/linkedin.png" width="30vh"></a></li>
             </ul>
           </div>
         </div>
@@ -116,7 +116,7 @@ require_once '../mariadb/services.php';
         </div>
     </footer>
 
-    <script src="../js/terre.js"></script>
+    <script src="./js/terre.js"></script>
   </body>
 
 </html>

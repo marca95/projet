@@ -16,7 +16,15 @@ require_once('../form_admin/delete_animal.php');
 // MongoDB library
 require '../vendor/autoload.php';
 
-$mongoClient = new MongoDB\Client("mongodb://localhost:27017");
+// Check if you connected on local
+if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
+  // Connexion locale
+  $mongoClient = new MongoDB\Client("mongodb://localhost:27017");
+} else {
+  // Remote connexion
+  $uri = "mongodb+srv://marca95:esbourcy69@cluster0.1ybtwgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  $mongoClient = new MongoDB\Client($uri);
+}
 
 $database = $mongoClient->selectDatabase("zoo");
 $collection = $database->animals;
@@ -82,8 +90,8 @@ if (isset($_POST['formDeleteAnimal'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/admin_animal.css" rel="stylesheet">
-  <link href="../img/logo.png" rel="icon">
+  <link href="./style/css/admin_animal.css" rel="stylesheet">
+  <link href="./img/logo.png" rel="icon">
 </head>
 
 <body>
@@ -230,7 +238,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
   </section>
 
 
-  <script src="../js/admin_animal.js"></script>
+  <script src="./js/admin_animal.js"></script>
 </body>
 
 

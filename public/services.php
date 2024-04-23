@@ -15,9 +15,9 @@ require_once '../mariadb/services.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/services.css" rel="stylesheet">
-  <link href="../img/accueil/logo.png" rel="icon">
-  <link rel="fontsheet" href="../style/font/font.css">
+  <link href="./style/css/services.css" rel="stylesheet">
+  <link href="./img/accueil/logo.png" rel="icon">
+  <link rel="fontsheet" href="./style/font/font.css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@ require_once '../mariadb/services.php';
     <nav id="nav">
       <h1 class="titre-principal">Arcadia</h1>
       <div class="nav-div">
-        <img id="logo_nav" src="../img/accueil/logo.png" alt="erreur">
+        <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
         <li><a href="connexion.php">Connexion</a></li>
@@ -155,10 +155,10 @@ FROM
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Suivez-nous</li>
-            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="./img/accueil/insta.png" width="30vh"></a>
             </li> <br>
-            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="./img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="./img/accueil/linkedin.png" width="30vh"></a></li>
           </ul>
         </div>
       </div>

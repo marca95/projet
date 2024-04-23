@@ -17,10 +17,12 @@ use MongoDB\BSON\ObjectID;
 if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
   // Connexion locale
   $client = new MongoDB\Client("mongodb://localhost:27017");
+  echo 'Connecté en local';
 } else {
   // Remote connexion
   $uri = "mongodb+srv://marca95:esbourcy69@cluster0.1ybtwgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
   $client = new MongoDB\Client($uri);
+  echo 'Connecté à distance';
 }
 
 if (isset($_GET['type'])) {

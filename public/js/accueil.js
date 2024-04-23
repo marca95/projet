@@ -9,9 +9,3 @@ links.forEach((link) => {
     nav.classList.remove("active");
   });
 });
-
-// Get destination animals 
-
-let test = window.location.href;
-
-console.log(test)

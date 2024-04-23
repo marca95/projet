@@ -14,7 +14,7 @@ body {
   overflow-y: auto;
 }
 
-h1,h2,h3,h4 {
+h1,h2,h3,h4,h5 {
   font-family: "Lumanosimo", cursive;
   font-weight: 400;
   font-style: normal;
@@ -352,12 +352,8 @@ img{
     width: 100%;
   }
 
-  h1{
-    font-size: 2rem;
-  }
-
   nav .titre-principal { 
-    font-size: 2.4rem;
+    font-size: 2rem;
     padding-left: 10px;
     width: 30%;
    }
@@ -429,7 +425,7 @@ img{
 
 @media screen and (max-width: 650px) {
   nav .titre-principal { 
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     margin-left: 0;
     text-align: left;
    }

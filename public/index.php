@@ -89,57 +89,59 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
       </div>
     </div>
-    <div class="container-lg row g-3 mt-1 pb-3">
-      <h3 class="text-center m-1 fs-2">Leurs habitations</h3>
-      <?php foreach ($homes as $home) : ?>
-        <div class="col-sm-6 col-lg-3">
-          <div class="container-div" style="background-image: url('<?php echo $home['url_img_accueil'] ?>');">
-            <a class="container-a" href="habitats.php#<?php echo $home['name']; ?>">
-              <h3 class="container-titre"><?php echo $home['commonName']; ?></h3>
-            </a>
-          </div>
-        </div>
-      <?php endforeach; ?>
-      <hr>
-      <div class="container mt-1 pb-1">
-        <h3 class="text-center m-4 fs-2">Nous vous proposons :</h3>
-
-        <?php foreach ($accueilservices as $service) : ?>
-          <div class="row text-center mb-4 align-items-center">
-            <img class="img_service col-12 col-lg-5 mt-2" src="<?php echo $service['img1'] ?>">
-            <div class="col-sm-4 col-lg-3">
-              <p class="fs-6"><?php echo $service['content'] ?></p>
-              <?php foreach ($services as $setService) : ?>
-                <?php if ($setService['id_service'] === $service['id_service']) : ?>
-                  <a href="./services.php#<?php echo $setService['NAME'] ?>">
-                    <button type="button" class="service_btn btn btn-success mt-4 mb-2"><?php echo $service['title_btn'] ?></button>
-                  </a>
-                <?php endif; ?>
-              <?php endforeach; ?>
+    <div class="container-lg my-5 pb-5 border-bottom">
+      <h3 class="text-center fs-2">Leurs habitations</h3>
+      <div class="row g-3">
+        <?php foreach ($homes as $home) : ?>
+          <div class="col-sm-6 col-lg-3">
+            <div class="container-div" style="background-image: url('<?php echo $home['url_img_accueil'] ?>');">
+              <a class="container-a" href="habitats.php#<?php echo $home['name']; ?>">
+                <h3 class="container-titre"><?php echo $home['commonName']; ?></h3>
+              </a>
             </div>
-            <img class="img_service col-sm-8 col-lg-4 mt-2" src="<?php echo $service['img2'] ?>">
           </div>
         <?php endforeach; ?>
       </div>
-      <hr>
-      <div class="container mt-5">
-        <div class="avis_para row">
-          <div class="container-avis col-12 text-center">
-            <h3 class="avis">Vos témoignages nous aide à grandir :</h3>
-            <img class="img-responsive center-block" src="./img/accueil/logo.png" width="10%">
+    </div>
+    <div class="container mt-1 pb-1">
+      <h3 class="text-center m-4 fs-2">Nous vous proposons :</h3>
+
+      <?php foreach ($accueilservices as $service) : ?>
+        <div class="row text-center mb-4 align-items-center">
+          <img class="img_service col-12 col-lg-5 mt-2" src="<?php echo $service['img1'] ?>">
+          <div class="col-sm-4 col-lg-3">
+            <p class="fs-6"><?php echo $service['content'] ?></p>
+            <?php foreach ($services as $setService) : ?>
+              <?php if ($setService['id_service'] === $service['id_service']) : ?>
+                <a href="./services.php#<?php echo $setService['NAME'] ?>">
+                  <button type="button" class="service_btn btn btn-success mt-4 mb-2"><?php echo $service['title_btn'] ?></button>
+                </a>
+              <?php endif; ?>
+            <?php endforeach; ?>
           </div>
-          <?php foreach ($allAvis as $avis) : ?>
-            <div class="avis_séparation1 col-12 col-lg-6">
-              <p class="container-avis1 p-2"><b><?php echo $avis['first_name']; ?> :</b>
-                <?php echo $avis['content']; ?></p>
-            </div>
-          <?php endforeach; ?>
-          <a class="m-2" href="./avis.php">
-            <button type="button" class="btn btn-success float-end" width="30%">Votre avis est important pour nous
-              !</button>
-          </a>
+          <img class="img_service col-sm-8 col-lg-4 mt-2" src="<?php echo $service['img2'] ?>">
         </div>
+      <?php endforeach; ?>
+    </div>
+    <hr>
+    <div class="container mt-5">
+      <div class="avis_para row">
+        <div class="container-avis col-12 text-center">
+          <h3 class="avis">Vos témoignages nous aide à grandir :</h3>
+          <img class="img-responsive center-block" src="./img/accueil/logo.png" width="10%">
+        </div>
+        <?php foreach ($allAvis as $avis) : ?>
+          <div class="avis_séparation1 col-12 col-lg-6">
+            <p class="container-avis1 p-2"><b><?php echo $avis['first_name']; ?> :</b>
+              <?php echo $avis['content']; ?></p>
+          </div>
+        <?php endforeach; ?>
+        <a class="m-2" href="./avis.php">
+          <button type="button" class="btn btn-success float-end" width="30%">Votre avis est important pour nous
+            !</button>
+        </a>
       </div>
+    </div>
   </main>
   <footer>
     <section class="section-footer">

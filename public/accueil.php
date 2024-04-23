@@ -26,9 +26,9 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/accueil.css" rel="stylesheet">
-  <link href="../style/font/font.css" rel="stylesheet">
-  <link href="../img/logo.png" rel="icon">
+  <link href="./style/css/accueil.css" rel="stylesheet">
+  <link href="./style/font/font.css" rel="stylesheet">
+  <link href="./img/logo.png" rel="icon">
 </head>
 
 <body>
@@ -36,7 +36,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
     <nav id="nav">
       <h1 class="titre-principal">Arcadia</h1>
       <div class="nav-div">
-        <img id="logo_nav" src="../img/accueil/logo.png" alt="erreur">
+        <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
         <li><a href="connexion.php">Connexion</a></li>
@@ -51,7 +51,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
 
   <main>
     <div class="citation row">
-      <img class="img_recyclage1 col-sm-2" src="../img/accueil/recyclage1.png" alt="recyclage">
+      <img class="img_recyclage1 col-sm-2" src="./img/accueil/recyclage1.png" alt="recyclage">
       <div class="col-9 col-sm-8">
         <blockquote class="text-center lh-sm">Il ne sert de rien à l'homme de gagner la Lune s'il vient à
           perdre la
@@ -59,11 +59,11 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         </blockquote>
         <cite class="float-end">François Mauriac</cite>
       </div>
-      <img class="img_recyclage2 col-3 col-sm-2" src="../img/accueil/recyclage2.png" alt="recyclage">
+      <img class="img_recyclage2 col-3 col-sm-2" src="./img/accueil/recyclage2.png" alt="recyclage">
     </div>
     <div class="row m-0">
-      <img class="img_presentation col-sm-6  p-0" src="../img/accueil/conservatoir.jpg" height="600px">
-      <img class="img_presentation col-sm-6  p-0" src="../img/accueil/lac.jpg" height="600px">
+      <img class="img_presentation col-sm-6  p-0" src="./img/accueil/conservatoir.jpg" height="600px">
+      <img class="img_presentation col-sm-6  p-0" src="./img/accueil/lac.jpg" height="600px">
       <p class="p-4 m-0 border-bottom">Arcadia est un zoo situé en France près de la forêt de Brocéliande, en bretagne
         depuis 1960.
         Ils possèdent tout un panel d'animaux, réparti par habitat (savane, jungle, marais) et font <i>extrêment</i>
@@ -126,7 +126,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         <div class="avis_para row">
           <div class="container-avis col-12 text-center">
             <h3 class="avis">Vos témoignages nous aide à grandir :</h3>
-            <img class="img-responsive center-block" src="../img/accueil/logo.png" width="10%">
+            <img class="img-responsive center-block" src="./img/accueil/logo.png" width="10%">
           </div>
           <?php foreach ($allAvis as $avis) : ?>
             <div class="avis_séparation1 col-12 col-lg-6">
@@ -185,10 +185,10 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Suivez-nous</li>
-            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="./img/accueil/insta.png" width="30vh"></a>
             </li> <br>
-            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="./img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="./img/accueil/linkedin.png" width="30vh"></a></li>
           </ul>
         </div>
       </div>
@@ -204,7 +204,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
    (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
 
 
-  <script src="../js/accueil.js"></script>
+  <script src="./js/accueil.js"></script>
 </body>
 
 </html>

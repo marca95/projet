@@ -50,99 +50,80 @@
       }
     }
 
+    // Get destination accueil animals 
+    // TO REWORK IF NEW HABITAT NO LINK
+
+    let animalType = window.location.hash.substring(1);
+
+     switch (animalType) {
+       case 'foret':
+         toggleDisplay('foret');
+         break;
+       case 'etang':
+         toggleDisplay('etang');
+         break;
+       case 'vivarium':
+         toggleDisplay('vivarium');
+         break;
+       case 'pature':
+         toggleDisplay('pature');
+         break;
+       case 'ranch':
+         toggleDisplay('ranch');
+         break;
+       case 'taniere':
+         toggleDisplay('taniere');
+         break;
+       case 'oceanarium':
+         toggleDisplay('oceanarium');
+         break;
+       case 'voliere':
+         toggleDisplay('voliere');
+         break;
+       case 'cerf':
+         toggleDisplay('foret');
+         toggleDisplay('cerf');
+         break;
+       case 'poisson':
+         toggleDisplay('etang');
+         toggleDisplay('poisson');
+         break;
+       case 'araignée':
+         toggleDisplay('vivarium');
+         toggleDisplay('araignée');
+         break;
+       case 'bison':
+         toggleDisplay('pature');
+         toggleDisplay('bison');
+         break;
+       case 'ours':
+         toggleDisplay('taniere');
+         toggleDisplay('ours');
+         break;
+       case 'dauphin':
+         toggleDisplay('oceanarium');
+         toggleDisplay('dauphin');
+         break;
+       case 'lion':
+         toggleDisplay('ranch');
+         toggleDisplay('lion');
+         break;
+       case 'perroquet':
+         toggleDisplay('voliere');
+         toggleDisplay('perroquet');
+         break;
+       default:
+         break;
+     }
+
+     function toggleDisplay(elementId) {
+       const element = document.getElementById(elementId);
+       if (element) {
+         element.style.display = 'block';
+       }
+     }
 
 
-
-    // Get destination animals 
-    const fetchTortule = document.getElementById('tortue');
-    const fetchBird = document.getElementById('oiseau');
-    const fetchCow = document.getElementById('vache');
-    const fetchKango = document.getElementById('kango');
-    const fetchBear = document.getElementById('ours');
-    const fetchCameleon = document.getElementById('cameleon');
-    const fetchPanda = document.getElementById('panda');
-    const fetchMonkey = document.getElementById('gorille');
-
-    const getFarm = document.getElementById('getClickFarm');
-    const getOcean = document.getElementById('getClickOcean');
-    const getPond = document.getElementById('getClickPond');
-    const getTaniere = document.getElementById('getClickTaniere');
-    const getVivarium = document.getElementById('getClickVivarium');
-    const getBird = document.getElementById('getClickBird');
-    const getForest = document.getElementById('getClickForest');
-    const getRanch = document.getElementById('getClickRanch');
-
-    let url = window.location.hash.substring(1);
-
-    switch (url) {
-      case 'vache':
-        getFarm.style.display = 'block';
-        fetchCow.style.display = 'block';
-        break
-      case 'ours':
-        getTaniere.style.display = 'block';
-        fetchBear.style.display = 'block';
-        break
-      case 'tortue':
-        getOcean.style.display = 'block';
-        fetchTortule.style.display = 'block';
-        break
-      case 'panda':
-        getTaniere.style.display = 'block';
-        fetchPanda.style.display = 'block';
-        break
-      case 'oiseau':
-        getBird.style.display = 'block';
-        fetchBird.style.display = 'block';
-        break
-      case 'gorille':
-        getTaniere.style.display = 'block';
-        fetchMonkey.style.display = 'block';
-        break
-      case 'kango':
-        getTaniere.style.display = 'block';
-        fetchKango.style.display = 'block';
-        break
-      case 'cameleon':
-        getVivarium.style.display = 'block';
-        fetchCameleon.style.display = 'block';
-        break
-
-
-
-      case 'foret':
-        getForest.style.display = 'block';
-        getForest.style.border = 'yellow 3px solid';
-        break
-      case 'etang':
-        getPond.style.display = 'block';
-        getPond.style.border = 'yellow 3px solid';
-        break
-      case 'vivarium':
-        getVivarium.style.display = 'block';
-        getVivarium.style.border = 'yellow 3px solid';
-        break
-      case 'pature':
-        getFarm.style.display = 'block';
-        getFarm.style.border = 'yellow 3px solid';
-        break
-      case 'ranch':
-        getRanch.style.display = 'block';
-        getRanch.style.border = 'yellow 3px solid';
-        break
-      case 'taniere':
-        getTaniere.style.display = 'block';
-        getTaniere.style.border = 'yellow 3px solid';
-        break
-      case 'oceanarium':
-        getOcean.style.display = 'block';
-        getOcean.style.border = 'yellow 3px solid';
-        break
-      case 'terre':
-        getForest.style.display = 'block';
-        getForest.style.border = 'yellow 3px solid';
-        break
-    }
     // Gestionnaire d'événements pour le clic sur $animal['type']
 
     function showType(animalType) {

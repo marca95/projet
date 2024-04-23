@@ -5,12 +5,15 @@
   box-sizing: border-box;
 }
 
+body{
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 h1,h2,h3 {
   font-family: "Lumanosimo", cursive;
   font-weight: 400;
   font-style: normal;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .header{

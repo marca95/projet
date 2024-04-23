@@ -53,9 +53,9 @@
     // Get destination accueil animals 
     // TO REWORK IF NEW HABITAT NO LINK
 
-    let animalType = window.location.hash.substring(1);
+    let animalURL = window.location.hash.substring(1);
 
-     switch (animalType) {
+     switch (animalURL) {
        case 'foret':
          toggleDisplay('foret');
          break;

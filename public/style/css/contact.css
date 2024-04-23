@@ -290,7 +290,7 @@ form {
   .btn{
     float: none;
     position: relative;
-    left: 85%;
+    left: 0;
   }
 
   .first_content {
@@ -377,9 +377,6 @@ form {
     margin: 10px auto;
   }
 
-  .btn{
-    left: 75%;
-  }
 }
 
 
@@ -457,8 +454,8 @@ form {
   }
 
   .btn{
-    position: static;
     width: 100%;
+    margin-right: 5px;
   }
 
 }

@@ -101,10 +101,10 @@ require_once '../mariadb/services.php';
     </div>
     <br>
     <div class="info_general">
-      <p>Si vous souhaitez nous partager votre avis <a href="./avis.html"><button class="btn btn-success">cliquez-ici</button></a>
+      <p>Si vous souhaitez nous partager votre avis <a href="./avis.php"><button class="btn btn-success">cliquez-ici</button></a>
       </p>
       <br>
-      <p>Venez découvrir notre espace vert <a href="./terre.html"><button class="btn btn-success">cliquez-ici</button></a></p>
+      <p>Venez découvrir notre espace vert <a href="./terre.php"><button class="btn btn-success">cliquez-ici</button></a></p>
     </div>
     <br>
   </main>

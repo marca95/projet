@@ -89,7 +89,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
       </div>
     </div>
-    <div class="container row g-3 mt-1 pb-3">
+    <div class="container-lg row g-3 mt-1 pb-3">
       <h3 class="text-center m-1 fs-2">Leurs habitations</h3>
       <?php foreach ($homes as $home) : ?>
         <div class="col-sm-6 col-lg-3">

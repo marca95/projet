@@ -32,7 +32,7 @@ require_once '../mariadb/services.php';
         <li><a href="contact.php">Contact</a></li>
         <li><a href="habitats.php">Habitats</a></li>
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="accueil.php">Accueil</a></li>
+        <li><a href="index.php">Accueil</a></li>
       </ul>
       <div id="icon"></div>
     </nav>

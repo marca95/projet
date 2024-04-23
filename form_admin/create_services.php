@@ -17,12 +17,12 @@ if (isset($_POST['createService']) && isset($_FILES['main_img']) && $_FILES['mai
   $linkImgRoot = isset($_FILES['link_img_root']['tmp_name']) ? $_FILES['link_img_root']['tmp_name'] : NULL;
   $linkClass = isset($_POST['link_classes']) ? $_POST['link_classes'] : NULL;
 
-  $destinationMainImg = "../img/services/" . $_FILES['main_img']['name'];
+  $destinationMainImg = "./img/services/" . $_FILES['main_img']['name'];
 
   if ((empty($linkImgRoot)) || $linkImgRoot == NULL) {
     $destinationLinkImgRoot = NULL;
   } else {
-    $destinationLinkImgRoot = "../img/services/" . $_FILES['link_img_root']['name'];
+    $destinationLinkImgRoot = "./img/services/" . $_FILES['link_img_root']['name'];
   }
 
   if (empty($mainTitle) || empty($content) || empty($name)) {
@@ -78,8 +78,8 @@ if (isset($_POST['createServiceAccueil']) && isset($_FILES['accueil_img1']) && $
   $accueilImg1 = isset($_FILES['accueil_img1']['tmp_name']) ? $_FILES['accueil_img1']['tmp_name'] : '';
   $accueilImg2 = isset($_FILES['accueil_img2']['tmp_name']) ? $_FILES['accueil_img2']['tmp_name'] : '';
 
-  $destinationAccueilImg1 = "../img/accueil/" . $_FILES['accueil_img1']['name'];
-  $destinationAccueilImg2 = "../img/accueil/" . $_FILES['accueil_img2']['name'];
+  $destinationAccueilImg1 = "./img/accueil/" . $_FILES['accueil_img1']['name'];
+  $destinationAccueilImg2 = "./img/accueil/" . $_FILES['accueil_img2']['name'];
 
   if (empty($accueilServiceId) || empty($accueilContent) || empty($accueilBtn)) {
     $messageCreateAccueil = 'Vous n\'avez pas rempli tous les champs.';

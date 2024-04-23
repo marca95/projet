@@ -13,9 +13,9 @@ if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['mai
   $secondRoot = $_FILES['second_img']['tmp_name'];
   $imgAccueil = $_FILES['url_image_accueil']['tmp_name'];
   $commonName = $_POST['commonName'];
-  $destinationMainImg = "../img/habitats/" . $_FILES['main_img']['name'];
-  $destinationSecondImg = "../img/habitats/" . $_FILES['second_img']['name'];
-  $destinatonImgAccueil = "../img/accueil/" . $_FILES['url_image_accueil']['name'];
+  $destinationMainImg = "./img/habitats/" . $_FILES['main_img']['name'];
+  $destinationSecondImg = "./img/habitats/" . $_FILES['second_img']['name'];
+  $destinatonImgAccueil = "./img/accueil/" . $_FILES['url_image_accueil']['name'];
 
   // Check if name exist (Unique in DB)
   $nameExists = false;

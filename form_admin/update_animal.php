@@ -44,7 +44,7 @@ if (isset($_POST['formUpdateAnimal'])) {
     $stmt->execute();
   }
   if ((!empty($files)) && $_FILES['image']['error'] === 0) {
-    $destinationImage = "../img/habitats/" . $_FILES['image']['name'];
+    $destinationImage = "./img/habitats/" . $_FILES['image']['name'];
     $stmt = $pdo->prepare('UPDATE animals SET root = :image WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':image', $destinationImage);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);

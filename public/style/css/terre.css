@@ -24,7 +24,7 @@ h1,h2,h3,h4 {
 nav {
   height : 70px;
   display: flex;
-  background-color: #454545;
+  background-color: #522f07;
 }
 
 nav .titre-principal { 
@@ -117,7 +117,7 @@ h2 {
 .section-footer {
   overflow: hidden;
   width: 100%;
-  background-color: #454545;
+  background-color: #522f07;
   color: white;
   font-size: 0.75rem;
 }
@@ -369,7 +369,7 @@ h2 {
 
 .navigation {
     position: absolute;
-    background: #454545;
+    background-color: #522f07;
     right: 100%;
     top: 70px;
     flex-direction: column-reverse;

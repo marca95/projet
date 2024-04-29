@@ -53,7 +53,7 @@ require_once '../mariadb/register.php';
       <label for="first_name">Prénom :</label><br />
       <input type="text" name="first_name" id="first_name" oninput="clearSuccess()" required>
       <br />
-      <label for="email">Email (Privé) :</label><br />
+      <label for="email">E-mail (Privé) :</label><br />
       <input type="email" name="email" id="email" oninput="clearSuccess()" required>
       <br />
       <label for="username">Username :</label><br />

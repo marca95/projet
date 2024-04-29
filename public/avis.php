@@ -41,7 +41,7 @@ require_once '../mariadb/form_avis.php';
 
   <main>
     <div class="setup">
-      <div class="row">
+      <div class="row text-center">
         <h2>Nous souhaitons avoir votre avis</h2>
       </div>
 

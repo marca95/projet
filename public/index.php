@@ -66,7 +66,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       <img class="img_presentation col-sm-6  p-0" src="./img/accueil/lac.jpg" height="600px">
       <p class="p-4 m-0 border-bottom">Arcadia est un zoo situé en France près de la forêt de Brocéliande, en bretagne
         depuis 1960.
-        Ils possèdent tout un panel d'animaux, réparti par habitat (savane, jungle, marais) et font <i>extrêment</i>
+        Il possède tout un panel d'animaux, réparti par habitat (savane, jungle, marais) et font <i>extrêment</i>
         attention
         à leurs santés. Chaque jour, plusieurs vétérinaires viennent afin d'éffectuer les contrôles sur chaque animal
         avant

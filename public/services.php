@@ -76,9 +76,9 @@ FROM
           <button class="btn2 btn btn-success">Votre avis</button>
         </a>
       </div>
-      <h2 class="col-6 col-sm-8 col-md-6 col-lg-8">Service proposé</h2>
+      <h2 class="col-6 col-sm-8 col-md-6 col-lg-8">Services proposés</h2>
       <div class="principal col-3 col-sm-2 col-md-3 col-lg-2">
-        <a class="principal1 main_a" href="./tarif.php"><button class="btn3 btn btn-success">Tarif</button></a>
+        <a class="principal1 main_a" href="./tarif.php"><button class="btn3 btn btn-success">Tarifs</button></a>
       </div>
     </div>
     <div class="main_div row">

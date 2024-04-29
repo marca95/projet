@@ -95,7 +95,7 @@ require_once('../form_admin/delete_services.php');
     <label for="link_classes">Classes du lien : </label>
     <input type="text" name="link_classes" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
     <p>Valeur par défaut</p>
-    <p>Les champs avec (*) sont obligatoire.</p>
+    <p>Les champs avec (*) sont obligatoires.</p>
     <button type="submit" name="createService" class="btn btn-success">Créer un service</button>
   </form>
   <?php if ((isset($messageCreate)) && (!empty($messageCreate))) : ?>
@@ -145,7 +145,7 @@ require_once('../form_admin/delete_services.php');
       <option value="0"></option>
       <option value="1">Le titre principal </option>
       <option value="2">Le deuxième titre </option>
-      <option value="3">L'image principal du service </option>
+      <option value="3">L'image principale du service </option>
       <option value="4">Le contenu principal </option>
       <option value="5">Le troisième titre </option>
       <option value="6">Le second contenu </option>

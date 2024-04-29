@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <img class="col-lg-4 col-xl-3 img" src="./img/connexion/gorille.jpg" alt="gorille">
       <div class="col-lg-6 content">
         <h2>Connexion</h2>
-        <p class="warning">Attention, cette page est réservé uniquement aux membres du personnel d'Arcadia, il est
+        <p class="warning">Attention, cette page est réservée uniquement aux membres du personnel d'Arcadia, il est
           donc impossible
           pour un visiteur de créer un compte.</p>
         <div class="formulaire">

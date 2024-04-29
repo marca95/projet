@@ -51,7 +51,7 @@ require_once '../form_admin/update_services.php';
               <p class="status" style="<?php echo $avis['status'] === 'published' ? 'color: green;' : 'color: red;'; ?>">
                 <?php echo $avis['status'] == 'published' ? "L'article est en ligne." : "L'article est en attente de traitement." ?>
               </p>
-              <label for="<?php echo $avis['id_avis']; ?>">Vous pouvez changer l'état de l'avis :</label>
+              <label for="<?php echo $avis['id_avis']; ?>">Vous pouvez changer l'état de l'avis : </label>
               <select name="status[<?php echo $avis['id_avis']; ?>]">
                 <option></option>
                 <option value="pending">En attente</option>
@@ -87,7 +87,7 @@ require_once '../form_admin/update_services.php';
             <option value="0"></option>
             <option value="1">Le titre principal </option>
             <option value="2">Le deuxième titre </option>
-            <option value="3">L'image principal du service </option>
+            <option value="3">L'image principale du service </option>
             <option value="4">Le contenu principal </option>
             <option value="5">Le troisième titre </option>
             <option value="6">Le second contenu </option>

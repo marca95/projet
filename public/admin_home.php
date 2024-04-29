@@ -54,7 +54,7 @@ require_once('../form_admin/delete_home.php');
         <label for="description">Description :</label>
         <textarea type="text" name="description" rows="8" cols="10" required></textarea>
         <br />
-        <label for="main_img">Image principal :</label>
+        <label for="main_img">Image principale :</label>
         <input type="file" name="main_img" required>
         <br />
         <label for="second_img">Image secondaire :</label>
@@ -66,7 +66,7 @@ require_once('../form_admin/delete_home.php');
         <label for="commonName">Nom complet de l'habitation :</label>
         <input type="text" name="commonName" required>
         <br />
-        <label for="second_title">2ième nom de l'habitation :</label>
+        <label for="second_title">2ème nom de l'habitation :</label>
         <input type="text" name="second_title" required>
         <br />
         <button type="submit" name="createNewHome" class="btn btn-success">Ajouter une nouvelle habitation</button>
@@ -93,7 +93,7 @@ require_once('../form_admin/delete_home.php');
         <select name="choose" id="choose" required>
           <option></option>
           <option value="1">Le nom de l'habitat</option>
-          <option value="2">La photo principal</option>
+          <option value="2">La photo principale</option>
           <option value="3">La photo secondaire</option>
           <option value="4">Le titre principal</option>
           <option value="5">Le second titre</option>

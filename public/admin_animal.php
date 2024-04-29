@@ -160,7 +160,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <br />
       <input type="file" name="upload" class="upload_file" required>
       <br />
-      <button type="submit" name="createNewAnimal" class="btn btn-success">Inscrire le nouvelle animal</button>
+      <button type="submit" name="createNewAnimal" class="btn btn-success">Inscrire le nouvel animal</button>
       <br />
       <?php if (isset($messageAnimal) && (!empty($messageAnimal))) : ?>
         <p class="message"><?php echo $messageAnimal; ?></p>
@@ -171,7 +171,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
   <section class="update_animal">
     <h3>Modifier un animal </h3>
     <form action="" method="POST" enctype="multipart/form-data" id="form_update_animal">
-      <label for="choice_animal">Choissisez votre animal :</label>
+      <label for="choice_animal">Choisissez votre animal :</label>
       <br />
       <select name="choice_animal" id="choice_animal" required>
         <option></option>

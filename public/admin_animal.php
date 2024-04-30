@@ -14,52 +14,52 @@ require_once('../form_admin/delete_animal.php');
 
 
 // MongoDB library
-// require '../vendor/autoload.php';
+include '../vendor/autoload.php';
 
 // // Check if you connected on local
-// if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
-//   // Connexion locale
-//   $mongoClient = new MongoDB\Client("mongodb://localhost:27017");
-// } else {
-//   // Remote connexion
-//   $uri = "mongodb+srv://marca95:esbourcy69@cluster0.1ybtwgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-//   $mongoClient = new MongoDB\Client($uri);
-// }
+if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
+  // Connexion locale
+  $mongoClient = new MongoDB\Client("mongodb://localhost:27017");
+} else {
+  // Remote connexion
+  $uri = "mongodb+srv://marca95:esbourcy69@cluster0.1ybtwgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  $mongoClient = new MongoDB\Client($uri);
+}
 
-// $database = $mongoClient->selectDatabase("zoo");
-// $collection = $database->animals;
+$database = $mongoClient->selectDatabase("zoo");
+$collection = $database->animals;
 
-// // Vérification et ajout de l'animal
-// if (isset($_POST['createNewAnimal'])) {
-//   $name = $_POST['name'];
-//   $type = $_POST['type'];
-//   $commonName = $_POST['commonName'];
+// Vérification et ajout de l'animal
+if (isset($_POST['createNewAnimal'])) {
+  $name = $_POST['name'];
+  $type = $_POST['type'];
+  $commonName = $_POST['commonName'];
 
-//   // Incrémenter le compteur d'identifiant
-//   $result = $database->command([
-//     'findAndModify' => 'id_animal',
-//     'query' => ['_id' => 'id_animal'],
-//     'update' => ['$inc' => ['seq' => 1]],
-//     'new' => true,
-//   ]);
+  // Incrémenter le compteur d'identifiant
+  $result = $database->command([
+    'findAndModify' => 'id_animal',
+    'query' => ['_id' => 'id_animal'],
+    'update' => ['$inc' => ['seq' => 1]],
+    'new' => true,
+  ]);
 
-//   if (isset($result->value['seq'])) {
-//     $id_animal = $result->value['seq'];
-//   }
+  if (isset($result->value['seq'])) {
+    $id_animal = $result->value['seq'];
+  }
 
-//   $insertResult = $collection->insertOne([
-//     'name' => $name,
-//     'type' => $type,
-//     'commonName' => $commonName,
-//     'nbr_view' => 0
-//   ]);
+  $insertResult = $collection->insertOne([
+    'name' => $name,
+    'type' => $type,
+    'commonName' => $commonName,
+    'nbr_view' => 0
+  ]);
 
-//   if ($insertResult->getInsertedCount() === 1) {
-//     $messageAnimal = "L'animal a été ajouté avec succès à la base de données.";
-//   } else {
-//     $messageAnimal = "Une erreur s'est produite lors de l'ajout de l'animal dans MongoDB.";
-//   }
-// }
+  if ($insertResult->getInsertedCount() === 1) {
+    $messageAnimal = "L'animal a été ajouté avec succès à la base de données.";
+  } else {
+    $messageAnimal = "Une erreur s'est produite lors de l'ajout de l'animal dans MongoDB.";
+  }
+}
 
 // DELETE WITH MONGODB 
 

@@ -54,13 +54,13 @@ if (isset($_POST['formUpdateAnimal'])) {
       $updateAnimal = 'Il y a eu un problème lors du téléchargement de l\'image.';
     }
   }
-  if (!empty($updateOrigin)) {
+  if ((!empty($updateOrigin)) && isset($updateOrigin)) {
     $stmt = $pdo->prepare('UPDATE animals SET id_location = :origin WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':origin', $updateOrigin);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
     $stmt->execute();
   }
-  if (!empty($updateHome)) {
+  if ((!empty($updateHome)) && isset($updateHome)) {
     $stmt = $pdo->prepare('UPDATE animals SET id_home = :home WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':home', $updateHome);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);

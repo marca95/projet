@@ -7,7 +7,7 @@
 <p>Ce projet est une application web qui montre les différentes partie du Zoo Arcadia. Vous pourrez y découvrir les différents habitations ainsi que tous les animaux du zoo. Ce que vous pourrez y faire, ainsi que les avis des visiteurs. Seul l’administrateur, les vétérinaires et les employés ont un compte pour s’y connecter afin qu’ils puissent mettre à jour leurs documents. Il y a un également un formulaire de contact, qui permet aux visiteurs du site de poser une question à l’administrateur en mentionnant un titre, une adresse mail et une description de la demande.</p>
 <p>Lien du déploiement : <a href="https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/">https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/</a></p>
 <p>Lien des maquettes avec Figma : <a href="https://www.figma.com/file/iXyHguaEtQRTkp5iiRJqGF/Arcadia?type=design&node-id=0%3A1&mode=design&t=7VZwzasuJpaGJoeR-1">Cliquez-ici</a></p>
-<p>Lien de mon gestion de projet avec Trello <a href="https://trello.com/b/2YBX2Upm/zoo-arcadia" >Cliquez-ici</a></p>
+<p>Lien de mon gestion de projet avec Trello : <a href="https://trello.com/b/2YBX2Upm/zoo-arcadia" >Cliquez-ici</a></p>
 <h2 id="pré-requis">Pré-requis</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/download">Visual Studio Code</a> : Editeur de code (Comprend HTML/CSS/JS).</li>

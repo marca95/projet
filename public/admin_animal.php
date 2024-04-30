@@ -14,7 +14,7 @@ require_once('../form_admin/delete_animal.php');
 
 
 // MongoDB library
-include '../vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // // Check if you connected on local
 if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {

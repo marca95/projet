@@ -93,7 +93,7 @@ require_once '../mariadb/services.php';
       </div>
       <hr>
       <div class="cat_div">
-        <h6>Personnes à mobilité réduites</h6>
+        <h6>Personnes à mobilité réduite</h6>
         <p class="cat_age">Toutes ages</p>
         <p class="cat-price">25€</p>
       </div>

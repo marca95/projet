@@ -8,7 +8,7 @@ require_once '../mariadb/services.php';
 require_once '../mariadb/homes.php';
 
 // MongoDB library
-include '../vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use MongoDB\Client;
 use MongoDB\BSON\ObjectID;

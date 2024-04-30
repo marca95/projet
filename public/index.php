@@ -66,11 +66,11 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
       <img class="img_presentation col-sm-6  p-0" src="./img/accueil/lac.jpg" height="600px">
       <p class="p-4 m-0 border-bottom">Arcadia est un zoo situé en France près de la forêt de Brocéliande, en bretagne
         depuis 1960.
-        Il possède tout un panel d'animaux, réparti par habitat (savane, jungle, marais) et font <i>extrêment</i>
-        attention
-        à leurs santés. Chaque jour, plusieurs vétérinaires viennent afin d'éffectuer les contrôles sur chaque animal
+        Le zoo contient tout un panel d'animaux, réparti par habitat (savane, jungle, marais).
+        La santé des animaux est un facteur primordial pour le parc.
+        Chaque jour, plusieurs vétérinaires viennent éffectuer un contrôle sur chaque animal
         avant
-        l'ouverture du zoo afin de s'assurer que tout se passe bien, de même, toute la nourriture donnée est calculée
+        l'ouverture, afin de s'assurer qu'il soit en bonne santé. De même, toute la nourriture donnée est calculée
         afin d'avoir
         le bon grammage (le bon grammage est précisé dans le rapport du vétérinaire).
       </p>

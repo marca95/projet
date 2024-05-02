@@ -8,6 +8,7 @@
 <p>Lien du déploiement : <a href="https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/">https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/</a></p>
 <p>Lien des maquettes avec Figma : <a href="https://www.figma.com/file/iXyHguaEtQRTkp5iiRJqGF/Arcadia?type=design&node-id=0%3A1&mode=design&t=7VZwzasuJpaGJoeR-1">Cliquez-ici</a></p>
 <p>Lien de mon gestion de projet avec Trello : <a href="https://trello.com/b/2YBX2Upm/zoo-arcadia" >Cliquez-ici</a></p>
+<p>Lien Github : <a href="https://github.com/marca95/projet.git" >Cliquez-ici</a></p>
 <h2 id="pré-requis">Pré-requis</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/download">Visual Studio Code</a> : Editeur de code (Comprend HTML/CSS/JS).</li>

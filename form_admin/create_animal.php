@@ -22,7 +22,7 @@ if (isset($_POST['createNewAnimal']) && isset($_FILES['upload']) && $_FILES['upl
   $home = $_POST['home'];
   $imgRoot = $_FILES['upload']['tmp_name'];
   $commonName = $_POST['commonName'];
-  $destination = "../img/habitats/" . $_FILES['upload']['name'];
+  $destination = "./img/habitats/" . $_FILES['upload']['name'];
 
   $newAnimal = $pdo->prepare('INSERT INTO animals(name, type, race, id_location, id_home, root, commonName) VALUES (:name, :type, :race, :id_location, :id_home, :root, :commonName)');
   $newAnimal->bindValue(':name', $name);

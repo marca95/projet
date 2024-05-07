@@ -1,0 +1,271 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+
+h1,h2,h3,h4 {
+  font-family: "Lumanosimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+nav {
+  width: 100%;
+  height: 40px;
+  background-color: maroon;
+  font-weight: 600;
+  display: flex;
+}
+
+nav ul {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 50px 0px 50px;
+  padding: 0px;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+nav ul li a {
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+nav ul li a:hover {
+  color: green;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#icon {
+  cursor: pointer;
+  display: none;
+}
+
+.form_logout {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.logout {
+  background-color: transparent;
+  border: none;
+}
+
+
+h1{
+  padding: 60px 0 30px 40px;
+  font-size: 3.2rem;
+}
+
+h3{
+  text-align: center;
+  text-decoration: underline;
+  padding: 20px 0 40px 0;
+}
+
+.form_register, .form_hour {
+  margin: 0 auto;
+  width: 80%;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding-bottom: 30px;
+  background-color: rgba(0, 79, 3, 0.333);
+}
+
+.form_register label {
+  padding: 10px 0 5px 25px;
+  font-weight: 600;
+}
+
+.form_register input {
+  margin-left: 20px;
+  width: 80%;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.btn_inscription{
+  margin-left: 20px;
+}
+
+.register, .setHours{
+background-color: rgba(0, 76, 1, 0.256);
+margin: 0 auto 30px auto;
+padding-bottom: 30px;
+width: 60%;
+border-radius: 20px;
+}
+
+.setHours{
+  background-color: rgba(0, 208, 255, 0.655);
+}
+
+.day_week{
+  text-align: center;
+  list-style-type: none;
+  font-weight: 600;
+  padding: 10px 10px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.form_hour label {
+  padding: 10px 0 5px 25px;
+  font-weight: 600;
+}
+
+.form_hour input {
+  margin-left: 5px;
+  width: 20%;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-bottom: 40px;
+}
+
+#errorInput{
+  padding-left: 20px;
+  padding-top: 20px;
+  color: red;
+}
+
+#success, #successHour {
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+#errorForm, #error{
+  color: red;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 992px) {
+
+  .day_week{
+    font-size: 1.1rem;
+  }
+
+  .form_hour label {
+    padding: 10px 0 5px 10px;
+    display: flex;
+  }
+
+  .form_hour select {
+    margin-left: 20px;
+  }
+
+  .form_hour input {
+    width: 40%;
+    margin-bottom: 5px;
+    display: flex;
+    margin-left: 40px;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  #icon {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: block;
+  }
+
+  #icon:before {
+    content: "\2630";
+    color: black;
+  }
+
+  .active #icon:before {
+    content: "\2715";
+    color: black;
+  }
+
+  nav.active ul {
+    left: -60px;
+    top: 40px;
+    width: 30%;
+  }
+
+  .navigation {
+    position: absolute;
+    background: maroon;
+    right: 100%;
+    top: 40px;
+    flex-direction: column;
+    width: 25%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  nav ul li {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+  }
+
+  nav ul li a {
+    font-weight: normal;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  h1{
+    font-size: 2.6rem;
+  }
+  
+  h3{
+    font-size: 1.4rem;
+  }
+
+  .register, .setHours{
+    width: 100%;
+    }
+
+  .form_register, .form_hour {
+    width: 80%;
+  }
+  
+  .form_register input {
+    width: 80%;
+  }
+
+  .day_week{
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  h1{
+    font-size: 2.6rem;
+    padding: 20px 0 20px;
+    text-align: center;
+  }
+
+  .form_register, .form_hour {
+    width: 100%;
+  }
+
+  .register, .setHours{
+    padding-bottom: 0;
+    }
+  
+  .form_register input {
+    width: 90%;
+  }
+
+  .btn_inscription{
+    width: 80%;
+    margin-left: 40px;
+    padding: 0 ;
+  }
+}
+

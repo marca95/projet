@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <?php
+session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
@@ -39,7 +40,7 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
-        <li><a href="connexion.php">Connexion</a></li>
+        <li><a href="connexion.php"><?php echo isset($_SESSION['id_user']) ? 'Mon espace' : 'Connexion' ?></a></li>
         <li><a href="contact.php">Contact</a></li>
         <li><a href="habitats.php">Habitats</a></li>
         <li><a href="services.php">Services</a></li>

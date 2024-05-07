@@ -37,7 +37,7 @@ if (isset($_POST['updateService'])) {
     $stmt->execute();
   }
   if (!empty($mainImg)) {
-    $destinationMainImg = "../img/services/" . $_FILES['update_main_img']['name'];
+    $destinationMainImg = "./img/services/" . $_FILES['update_main_img']['name'];
     $stmt = $pdo->prepare('UPDATE services SET img_root = :img_root WHERE id_service = :id_service');
     $stmt->bindValue(':img_root', $destinationMainImg);
     $stmt->bindValue(':id_service', $selectedService);
@@ -96,7 +96,7 @@ if (isset($_POST['updateService'])) {
     $stmt->execute();
   }
   if (!empty($linkImgRoot)) {
-    $destinationLinkImgRoot = "../img/services/" . $_FILES['update_img_link']['name'];
+    $destinationLinkImgRoot = "./img/services/" . $_FILES['update_img_link']['name'];
     $stmt = $pdo->prepare('UPDATE services SET img_root_link = :img_root_link WHERE id_service = :id_service');
     $stmt->bindValue(':img_root_link', $destinationLinkImgRoot);
     $stmt->bindValue(':id_service', $selectedService);

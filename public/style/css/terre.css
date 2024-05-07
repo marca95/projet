@@ -1,0 +1,397 @@
+* {
+  margin: 0px ;
+  padding: 0px;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1,h2,h3,h4 {
+  font-family: "Lumanosimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* -------------------------------NAV------------------------------------ */
+
+nav {
+  height : 70px;
+  display: flex;
+  background-color: #522f07;
+}
+
+nav .titre-principal { 
+ color: white;
+ letter-spacing: 5px;
+ font-size: 3.6rem;
+ line-height: 80px;
+ font-weight: 300;
+ padding: 0 50px;
+ display: flex;
+ width: 30%;
+ align-items: center;
+ margin: 0;
+}
+
+.nav-div {
+  display: flex;
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo_nav {
+  width: 60px;
+}
+
+nav ul {
+  width: 60%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin: 0px 50px 0px 50px;
+  padding: 0px; 
+}
+
+nav ul li {
+  line-height: 80px;
+  padding: 0;
+}
+
+nav ul li a {
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  padding: 10px; 
+  transition: 0.5s;
+}
+
+nav ul li a:hover{
+  color: green;
+  padding: 10px; 
+  cursor: pointer;
+}
+
+#icon {
+  cursor: pointer;
+  display: none;
+}
+/* -------------------------------MAIN------------------------------------ */
+
+.main_div {
+  background-image: url(../../img/terre/photovoltaique.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 40vh;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  padding: 20px 20px;
+  font-size: 3rem;
+  text-transform: uppercase ;
+}
+
+.main_para{
+  margin: 20px 40px;
+  font-size: 1.1rem;
+}
+
+.img_eolienne {
+  background-size: cover;
+  width: 100%;
+  height: 90vh;
+}
+
+/* -------------------------------FOOTER------------------------------------ */
+.section-footer {
+  overflow: hidden;
+  width: 100%;
+  background-color: #522f07;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.contenu-footer {
+  border-bottom: 1px solid white;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.footer-div {
+  display: block;
+  width: 25%;
+}
+
+.footer-titre {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 8px auto; 
+  text-align: center;
+}
+
+.footer-ul{
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.footer-li {
+  margin: 15px auto;
+}
+
+.footer-a {
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
+}
+
+.footer-a:hover {
+  text-decoration: none;
+  color: green;
+}
+
+ .footer-copyright {
+  text-align: center;
+} 
+
+/* -------------------------------MEADIA QUERIES------------------------------------ */
+
+@media screen and (max-width: 1199px) {
+
+  nav .titre-principal { 
+    font-size: 2.5rem;
+    padding-left: 30px;
+    width: 30%;
+    margin: 0px;
+   }
+
+   nav ul {
+    width: 50%;
+    margin: 0px
+  }
+
+  nav ul li {
+    padding-right: 15px;
+    margin-right: 15px;
+  } 
+
+   nav ul li a {
+    font-size: 0.9rem;
+  }
+
+  .nav-div {
+    width: 20%;
+    justify-content: left; 
+  }
+
+  nav ul li a:hover{
+    color: rgb(0, 204, 51);
+    cursor: pointer;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+
+  nav .titre-principal { 
+    font-size: 2.2rem;
+    padding: 0px;
+    justify-content: center;
+    width: 30%;
+   }
+
+   .nav-div {
+    width: 25%;
+  }
+  
+  nav ul li {
+    padding-right: 5px;
+    margin-right: 5px;
+  }
+  
+  nav ul li a {
+    font-size: 0.9rem;
+  }
+
+  .footer-titre {
+    font-size: 0.9rem;
+  }
+
+  .contenu-footer{
+    width: 100%;
+  }
+
+  .footer-ul{
+    padding-left: 10px;
+  }
+
+  .img_eolienne {
+    height: 60vh;
+  }
+
+}
+
+
+@media screen and (max-width: 767px) {
+  
+  body {
+    width: 100%;
+  }
+
+  nav .titre-principal { 
+    font-size: 2rem;
+    padding-left: 10px;
+    width: 30%;
+   }
+
+   nav ul {
+    width: 60%;
+    float: right;
+  }
+
+  nav ul li a {
+    font-size: 0.8rem;
+    padding: 2px;
+  }
+
+  nav ul li a:hover{
+    padding: 2px;
+  }
+
+ .nav-div {
+    width: 10%;
+    margin-left: 3px;
+  }
+
+  #logo_nav{
+    width: 50px;
+  }
+
+ .contenu-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: center;
+  }
+
+  .footer-titre {
+    font-size: 1rem;
+  }
+
+  .footer-a {
+    padding: auto 15px;
+  }
+
+  .footer-div {
+    width: 50%;
+  } 
+
+  .footer-li {
+    margin: 10px auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .img_eolienne {
+    height: 40vh
+  }
+}
+
+
+@media screen and (max-width: 650px) {
+  nav .titre-principal { 
+    font-size: 1.8rem;
+    margin-left: 0;
+    text-align: left;
+   }
+
+   nav ul {
+    padding-left: 0px;
+  }
+
+  nav ul li a {
+    font-size: 0.75rem;
+  }
+
+  .navigation {
+    display: flex;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  nav .titre-principal { 
+    width: 60%;
+   }
+
+   .nav-div {
+    width: 30%;
+   }
+
+  #icon {
+    margin-top: 23px;
+    display: block;
+  }
+
+  #icon:before {
+    content: "\2630";
+    color: white;
+  }
+
+  .active #icon:before {
+    content: "\2715";
+    color: white;
+  }
+
+  nav.active ul {
+    right: 0;
+  }
+
+.navigation {
+    position: absolute;
+    background-color: #522f07;
+    right: 100%;
+    top: 70px;
+    flex-direction: column-reverse;
+    width: 25%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  nav ul li {
+    text-align: center;
+    width: 100%;
+  }
+
+  .main_div{
+    height: 30vh;
+  }
+
+  .main_para {
+    font-size: 1rem;
+  }
+
+  .img_logo{
+    margin-bottom: 10px;
+  }
+}

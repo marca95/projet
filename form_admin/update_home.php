@@ -21,7 +21,7 @@ if (isset($_POST['updateHome'])) {
     $stmt->execute();
   }
   if ((!empty($updateMainImg)) && $_FILES['main_image']['error'] === 0) {
-    $destinationMainImg = "../img/habitats/" . $_FILES['main_image']['name'];
+    $destinationMainImg = "./img/habitats/" . $_FILES['main_image']['name'];
     $stmt = $pdo->prepare('UPDATE homes SET main_root = :updateMainImg WHERE id_home = :idHome');
     $stmt->bindValue(':updateMainImg', $destinationMainImg);
     $stmt->bindValue(':idHome', $idHome);
@@ -32,7 +32,7 @@ if (isset($_POST['updateHome'])) {
     }
   }
   if ((!empty($updateSecondImg)) && $_FILES['second_image']['error'] === 0) {
-    $destinationSecondImg = "../img/habitats/" . $_FILES['second_image']['name'];
+    $destinationSecondImg = "./img/habitats/" . $_FILES['second_image']['name'];
     $stmt = $pdo->prepare('UPDATE homes SET second_root = :updateSecondImg WHERE id_home = :idHome');
     $stmt->bindValue(':updateSecondImg', $destinationSecondImg);
     $stmt->bindValue(':idHome', $idHome);
@@ -43,7 +43,7 @@ if (isset($_POST['updateHome'])) {
     }
   }
   if ((!empty($updateImgAccueil)) && $_FILES['update_img_accueil']['error'] === 0) {
-    $destinationImgAccueil = "../img/accueil/" . $_FILES['update_img_accueil']['name'];
+    $destinationImgAccueil = "./img/accueil/" . $_FILES['update_img_accueil']['name'];
     $stmt = $pdo->prepare('UPDATE homes SET url_img_accueil = :url_img_accueil WHERE id_home = :idHome');
     $stmt->bindValue(':update_img_accueil', $destinationImgAccueil);
     $stmt->bindValue(':idHome', $idHome);

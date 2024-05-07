@@ -1,0 +1,253 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+
+h1,h2,h3,h4 {
+  font-family: "Lumanosimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header{
+  background-image: url('../../img/veterinaire/vache.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 460px;
+}
+
+h1 {
+  padding-left: 20px;
+  padding-top: 20px;
+  font-size: 3.8rem;
+}
+
+h2 {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.5rem;
+  color: white;
+}
+
+.message{
+  padding-left: 15px;
+  font-weight: bold;
+}
+
+#search_data{
+  display: flex;
+  justify-content: center;
+}
+  
+#input_search{
+  width: 40%;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #d8d8d89c;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+  
+.btn_search_bar{
+  height: 100%;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.form_logout {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.logout {
+  background-color: transparent;
+  border: none;
+}
+
+table{
+  width: 90%;
+  border: 5px solid black;
+  height: auto;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-bottom: 80px;
+} 
+
+.head_table{
+  background-color: rgba(183, 183, 183, 0.5);
+}
+
+th, td {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: 8px;
+}
+
+td{
+  background-color: beige;
+}
+
+button {
+  border-radius: 10px;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 0.7em 1em;
+  font-size: 1em;
+  border: none;
+}
+
+button:hover {
+  background-color: #014e79;
+  transition-duration: 0.5s;
+}
+
+.form{
+  display: block;
+  justify-content: center;
+  border: 1px solid cornflowerblue;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 30px;
+  width: 80%;
+}
+
+h4{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-size: 2.4rem;
+}
+
+label{
+  margin-left: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+select, textarea {
+  display: flex;
+  margin-left: 70px;
+  padding: 5px;
+  border: 1px solid cornflowerblue;
+  border-radius: 3px;
+}
+
+textarea {
+  padding: 10px;
+  width: 80%;
+}
+
+.but{
+  text-align: end;
+}
+
+p{
+  color: green;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  h1{
+    font-size: 3rem;
+  }
+
+  h2{
+    font-size: 2.6rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  #input_search{
+    width: 70%;
+  }
+
+ table, thead, tbody, tr, th, td {
+  display: block;
+ }
+
+ thead{
+  display: none;
+ }
+
+ td{
+  padding-left: 150px;
+  position: relative;
+  height: 7vh;
+ }
+
+ td::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  background-color: rgba(183, 183, 183, 0.5);
+  padding-left: 5px;
+  border-right: 3px solid black;
+ }
+
+ tr{
+  margin-bottom: 1rem;
+ }
+
+ label {
+  margin-left: 20px;
+ }
+
+ textarea, select{
+  margin-left: 30px;
+ }
+}
+
+@media screen and (max-width: 650px) {
+  header{
+    background-image: url('../../img/veterinaire/vache.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+  }
+  
+  h1{
+    color: white;
+  }
+
+  h2 {
+    height: 80px;
+    align-items: top;
+  }
+
+  h4{
+  font-size: 2.1rem;
+}
+}
+
+@media screen and (max-width: 576px) {
+  
+  h3{
+    font-size: 2rem
+  }
+  
+  h4{
+  font-size: 1.6rem;
+}
+}

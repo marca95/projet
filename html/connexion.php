@@ -54,9 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoo d'Arcadia en Bretagne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="../style/css/connexion.css" rel="stylesheet">
-  <link href="../img/logo.png" rel="icon">
-  <link rel="fontsheet" href="../style/font/font.css">
+  <link href="./style/css/connexion.css" rel="stylesheet">
+  <link href="./style/font/font.css" rel="stylesheet">
+  <link href="./img/accueil/logo.png" rel="icon">
 </head>
 
 <body>
@@ -64,24 +64,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <nav id="nav">
       <h1 class="titre-principal">Arcadia</h1>
       <div class="nav-div">
-        <img id="logo_nav" src="../img/accueil/logo.png" alt="erreur">
+        <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
         <li><a href="contact.php">Contact</a></li>
         <li><a href="habitats.php">Habitats</a></li>
         <li><a href="services.php">Services</a></li>
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="accueil.php">Accueil</a></li>
+        <li><a href="index.php">Accueil</a></li>
       </ul>
       <div id="icon"></div>
     </nav>
   </header>
   <main>
     <div class="row">
-      <img class="col-lg-4 col-xl-3 img" src="../img/connexion/gorille.jpg" alt="gorille">
+      <img class="col-lg-4 col-xl-3 img" src="./img/connexion/gorille.jpg" alt="gorille">
       <div class="col-lg-6 content">
         <h2>Connexion</h2>
-        <p class="warning">Attention, cette page est réservé uniquement aux membres du personnel d'Arcadia, il est
+        <p class="warning">Attention, cette page est réservée uniquement aux membres du personnel d'Arcadia, il est
           donc impossible
           pour un visiteur de créer un compte.</p>
         <div class="formulaire">
@@ -103,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </form>
         </div>
       </div>
-      <img class="col-lg-4 col-xl-3 img" src="../img/connexion/lama.jpg" alt="lama">
-      <img class="img_hidden" src="../img/connexion/crocodile.jpg" alt="crocodile">
+      <img class="col-lg-4 col-xl-3 img" src="./img/connexion/lama.jpg" alt="lama">
+      <img class="img_hidden" src="./img/connexion/crocodile.jpg" alt="crocodile">
     </div>
   </main>
   <footer>
@@ -151,10 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="footer-div">
           <ul class="footer-ul">
             <li class="footer-titre">Suivez-nous</li>
-            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="../img/accueil/insta.png" width="30vh"></a>
+            <li><a class="footer-a" href="https://www.instagram.com/" title="instagram" target="_blank"><img src="./img/accueil/insta.png" width="30vh"></a>
             </li> <br>
-            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="../img/accueil/facebook.jpg" width="25vh"></a></li> <br>
-            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="../img/accueil/linkedin.png" width="30vh"></a></li>
+            <li><a class="footer-a" href="https://www.facebook.com/" title="facebook" target="_blank"><img src="./img/accueil/facebook.jpg" width="25vh"></a></li> <br>
+            <li><a class="footer-a" href="https://www.linkedin.com/" title="linkedin" target="_blank"><img src="./img/accueil/linkedin.png" width="30vh"></a></li>
           </ul>
         </div>
       </div>
@@ -163,12 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
     </section>
   </footer>
-
-  <!-- ATTENTION la partie de JS Bootstrap n'est pas mise
-   (https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)-->
-
-
-  <script src="../js/connexion.js"></script>
+  <script src="./js/connexion.js"></script>
 </body>
 
 </html>

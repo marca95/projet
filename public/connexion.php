@@ -8,6 +8,25 @@ require_once '../mariadb/services.php';
 
 // login session
 
+// Check if user is already logged in 
+if(isset($_SESSION['id_user'])) {
+  
+  switch ($_SESSION['id_role']) {
+      case 1:
+          header("Location: administrateur.php");
+          exit();
+      case 2:
+          header("Location: veterinaire.php");
+          exit();
+      case 3:
+          header("Location: employe.php");
+          exit();
+      default:
+          header("Location: accueil.html");
+          exit();
+  }
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = $_POST['username'];
   $password = $_POST['password'];

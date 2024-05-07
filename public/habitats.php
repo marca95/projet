@@ -2,6 +2,8 @@
 
 <?php
 
+session_start();
+
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
@@ -63,7 +65,7 @@ if (isset($_GET['type'])) {
         <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
-        <li><a href="connexion.php">Connexion</a></li>
+        <li><a href="connexion.php"><?php echo isset($_SESSION['id_user']) ? 'Mon espace' : 'Connexion' ?></a></li>
         <li><a href="contact.php">Contact</a></li>
         <li><a href="services.php">Services</a></li>
         <li><a href="menu.html">Menu</a></li>

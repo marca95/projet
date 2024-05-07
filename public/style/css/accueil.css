@@ -240,13 +240,11 @@ img{
    }
 
    nav ul {
-    width: 50%;
-    margin: 0px
+    width: 70%;
   }
 
   nav ul li {
     padding-right: 15px;
-    margin-right: 15px;
   } 
 
    nav ul li a {
@@ -254,7 +252,7 @@ img{
   }
 
   .nav-div {
-    width: 20%;
+    width: 10%;
     justify-content: left; 
   }
 
@@ -298,17 +296,16 @@ img{
     width: 30%;
    }
 
-   .nav-div {
-    width: 25%;
-  }
+   .navigation {
+    margin: auto 10px;
+   }
 
   .contenu-footer{
     width: 100%;
   }
   
   nav ul li {
-    padding-right: 5px;
-    margin-right: 5px;
+    padding-right: 0px;
   }
   
   nav ul li a {
@@ -354,27 +351,31 @@ img{
 
   nav .titre-principal { 
     font-size: 2rem;
-    padding-left: 10px;
-    width: 30%;
+    padding-left: 5px;
+   }
+
+   .navigation {
+    margin: 0;
    }
 
    nav ul {
-    width: 60%;
-    float: right;
+    justify-content: end;
   }
-
-  nav ul li a {
-    font-size: 0.8rem;
-    padding: 2px;
+ 
+  nav ul li {
+    padding-right: 15px;
   }
 
   nav ul li a:hover{
-    padding: 2px;
+    padding: 0px; 
   }
 
- .nav-div {
-    width: 5%;
-    margin-left: 3px;
+  nav ul li a{
+    padding: 0;
+  }
+
+  .nav-div {
+    justify-content: end;
   }
 
   #logo_nav{
@@ -455,12 +456,15 @@ img{
    }
 
    .nav-div {
-    width: 30%;
+    justify-content: center;
+    width: 10%;
    }
 
   #icon {
-    margin-top: 23px;
     display: block;
+    position: absolute;
+    right: 20px;
+    top: 25px;
   }
 
   #icon:before {
@@ -483,7 +487,7 @@ img{
     right: 100%;
     top: 70px;
     flex-direction: column-reverse;
-    width: 25%;
+    width: 35%;
     text-align: center;
     transition: 0.3s;
   }
@@ -491,6 +495,7 @@ img{
   nav ul li {
     text-align: center;
     width: 100%;
+    padding: 0px;
   }
 
   blockquote {

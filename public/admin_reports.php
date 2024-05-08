@@ -32,6 +32,7 @@ require_once '../mariadb/disconnect.php';
         <li><a href="./admin_home.php">Habitations</a></li>
         <li><a href="./admin_services.php">Services</a></li>
         <li><a href="./admin_dashboard.php">Dashboard</a></li>
+        <li><a href="./index.php">Site officiel</a></li>
       </ul>
       <form method="POST" action="" class="form_logout">
         <button type="submit" name="logout" class="logout" title="déconnexion"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width='25px'><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -40,7 +41,7 @@ require_once '../mariadb/disconnect.php';
       </form>
     </nav>
   </header>
-  <h2>Les comptes rendus pour l'administrateur</h2>
+  <h2>Les comptes rendus</h2>
 
   <h3>Recherche d'un animal</h3>
   <form action="" method="POST" id="search_data">
@@ -61,22 +62,22 @@ require_once '../mariadb/disconnect.php';
         <th>Date de passage</th>
         <th>État</th>
         <th>Détails de l'état</th>
-        <th>Nom de l'employé</th>
-        <th>Nom du vétérinaire</th>
+        <th>Employé(e)</th>
+        <th>Vétérinaire</th>
       </tr>
     </thead>
     <tbody>
       <?php foreach ($datas as $data) : ?>
         <tr>
-          <td><?php echo $data['name']; ?></td>
-          <td><?php echo $data['type']; ?></td>
-          <td><?php echo $data['food']; ?></td>
-          <td><?php echo $data['grams']; ?></td>
-          <td><?php echo $data['date_pass']; ?></td>
-          <td><?php echo $data['state']; ?></td>
-          <td><?php echo $data['detail']; ?></td>
-          <td><?php echo $data['nom_employe_employed']; ?></td>
-          <td><?php echo $data['nom_employe_vete']; ?></td>
+          <td data-label="Nom"><?php echo $data['name']; ?></td>
+          <td data-label="Type"><?php echo $data['type']; ?></td>
+          <td data-label="Nourriture"><?php echo $data['food']; ?></td>
+          <td data-label="Gr"><?php echo $data['grams']; ?></td>
+          <td data-label="Date"><?php echo $data['date_pass']; ?></td>
+          <td data-label="Etat"><?php echo $data['state']; ?></td>
+          <td data-label="Détails"><?php echo $data['detail']; ?></td>
+          <td data-label="Employé(e)"><?php echo $data['nom_employe']. ' ' .$data['prenom_employe']; ?></td>
+          <td data-label="Vétérinaire"><?php echo $data['nom_vete']. ' ' .$data['prenom_vete']; ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>
@@ -95,10 +96,10 @@ require_once '../mariadb/disconnect.php';
     <tbody>
       <?php foreach ($homes as $home) : ?>
         <tr>
-          <td><?php echo $home['commonName']; ?></td>
-          <td><?php echo $home['opinion_state']; ?></td>
-          <td><?php echo $home['improvement']; ?></td>
-          <td><?php echo $home['username']; ?></td>
+          <td data-label="Nom habitat"><?php echo $home['commonName']; ?></td>
+          <td data-label="Avis sur l'état"><?php echo $home['opinion_state']; ?></td>
+          <td data-label="Amélioration"><?php echo $home['improvement']; ?></td>
+          <td data-label="Veterinaire"><?php echo $home['name']. ' ' .$home['first_name']; ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

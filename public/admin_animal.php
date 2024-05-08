@@ -105,6 +105,7 @@ if (isset($_POST['formDeleteAnimal'])) {
         <li><a href="./admin_services.php">Services</a></li>
         <li><a href="./admin_reports.php">Comptes rendus</a></li>
         <li><a href="./admin_dashboard.php">Dashboard</a></li>
+        <li><a href="./index.php">Site officiel</a></li>
       </ul>
       <form method="POST" action="" class="form_logout">
         <button type="submit" name="logout" class="logout" title="déconnexion">

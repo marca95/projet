@@ -66,26 +66,26 @@ h1{
   font-size: 3.2rem;
 }
 
-  table{
-    width: 90%;
-    border: 5px solid black;
-    height: auto;
-    margin: 0 auto;
-    border-collapse: collapse;
-  } 
+table{
+  width: 90%;
+  border: 5px solid black;
+  height: auto;
+  margin: 0 auto;
+  border-collapse: collapse;
+} 
   
-  .head_table{
-    background-color: rgba(183, 183, 183, 0.5);
-    text-align: center;
-    font-size: 1.2rem;
-  }
+.head_table{
+  background-color: rgba(183, 183, 183, 0.5);
+  text-align: center;
+  font-size: 1.2rem;
+}
   
-  th, td {
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    padding: 8px;
-    font-weight: 700;
-  }
+th, td {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: 8px;
+  font-weight: 700;
+}
 
   tr:nth-child(even) {
     background-color: rgba(71, 71, 255, 0.44);
@@ -97,6 +97,17 @@ h1{
 
   tr:nth-child(0){
     background-color: rgba(183, 183, 183, 0.5);
+  }
+
+  @media screen and (max-width: 992px) {
+    .navigation{
+      margin: auto 15px;
+      width: 90%;
+    }
+
+    nav ul li a {
+      padding: 0;
+    }
   }
 
   @media screen and (max-width: 767px) {
@@ -117,7 +128,7 @@ h1{
     }
   
     nav.active ul {
-      left: -60px;
+      left: -20px;
       top: 40px;
       width: 50%;
     }
@@ -142,6 +153,48 @@ h1{
     nav ul li a {
       font-weight: normal;
     }
+
+
+
+
+
+    table, thead, tbody, tr, th, td {
+      display: block;
+     }
+    
+     thead{
+      display: none;
+     }
+    
+     td{
+      padding-left: 150px;
+      position: relative;
+      height: 7vh;
+     }
+    
+     td::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 140px;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      background-color: rgba(183, 183, 183, 0.5);
+      padding-left: 5px;
+      border-right: 3px solid black;
+     }
+    
+     tr{
+      margin-bottom: 1rem;
+     }
+
+
+
+
+
   }
 
 @media screen and (max-width: 650) {

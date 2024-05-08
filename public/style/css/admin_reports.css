@@ -1,6 +1,7 @@
 body {
   font-family: 'Poppins', sans-serif;
-  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 h1,h2,h3,h4 {
@@ -96,13 +97,13 @@ h2{
   }
   
   table{
-    width: 90%;
     border: 5px solid black;
     height: auto;
     margin: 0 auto;
     border-collapse: collapse;
+    width: 90%;
   } 
-  
+
   .head_table{
     background-color: rgba(183, 183, 183, 0.5);
   }
@@ -130,6 +131,57 @@ h2{
     background-color: rgba(32, 216, 0, 0.164);
   }
   
+  @media screen and (max-width: 1200px) {
+    table, thead, tbody, tr, th, td {
+      display: block;
+     }
+    
+     thead{
+      display: none;
+     }
+    
+     td{
+      padding-left: 150px;
+      position: relative;
+      min-height: 20px;
+      max-height: 150px;
+      align-items: center;
+      border: 1px solid black;
+      padding-top: 0;
+      padding-bottom: 0;
+     }
+    
+     td::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 140px;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      background-color: rgba(183, 183, 183, 0.5);
+      padding-left: 5px;
+      border-right: 3px solid black;
+     }
+    
+     tr{
+      margin-bottom: 1rem;
+     }
+  }
+
+  @media screen and (max-width: 992px) {
+  .navigation{
+    margin: auto 15px;
+    width: 90%;
+  }
+
+  nav ul li a {
+    padding: 0;
+  }
+}
+
   @media screen and (max-width: 767px) {
     #icon {
       margin-top: 10px;
@@ -148,7 +200,7 @@ h2{
     }
   
     nav.active ul {
-      left: -60px;
+      left: -20px;
       top: 40px;
       width: 50%;
     }

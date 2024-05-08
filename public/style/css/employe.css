@@ -43,6 +43,29 @@ h2 {
   font-size: 3.2rem;
 }
 
+.go-to-site{
+  display: flex;
+  justify-content: end;
+  margin-top: 60px;
+  margin-right: 10px;
+}
+
+.go-to-site button {
+  background-color: rgba(255, 228, 196, 0.6);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.go-to-site button:hover {
+  background-color: rgba(249, 211, 165, 0.3);
+  box-shadow: 2px 2px 2px black;
+}
+
+.go-to-site button a{
+  color: white;
+  text-decoration: none;
+}
+
 h3 {
   font-size: 2.4rem;
   text-align: center;

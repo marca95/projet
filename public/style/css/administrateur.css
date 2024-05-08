@@ -150,6 +150,15 @@ border-radius: 20px;
 
 @media screen and (max-width: 992px) {
 
+  .navigation{
+    margin: auto 15px;
+    width: 90%;
+  }
+
+  nav ul li a {
+    padding: 0;
+  }
+
   .day_week{
     font-size: 1.1rem;
   }
@@ -190,7 +199,7 @@ border-radius: 20px;
   }
 
   nav.active ul {
-    left: -60px;
+    left: -20px;
     top: 40px;
     width: 50%;
   }
@@ -198,7 +207,7 @@ border-radius: 20px;
   .navigation {
     position: absolute;
     background: maroon;
-    right: 100%;
+    right: 1000px;
     top: 40px;
     flex-direction: column;
     width: 25%;

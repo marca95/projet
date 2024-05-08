@@ -31,6 +31,9 @@ require_once '../mariadb/stmt.php';
         </svg></button>
     </form>
     <h2>Bonjour <?php echo $vetUser['first_name']; ?></h2>
+    <div class="go-to-site">
+      <button><a href="./index.php">Revenir vers le site</a></button>
+    </div>
   </header>
   <main>
     <section>
@@ -114,7 +117,7 @@ require_once '../mariadb/stmt.php';
               <td data-label="Nom"><?php echo $home['commonName']; ?></td>
               <td data-label="Opinion"><?php echo $home['opinion_state']; ?></td>
               <td data-label="Développement"><?php echo $home['improvement']; ?></td>
-              <td data-label="Mail vété"><?php echo $home['username']; ?></td>
+              <td data-label="Vétérinaire"><?php echo $home['name']. ' ' .$home['first_name']; ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

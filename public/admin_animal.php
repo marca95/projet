@@ -64,56 +64,48 @@ if (isset($_POST['createNewAnimal'])) {
 // Update animal
 
 if (isset($_POST['formUpdateAnimal'])) {
-  $choice_animal_name = $_POST['choice_animal'];
-  $choice_animal_type = $_POST['choice_animal_type'];
-  $choice_animal_common_name = $_POST['choice_animal_common_name'];
+  if (isset($_POST['choice_animal'])) {
+    $selectedAnimal = explode('|', $_POST['choice_animal']);
+    $name = $selectedAnimal[1];
+    $type = $selectedAnimal[2];
 
-  $attribut_animal = $_POST['attribut_animal'];
-  $update_value = '';
+    $animal = $collection->findOne([
+      "name" => $name,
+      "type" => $type
+    ]);
 
-  switch($attribut_animal){
-    case '1': 
-      $update_value = $_POST['update_name'];
-    break;
-    case '2': 
-      $update_value = $_POST['update_type'];
-    break;
-    case '7': 
-      $update_value = $_POST['update_common_name'];
-    break;
-    default: 
-    break;
-  }
-
-  if (!empty($update_value)) {
-    $updateQuery = [];
-    if (!empty($choice_animal_name)) {
-      $updateQuery['name'] = $choice_animal_name;
-    }
-    if (!empty($choice_animal_type)) {
-      $updateQuery['type'] = $choice_animal_type;
-    }
-    if (!empty($choice_animal_common_name)) {
-      $updateQuery['commonName'] = $choice_animal_common_name;
-    }
-
-    // Vérifiez s'il y a des critères de mise à jour définis
-    if (!empty($updateQuery)) {
-      $updateResultat = $collection->updateOne(
-        $updateQuery,
-        ['$set' => [$attribut_animal => $update_value]]
-      );
-      if ($updateResultat->getModifiedCount() > 0) {
-        echo "L'animal a été mis à jour avec succès.";
-      } else {
-        echo "Aucun animal correspondant aux critères n'a été trouvé ou une erreur s'est produite lors de la mise à jour.";
-      }
+    if(!$animal){
+      $updateAnimal = "Animal pas trouvé dans la base de données MongoDB";
     } else {
-      echo "Veuillez fournir au moins un critère pour sélectionner l'animal à mettre à jour.";
+      $attr_animal = $_POST['attribut_animal'];
+    switch($attr_animal) {
+      case '1': 
+        $updateName = $_POST['update_name'];
+        $updateResult = $collection->updateOne(
+          ["_id" => $animal['_id']],
+          ['$set' => ["name" => $updateName]]
+        );
+      break;
+      case '2': 
+        $updateType = $_POST['update_type'];
+        $updateResult = $collection->updateOne(
+          ["_id" => $animal['_id']],
+          ['$set' => ["type" => $updateType]]
+        );
+      break;
+      case '7': 
+        $updateCommonName = $_POST['update_common_name'];
+        $updateResult = $collection->updateOne(
+          ["_id" => $animal['_id']],
+          ['$set' => ["commonName" => $updateCommonName]]
+        );
+      break;
+      default:
+      break;
+    }
     }
   }
 }
-
 
 // DELETE WITH MONGODB 
 
@@ -231,7 +223,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <select name="choice_animal" id="choice_animal" required>
         <option></option>
         <?php foreach ($viewAllAnimals as $viewAnimal) : ?>
-          <option value="<?php echo $viewAnimal['id_animal']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
+          <option value="<?php echo $viewAnimal['id_animal'] . '|' . $viewAnimal['name'] . '|' . $viewAnimal['type']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
         <?php endforeach; ?>
       </select>
       <br />

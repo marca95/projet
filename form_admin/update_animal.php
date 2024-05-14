@@ -8,7 +8,9 @@ $viewAllAnimals = $recupAnimals->fetchAll(PDO::FETCH_ASSOC);
 $updateAnimal = '';
 
 if (isset($_POST['formUpdateAnimal'])) {
-  $choiceAnimal = isset($_POST['choice_animal']) ? $_POST['choice_animal'] : '';
+  // $choiceAnimal = isset($_POST['choice_animal']) ? $_POST['choice_animal'] : '';
+  $selectedAnimal = explode('|', $_POST['choice_animal']);
+  $choiceAnimal = $selectedAnimal[0];
   // USE ONLY JAVASCRIPT $attributAnimal = $_POST['attribut_animal'];
   $input1 = isset($_POST['update_name']) ? $_POST['update_name'] : '';
   $input2 = isset($_POST['update_type']) ? $_POST['update_type'] : '';

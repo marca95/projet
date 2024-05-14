@@ -61,6 +61,60 @@ if (isset($_POST['createNewAnimal'])) {
   }
 }
 
+// Update animal
+
+if (isset($_POST['formUpdateAnimal'])) {
+  $choice_animal_name = $_POST['choice_animal'];
+  $choice_animal_type = $_POST['choice_animal_type'];
+  $choice_animal_common_name = $_POST['choice_animal_common_name'];
+
+  $attribut_animal = $_POST['attribut_animal'];
+  $update_value = '';
+
+  switch($attribut_animal){
+    case '1': 
+      $update_value = $_POST['update_name'];
+    break;
+    case '2': 
+      $update_value = $_POST['update_type'];
+    break;
+    case '7': 
+      $update_value = $_POST['update_common_name'];
+    break;
+    default: 
+    break;
+  }
+
+  if (!empty($update_value)) {
+    $updateQuery = [];
+    if (!empty($choice_animal_name)) {
+      $updateQuery['name'] = $choice_animal_name;
+    }
+    if (!empty($choice_animal_type)) {
+      $updateQuery['type'] = $choice_animal_type;
+    }
+    if (!empty($choice_animal_common_name)) {
+      $updateQuery['commonName'] = $choice_animal_common_name;
+    }
+
+    // Vérifiez s'il y a des critères de mise à jour définis
+    if (!empty($updateQuery)) {
+      $updateResultat = $collection->updateOne(
+        $updateQuery,
+        ['$set' => [$attribut_animal => $update_value]]
+      );
+      if ($updateResultat->getModifiedCount() > 0) {
+        echo "L'animal a été mis à jour avec succès.";
+      } else {
+        echo "Aucun animal correspondant aux critères n'a été trouvé ou une erreur s'est produite lors de la mise à jour.";
+      }
+    } else {
+      echo "Veuillez fournir au moins un critère pour sélectionner l'animal à mettre à jour.";
+    }
+  }
+}
+
+
 // DELETE WITH MONGODB 
 
 if (isset($_POST['formDeleteAnimal'])) {

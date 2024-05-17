@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <?php
+session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_veterinaire.php';
@@ -117,7 +118,7 @@ require_once '../mariadb/stmt.php';
               <td data-label="Nom"><?php echo $home['commonName']; ?></td>
               <td data-label="Opinion"><?php echo $home['opinion_state']; ?></td>
               <td data-label="Développement"><?php echo $home['improvement']; ?></td>
-              <td data-label="Vétérinaire"><?php echo $home['name']. ' ' .$home['first_name']; ?></td>
+              <td data-label="Vétérinaire"><?php echo $home['name'] . ' ' . $home['first_name']; ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>

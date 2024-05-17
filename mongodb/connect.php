@@ -4,7 +4,7 @@
 require '../vendor/autoload.php';
 
 //Get var env
-Dotenv\Dotenv::createImmutable(__DIR__ . '/../../')->load();
+Dotenv\Dotenv::createImmutable(__DIR__ . './../')->load();
 
 $usernameOnline = $_ENV['APP_MONGO_ONLINE_USERNAME'];
 $passwordOnline = $_ENV['APP_MONGO_ONLINE_PASSWORD'];

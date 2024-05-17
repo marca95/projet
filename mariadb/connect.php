@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 //Get var env
-Dotenv\Dotenv::createImmutable(__DIR__ . '/../../')->load();
+Dotenv\Dotenv::createImmutable(__DIR__ . './../')->load();
 
 $localUsername = $_ENV['APP_MARIADB_LOCAL_USERNAME'];
 $localPassword = $_ENV['APP_MARIADB_LOCAL_PASSWORD'];

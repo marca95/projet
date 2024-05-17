@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 //Get var env
-Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
+Dotenv\Dotenv::createImmutable(__DIR__ . './')->load();
 
 $databaseOnline = $_ENV['APP_MONGO_ONLINE_DATABASE'];
 $collectionOnline = $_ENV['APP_MONGO_ONLINE_COLLECTION'];

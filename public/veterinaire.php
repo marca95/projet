@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <?php
-session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_veterinaire.php';

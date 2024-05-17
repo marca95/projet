@@ -55,8 +55,6 @@ require_once '../mongodb/updateAnimal.php';
 
   <section class="create_animal">
     <h3>Créer un animal </h3>
-    <!-- enctype sert spécifier comment les données du formulaire sont encodées aux serveur
-multipart/form data est souvent utilisé quand il contient des fichiers -->
     <form action="" method="POST" enctype="multipart/form-data" class="form_create_animal">
       <label for="name">Nom de l'animal :</label>
       <br />

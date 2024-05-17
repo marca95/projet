@@ -1,7 +1,5 @@
 <?php
 
-// REMPLACER PAR INNER JOIN SI TOUS LES ANIMAUX SONT COMPLETER 
-
 $viewData = $pdo->prepare('SELECT animals.name, animals.type, 
 foods.food, foods.grams, foods.date_pass, 
 states.state, states.detail, 

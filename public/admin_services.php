@@ -54,7 +54,6 @@ require_once '../form_admin/delete_services.php';
     </select>
   </div>
 
-
   <form action="" method="POST" id="formCreate" enctype="multipart/form-data">
     <h3>Création d'un service</h3>
     <label for="main_title">Titre principal* : </label>

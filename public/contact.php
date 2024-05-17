@@ -6,7 +6,7 @@ session_start();
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
-require_once '../PHPMailer-master/formSendMail.php';
+require_once '../php_mailer/formSendMail.php';
 
 ?>
 

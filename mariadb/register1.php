@@ -1,6 +1,6 @@
 <?php
 
-require '../PHPMailer-master/register.php';
+require '../php_mailer/register.php';
 
 // Create registration form
 if (isset($_POST['inscription'])) {

@@ -5,28 +5,7 @@ session_start();
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_admin.php';
 require_once '../mariadb/disconnect.php';
-
-// MongoDB library
-require '../vendor/autoload.php';
-
-use MongoDB\Client;
-
-// Check if you connected on local
-if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
-  // Connexion locale
-  $client = new MongoDB\Client("mongodb://localhost:27017");
-} else {
-  // Remote connexion
-  $uri = "mongodb+srv://marca95:esbourcy69@cluster0.1ybtwgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-  $client = new MongoDB\Client($uri);
-}
-
-// Sélection de la base de données et de la collection
-$database = $client->zoo;
-$collection = $database->animals;
-
-
-$cursor = $collection->find();
+require_once '../mongodb/connect.php';
 
 ?>
 
@@ -74,6 +53,11 @@ $cursor = $collection->find();
       <tbody>
 
         <?php
+        $database = $client->zoo;
+        $collection = $database->animals;
+
+        $cursor = $collection->find();
+
         $nbrViews = [];
 
         foreach ($cursor as $document) {

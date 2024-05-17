@@ -1,21 +1,6 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-// require '../divers/PHPMailer-master/src/Exception.php';
-// require '../divers/PHPMailer-master/src/PHPMailer.php';
-// require '../divers/PHPMailer-master/src/SMTP.php';
-require '../vendor/autoload.php';
-
-//Get var env
-Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
-
-$MailerPort = $_ENV['APP_MAILER_PORT'];
-$MailerHost = $_ENV['APP_MAILER_HOST'];
-$MailerUsername = $_ENV['APP_MAILER_USERNAME'];
-$MailerPassword = $_ENV['APP_MAILER_PASSWORD'];
-$MailerEmail = $_ENV['APP_MAILER_EMAIL'];
+require '../PHPMailer-master/register.php';
 
 // Create registration form
 if (isset($_POST['inscription'])) {
@@ -73,35 +58,6 @@ if (isset($_POST['inscription'])) {
       $contentEmail .= "Date d'anniversaire: $birthday\n";
       $contentEmail .= "Engagé(e) le: $hire\n";
       $contentEmail .= "Pour le mot de passe, veuillez vous adressez au directeur du zoo.\n";
-
-      $mail = new PHPMailer(true);
-
-      try {
-        // Paramètres SMTP pour Gmail
-        // $mail->SMTPDebug = 1; If I need disable
-        $mail->isSMTP();
-        $mail->Host       = $MailerHost;
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $MailerUsername;
-        // Password secure application
-        $mail->Password   = $MailerPassword;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = $MailerPort;
-        $mail->CharSet = 'UTF-8';
-        // Destinataire
-        $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia Zoo');
-        $mail->addAddress($MailerEmail, $name); // I need exist adress, warning my users are not really
-
-        // Contenu du message
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body    = $contentEmail;
-
-        $mail->send();
-        $successMail = 'Vous avez reçu un email avec vos données personnelles.';
-      } catch (Exception $e) {
-        $error = 'Il y a eu une erreur lors de l\'envoi du mail : ' + $mail->ErrorInfo;
-      }
     }
   }
 }

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 <?php
-
 session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
+require_once '../mariadb/updateService.php';
 
 ?>
 
@@ -30,7 +30,7 @@ require_once '../mariadb/services.php';
         <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
-      <li><a href="connexion.php"><?php echo isset($_SESSION['id_user']) ? 'Mon espace' : 'Connexion' ?></a></li>
+        <li><a href="connexion.php"><?php echo isset($_SESSION['id_user']) ? 'Mon espace' : 'Connexion' ?></a></li>
         <li><a href="contact.php">Contact</a></li>
         <li><a href="habitats.php">Habitats</a></li>
         <li><a href="menu.html">Menu</a></li>
@@ -39,36 +39,6 @@ require_once '../mariadb/services.php';
       <div id="icon"></div>
     </nav>
   </header>
-
-  <?php
-
-  function getServices($pdo)
-  {
-    $itemsServices = 'SELECT 
-    main_title, 
-    second_title, 
-    img_root AS main_img, 
-    content, 
-    third_title, 
-    second_content, 
-    NAME AS name, 
-    link_class,
-    link_url, 
-    img_root_link, 
-    btn_class, 
-    btn_url, 
-    btn_title
-FROM 
-    services';
-    $stmt = $pdo->prepare($itemsServices);
-    $stmt->execute();
-    $serviceData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    return $serviceData;
-  }
-
-  $services = getServices($pdo);
-  ?>
 
   <main class="container-fluid">
     <div class="row">

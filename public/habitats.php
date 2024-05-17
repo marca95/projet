@@ -1,47 +1,16 @@
 <!DOCTYPE html>
 
 <?php
-
 session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
 require_once '../mariadb/homes.php';
-
-// MongoDB library
-require '../vendor/autoload.php';
-
-use MongoDB\Client;
-use MongoDB\BSON\ObjectID;
-
-// Check if you connected on local
-if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
-  // Connexion locale
-  $client = new MongoDB\Client("mongodb://localhost:27017");
-} else {
-  // Remote connexion
-  $uri = "mongodb+srv://marca95:esbourcy69@cluster0.1ybtwgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-  $client = new MongoDB\Client($uri);
-}
-
-if (isset($_GET['type'])) {
-  $animal_type = $_GET['type'];
-
-  $collection = $client->selectDatabase("zoo")->selectCollection("animals");
-
-  // Mettre à jour le nombre de vues de l'animal correspondant
-  $updateResult = $collection->updateOne(
-    ['type' => $animal_type],
-    ['$inc' => ['nbr_view' => 1]]
-  );
-
-  if ($updateResult->getModifiedCount() === 1) {
-    echo "Le nombre de vues de l'animal a été incrémenté avec succès.";
-  } else {
-    echo "Une erreur s'est produite lors de l'incrémentation du nombre de vues de l'animal.";
-  }
-}
+require_once '../mariadb/dataAnimals.php';
+require_once '../mongodb/connect.php';
+require_once '../mongodb/incr.php';
+require_once '../vendor/autoload.php';
 
 ?>
 
@@ -76,44 +45,6 @@ if (isset($_GET['type'])) {
   </header>
 
   <main>
-    <?php
-
-    // Fetch data animals
-    function getAnimalsData($pdo)
-    {
-      $itemsAnimals = 'SELECT 
-      animals.name AS prenom, 
-      animals.type, 
-      animals.race, 
-      animals.id_animal, 
-      locations.NAME AS pays, 
-      states.state, 
-      states.detail,
-      foods.food, 
-      foods.grams, 
-      foods.date_pass AS passage, 
-      animals.root, 
-      animals.commonName AS categorie, 
-      animals.id_home
-  FROM 
-      animals
-  LEFT JOIN 
-      homes ON homes.id_home = animals.id_home
-  LEFT JOIN 
-      locations ON locations.id_location = animals.id_location
-  LEFT JOIN 
-      foods ON foods.id_animal = animals.id_animal
-  LEFT JOIN 
-      states ON states.id_animal = animals.id_animal;';
-      $stmt = $pdo->prepare($itemsAnimals);
-      $stmt->execute();
-      $animalsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      return $animalsData;
-    }
-
-    $animals = getAnimalsData($pdo);
-    ?>
-
     <h2>Bienvenue à la maison</h2>
     <div class="main_div container-fluid">
       <div class="row">
@@ -199,9 +130,6 @@ if (isset($_GET['type'])) {
       $animalsJS[] = $animal['type'];
     }
     ?>
-
-
-
 
   </main>
   <footer>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 <?php
-
 session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
+require_once '../PHPMailer-master/formSendMail.php';
 
 ?>
 
@@ -77,59 +77,6 @@ require_once '../mariadb/services.php';
     </div>
   </main>
 
-  <?php
-
-  use PHPMailer\PHPMailer\PHPMailer;
-  use PHPMailer\PHPMailer\SMTP;
-  use PHPMailer\PHPMailer\Exception;
-
-  require '../divers/PHPMailer-master/src/Exception.php';
-  require '../divers/PHPMailer-master/src/PHPMailer.php';
-  require '../divers/PHPMailer-master/src/SMTP.php';
-
-  // Create registration form
-  if (isset($_POST['submit'])) {
-
-    $title = isset($_POST['title']) ? $_POST['title'] : '';
-    $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $description = isset($_POST['description']) ? $_POST['description'] : '';
-
-    // Send mail for username and password
-    $subject = 'Formulaire de contact';
-    $contentEmail = "Titre de la demande : $title\n";
-    $contentEmail .= "Adresse de l'expéditeur : $email\n";
-    $contentEmail .= "Descriptif : $description\n";
-
-    $mail = new PHPMailer(true);
-
-    try {
-      $mail->isSMTP();
-      $mail->Host       = 'smtp.gmail.com';
-      $mail->SMTPAuth   = true;
-      $mail->Username   = 'monzooarcadia@gmail.com';
-      // Password secure application
-      $mail->Password   = 'pboc fkwe gsyu hplk';
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-      $mail->Port = 465;
-      $mail->CharSet = 'UTF-8';
-      // From
-      $mail->setFrom('monzooarcadia@gmail.com', 'Arcadia formulaire de contact');
-      $mail->addAddress('pierre.majerus@outlook.be'); // I need exist adress, warning my users are not really
-
-      // Message content
-      $mail->isHTML(true);
-      $mail->Subject = $subject;
-      $mail->Body    = $contentEmail;
-
-      $mail->send();
-      $message = "Email bien envoyé, nous vous répondrons dans les plus bref délais";
-    } catch (Exception $e) {
-      $message = "Problème lors de l'envoi du mail : </p>" + $mail->ErrorInfo;
-    }
-  }
-
-
-  ?>
   <footer>
     <section class="section-footer">
       <div class="contenu-footer">

@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
 
 //Get var env
-Dotenv\Dotenv::createImmutable(__DIR__ . '../')->load();
+Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
 
 $MailerPort = $_ENV['APP_MAILER_PORT'];
 $MailerHost = $_ENV['APP_MAILER_HOST'];

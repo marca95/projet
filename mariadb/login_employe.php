@@ -1,7 +1,7 @@
 <?php
 
 //login employe
-session_start();
+
 $request = $pdo->prepare('SELECT * FROM users WHERE id_role = 3');
 $request->execute();
 $empUsers = $request->fetchAll(PDO::FETCH_ASSOC);

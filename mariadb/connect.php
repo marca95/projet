@@ -11,7 +11,6 @@ $localHostname = $_ENV['APP_MARIADB_LOCAL_HOSTNAME'];
 $localDatabase = $_ENV['APP_MARIADB_LOCAL_DATABASE'];
 $localPort = $_ENV['APP_MARIADB_LOCAL_PORT'];
 
-
 if (getenv('JAWSDB_MARIA_URL') !== false) {
   $dbparts = parse_url(getenv('JAWSDB_MARIA_URL'));
 

@@ -6,10 +6,6 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
 
-// require './src/Exception.php';
-// require './src/PHPMailer.php';
-// require './src/SMTP.php';
-
 //Get var env
 Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
 

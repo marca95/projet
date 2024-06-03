@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['submit_avis'])) {
-  $firstName = $_POST['name'];
-  $content = $_POST['explication'];
+  $firstName = htmlspecialchars($_POST['name']);
+  $content = htmlspecialchars($_POST['explication']);
   $status = 'pending';
 
   $addAvis = $pdo->prepare('INSERT INTO avis(first_name, content, status)  VALUES (:first_name, :content, :status)');

@@ -3,9 +3,6 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// require '../divers/PHPMailer-master/src/Exception.php';
-// require '../divers/PHPMailer-master/src/PHPMailer.php';
-// require '../divers/PHPMailer-master/src/SMTP.php';
 require '../vendor/autoload.php';
 
 //Get var env
@@ -33,14 +30,14 @@ if (isset($_POST['inscription'])) {
   } else if ($oneEmail > 0) {
     $error = 'Email déja existant dans la base de données.';
   } else {
-    $name = $_POST['name'];
-    $first_name = $_POST['first_name'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
+    $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+    $first_name = htmlspecialchars($_POST['first_name'], ENT_QUOTES, 'UTF-8');
+    $username = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
+    $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $id_role = $_POST['id_role'];
-    $birthday = $_POST['birthday'];
-    $hire = $_POST['hire'];
+    $id_role = intval($_POST['id_role']);
+    $birthday = htmlspecialchars($_POST['birthday'], ENT_QUOTES, 'UTF-8');
+    $hire = htmlspecialchars($_POST['hire'], ENT_QUOTES, 'UTF-8');
 
     $userOnlyAdmin = $pdo->prepare('SELECT COUNT(*) FROM users WHERE id_role = 1');
     $userOnlyAdmin->execute();

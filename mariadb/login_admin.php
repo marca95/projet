@@ -1,6 +1,6 @@
 <?php
 // Login session 
-
+session_start();
 $request = $pdo->prepare('SELECT * FROM users WHERE id_role = 1');
 $request->execute();
 $user = $request->fetch();

@@ -20,8 +20,8 @@ if (isset($_SESSION['id_user'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  $username = htmlspecialchars($_POST['username']);
+  $password = htmlspecialchars($_POST['password']);
 
   if ($username !== ""  && $password !== "") {
     $request = $pdo->prepare("SELECT * FROM users WHERE username = :username");

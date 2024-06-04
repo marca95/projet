@@ -6,13 +6,13 @@ require_once '../mariadb/homes.php';
 $messageCreate = '';
 
 if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['main_img']['error'] === 0 && isset($_FILES['second_img']) && $_FILES['second_img']['error'] === 0) {
-  $name = $_POST['name'];
-  $secondTitle = $_POST['second_title'];
-  $content = $_POST['description'];
+  $name = htmlspecialchars($_POST['name']);
+  $secondTitle = htmlspecialchars($_POST['second_title']);
+  $content = htmlspecialchars($_POST['description']);
   $mainRoot = $_FILES['main_img']['tmp_name'];
   $secondRoot = $_FILES['second_img']['tmp_name'];
   $imgAccueil = $_FILES['url_image_accueil']['tmp_name'];
-  $commonName = $_POST['commonName'];
+  $commonName = htmlspecialchars($_POST['commonName']);
   $destinationMainImg = "./img/habitats/" . $_FILES['main_img']['name'];
   $destinationSecondImg = "./img/habitats/" . $_FILES['second_img']['name'];
   $destinatonImgAccueil = "./img/accueil/" . $_FILES['url_image_accueil']['name'];
@@ -46,6 +46,6 @@ if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['mai
       $messageCreate = 'Erreur lors du téléchargement des images';
     }
   } else {
-    $messageCreate = 'Nom déjà utilisé dans la base de données, veuillez changer le nom de l\habitation';
+    $messageCreate = "Nom déjà utilisé dans la base de données, veuillez changer le nom de l'habitation";
   }
 }

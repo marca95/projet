@@ -12,9 +12,9 @@ $collection = $database->animals;
 
 // Vérification et ajout de l'animal
 if (isset($_POST['createNewAnimal'])) {
-  $name = $_POST['name'];
-  $type = $_POST['type'];
-  $commonName = $_POST['commonName'];
+  $name = htmlspecialchars($_POST['name']);
+  $type = htmlspecialchars($_POST['type']);
+  $commonName = htmlspecialchars($_POST['commonName']);
 
   // Incrémenter le compteur d'identifiant
   $result = $database->command([

@@ -3,19 +3,19 @@
 $messageCreate = "";
 
 if (isset($_POST['createService']) && isset($_FILES['main_img']) && $_FILES['main_img']['error'] === 0) {
-  $mainTitle = $_POST['main_title'];
-  $secondTitle = isset($_POST['second_title']) ? $_POST['second_title'] : NULL;
+  $mainTitle = htmlspecialchars($_POST['main_title']);
+  $secondTitle = isset($_POST['second_title']) ? htmlspecialchars($_POST['second_title']) : NULL;
   $mainImg = $_FILES['main_img']['tmp_name'];
-  $content = $_POST['content'];
-  $thirdTitle = isset($_POST['third_title']) ? $_POST['third_title'] : NULL;
-  $secondContent = isset($_POST['second_content']) ? $_POST['second_content'] : NULL;
-  $name = $_POST['name'];
-  $btnLinkUrl = isset($_POST['btn_link_url']) ? $_POST['btn_link_url'] : NULL;
-  $btnTitle = isset($_POST['title_btn']) ? $_POST['title_btn'] : NULL;
-  $btnClass = isset($_POST['btn_classes']) ? $_POST['btn_classes'] : NULL;
-  $linkUrl = isset($_POST['link_url']) ? $_POST['link_url'] : NULL;
+  $content = htmlspecialchars($_POST['content']);
+  $thirdTitle = isset($_POST['third_title']) ? htmlspecialchars($_POST['third_title']) : NULL;
+  $secondContent = isset($_POST['second_content']) ? htmlspecialchars($_POST['second_content']) : NULL;
+  $name = htmlspecialchars($_POST['name']);
+  $btnLinkUrl = isset($_POST['btn_link_url']) ? htmlspecialchars($_POST['btn_link_url']) : NULL;
+  $btnTitle = isset($_POST['title_btn']) ? htmlspecialchars($_POST['title_btn']) : NULL;
+  $btnClass = isset($_POST['btn_classes']) ? htmlspecialchars($_POST['btn_classes']) : NULL;
+  $linkUrl = isset($_POST['link_url']) ? htmlspecialchars($_POST['link_url']) : NULL;
   $linkImgRoot = isset($_FILES['link_img_root']['tmp_name']) ? $_FILES['link_img_root']['tmp_name'] : NULL;
-  $linkClass = isset($_POST['link_classes']) ? $_POST['link_classes'] : NULL;
+  $linkClass = isset($_POST['link_classes']) ? htmlspecialchars($_POST['link_classes']) : NULL;
 
   $destinationMainImg = "./img/services/" . $_FILES['main_img']['name'];
 

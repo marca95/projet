@@ -125,3 +125,26 @@ function clearSuccess() {
     successMessage.innerHTML = '';
   }
 }
+
+// Fonction de validation de l'heure
+function validateHour(value) {
+  let regex = /^(\d{2}h\d{0,2})?$/;
+
+  if (!regex.test(value)) {
+    return false;
+  }
+  return true;
+}
+
+document.querySelector('.form_hour').addEventListener('submit', function (event) {
+  let timeInputs = document.querySelectorAll('.form_hour input[type="text"]');
+
+  for (let input of timeInputs) {
+    if (!validateHour(input.value)) {
+      alert('Veuillez saisir les heures au format HHhMM.');
+      event.preventDefault();
+
+      return;
+    }
+  }
+});

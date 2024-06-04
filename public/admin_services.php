@@ -55,7 +55,7 @@ require_once '../form_admin/delete_services.php';
   </div>
 
 
-  <form action="" method="POST" id="formCreate" enctype="multipart/form-data">
+  <form action="" method="POST" id="formCreate" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
     <h3>Création d'un service</h3>
     <label for="main_title">Titre principal* : </label>
     <input type="text" name="main_title" required>
@@ -64,7 +64,7 @@ require_once '../form_admin/delete_services.php';
     <input type="text" name="second_title">
     <br />
     <label for="main_img">Image du service* : </label>
-    <input type="file" name="main_img" required>
+    <input type="file" name="main_img" class="file-input" required>
     <br />
     <label for="content">Contenu* : </label>
     <input type="text" name="content" required>
@@ -91,19 +91,20 @@ require_once '../form_admin/delete_services.php';
     <input type="text" name="link_url">
     <br />
     <label for="link_img_root">Lien de l'image : </label>
-    <input type="file" name="link_img_root">
+    <input type="file" name="link_img_root" class="file-input">
     <br />
     <label for="link_classes">Classes du lien : </label>
     <input type="text" name="link_classes" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
     <p>Valeur par défaut</p>
     <p>Les champs avec (*) sont obligatoires.</p>
+    <p class="extension"></p>
     <button type="submit" name="createService" class="btn btn-success">Créer un service</button>
   </form>
   <?php if ((isset($messageCreate)) && (!empty($messageCreate))) : ?>
     <p class="message"><?php echo $messageCreate ?></p>
   <?php endif; ?>
 
-  <form action="" method="POST" id="formCreateAccueil" enctype="multipart/form-data">
+  <form action="" method="POST" id="formCreateAccueil" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
     <h3>Création d'un service à la page d'accueil</h3>
     <label for="chooseService">Quel service souhaitez-vous afficher à la page d'accueil?</label>
     <select name="chooseService">
@@ -117,21 +118,22 @@ require_once '../form_admin/delete_services.php';
     <textarea name="accueil_content" id="accueil_content" rows="5" cols="50"></textarea>
     <br />
     <label for="accueil_img1">Première image : </label>
-    <input type="file" name="accueil_img1">
+    <input type="file" name="accueil_img1" class="file-input">
     <br />
     <label for="accueil_img2">Deuxième image : </label>
-    <input type="file" name="accueil_img2">
+    <input type="file" name="accueil_img2" class="file-input">
     <br />
     <label for="accueil_btn">Titre du bouton : </label>
     <input type="text" name="accueil_btn">
     <br />
+    <p class="extension"></p>
     <button type="submit" name="createServiceAccueil" class="btn btn-success">Créer un service à la page d'accueil</button>
   </form>
   <?php if ((isset($messageCreateAccueil)) && (!empty($messageCreateAccueil))) : ?>
     <p class="message"><?php echo $messageCreateAccueil ?></p>
   <?php endif; ?>
 
-  <form action="" method="POST" id="formModify" enctype="multipart/form-data">
+  <form action="" method="POST" id="formModify" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
     <h3>Modification d'un service</h3>
     <label for="choiceService">Quel service souhaitez-vous modifier ?</label>
     <select name="selectedService" id="selectedService" required>
@@ -160,6 +162,7 @@ require_once '../form_admin/delete_services.php';
     </select>
     <br />
     <div id="inputAndLabel"></div>
+    <p class="extension"></p>
     <button type="submit" name="updateService" class="btn btn-primary">Modifier un service</button>
   </form>
   <?php if ((isset($updateMessage)) && (!empty($updateMessage))) : ?>

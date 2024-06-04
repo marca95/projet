@@ -3,15 +3,15 @@
 $updateMessage = '';
 
 if (isset($_POST['updateHome'])) {
-  $idHome = isset($_POST['habitat']) ? $_POST['habitat'] : '';
-  $updateName = isset($_POST['update_name']) ? $_POST['update_name'] : '';
+  $idHome = isset($_POST['habitat']) ? htmlspecialchars($_POST['habitat']) : '';
+  $updateName = isset($_POST['update_name']) ? htmlspecialchars($_POST['update_name']) : '';
   $updateMainImg = isset($_FILES['main_image']['tmp_name']) ? $_FILES['main_image']['tmp_name'] : '';
   $updateSecondImg = isset($_FILES['second_image']['tmp_name']) ? $_FILES['second_image']['tmp_name'] : '';
-  $updateMainTitle = isset($_POST['update_main_title']) ? $_POST['update_main_title'] : '';
-  $updateSecondTitle = isset($_POST['update_second_title']) ? $_POST['update_second_title'] : '';
-  $updateContent = isset($_POST['update_content']) ? $_POST['update_content'] : '';
-  $updateImgAccueil = isset($_POST['update_img_accueil']['tmp_name']) ? $_POST['update_img_accueil']['tmp_name'] : '';
-  $updateCommonName = isset($_POST['update_common_name']) ? $_POST['update_common_name'] : '';
+  $updateMainTitle = isset($_POST['update_main_title']) ? htmlspecialchars($_POST['update_main_title']) : '';
+  $updateSecondTitle = isset($_POST['update_second_title']) ? htmlspecialchars($_POST['update_second_title']) : '';
+  $updateContent = isset($_POST['update_content']) ? htmlspecialchars($_POST['update_content']) : '';
+  $updateImgAccueil = isset($_FILES['update_img_accueil']['tmp_name']) ? $_FILES['update_img_accueil']['tmp_name'] : '';
+  $updateCommonName = isset($_POST['update_common_name']) ? htmlspecialchars($_POST['update_common_name']) : '';
 
 
   if (!empty($updateName)) {
@@ -45,7 +45,7 @@ if (isset($_POST['updateHome'])) {
   if ((!empty($updateImgAccueil)) && $_FILES['update_img_accueil']['error'] === 0) {
     $destinationImgAccueil = "./img/accueil/" . $_FILES['update_img_accueil']['name'];
     $stmt = $pdo->prepare('UPDATE homes SET url_img_accueil = :url_img_accueil WHERE id_home = :idHome');
-    $stmt->bindValue(':update_img_accueil', $destinationImgAccueil);
+    $stmt->bindValue(':url_img_accueil', $destinationImgAccueil);
     $stmt->bindValue(':idHome', $idHome);
     if (move_uploaded_file($updateImgAccueil, $destinationImgAccueil)) {
       $stmt->execute();

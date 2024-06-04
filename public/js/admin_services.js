@@ -13,7 +13,7 @@ links.forEach((link) => {
 
 //
 
-document.getElementById('action').addEventListener('change', function() {
+document.getElementById('action').addEventListener('change', function () {
   // this to say wich value selected
   let action = this.value;
 
@@ -23,7 +23,7 @@ document.getElementById('action').addEventListener('change', function() {
   document.getElementById('formDelete').style.display = (action === 'delete') ? 'block' : 'none';
 });
 
-document.getElementById('selectedPartService').addEventListener('change', function() {
+document.getElementById('selectedPartService').addEventListener('change', function () {
   const response = document.getElementById('inputAndLabel');
   const selectValue = this.value;
 
@@ -78,6 +78,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input3.setAttribute("type", "file");
       input3.setAttribute("id", "input")
       input3.setAttribute("name", "update_main_img");
+      input3.classList.add("file-input");
 
       response.appendChild(label3);
       response.appendChild(input3);
@@ -180,6 +181,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input10.setAttribute("type", "file");
       input10.setAttribute("id", "input")
       input10.setAttribute("name", "update_img_link");
+      input10.classList.add("file-input");
 
       response.appendChild(label10);
       response.appendChild(input10);
@@ -228,3 +230,35 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       break;
   }
 })
+
+// Valid file from form
+function checkFiles(event, form) {
+  let messageElement = form.querySelector('.extension');
+  messageElement.textContent = "";
+  let fileInputs = form.querySelectorAll('.file-input');
+  let allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+  let maxFileSizeMB = 2;
+  let isValid = true;
+
+  fileInputs.forEach(function (fileInput) {
+    let file = fileInput.files[0];
+    if (file) {
+      let fileSizeMB = file.size / 1024 / 1024;
+      let fileExtension = file.name.split('.').pop().toLowerCase();
+
+      if (fileSizeMB > maxFileSizeMB) {
+        messageElement.textContent = "Fichier trop volumineux (" + fileInput.name + ")";
+        isValid = false;
+      }
+
+      if (!allowedExtensions.includes(fileExtension)) {
+        messageElement.textContent = "Extension du fichier non autorisée (" + fileInput.name + ")";
+        isValid = false;
+      }
+    }
+  });
+
+  if (!isValid) {
+    event.preventDefault();
+  }
+}

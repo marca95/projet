@@ -13,6 +13,7 @@ if (isset($_POST['deleteHome'])) {
       $messageDeleteHome = "Erreur lors de la suppression de l'habitation.";
     }
   } catch (PDOException $e) {
-    $messageDeleteHome = "Erreur lors de la suppression de l'habitation : " . $e->getMessage() . ".<br> Vous ne pouvez pas supprimer cette habitation car des animaux sont toujours placés dans ce logement. Veuillez d'abord changer les animaux d'habitation.";
+    error_log($e->getMessage());
+    $messageDeleteHome = "Erreur lors de la suppression de l'habitation : ";
   }
 }

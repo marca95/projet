@@ -57,7 +57,7 @@ require_once '../mongodb/updateAnimal.php';
     <h3>Créer un animal </h3>
     <!-- enctype sert spécifier comment les données du formulaire sont encodées aux serveur
 multipart/form data est souvent utilisé quand il contient des fichiers -->
-    <form action="" method="POST" enctype="multipart/form-data" class="form_create_animal">
+    <form action="" method="POST" enctype="multipart/form-data" class="form_create_animal" onsubmit="checkFile(event, this);">
       <label for="name">Nom de l'animal :</label>
       <br />
       <input type="text" name="name" required>
@@ -95,6 +95,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <label for="upload">Sélectionner une image</label>
       <br />
       <input type="file" name="upload" class="upload_file" required>
+      <p class="extension"></p>
       <br />
       <button type="submit" name="createNewAnimal" class="btn btn-success">Inscrire le nouvel animal</button>
       <br />
@@ -106,7 +107,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
 
   <section class="update_animal">
     <h3>Modifier un animal </h3>
-    <form action="" method="POST" enctype="multipart/form-data" id="form_update_animal">
+    <form action="" method="POST" enctype="multipart/form-data" id="form_update_animal" onsubmit="checkFile(event, this);">
       <label for="choice_animal">Choisissez votre animal :</label>
       <br />
       <select name="choice_animal" id="choice_animal" required>
@@ -148,6 +149,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
         </select>
       </div>
       <br />
+      <p class="extension"></p>
       <button type="submit" name="formUpdateAnimal" class="btn btn-secondary">Modifier l'animal</button>
       <br />
       <?php if (isset($updateAnimal) && (!empty($updateAnimal))) : ?>

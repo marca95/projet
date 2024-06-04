@@ -48,7 +48,7 @@ require_once '../form_admin/delete_home.php';
   <div class="row">
     <section class="col-md-6 create_home">
       <h3>Créer un habitat</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
         <label for="name">Lieu de l'habitat :</label>
         <input type="text" name="name" required>
         <br />
@@ -56,13 +56,13 @@ require_once '../form_admin/delete_home.php';
         <textarea type="text" name="description" rows="8" cols="10" required></textarea>
         <br />
         <label for="main_img">Image principale :</label>
-        <input type="file" name="main_img" required>
+        <input type="file" name="main_img" class="file-input" required>
         <br />
         <label for="second_img">Image secondaire :</label>
-        <input type="file" name="second_img" required>
+        <input type="file" name="second_img" class="file-input" required>
         <br />
         <label for="url_image_accueil">Image accueil :</label>
-        <input type="file" name="url_image_accueil" required>
+        <input type="file" name="url_image_accueil" class="file-input" required>
         <br />
         <label for="commonName">Nom complet de l'habitation :</label>
         <input type="text" name="commonName" required>
@@ -70,6 +70,7 @@ require_once '../form_admin/delete_home.php';
         <label for="second_title">2ème nom de l'habitation :</label>
         <input type="text" name="second_title" required>
         <br />
+        <p class="extension"></p>
         <button type="submit" name="createNewHome" class="btn btn-success">Ajouter une nouvelle habitation</button>
         <?php if ((isset($messageCreate)) && (!empty($messageCreate))) : ?>
           <p class="message"><?php echo $messageCreate; ?></p>
@@ -81,7 +82,7 @@ require_once '../form_admin/delete_home.php';
   <div class="row">
     <section class="col-md-6 update_article">
       <h3>Modifier un habitat / article</h3>
-      <form action="" method="POST" id="update_form" enctype="multipart/form-data">
+      <form action="" method="POST" id="update_form" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
         <label for="habitat">Selectionner l'habitat à modifier : </label>
         <select name="habitat" id="habitat" required>
           <option></option>
@@ -105,6 +106,7 @@ require_once '../form_admin/delete_home.php';
         </select>
         <div id="chooseAdmin"></div>
         <br />
+        <p class="extension"></p>
         <button type="submit" name="updateHome" class="btn btn-secondary">Modifier l'habitat</button>
         <br />
         <?php if ((isset($updateMessage)) && (!empty($updateMessage))) : ?>

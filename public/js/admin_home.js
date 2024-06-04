@@ -191,16 +191,16 @@ function checkFiles(event, form) {
       let fileExtension = file.name.split('.').pop().toLowerCase();
 
       if (fileSizeMB > maxFileSizeMB) {
-        messageElement.textContent = "Fichier trop volumineux (" + fileInput.name + ")";
+        messageElement.textContent = "Fichier trop volumineux";
         isValid = false;
       }
 
       if (!allowedExtensions.includes(fileExtension)) {
-        messageElement.textContent = "Extension du fichier non autorisée (" + fileInput.name + ")";
+        messageElement.textContent = "Extension du fichier non autorisée";
         isValid = false;
       }
     } else {
-      messageElement.textContent = "Veuillez sélectionner un fichier à télécharger (" + fileInput.name + ")";
+      messageElement.textContent = "Veuillez sélectionner un fichier à télécharger";
       isValid = false;
     }
   });

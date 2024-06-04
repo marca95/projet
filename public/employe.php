@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <?php
+session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_employe.php';
@@ -75,7 +76,7 @@ require_once '../form_admin/update_services.php';
 
     <section class="service">
       <h3>Vous souhaitez modifier un service</h3>
-      <form action="" method="POST" id="formModify" enctype="multipart/form-data">
+      <form action="" method="POST" id="formModify" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
         <div class="d-flex row">
           <label for="choiceService" class="label">Quel service souhaitez-vous modifier ?</label>
           <select name="selectedService" id="selectedService" required>
@@ -104,6 +105,7 @@ require_once '../form_admin/update_services.php';
           </select>
         </div>
 
+        <p class="extension"></p>
         <div id="inputAndLabel"></div>
         <div class="but">
           <button type="submit" name="updateService" class="btn btn-primary">Modifier un service</button>

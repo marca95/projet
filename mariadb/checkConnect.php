@@ -28,6 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $request->execute(array(':username' => $username));
     $response = $request->fetch();
     if ($response && password_verify($password, $response['password'])) {
+      $token = bin2hex(random_bytes(32));
+
+      $updateToken = $pdo->prepare("UPDATE users SET token = :token WHERE username = :username");
+      $updateToken->execute(array(':token' => $token, ':username' => $username));
+
+      setcookie("username", $username, time() + 3600);
+      setcookie("token", $token, time() + 3600);
+
       $_SESSION['id_role'] = $response['id_role'];
       $_SESSION['id_user'] = $response['id_user'];
       $_SESSION['first_name_user'] = $response['first_name'];

@@ -46,7 +46,7 @@ if (isset($_POST['inscription'])) {
     if ($id_role == 1 && $count > 0) {
       $error = 'Il ne peut y avoir qu\'un seul administrateur.';
     } else {
-      $request = $pdo->prepare('INSERT INTO users(name, first_name, username, email, password, id_role, birthday, hire) VALUES (:name, :first_name, :username, :email, :password, :id_role, :birthday, :hire)');
+      $request = $pdo->prepare('INSERT INTO users(name, first_name, username, email, password, id_role, birthday, hire, token) VALUES (:name, :first_name, :username, :email, :password, :id_role, :birthday, :hire, :token)');
       $request->execute(
         array(
           'name' => $name,
@@ -56,7 +56,8 @@ if (isset($_POST['inscription'])) {
           'password' => $password,
           'id_role' => $id_role,
           'birthday' => $birthday,
-          'hire' => $hire
+          'hire' => $hire,
+          'token' => ''
         )
       );
       $successSignUp = 'Inscription réussie.';

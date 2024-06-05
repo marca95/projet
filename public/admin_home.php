@@ -49,11 +49,17 @@ require_once '../form_admin/delete_home.php';
     <section class="col-md-6 create_home">
       <h3>Créer un habitat</h3>
       <form action="" method="POST" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
-        <label for="name">Lieu de l'habitat :</label>
-        <input type="text" name="name" required>
+        <label for="commonName">Titre principal de l'habitation :</label>
+        <input type="text" name="commonName" maxlength="255" required>
+        <br />
+        <label for="second_title">Sous-titre de l'habitation :</label>
+        <input type="text" name="second_title" maxlength="255" required>
+        <br />
+        <label for="name">Nom de l'habitatation :</label>
+        <input type="text" name="name" maxlength="50" required>
         <br />
         <label for="description">Description :</label>
-        <textarea type="text" name="description" rows="8" cols="10" required></textarea>
+        <textarea type="text" name="description" rows="8" cols="10" maxlength="2000" required></textarea>
         <br />
         <label for="main_img">Image principale :</label>
         <input type="file" name="main_img" class="file-input" required>
@@ -63,12 +69,6 @@ require_once '../form_admin/delete_home.php';
         <br />
         <label for="url_image_accueil">Image accueil :</label>
         <input type="file" name="url_image_accueil" class="file-input" required>
-        <br />
-        <label for="commonName">Nom complet de l'habitation :</label>
-        <input type="text" name="commonName" required>
-        <br />
-        <label for="second_title">2ème nom de l'habitation :</label>
-        <input type="text" name="second_title" required>
         <br />
         <p class="extension"></p>
         <button type="submit" name="createNewHome" class="btn btn-success">Ajouter une nouvelle habitation</button>
@@ -100,7 +100,6 @@ require_once '../form_admin/delete_home.php';
           <option value="4">Le titre principal</option>
           <option value="5">Le second titre</option>
           <option value="6">Le contenu</option>
-          <option value="7">Le troisième titre</option>
           <option value="8">L'image de l'accueil</option>
           <option value="9">Le nom pour l'accueil</option>
         </select>

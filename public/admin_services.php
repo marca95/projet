@@ -58,43 +58,43 @@ require_once '../form_admin/delete_services.php';
   <form action="" method="POST" id="formCreate" enctype="multipart/form-data" onsubmit="checkFiles(event, this);">
     <h3>Création d'un service</h3>
     <label for="main_title">Titre principal* : </label>
-    <input type="text" name="main_title" required>
+    <input type="text" name="main_title" maxlength="255" required>
     <br />
     <label for="second_title">Second titre : </label>
-    <input type="text" name="second_title">
+    <input type="text" name="second_title" maxlength="255">
     <br />
     <label for="main_img">Image du service* : </label>
     <input type="file" name="main_img" class="file-input" required>
     <br />
     <label for="content">Contenu* : </label>
-    <input type="text" name="content" required>
+    <input type="text" name="content" maxlength="2000" required>
     <br />
     <label for="third_title">Troisième titre : </label>
-    <input type="text" name="third_title">
+    <input type="text" name="third_title" maxlength="255">
     <br />
     <label for="second_content">Second contenu : </label>
-    <input type="text" name="second_content">
+    <input type="text" name="second_content" maxlength="2000">
     <br />
     <label for="name">Nom bref de l'activité* : </label>
-    <input type="text" name="name" required>
+    <input type="text" name="name" maxlength="255" required>
     <br />
     <label for="btn_link_url">Lien de l'URL du bouton : </label>
-    <input type="text" name="btn_link_url">
+    <input type="text" name="btn_link_url" maxlength="255">
     <br />
     <label for="title_btn">Titre du bouton : </label>
-    <input type="text" name="title_btn">
+    <input type="text" name="title_btn" maxlength="255">
     <br />
     <label for="btn_classes">Classes du bouton : </label>
-    <input type="text" name="btn_classes" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
+    <input type="text" name="btn_classes" maxlength="255" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
     <p>Valeur par défaut</p>
     <label for="link_url">Lien d'une URL : </label>
-    <input type="text" name="link_url">
+    <input type="text" name="link_url" maxlength="255">
     <br />
     <label for="link_img_root">Lien de l'image : </label>
     <input type="file" name="link_img_root" class="file-input">
     <br />
     <label for="link_classes">Classes du lien : </label>
-    <input type="text" name="link_classes" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
+    <input type="text" name="link_classes" maxlength="255" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
     <p>Valeur par défaut</p>
     <p>Les champs avec (*) sont obligatoires.</p>
     <p class="extension"></p>
@@ -115,7 +115,7 @@ require_once '../form_admin/delete_services.php';
     </select>
     <br />
     <label for="accueil_content">Contenu :</label>
-    <textarea name="accueil_content" id="accueil_content" rows="5" cols="50"></textarea>
+    <textarea name="accueil_content" id="accueil_content" maxlength="2000" rows="5" cols="50"></textarea>
     <br />
     <label for="accueil_img1">Première image : </label>
     <input type="file" name="accueil_img1" class="file-input">
@@ -124,7 +124,7 @@ require_once '../form_admin/delete_services.php';
     <input type="file" name="accueil_img2" class="file-input">
     <br />
     <label for="accueil_btn">Titre du bouton : </label>
-    <input type="text" name="accueil_btn">
+    <input type="text" name="accueil_btn" maxlength="255">
     <br />
     <p class="extension"></p>
     <button type="submit" name="createServiceAccueil" class="btn btn-success">Créer un service à la page d'accueil</button>

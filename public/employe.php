@@ -118,7 +118,7 @@ require_once '../form_admin/update_services.php';
 
     <section class="food">
       <h3>L'alimentation des animaux</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" id="form-food">
         <div class="row">
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="nameAnimal" class="foodLabel">Sélectionner le nom de l'animal :</label>
@@ -131,13 +131,13 @@ require_once '../form_admin/update_services.php';
           </div>
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="food" class="foodLabel">Sa nourriture :</label>
-            <input type="text" name="food" class="foodInput" required>
+            <input type="text" name="food" class="foodInput" maxlength="100" required>
           </div>
         </div>
         <div class="row">
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="grams" class="foodLabel">Combien de grammes :</label>
-            <input type="number" name="grams" class="foodInput" required>
+            <input type="number" name="grams" class="foodInput" max="99999" required>
           </div>
           <div class="col-12 col-md-6 mb-4 d-flex">
             <label for="datePass" class="foodLabel">Date et heure de repas :</label>
@@ -145,6 +145,7 @@ require_once '../form_admin/update_services.php';
           </div>
         </div>
         <div class="but">
+          <p class="checkDateAndHours"></p>
           <button type="submit" name="sendDatas" class="btn btn-primary">Envoi des données</button>
         </div>
         <?php if ((isset($updateAnimal)) && (!empty($updateAnimal))) : ?>

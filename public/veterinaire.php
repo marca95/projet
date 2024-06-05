@@ -88,10 +88,10 @@ require_once '../mariadb/stmt.php';
         </select>
         <br>
         <label for="state">Etat de l'animal :</label>
-        <textarea type="text" name="state" rows="5" placeholder="Décrire l'état de l'animal..." required></textarea>
+        <textarea type="text" name="state" rows="5" maxlength="2000" placeholder="Décrire l'état de l'animal..." required></textarea>
         <br>
         <label for="detail">Détails sur l'animal (facultatif) :</label>
-        <textarea type="text" name="detail" rows="5" placeholder="Décrire le détail de l'animal..."></textarea>
+        <textarea type="text" name="detail" rows="5" maxlength="2000" placeholder="Décrire le détail de l'animal..."></textarea>
         <br>
         <div class="but">
           <button type="submit" name="sendData">Envoyer</button>
@@ -136,10 +136,10 @@ require_once '../mariadb/stmt.php';
         </select>
         <br>
         <label for="opinion">Opinion sur l'habitat :</label>
-        <textarea type="text" name="opinion" rows="5" cols="80" placeholder="Votre opinion..." required></textarea>
+        <textarea type="text" name="opinion" rows="5" cols="80" maxlength="2000" placeholder="Votre opinion..." required></textarea>
         <br>
         <label for="improvement">Possibilité de développement :</label>
-        <textarea type="text" name="improvement" rows="5" cols="80" placeholder="Développement possible..."></textarea>
+        <textarea type="text" name="improvement" rows="5" cols="80" maxlength="2000" placeholder="Développement possible..."></textarea>
         <br>
         <div class="but">
           <button type="submit" name="sendHab">Envoyer</button>

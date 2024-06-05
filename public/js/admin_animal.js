@@ -47,6 +47,7 @@ attributAnimal.addEventListener('change', function () {
       input1.setAttribute("type", "text");
       input1.setAttribute("id", "input")
       input1.setAttribute("name", "update_name");
+      input1.setAttribute("maxlength", "50");
 
       resultValue.appendChild(label1);
       resultValue.appendChild(input1);
@@ -62,6 +63,7 @@ attributAnimal.addEventListener('change', function () {
       input2.setAttribute("type", "text");
       input2.setAttribute("id", "input")
       input2.setAttribute("name", "update_type");
+      input2.setAttribute("maxlength", "50");
 
       resultValue.appendChild(label2);
       resultValue.appendChild(input2);
@@ -77,6 +79,7 @@ attributAnimal.addEventListener('change', function () {
       input3.setAttribute("type", "text");
       input3.setAttribute("id", "input")
       input3.setAttribute("name", "update_race");
+      input3.setAttribute("maxlength", "50");
 
       resultValue.appendChild(label3);
       resultValue.appendChild(input3);
@@ -116,6 +119,7 @@ attributAnimal.addEventListener('change', function () {
       input7.setAttribute("type", "text");
       input7.setAttribute("id", "input")
       input7.setAttribute("name", "update_common_name");
+      input7.setAttribute("maxlength", "100");
 
       resultValue.appendChild(label7);
       resultValue.appendChild(input7);

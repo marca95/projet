@@ -11,7 +11,7 @@ links.forEach((link) => {
   });
 });
 
-//
+// Update home
 
 const choose = document.getElementById('choose');
 const chooseAdmin = document.getElementById('chooseAdmin');
@@ -34,12 +34,13 @@ choose.addEventListener('change', function () {
       let label1 = document.createElement("label");
       label1.setAttribute("for", "update_name");
       label1.setAttribute("id", "label")
-      label1.textContent = "Le nouveau nom de l'habitat :";
+      label1.textContent = "Nom de l'habitation :";
 
       let input1 = document.createElement("input");
       input1.setAttribute("type", "text");
       input1.setAttribute("id", "input")
       input1.setAttribute("name", "update_name");
+      input1.setAttribute("maxlength", "50");
 
       chooseAdmin.appendChild(label1);
       chooseAdmin.appendChild(input1);
@@ -84,6 +85,7 @@ choose.addEventListener('change', function () {
       input4.setAttribute("type", "text");
       input4.setAttribute("id", "input")
       input4.setAttribute("name", "update_main_title");
+      input4.setAttribute("maxlength", "50");
 
       chooseAdmin.appendChild(label4);
       chooseAdmin.appendChild(input4);
@@ -92,12 +94,13 @@ choose.addEventListener('change', function () {
       let label5 = document.createElement("label");
       label5.setAttribute("for", "update_second_title");
       label5.setAttribute("id", "label")
-      label5.textContent = "Le nouveau titre secondaire :";
+      label5.textContent = "Le nouveau sous-titre :";
 
       let input5 = document.createElement("input");
       input5.setAttribute("type", "text");
       input5.setAttribute("id", "input")
       input5.setAttribute("name", "update_second_title");
+      input5.setAttribute("maxlength", "255");
 
       chooseAdmin.appendChild(label5);
       chooseAdmin.appendChild(input5);
@@ -114,23 +117,10 @@ choose.addEventListener('change', function () {
       input6.setAttribute("id", "input")
       input6.setAttribute("rows", "5");
       input6.setAttribute("cols", "50");
+      input6.setAttribute("maxlength", "2000");
 
       chooseAdmin.appendChild(label6);
       chooseAdmin.appendChild(input6);
-      break;
-    case "7":
-      let label7 = document.createElement("label");
-      label7.setAttribute("for", "update_third_title");
-      label7.setAttribute("id", "label")
-      label7.textContent = "Le nouveau troisième titre :";
-
-      let input7 = document.createElement("input");
-      input7.setAttribute("type", "text");
-      input7.setAttribute("id", "input")
-      input7.setAttribute("name", "update_third_title");
-
-      chooseAdmin.appendChild(label7);
-      chooseAdmin.appendChild(input7);
       break;
     case "8":
       let label8 = document.createElement("label");
@@ -157,6 +147,7 @@ choose.addEventListener('change', function () {
       input9.setAttribute("type", "text");
       input9.setAttribute("id", "input")
       input9.setAttribute("name", "update_common_name");
+      input9.setAttribute("maxlength", "255");
 
       chooseAdmin.appendChild(label9);
       chooseAdmin.appendChild(input9);

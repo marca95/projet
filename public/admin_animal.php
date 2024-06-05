@@ -60,15 +60,15 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
     <form action="" method="POST" enctype="multipart/form-data" class="form_create_animal" onsubmit="checkFile(event, this);">
       <label for="name">Nom de l'animal :</label>
       <br />
-      <input type="text" name="name" required>
+      <input type="text" name="name" maxlength="50" required>
       <br />
       <label for="type">Le type d'animal :</label>
       <br />
-      <input type="text" name="type" required>
+      <input type="text" name="type" maxlength="50" required>
       <br />
       <label for="race">Race de l'animal :</label>
       <br />
-      <input type="text" name="race" required>
+      <input type="text" name="race" maxlength="50" required>
       <br />
       <label for="location">Lieu d'origine de l'animal :</label>
       <br />
@@ -90,7 +90,7 @@ multipart/form data est souvent utilisé quand il contient des fichiers -->
       <br />
       <label for="commonName">Nom commun de ou des animaux :</label>
       <br />
-      <input type="text" name="commonName" required>
+      <input type="text" name="commonName" maxlength="100" required>
       <br />
       <label for="upload">Sélectionner une image</label>
       <br />

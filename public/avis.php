@@ -49,12 +49,12 @@ require_once '../mariadb/form_avis.php';
         <div class="formulaire">
           <div class="mb-3">
             <label for="name" class="form-label fs-4">Prénom :</label>
-            <input type="name" name="name" class="form-control" id="name" required>
+            <input type="name" name="name" class="form-control" maxlength="255" id="name" required>
             <p id="errorName"></p>
           </div>
           <div class="mb-3">
             <label style="margin-bottom: 8px;" for="explication" form="form-label" class="fs-4">Donnez nous votre avis :</label>
-            <textarea id="textarea" name="explication" class="form-control" rows="10" required></textarea>
+            <textarea id="textarea" name="explication" class="form-control" maxlength="2000" rows="10" required></textarea>
             <p id="errorDesc"></p>
             <div class="form-text fs-5" id="condition">
               Vous ne pouvez pas dépasser les 1000 mots.

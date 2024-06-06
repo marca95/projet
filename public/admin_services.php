@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 
@@ -11,6 +10,8 @@ require_once '../form_admin/update_services.php';
 require_once '../form_admin/delete_services.php';
 
 ?>
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 
@@ -17,6 +16,7 @@ require_once '../mongodb/connect.php';
 require_once '../mongodb/updateAnimal.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

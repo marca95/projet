@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 
@@ -10,6 +8,7 @@ require_once '../mariadb/states.php';
 require_once '../mariadb/stmt.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

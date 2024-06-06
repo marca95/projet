@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 
@@ -9,6 +8,7 @@ require_once '../mariadb/disconnect.php';
 require_once '../mariadb/register.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

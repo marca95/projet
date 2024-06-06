@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 
@@ -19,6 +17,7 @@ $viewServices->execute();
 $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

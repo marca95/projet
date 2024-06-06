@@ -1,6 +1,4 @@
-<!DOCTYPE html>
 <?php
-session_start();
 
 require_once '../mariadb/connect.php';
 require_once '../mariadb/hours.php';
@@ -8,6 +6,7 @@ require_once '../mariadb/services.php';
 require_once '../mariadb/checkConnect.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

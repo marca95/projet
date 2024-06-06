@@ -1,7 +1,7 @@
 <?php
 // Check if user is already logged in 
-if (isset($_SESSION['id_user']) && isset($_COOKIE['token']) && $_COOKIE['token'] === $_SESSION['token']) {
-
+if (isset($_SESSION['first_name_user'], $_SESSION['token'])) {
+  $token = $_SESSION['token'];
   switch ($_SESSION['id_role']) {
     case 1:
       header("Location: administrateur.php");

@@ -27,7 +27,6 @@ form.addEventListener('submit', (e) => {
   let maxwords = descriptionValue.split(/\s+/).length;
 
   let formData = new FormData(form);
-  e.preventDefault();
 
   // Validation name
 
@@ -64,7 +63,7 @@ form.addEventListener('submit', (e) => {
 
   fetch('../mariadb/form_avis.php', {
     method: 'POST',
-    body: FormData
+    body: formData
   })
 
     .then(response => {
@@ -73,10 +72,10 @@ form.addEventListener('submit', (e) => {
       }
       return response.json();
     })
-    .then(data => {
-      // Gestion de la réponse du serveur
-      console.log('Réponse du serveur:', data); // Affichage de la réponse JSON
-    })
+    // .then(data => {
+    //   // Gestion de la réponse du serveur
+    //   console.log('Réponse du serveur:', data); // Affichage de la réponse JSON
+    // })
     .catch(error => {
       console.log('Erreur', error);
     });

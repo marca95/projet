@@ -1,8 +1,7 @@
 <?php
-
 // Check if user is already logged in 
-if (isset($_SESSION['id_user'])) {
-
+if (isset($_SESSION['first_name_user'], $_SESSION['token'])) {
+  $token = $_SESSION['token'];
   switch ($_SESSION['id_role']) {
     case 1:
       header("Location: administrateur.php");
@@ -20,20 +19,28 @@ if (isset($_SESSION['id_user'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  $username = htmlspecialchars($_POST['username']);
+  $password = htmlspecialchars($_POST['password']);
 
   if ($username !== ""  && $password !== "") {
     $request = $pdo->prepare("SELECT * FROM users WHERE username = :username");
     $request->execute(array(':username' => $username));
     $response = $request->fetch();
     if ($response && password_verify($password, $response['password'])) {
+
+      $token = bin2hex(random_bytes(32));
+
+      $updateToken = $pdo->prepare("UPDATE users SET token = :token WHERE username = :username");
+      $updateToken->execute(array(':token' => $token, ':username' => $username));
+
+      setcookie("username", $username, time() + 3600, '', '', true, true); //true for httponly and Secure (max security)
+      setcookie("token", $token, time() + 3600, '', '', true, true);
+
       $_SESSION['id_role'] = $response['id_role'];
       $_SESSION['id_user'] = $response['id_user'];
       $_SESSION['first_name_user'] = $response['first_name'];
-      $_SESSION['username'] = $username;
-      $_SESSION['email'] = $email;
-      $_SESSION['password'] = $password;
+      $_SESSION['token'] = $token;
+
       switch ($_SESSION['id_role']) {
         case 1:
           header("Location: administrateur.php");

@@ -13,6 +13,7 @@ if (isset($_POST['deleteService'])) {
       $messageDeleteService = "Erreur lors de la suppression du service.";
     }
   } catch (PDOException $e) {
-    $messageDeleteService = "Erreur lors de la suppression du service : " . $e->getMessage();
+    error_log($e->getMessage());
+    $messageDeleteService = "Erreur lors de la suppression du service : ";
   }
 }

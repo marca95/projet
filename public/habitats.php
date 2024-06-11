@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 
@@ -13,6 +11,7 @@ require_once '../mongodb/incr.php';
 require_once '../vendor/autoload.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 
@@ -9,6 +7,7 @@ require_once '../mariadb/services.php';
 require_once '../mariadb/updateService.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

@@ -1,26 +1,19 @@
 <?php
 
-//login employe
-session_start();
-$request = $pdo->prepare('SELECT * FROM users WHERE id_role = 3');
-$request->execute();
-$empUsers = $request->fetchAll(PDO::FETCH_ASSOC);
+if (
+  isset($_SESSION['first_name_user'], $_SESSION['token'], $_SESSION['id_role']) &&
+  $_SESSION['id_role'] == 3
+) {
+  $request = $pdo->prepare('SELECT * FROM users WHERE id_user = :id_user AND id_role = 3');
+  $request->execute(array(':id_user' => $_SESSION['id_user']));
+  $empUser = $request->fetch();
 
-$loggedIn = false;
-
-foreach ($empUsers as $empUser) {
-  if (
-    isset($_SESSION['id_role'], $_SESSION['username'], $_SESSION['password']) &&
-    $_SESSION['id_role'] == 3 &&
-    $_SESSION['username'] == $empUser['username'] &&
-    password_verify($_SESSION['password'], $empUser['password'])
-  ) {
-    $loggedIn = true;
-    break;
+  if ($empUser && $_SESSION['first_name_user'] == $empUser['first_name'] && $_SESSION['token'] == $empUser['token']) {
+  } else {
+    header("Location: connexion.php");
+    exit();
   }
-}
-
-if (!$loggedIn) {
+} else {
   header("Location: connexion.php");
   exit();
 }

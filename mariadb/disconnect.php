@@ -2,6 +2,8 @@
 // btn logout session
 if (isset($_POST['logout'])) {
   session_destroy();
+  setcookie("username", "", time() - 3600, '', '', true, true);
+  setcookie("token", "", time() - 3600, '', '', true, true);
   header("Location: connexion.php");
   exit();
 }

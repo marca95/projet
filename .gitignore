@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+# /vendor/
+# .env
+=======
 # Probleme quand je transferts mon projet en prod il ne trouve plus mon fichier .env et vendor
+<<<<<<< HEAD
 # /vendor/
 # /.env
+=======
+/vendor/
+/.env
+>>>>>>> 63f5af4680b2d642a10748ab47ab7d590ae9b0d0
+>>>>>>> developpement

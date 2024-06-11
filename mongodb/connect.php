@@ -13,7 +13,7 @@ use MongoDB\Client;
 use MongoDB\BSON\ObjectID;
 
 // Check if you connected on local
-if ($_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
+if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_ADDR'] === '127.0.0.1' || $_SERVER['SERVER_ADDR'] === '::1') {
   // Connexion locale
   $client = new MongoDB\Client("mongodb://localhost:27017");
 } else {

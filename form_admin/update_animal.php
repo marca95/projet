@@ -12,13 +12,13 @@ if (isset($_POST['formUpdateAnimal'])) {
   $selectedAnimal = explode('|', $_POST['choice_animal']);
   $choiceAnimal = $selectedAnimal[0];
   // USE ONLY JAVASCRIPT $attributAnimal = $_POST['attribut_animal'];
-  $input1 = isset($_POST['update_name']) ? $_POST['update_name'] : '';
-  $input2 = isset($_POST['update_type']) ? $_POST['update_type'] : '';
-  $input3 = isset($_POST['update_race']) ? $_POST['update_race'] : '';
-  $input7 = isset($_POST['update_common_name']) ? $_POST['update_common_name'] : '';
+  $input1 = isset($_POST['update_name']) ? htmlspecialchars($_POST['update_name']) : '';
+  $input2 = isset($_POST['update_type']) ? htmlspecialchars($_POST['update_type']) : '';
+  $input3 = isset($_POST['update_race']) ? htmlspecialchars($_POST['update_race']) : '';
+  $input7 = isset($_POST['update_common_name']) ? htmlspecialchars($_POST['update_common_name']) : '';
   $files = isset($_FILES['image']['tmp_name']) ? $_FILES['image']['tmp_name'] : '';
-  $updateOrigin = isset($_POST['update_origin']) ? $_POST['update_origin'] : '';
-  $updateHome = isset($_POST['update_habitat']) ? $_POST['update_habitat'] : '';
+  $updateOrigin = isset($_POST['update_origin']) ? htmlspecialchars($_POST['update_origin']) : '';
+  $updateHome = isset($_POST['update_habitat']) ? htmlspecialchars($_POST['update_habitat']) : '';
 
 
   if (!empty($input1)) {

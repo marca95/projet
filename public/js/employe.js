@@ -1,6 +1,6 @@
 // Update services 
 
-document.getElementById('selectedPartService').addEventListener('change', function() {
+document.getElementById('selectedPartService').addEventListener('change', function () {
   const response = document.getElementById('inputAndLabel');
   const selectValue = this.value;
 
@@ -26,6 +26,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input1.setAttribute("type", "text");
       input1.setAttribute("id", "input");
       input1.setAttribute("name", "update_main_title");
+      input1.setAttribute("maxlength", "255");
 
       response.appendChild(label1);
       response.appendChild(input1);
@@ -40,7 +41,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input2.setAttribute("type", "text");
       input2.setAttribute("id", "input");
       input2.setAttribute("name", "update_second_title");
-
+      input2.setAttribute("maxlength", "255");
 
       response.appendChild(label2);
       response.appendChild(input2);
@@ -55,6 +56,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input3.setAttribute("type", "file");
       input3.setAttribute("id", "input");
       input3.setAttribute("name", "update_main_img");
+      input3.classList.add("file-input");
 
       response.appendChild(label3);
       response.appendChild(input3);
@@ -71,6 +73,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input4.setAttribute("name", "update_main_content");
       input4.setAttribute("rows", "5");
       input4.setAttribute("cols", "50");
+      input4.setAttribute("maxlength", "2000");
 
       response.appendChild(label4);
       response.appendChild(input4);
@@ -85,6 +88,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input5.setAttribute("type", "text");
       input5.setAttribute("id", "input");
       input5.setAttribute("name", "update_third_title");
+      input5.setAttribute("maxlength", "255");
 
       response.appendChild(label5);
       response.appendChild(input5);
@@ -101,6 +105,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input6.setAttribute("id", "input");
       input6.setAttribute("rows", "5");
       input6.setAttribute("cols", "50");
+      input6.setAttribute("maxlength", "255");
 
       response.appendChild(label6);
       response.appendChild(input6);
@@ -115,6 +120,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input7.setAttribute("type", "text");
       input7.setAttribute("id", "input");
       input7.setAttribute("name", "update_name");
+      input7.setAttribute("maxlength", "255");
 
       response.appendChild(label7);
       response.appendChild(input7);
@@ -129,6 +135,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input8.setAttribute("type", "text");
       input8.setAttribute("id", "input");
       input8.setAttribute("name", "update_class_link");
+      input8.setAttribute("maxlength", "255");
 
       response.appendChild(label8);
       response.appendChild(input8);
@@ -143,6 +150,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input9.setAttribute("type", "text");
       input9.setAttribute("id", "input");
       input9.setAttribute("name", "update_url_link");
+      input9.setAttribute("maxlength", "255");
 
       response.appendChild(label9);
       response.appendChild(input9);
@@ -157,6 +165,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input10.setAttribute("type", "file");
       input10.setAttribute("id", "input");
       input10.setAttribute("name", "update_img_link");
+      input10.classList.add("file-input");
 
       response.appendChild(label10);
       response.appendChild(input10);
@@ -171,6 +180,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input11.setAttribute("type", "text");
       input11.setAttribute("id", "input");
       input11.setAttribute("name", "update_class_btn");
+      input11.setAttribute("maxlength", "255");
 
       response.appendChild(label11);
       response.appendChild(input11);
@@ -185,6 +195,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input12.setAttribute("type", "text");
       input12.setAttribute("id", "input");
       input12.setAttribute("name", "update_url_btn");
+      input12.setAttribute("maxlength", "255");
 
       response.appendChild(label12);
       response.appendChild(input12);
@@ -199,9 +210,78 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       input13.setAttribute("type", "text");
       input13.setAttribute("id", "input");
       input13.setAttribute("name", "update_title_btn");
+      input13.setAttribute("maxlength", "255");
 
       response.appendChild(label13);
       response.appendChild(input13);
       break;
   }
 })
+
+// Valid file from form
+function checkFiles(event, form) {
+  debugger;
+  let messageElement = form.querySelector('.extension');
+  messageElement.textContent = "";
+  let fileInputs = form.querySelectorAll('.file-input');
+  let allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+  let maxFileSizeMB = 2;
+  let isValid = true;
+  debugger;
+  fileInputs.forEach(function (fileInput) {
+    let file = fileInput.files[0];
+    if (file) {
+      let fileSizeMB = file.size / 1024 / 1024;
+      let fileExtension = file.name.split('.').pop().toLowerCase();
+
+      if (fileSizeMB > maxFileSizeMB) {
+        messageElement.textContent = "Fichier trop volumineux";
+        isValid = false;
+      }
+
+      if (!allowedExtensions.includes(fileExtension)) {
+        messageElement.textContent = "Extension du fichier non autorisée";
+        isValid = false;
+      }
+    }
+  });
+
+  if (!isValid) {
+    event.preventDefault();
+  }
+}
+
+// Check date and hours for animals 
+
+document.getElementById('form-food').addEventListener('submit', function (event) {
+  let dateInput = document.querySelector('.foodInput[type="datetime-local"]');
+  let dateValue = new Date(dateInput.value);
+  let today = new Date();
+  let message = document.querySelector('.checkDateAndHours');
+  message.innerText = '';
+
+  if (dateValue > today) {
+    message.innerText = 'La date ne peut pas être postérieure à aujourd\'hui.';
+    event.preventDefault();
+    return;
+  }
+
+  if (isNaN(dateValue.getTime())) {
+    message.innerText = 'La date est invalide.';
+    console.log(dateValue.getTime());
+    event.preventDefault();
+    return;
+  }
+
+  if (dateValue.getMinutes() > 59) {
+    message.innerText = 'Les minutes ne peuvent pas dépasser 59.';
+    event.preventDefault();
+    return;
+  }
+
+  if (dateValue.getFullYear() < today.getFullYear() - 1) {
+    message.innerText = "Date trop ancienne pour compléter les données";
+    event.preventDefault();
+    return;
+  }
+});

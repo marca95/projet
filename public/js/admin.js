@@ -87,7 +87,7 @@ form.addEventListener('submit', (e) => {
   if (passwordInput.value.length < 6) {
     errorInput.innerHTML = 'Mot de passe trop court, il vous faut au minimum 6 caractères.';
     e.preventDefault()
-  } else if (passwordInput.value.length > 50) {
+  } else if (passwordInput.value.length > 100) {
     errorInput.innerHTML = 'Votre mot de passe est trop long.';
     passwordInput.value = '';
     e.preventDefault();
@@ -104,10 +104,16 @@ form.addEventListener('submit', (e) => {
   } else if (controlAge < 18) {
     errorInput.innerHTML = 'Cette personne n\'est pas majeur.';
     e.preventDefault()
+  } else if (controlAge > 100) {
+    errorInput.innerHTML = "Il y a une erreur avec l'âge de la personne";
+    e.preventDefault()
   }
 
   if (dateHiring > today) {
     errorInput.innerHTML = 'Vous avez dépassé la date d\'aujourd\'hui.';
+    e.preventDefault()
+  } else if (dateHiring < today.getFullYear() - 100) {
+    errorInput.innerHTML = 'Date d\'engagement invalide.';
     e.preventDefault()
   }
 })
@@ -125,3 +131,26 @@ function clearSuccess() {
     successMessage.innerHTML = '';
   }
 }
+
+// Fonction de validation de l'heure
+function validateHour(value) {
+  let regex = /^(\d{2}h\d{0,2})?$/;
+
+  if (!regex.test(value)) {
+    return false;
+  }
+  return true;
+}
+
+document.querySelector('.form_hour').addEventListener('submit', function (event) {
+  let timeInputs = document.querySelectorAll('.form_hour input[type="text"]');
+
+  for (let input of timeInputs) {
+    if (!validateHour(input.value)) {
+      alert('Veuillez saisir les heures au format HHhMM.');
+      event.preventDefault();
+
+      return;
+    }
+  }
+});

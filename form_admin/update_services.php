@@ -10,19 +10,19 @@ $updateMessage = '';
 if (isset($_POST['updateService'])) {
   $selectedService = isset($_POST['selectedService']) ? $_POST['selectedService'] : '';
 
-  $mainTitle = isset($_POST['update_main_title']) ? $_POST['update_main_title'] : '';
-  $secondTitle = isset($_POST['update_second_title']) ? $_POST['update_second_title'] : '';
+  $mainTitle = isset($_POST['update_main_title']) ? htmlspecialchars($_POST['update_main_title']) : '';
+  $secondTitle = isset($_POST['update_second_title']) ? htmlspecialchars($_POST['update_second_title']) : '';
   $mainImg = isset($_FILES['update_main_img']['tmp_name']) ? $_FILES['update_main_img']['tmp_name'] : '';
-  $content = isset($_POST['update_main_content']) ? $_POST['update_main_content'] : '';
-  $thirdTitle = isset($_POST['update_third_title']) ? $_POST['update_third_title'] : '';
-  $secondContent = isset($_POST['update_second_content']) ? $_POST['update_second_content'] : '';
-  $name = isset($_POST['update_name']) ? $_POST['update_name'] : '';
-  $btnLinkUrl = isset($_POST['update_url_btn']) ? $_POST['update_url_btn'] : '';
-  $btnTitle = isset($_POST['update_title_btn']) ? $_POST['update_title_btn'] : '';
-  $btnClass = isset($_POST['update_class_btn']) ? $_POST['update_class_btn'] : '';
-  $linkUrl = isset($_POST['update_url_link']) ? $_POST['update_url_link'] : '';
+  $content = isset($_POST['update_main_content']) ? htmlspecialchars($_POST['update_main_content']) : '';
+  $thirdTitle = isset($_POST['update_third_title']) ? htmlspecialchars($_POST['update_third_title']) : '';
+  $secondContent = isset($_POST['update_second_content']) ? htmlspecialchars($_POST['update_second_content']) : '';
+  $name = isset($_POST['update_name']) ? htmlspecialchars($_POST['update_name']) : '';
+  $btnLinkUrl = isset($_POST['update_url_btn']) ? htmlspecialchars($_POST['update_url_btn']) : '';
+  $btnTitle = isset($_POST['update_title_btn']) ? htmlspecialchars($_POST['update_title_btn']) : '';
+  $btnClass = isset($_POST['update_class_btn']) ? htmlspecialchars($_POST['update_class_btn']) : '';
+  $linkUrl = isset($_POST['update_url_link']) ? htmlspecialchars($_POST['update_url_link']) : '';
   $linkImgRoot = isset($_FILES['update_img_link']['tmp_name']) ? $_FILES['update_img_link']['tmp_name'] : '';
-  $linkClass = isset($_POST['update_class_link']) ? $_POST['update_class_link'] : '';
+  $linkClass = isset($_POST['update_class_link']) ? htmlspecialchars($_POST['update_class_link']) : '';
 
   if (!empty($mainTitle)) {
     $stmt = $pdo->prepare('UPDATE services SET main_title = :main_title WHERE id_service = :id_service');

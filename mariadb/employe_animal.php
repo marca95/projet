@@ -5,10 +5,10 @@ $allFoods->execute();
 $viewFoods = $allFoods->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['sendDatas'])) {
-  $nameAnimal = isset($_POST['nameAnimal']) ? $_POST['nameAnimal'] : '';
-  $food = isset($_POST['food']) ? $_POST['food'] : '';
-  $grams = isset($_POST['grams']) ? $_POST['grams'] : '';
-  $datePass = isset($_POST['datePass']) ? $_POST['datePass'] : '';
+  $nameAnimal = isset($_POST['nameAnimal']) ? htmlspecialchars($_POST['nameAnimal']) : '';
+  $food = isset($_POST['food']) ? htmlspecialchars($_POST['food']) : '';
+  $grams = isset($_POST['grams']) ? htmlspecialchars($_POST['grams']) : '';
+  $datePass = isset($_POST['datePass']) ? htmlspecialchars($_POST['datePass']) : '';
   $idEmploye = $empUser['id_user'];
 
   $animalExists = false;

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 
@@ -9,6 +7,7 @@ require_once '../mariadb/services.php';
 require_once '../php_mailer/formSendMail.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -53,18 +52,18 @@ require_once '../php_mailer/formSendMail.php';
         <form method="POST" action="./contact.php" id="form">
           <div class="mb-3">
             <label for="title" class="form-label">Titre de votre demande :</label>
-            <input type="text" class="form-control" id="title" name="title" required>
+            <input type="text" class="form-control" id="title" name="title" maxlength="255" required>
             <p id="errorTitle"></p>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Adresse e-mail :</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" maxlength="255" required>
             <div id="emailHelp" class="form-text">Nous vous répondrons sur cette adresse mail.</div>
             <p id="errorEmail"></p>
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description :</label>
-            <textarea class="form-control" id="description" name="description" rows="8" required></textarea>
+            <textarea class="form-control" id="description" name="description" maxlength="2000" rows="8" required></textarea>
             <div class="form-text">Le texte ne peut pas contenir plus de 1000 mots.</div>
             <p id="errorDescr"></p>
           </div>

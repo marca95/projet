@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 
@@ -8,6 +7,7 @@ require_once '../mariadb/disconnect.php';
 require_once '../mongodb/connect.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 

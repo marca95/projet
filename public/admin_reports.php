@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 
@@ -9,6 +7,7 @@ require_once '../mariadb/stmt.php';
 require_once '../mariadb/disconnect.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -76,8 +75,8 @@ require_once '../mariadb/disconnect.php';
           <td data-label="Date"><?php echo $data['date_pass']; ?></td>
           <td data-label="Etat"><?php echo $data['state']; ?></td>
           <td data-label="Détails"><?php echo $data['detail']; ?></td>
-          <td data-label="Employé(e)"><?php echo $data['nom_employe']. ' ' .$data['prenom_employe']; ?></td>
-          <td data-label="Vétérinaire"><?php echo $data['nom_vete']. ' ' .$data['prenom_vete']; ?></td>
+          <td data-label="Employé(e)"><?php echo $data['nom_employe'] . ' ' . $data['prenom_employe']; ?></td>
+          <td data-label="Vétérinaire"><?php echo $data['nom_vete'] . ' ' . $data['prenom_vete']; ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>
@@ -99,7 +98,7 @@ require_once '../mariadb/disconnect.php';
           <td data-label="Nom habitat"><?php echo $home['commonName']; ?></td>
           <td data-label="Avis sur l'état"><?php echo $home['opinion_state']; ?></td>
           <td data-label="Amélioration"><?php echo $home['improvement']; ?></td>
-          <td data-label="Veterinaire"><?php echo $home['name']. ' ' .$home['first_name']; ?></td>
+          <td data-label="Veterinaire"><?php echo $home['name'] . ' ' . $home['first_name']; ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

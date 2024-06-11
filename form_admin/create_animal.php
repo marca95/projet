@@ -14,14 +14,13 @@ $optionsLocations = $recuplocations->fetchAll(PDO::FETCH_ASSOC);
 if (isset($_POST['createNewAnimal']) && isset($_FILES['upload']) && $_FILES['upload']['error'] === 0) {
   $inscriptionAnimal = '';
 
-
-  $name = $_POST['name'];
-  $type = $_POST['type'];
-  $race = $_POST['race'];
-  $location = $_POST['location'];
-  $home = $_POST['home'];
+  $name = htmlspecialchars($_POST['name']);
+  $type = htmlspecialchars($_POST['type']);
+  $race = htmlspecialchars($_POST['race']);
+  $location = htmlspecialchars($_POST['location']);
+  $home = htmlspecialchars($_POST['home']);
   $imgRoot = $_FILES['upload']['tmp_name'];
-  $commonName = $_POST['commonName'];
+  $commonName = htmlspecialchars($_POST['commonName']);
   $destination = "./img/habitats/" . $_FILES['upload']['name'];
 
   $newAnimal = $pdo->prepare('INSERT INTO animals(name, type, race, id_location, id_home, root, commonName) VALUES (:name, :type, :race, :id_location, :id_home, :root, :commonName)');

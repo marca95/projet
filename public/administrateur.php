@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 
@@ -9,6 +8,7 @@ require_once '../mariadb/disconnect.php';
 require_once '../mariadb/register.php';
 
 ?>
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -48,22 +48,22 @@ require_once '../mariadb/register.php';
 
     <form method="POST" action="" id="form" class="form_register">
       <label for="name">Nom :</label> <br />
-      <input type="text" name="name" id="name" oninput="clearSuccess()" required>
+      <input type="text" name="name" id="name" oninput="clearSuccess()" maxlength="50" required>
       <br />
       <label for="first_name">Prénom :</label><br />
-      <input type="text" name="first_name" id="first_name" oninput="clearSuccess()" required>
+      <input type="text" name="first_name" id="first_name" oninput="clearSuccess()" maxlength="50" required>
       <br />
       <label for="email">E-mail (Privé) :</label><br />
-      <input type="email" name="email" id="email" oninput="clearSuccess()" required>
+      <input type="email" name="email" id="email" oninput="clearSuccess()" maxlength="50" required>
       <br />
       <label for="username">Username :</label><br />
-      <input type="email" name="username" id="username" oninput="clearSuccess()" required>
+      <input type="email" name="username" id="username" oninput="clearSuccess()" maxlength="50" required>
       <br />
       <label for="password">Mot de passe :</label><br />
-      <input type="password" name="password" id="password" oninput="clearSuccess()" required>
+      <input type="password" name="password" id="password" oninput="clearSuccess()" maxlength="100" required>
       <br />
       <label for="password2">Vérification du mot de passe :</label><br />
-      <input type="password" name="password2" id="password2" oninput="clearSuccess()" required>
+      <input type="password" name="password2" id="password2" oninput="clearSuccess()" maxlength="100" required>
       <br />
       <label for="id_role">Id role :</label><br />
       <label>
@@ -74,10 +74,10 @@ require_once '../mariadb/register.php';
       </label>
       <br />
       <label for="birthday">Anniversaire :</label><br />
-      <input type="date" name="birthday" id="birthday" oninput="clearSuccess()" required>
+      <input type="date" name="birthday" id="birthday" oninput="clearSuccess()" pattern="\d{2}-\d{2}-\d{4}" placeholder="dd-mm-yyyy" required>
       <br />
       <label for="hire">Engagé(e) :</label><br />
-      <input type="date" name="hire" id="hire" oninput="clearSuccess()" required>
+      <input type="date" name="hire" id="hire" oninput="clearSuccess()" pattern="\d{2}-\d{2}-\d{4}" placeholder="dd-mm-yyyy" required>
       <p id="errorInput"></p>
       <br />
       <?php if (isset($successSignUp) && !empty($successSignUp)) : ?>

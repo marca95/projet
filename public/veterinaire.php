@@ -1,10 +1,11 @@
 <?php
+session_start();
 
-require_once '../mariadb/connect.php';
-require_once '../mariadb/login_veterinaire.php';
-require_once '../mariadb/disconnect.php';
-require_once '../mariadb/states.php';
-require_once '../mariadb/stmt.php';
+include_once '../mariadb/connect.php';
+include_once '../mariadb/login_veterinaire.php';
+include_once '../mariadb/stmt.php';
+include_once '../mariadb/states.php';
+include_once '../mariadb/disconnect.php';
 
 ?>
 <!DOCTYPE html>
@@ -75,7 +76,7 @@ require_once '../mariadb/stmt.php';
       </table>
     </section>
     <section>
-      <form action="" method="POST" class="form">
+      <form action="" method="POST" class="form" id="data-animal">
         <h4>Créer un compte rendu d'un animal</h4>
         <label for="idAnimal">Quel animal souhaitez-vous mettre un commentaire ?</label>
         <select name="idAnimal" required>
@@ -92,11 +93,12 @@ require_once '../mariadb/stmt.php';
         <textarea type="text" name="detail" rows="5" maxlength="2000" placeholder="Décrire le détail de l'animal..."></textarea>
         <br>
         <div class="but">
-          <button type="submit" name="sendData">Envoyer</button>
+          <button type="submit" name="sendData" id="sendData">Envoyer</button>
         </div>
         <?php if ((isset($message)) && (!empty($message))) : ?>
           <p class="message"><?php echo $message; ?></p>
         <?php endif; ?>
+        <p class="message"></p>
       </form>
     </section>
     <section>
@@ -123,7 +125,7 @@ require_once '../mariadb/stmt.php';
       </table>
     </section>
     <section>
-      <form action="" method="POST" class="form">
+      <form action="" method="POST" class="form" id="data-habitat">
         <h4>Créer ou modifier un compte rendus d'un habitat</h4>
         <label for="idHabitat">Quel habitat souhaitez-vous mettre un commentaire ?</label>
         <select name="idHabitat" required>
@@ -145,6 +147,7 @@ require_once '../mariadb/stmt.php';
         <?php if ((isset($messageHabitat)) && (!empty($messageHabitat))) : ?>
           <p class="message"><?php echo $messageHabitat; ?></p>
         <?php endif; ?>
+        <p class="message"></p>
       </form>
     </section>
   </main>

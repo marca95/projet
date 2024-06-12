@@ -33,8 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $updateToken = $pdo->prepare("UPDATE users SET token = :token WHERE username = :username");
       $updateToken->execute(array(':token' => $token, ':username' => $username));
 
-      setcookie("username", $username, time() + 3600, '', '', true, true); //true for httponly and Secure (max security)
-      setcookie("token", $token, time() + 3600, '', '', true, true);
+      setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false);
+      setcookie("username", $username, time() + 3600, '', '', true, false);
+      //  true for httponly and Secure (max security)
+      //  Laisser Secure a false sinon je ne sais pas récuperer mes cookies pour recuperer l'id des membres lors de la 
+      //  soumission du formulaire
+      setcookie("token", $token, time() + 3600, '', '', true, false);
 
       $_SESSION['id_role'] = $response['id_role'];
       $_SESSION['id_user'] = $response['id_user'];

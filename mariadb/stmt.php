@@ -7,7 +7,6 @@ user_employed.name as nom_employe,
 user_employed.first_name as prenom_employe,
 user_vete.name as nom_vete,
 user_vete.first_name as prenom_vete 
-
 FROM animals 
 LEFT JOIN foods ON animals.id_animal = foods.id_animal
 LEFT JOIN states ON animals.id_animal = states.id_animal

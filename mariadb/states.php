@@ -1,7 +1,7 @@
 <?php
+include_once '../mariadb/connect.php';
 
 // view states
-
 $stmt = $pdo->prepare('SELECT employe.name as nom_employe, employe.first_name as prenom_employe,
 vete.name as nom_vete, vete.first_name as prenom_vete, animals.id_animal, animals.name, animals.type, states.state, states.detail, foods.food, foods.grams, foods.date_pass 
 FROM animals
@@ -16,11 +16,12 @@ $viewStates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $message = '';
 
-if (isset($_POST['sendData'])) {
-  $idAnimal = isset($_POST['idAnimal']) ? $_POST['idAnimal'] : '';
-  $state = isset($_POST['state']) ? $_POST['state'] : '';
-  $detail = isset($_POST['detail']) ? $_POST['detail'] : '';
-  $idVete = $vetUser['id_user'];
+if (isset($_POST['idAnimal'], $_POST['state'])) {
+  $idAnimal = $_POST['idAnimal'];
+  $state = htmlspecialchars($_POST['state']);
+  $detail = isset($_POST['detail']) ? htmlspecialchars($_POST['detail']) : '';
+  $idVete = isset($_POST['id_user']) ? $_POST['id_user'] : '';
+  $idVete = intval($idVete);
 
   $animalExists = false;
   foreach ($viewStates as $animal) {
@@ -44,9 +45,10 @@ if (isset($_POST['sendData'])) {
   if ($updateStates->execute()) {
     $message =  "Données bien enregistrées.";
   } else {
-    echo " Erreur SQL : " . $updateStates->errorInfo()[2];;
+    $message = " Erreur SQL : " . $updateStates->errorInfo()[2];
   }
 }
+
 // Add comment habitat
 $request = $pdo->prepare('SELECT id_home FROM status_home');
 $request->execute();
@@ -54,11 +56,12 @@ $habitats = $request->fetchAll(PDO::FETCH_COLUMN);
 
 $messageHabitat = '';
 
-if (isset($_POST['sendHab'])) {
+if (isset($_POST['idHabitat'], $_POST['opinion'])) {
   $idHabitat = isset($_POST['idHabitat']) ? $_POST['idHabitat'] : '';
-  $opinion = isset($_POST['opinion']) ? $_POST['opinion'] : '';
-  $improvement = isset($_POST['improvement']) ? $_POST['improvement'] : '';
-  $idVete = $vetUser['id_user'];
+  $opinion = isset($_POST['opinion']) ? htmlspecialchars($_POST['opinion']) : '';
+  $improvement = isset($_POST['improvement']) ? htmlspecialchars($_POST['improvement']) : '';
+  $idVete = isset($_POST['id_user']) ? $_POST['id_user'] : '';
+  $idVete = intval($idVete);
 
   $habitatExists = false;
   foreach ($habitats as $habitat) {

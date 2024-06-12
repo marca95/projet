@@ -26,8 +26,6 @@ form.addEventListener('submit', (e) => {
   let regexDescription = /^[a-zA-Z0-9\s.,;:'"éàè!?-]*$/;
   let maxwords = descriptionValue.split(/\s+/).length;
 
-  let formData = new FormData(form);
-
   // Validation name
 
   if (usernameValue === '') {
@@ -61,24 +59,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
   }
 
-  fetch('../mariadb/form_avis.php', {
-    method: 'POST',
-    body: formData
-  })
-
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Erreur lors de l'envoi du formulaire.")
-      }
-      return response.json();
-    })
-    // .then(data => {
-    //   // Gestion de la réponse du serveur
-    //   console.log('Réponse du serveur:', data); // Affichage de la réponse JSON
-    // })
-    .catch(error => {
-      console.log('Erreur', error);
-    });
 
 });
 

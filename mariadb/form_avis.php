@@ -1,5 +1,6 @@
 <?php
-if (isset($_POST['submit_avis'])) {
+
+if (isset($_POST['name'], $_POST['explication'])) {
   $firstName = htmlspecialchars($_POST['name']);
   $content = htmlspecialchars($_POST['explication']);
   $status = 'pending';

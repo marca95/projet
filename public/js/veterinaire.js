@@ -24,10 +24,6 @@ document.getElementById('input_search').addEventListener('keyup', (e) => {
 
 function sendData(formId) {
   let form = document.getElementById(formId);
-  if (!form) {
-    console.error("Le formulaire avec l'ID spécifié n'existe pas.");
-    return;
-  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -49,7 +45,7 @@ function sendData(formId) {
         if (this.status === 200) {
           message.innerHTML = 'Données bien enregistrées.';
         } else {
-          message.innerHTML = 'Une erreur est survenue. Veuillez réessayer.';
+          message.innerHTML = '<span style="color: red; font-weight: bold;">Une erreur est survenue. Veuillez réessayer.</span>';
         }
       }
     };
@@ -59,6 +55,5 @@ function sendData(formId) {
   });
 }
 
-// Appeler la fonction pour chaque formulaire
 sendData('data-animal');
 sendData('data-habitat');

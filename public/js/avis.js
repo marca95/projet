@@ -11,7 +11,7 @@ links.forEach((link) => {
   });
 });
 
-// Condition form
+// Condition form and ajax request
 
 let form = document.getElementById('form');
 let username = document.getElementById('name')
@@ -20,6 +20,14 @@ let errorName = document.getElementById('errorName');
 let errorDesc = document.getElementById('errorDesc');
 
 form.addEventListener('submit', (e) => {
+
+  e.preventDefault();
+
+  let data = new FormData();
+  let xhr = new XMLHttpRequest();
+  let message = document.querySelector('.message');
+  message.innerHTML = '';
+
   let usernameValue = username.value.trim();
   let regexName = /^[a-zA-Z0-9\s.,;:'"éàè!?-]*$/;
   let descriptionValue = description.value.trim();
@@ -59,8 +67,20 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
   }
 
+  xhr.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        message.innerHTML = 'Votre avis a été envoyé avec succès, merci !';
+      } else {
+        message.innerHTML = '<span style="color: red; font-weight: bold;">Il y a eu un problème lors de l\'envoi de votre avis.</span>';
+      }
+    }
+  };
 
+  xhr.open("POST", "../mariadb/form_avis.php", true);
+  xhr.send(data);
 });
+
 
 username.addEventListener('input', () => {
   errorName.innerHTML = '';

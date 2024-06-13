@@ -4,7 +4,25 @@ session_start();
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_admin.php';
 require_once '../mariadb/disconnect.php';
-require_once '../mongodb/connect.php';
+require_once '../mongodb/mongoDBConnection.php';
+require_once '../mongodb/animalManager.php';
+
+$dbConnection = new MongoDBConnection();
+$collection = $dbConnection->getCollection();
+$animalManager = new AnimalManager($collection);
+
+// if (isset($_GET['type'])) {
+//   $animal_type = $_GET['type'];
+
+//   if ($animalManager->incrementAnimalView($animal_type)) {
+//     echo "Le nombre de vues de l'animal a été incrémenté avec succès.";
+//   } else {
+//     echo "Une erreur s'est produite lors de l'incrémentation du nombre de vues de l'animal.";
+//   }
+// }
+
+// Récupération des vues des animaux
+$nbrViews = $animalManager->getAnimalViews();
 
 ?>
 <!DOCTYPE html>
@@ -53,28 +71,6 @@ require_once '../mongodb/connect.php';
       <tbody>
 
         <?php
-        $database = $client->zoo;
-        $collection = $database->animals;
-
-        $cursor = $collection->find();
-
-        $nbrViews = [];
-
-        foreach ($cursor as $document) {
-          $commonName = $document['commonName'];
-          $nbrView = $document['nbr_view'];
-
-          $nbrViews[$commonName] = ($nbrViews[$commonName] ?? 0) + $nbrView;
-        }
-
-        foreach ($nbrViews as $commonName => $views) {
-          if (count(array_keys($nbrViews, $commonName)) > 1) {
-            $views = ceil($views / 2);
-          }
-        }
-
-        arsort($nbrViews);
-
         foreach ($nbrViews as $commonName => $nbrView) {
         ?>
           <tr>

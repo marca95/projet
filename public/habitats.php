@@ -6,9 +6,18 @@ require_once '../mariadb/hours.php';
 require_once '../mariadb/services.php';
 require_once '../mariadb/homes.php';
 require_once '../mariadb/dataAnimals.php';
-require_once '../mongodb/connect.php';
-require_once '../mongodb/incr.php';
+require_once '../mongodb/mongoDBConnection.php';
+require_once '../mongodb/animalManager.php';
 require_once '../vendor/autoload.php';
+
+$dbConnection = new MongoDBConnection();
+$collection = $dbConnection->getCollection();
+$animalManager = new AnimalManager($collection);
+
+$type = isset($_GET['type']) ? $_GET['type'] : null;
+if (!empty($type)) {
+  $animalManager->incrementAnimalView($type);
+}
 
 ?>
 <!DOCTYPE html>

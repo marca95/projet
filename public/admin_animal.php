@@ -1,4 +1,7 @@
 <?php
+
+use Dotenv\Parser\Value;
+
 session_start();
 
 // Maria DB
@@ -12,8 +15,33 @@ require_once '../form_admin/update_animal.php';
 require_once '../form_admin/delete_animal.php';
 
 // Mongo DB
-require_once '../mongodb/connect.php';
-require_once '../mongodb/updateAnimal.php';
+require_once '../mongodb/mongoDBConnection.php';
+require_once '../mongodb/animalManager.php';
+
+$dbConnection = new MongoDBConnection();
+$collection = $dbConnection->getCollection();
+$animalManager = new AnimalManager($collection);
+
+if (isset($_POST['createNewAnimal'])) {
+  $animalManager->createNewAnimal($name, $type, $commonName);
+}
+
+if (isset($_POST['formUpdateAnimal'])) {
+  $selectedAnimal = explode('|', $_POST['choice_animal']);
+  $name = $selectedAnimal[1];
+  $type = $selectedAnimal[2];
+  $updateField = $_POST['attribut_animal'];
+
+  $animalManager->updateAnimal($name, $type, $updateField);
+}
+
+if (isset($_POST['formDeleteAnimal'])) {
+  $selectedAnimal = explode('|', $_POST['animal_delete']);
+  $name = $selectedAnimal[1];
+  $type = $selectedAnimal[2];
+
+  $animalManager->deleteAnimal($name, $type);
+}
 
 ?>
 <!DOCTYPE html>
@@ -55,50 +83,51 @@ require_once '../mongodb/updateAnimal.php';
 
   <section class="create_animal">
     <h3>Créer un animal </h3>
-    <label for="name">Nom de l'animal :</label>
-    <br />
-    <input type="text" name="name" maxlength="50" required>
-    <br />
-    <label for="type">Le type d'animal :</label>
-    <br />
-    <input type="text" name="type" maxlength="50" required>
-    <br />
-    <label for="race">Race de l'animal :</label>
-    <br />
-    <input type="text" name="race" maxlength="50" required>
-    <br />
-    <label for="location">Lieu d'origine de l'animal :</label>
-    <br />
-    <select name="location" id="location" required>
-      <option></option>
-      <?php foreach ($optionsLocations as $optionsLocation) : ?>
-        <option value="<?php echo $optionsLocation['id_location']; ?>"><?php echo $optionsLocation['NAME']; ?></option>
-      <?php endforeach; ?>
-    </select>
-    <br />
-    <label for="home">Dans quel habitat va se trouver l'animal :</label>
-    <br />
-    <select name="home" id="home" required>
-      <option></option>
-      <?php foreach ($optionsHomes as $optionsHome) : ?>
-        <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
-      <?php endforeach; ?>
-    </select>
-    <br />
-    <label for="commonName">Nom commun de ou des animaux :</label>
-    <br />
-    <input type="text" name="commonName" maxlength="100" required>
-    <br />
-    <label for="upload">Sélectionner une image</label>
-    <br />
-    <input type="file" name="upload" class="upload_file" required>
-    <p class="extension"></p>
-    <br />
-    <button type="submit" name="createNewAnimal" class="btn btn-success">Inscrire le nouvel animal</button>
-    <br />
-    <?php if (isset($messageAnimal) && (!empty($messageAnimal))) : ?>
-      <p class="message"><?php echo $messageAnimal; ?></p>
-    <?php endif; ?>
+    <form action="" method="POST" enctype="multipart/form-data" class="form_create_animal" onsubmit="checkFile(event, this);">
+      <label for="name">Nom de l'animal :</label>
+      <br />
+      <input type="text" name="name" maxlength="50" required>
+      <br />
+      <label for="type">Le type d'animal :</label>
+      <br />
+      <input type="text" name="type" maxlength="50" required>
+      <br />
+      <label for="race">Race de l'animal :</label>
+      <br />
+      <input type="text" name="race" maxlength="50" required>
+      <br />
+      <label for="location">Lieu d'origine de l'animal :</label>
+      <br />
+      <select name="location" id="location" required>
+        <option></option>
+        <?php foreach ($optionsLocations as $optionsLocation) : ?>
+          <option value="<?php echo $optionsLocation['id_location']; ?>"><?php echo $optionsLocation['NAME']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <br />
+      <label for="home">Dans quel habitat va se trouver l'animal :</label>
+      <br />
+      <select name="home" id="home" required>
+        <option></option>
+        <?php foreach ($optionsHomes as $optionsHome) : ?>
+          <option value="<?php echo $optionsHome['id_home']; ?>"><?php echo $optionsHome['name']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <br />
+      <label for="commonName">Nom commun de ou des animaux :</label>
+      <br />
+      <input type="text" name="commonName" maxlength="100" required>
+      <br />
+      <label for="upload">Sélectionner une image</label>
+      <br />
+      <input type="file" name="upload" class="upload_file" required>
+      <p class="extension"></p>
+      <br />
+      <button type="submit" name="createNewAnimal" class="btn btn-success">Inscrire le nouvel animal</button>
+      <br />
+      <?php if (isset($messageAnimal) && (!empty($messageAnimal))) : ?>
+        <p class="message"><?php echo $messageAnimal; ?></p>
+      <?php endif; ?>
     </form>
   </section>
 

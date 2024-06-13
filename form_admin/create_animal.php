@@ -12,7 +12,7 @@ $optionsLocations = $recuplocations->fetchAll(PDO::FETCH_ASSOC);
 
 
 if (isset($_POST['createNewAnimal']) && isset($_FILES['upload']) && $_FILES['upload']['error'] === 0) {
-  $inscriptionAnimal = '';
+  $messageAnimal = '';
 
   $name = htmlspecialchars($_POST['name']);
   $type = htmlspecialchars($_POST['type']);
@@ -35,11 +35,11 @@ if (isset($_POST['createNewAnimal']) && isset($_FILES['upload']) && $_FILES['upl
 
   if (move_uploaded_file($imgRoot, $destination)) {
     if ($newAnimal->execute()) {
-      $inscriptionAnimal = 'Nouvel animal créé avec succès';
+      $messageAnimal = 'Nouvel animal créé avec succès';
     } else {
-      $inscriptionAnimal = 'Erreur lors de la création du nouvel animal';
+      $messageAnimal = 'Erreur lors de la création du nouvel animal';
     }
   } else {
-    $inscriptionAnimal = 'Erreur lors du téléchargement de l\'image';
+    $messageAnimal = 'Erreur lors du téléchargement de l\'image';
   }
 }

@@ -11,23 +11,12 @@ $dbConnection = new MongoDBConnection();
 $collection = $dbConnection->getCollection();
 $animalManager = new AnimalManager($collection);
 
-// if (isset($_GET['type'])) {
-//   $animal_type = $_GET['type'];
-
-//   if ($animalManager->incrementAnimalView($animal_type)) {
-//     echo "Le nombre de vues de l'animal a été incrémenté avec succès.";
-//   } else {
-//     echo "Une erreur s'est produite lors de l'incrémentation du nombre de vues de l'animal.";
-//   }
-// }
-
-// Récupération des vues des animaux
 $nbrViews = $animalManager->getAnimalViews();
 
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">

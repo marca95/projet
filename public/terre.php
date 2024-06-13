@@ -2,13 +2,13 @@
 session_start();
 
 require_once '../mariadb/connect.php';
-require_once '../mariadb/hours.php';
+require_once '../mariadb/set_hours.php';
 require_once '../mariadb/services.php';
 
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">

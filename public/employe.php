@@ -13,7 +13,7 @@ require_once '../form_admin/update_services.php';
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">

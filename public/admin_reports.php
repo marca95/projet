@@ -9,7 +9,7 @@ require_once '../mariadb/disconnect.php';
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">

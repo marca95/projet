@@ -1,7 +1,4 @@
 <?php
-
-use Dotenv\Parser\Value;
-
 session_start();
 
 // Maria DB
@@ -46,7 +43,7 @@ if (isset($_POST['formDeleteAnimal'])) {
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">

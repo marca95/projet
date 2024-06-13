@@ -2,7 +2,7 @@
 
 class AnimalManager
 {
-  public $collection;
+  private $collection;
 
   public function __construct($collection)
   {

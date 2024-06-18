@@ -5,6 +5,7 @@ session_start();
 require_once '../mariadb/connect.php';
 require_once '../mariadb/login_admin.php';
 require_once '../mariadb/disconnect.php';
+require_once '../mariadb/cleanCookies.php';
 
 // All forms Admin
 require_once '../form_admin/create_animal.php';
@@ -136,7 +137,8 @@ if (isset($_POST['formDeleteAnimal'])) {
       <select name="choice_animal" id="choice_animal" required>
         <option></option>
         <?php foreach ($viewAllAnimals as $viewAnimal) : ?>
-          <option value="<?php echo $viewAnimal['id_animal'] . '|' . $viewAnimal['name'] . '|' . $viewAnimal['type']; ?>"><?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
+          <option value="<?php echo $viewAnimal['id_animal'] . '|' . $viewAnimal['name'] . '|' . $viewAnimal['type']; ?>">
+            <?php echo $viewAnimal['name']; ?> (<?php echo $viewAnimal['type'] ?>)</option>
         <?php endforeach; ?>
       </select>
       <br />

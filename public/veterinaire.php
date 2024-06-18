@@ -6,6 +6,7 @@ include_once '../mariadb/login_veterinaire.php';
 include_once '../mariadb/stmt.php';
 include_once '../mariadb/states.php';
 include_once '../mariadb/disconnect.php';
+require_once '../mariadb/cleanCookies.php';
 
 ?>
 <!DOCTYPE html>

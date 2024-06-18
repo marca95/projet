@@ -13,7 +13,7 @@ if (isset($_SESSION['first_name_user'], $_SESSION['token'])) {
       header("Location: employe.php");
       exit();
     default:
-      header("Location: accueil.html");
+      header("Location: connexion.php");
       exit();
   }
 }
@@ -34,11 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $updateToken->execute(array(':token' => $token, ':username' => $username));
 
       setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false);
-      setcookie("username", $username, time() + 3600, '', '', true, false);
-      //  true for httponly and Secure (max security)
-      //  Laisser Secure a false sinon je ne sais pas récuperer mes cookies pour recuperer l'id des membres lors de la 
-      //  soumission du formulaire
-      setcookie("token", $token, time() + 3600, '', '', true, false);
+      setcookie("username", $username, time() + 3600, '', '', true, true);
+      setcookie("token", $token, time() + 3600, '', '', true, true);
 
       $_SESSION['id_role'] = $response['id_role'];
       $_SESSION['id_user'] = $response['id_user'];

@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (empty($_SESSION['csrf_token'])) {
+  $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrf_token = $_SESSION['csrf_token'];
+
 require_once '../mariadb/connect.php';
 require_once '../mariadb/set_hours.php';
 require_once '../mariadb/services.php';
@@ -60,6 +65,7 @@ require_once '../mariadb/form_avis.php';
               Vous ne pouvez pas dépasser les 1000 mots.
             </div>
           </div>
+          <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token); ?>">
           <button type="submit" name="submit_avis" class="btn btn-success">Envoyer</button>
         </div>
       </form>

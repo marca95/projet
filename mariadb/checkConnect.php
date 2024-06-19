@@ -34,8 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $updateToken->execute(array(':token' => $token, ':username' => $username));
 
       setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false);
-      setcookie("username", $username, time() + 3600, '', '', true, true);
-      setcookie("token", $token, time() + 3600, '', '', true, true);
+      //httpOnly a false pour savoir récupérer l'id dans le script Js lors de la requete AJAX
+      // setcookie("username", $username, time() + 3600, '', '', true, true);
+      // setcookie("token", $token, time() + 3600, '', '', true, true);
 
       $_SESSION['id_role'] = $response['id_role'];
       $_SESSION['id_user'] = $response['id_user'];
@@ -53,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           header("Location: employe.php");
           break;
         default:
-          header("Location: accueil.html");
+          header("Location: connexion.php");
           break;
       }
       exit();

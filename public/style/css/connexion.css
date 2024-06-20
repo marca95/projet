@@ -362,11 +362,18 @@ h2{
   h2 {
     font-size: 2.4rem;
   }
-
-}
-
-
-@media screen and (max-width: 650px) {
+  
+  }
+  
+  
+  @media screen and (max-width: 650px) {
+  .content {
+    background-image: url(../../img/connexion/girafe.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    width: 100%;
+  }
   nav .titre-principal { 
     font-size: 1.8rem;
     margin-left: 0;
@@ -393,13 +400,6 @@ h2{
     color: white;
   }
   
-  .content {
-    background-image: url(../../img/connexion/girafe.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    width: 100%;
-  }
 
 }
 

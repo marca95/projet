@@ -7,7 +7,6 @@ require_once '../mariadb/services.php';
 require_once '../mariadb/checkConnect.php';
 require_once '../mariadb/cleanCookies.php';
 
-
 ?>
 <!DOCTYPE html>
 

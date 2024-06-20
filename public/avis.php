@@ -31,7 +31,7 @@ require_once '../mariadb/form_avis.php';
     <nav id="nav">
       <h1 class="titre-principal">Arcadia</h1>
       <div class="nav-div">
-        <img id="logo_nav" src="../img/accueil/logo.png" alt="erreur">
+        <img id="logo_nav" src="./img/accueil/logo.png" alt="erreur">
       </div>
       <ul class="navigation">
         <li><a href="contact.php">Contact</a></li>

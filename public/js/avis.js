@@ -20,7 +20,6 @@ let errorName = document.getElementById('errorName');
 let errorDesc = document.getElementById('errorDesc');
 
 form.addEventListener('submit', (e) => {
-
   e.preventDefault();
 
   let data = new FormData();

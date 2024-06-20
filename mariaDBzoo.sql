@@ -1,17 +1,4 @@
-
-CREATE TABLE accueil_services (
-	id_service INT(11) NOT NULL PRIMARY KEY,
-	content TEXT NOT NULL,
-	img1 VARCHAR(255) NOT NULL,
-	img2 VARCHAR(255) NOT NULL,
-	title_btn VARCHAR(255),
-	FOREIGN KEY (id_service) REFERENCES services(id_service) ON DELETE CASCADE
-);
-
-INSERT INTO accueil_services (id_service, content, img1, img2, title_btn) VALUES
-	(1, 'Une balade du domaine en petit train avec notre pilote expérimenté René', './img/accueil/train.png', './img/accueil/rene.jpeg', 'Pour plus d\'info'),
-	(2, 'Vous pourrez également visiter les animaux dans leurs habitats et vous balladez avec des animaux inoffensifs, telles que des chèvres, des moutons, des ânes pour le bonheur des petits comme des grands!', './img/accueil/visite1.jpg', './img/accueil/visite2.jpg', 'Pour plus d\'info'),
-	(3, 'Venez découvrir nos magnifiques plats concoctés par nos chefs qualifiés. Vous y découvrirez une cuisine authentique, créative mais surtout des plats zéro déchet. Nous utilisons le maximum de produits locaux afin de respecter notre conviction, <i>une planète plus verte.</i>', './img/accueil/resto1.jpg', './img/accueil/resto2.jpg', 'Pour plus d\'info');
+CREATE DATABASE zoo;
 
 CREATE TABLE animals (
 	id_animal INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -116,6 +103,20 @@ INSERT INTO animals (name, type, race, id_location, id_home, root, commonName) V
 	('Milo', 'autruche', 'Autruche à nuque rouge', 4, 8, './img/habitats/autruche.jpg', 'Les autruches'),
 	('Ken', 'hibou', 'Grand-duc', 2, 8, './img/habitats/hibou.jpg', 'Le hibou'),
 	('Bastil', 'chouette', 'Hulotte', 1, 8, './img/habitats/chouette.jpg', 'La chouette');
+
+CREATE TABLE accueil_services (
+	id_service INT(11) NOT NULL PRIMARY KEY,
+	content TEXT NOT NULL,
+	img1 VARCHAR(255) NOT NULL,
+	img2 VARCHAR(255) NOT NULL,
+	title_btn VARCHAR(255),
+	FOREIGN KEY (id_service) REFERENCES services(id_service) ON DELETE CASCADE
+);
+
+INSERT INTO accueil_services (id_service, content, img1, img2, title_btn) VALUES
+	(1, 'Une balade du domaine en petit train avec notre pilote expérimenté René', './img/accueil/train.png', './img/accueil/rene.jpeg', 'Pour plus d\'info'),
+	(2, 'Vous pourrez également visiter les animaux dans leurs habitats et vous balladez avec des animaux inoffensifs, telles que des chèvres, des moutons, des ânes pour le bonheur des petits comme des grands!', './img/accueil/visite1.jpg', './img/accueil/visite2.jpg', 'Pour plus d\'info'),
+	(3, 'Venez découvrir nos magnifiques plats concoctés par nos chefs qualifiés. Vous y découvrirez une cuisine authentique, créative mais surtout des plats zéro déchet. Nous utilisons le maximum de produits locaux afin de respecter notre conviction, <i>une planète plus verte.</i>', './img/accueil/resto1.jpg', './img/accueil/resto2.jpg', 'Pour plus d\'info');
 
 CREATE TABLE avis (
 	id_avis INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

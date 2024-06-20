@@ -27,7 +27,6 @@ document.getElementById('selectedPartService').addEventListener('change', functi
   const response = document.getElementById('inputAndLabel');
   const selectValue = this.value;
 
-
   let oldLabel = document.getElementById("label");
   let oldInput = document.getElementById("input");
 

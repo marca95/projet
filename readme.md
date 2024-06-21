@@ -84,7 +84,8 @@ php -r "unlink('composer-setup.php');"
 José a accès a sa page d’administrateur en se connectant à la page  <a href="https://zoo-arcadia-2024-efa0677447b.herokuapp.com/connexion.php">https://zoo-arcadia-2024-efa0677447b.herokuapp.com/connexion.php</a> . Une fois connecté, il aura accès à la création d’un nouveau membre, changer les heures d’ouverture du zoo, modifier les habitats ou animaux, etc…</p>
 <p>Les vétérinaires peuvent eux aussi remplir leurs rapports en se connectant sur le site à la même adresse. Ici, notre vétérinaire principale s’appelle Lise. Elle aura droit à voir et mettre à jour tous les animaux du zoo, leur nourriture, état, détails, etc… Elle pourra également mettre un commentaire sur les habitats des animaux ainsi qu'une amélioration possible.</p>
 <p>Pour les employés, ils se connectent de la même manière que les deux précédents. Notre employée sélectionnée s’appelle Emma. Elle pourra gérer les avis des visiteurs (les supprimer ou les publier), gérer les gestions de la nourriture des animaux ainsi que modifier les services du zoo.</p>
---><h2 id="images-citations-et-détails">Images, citations et détails</h2>
+-->
+<h2 id="images-citations-et-détails">Images, citations et détails</h2>
 <p>Toutes les images sont libres de droits et gratuites. Elles viennent du site : <a href="https://pixabay.com/fr/">Pixabay</a>.<br>
 La citation à la page d’accueil vient du site <a href="https://citations.ouest-france.fr/citation-francois-mauriac/sert-rien-homme-gagner-lune-32107.html">citations.ouest-france.fr</a>. Cette phrase à été dit par <em>François Mauriac</em>.<br>
 Les informations sur les animaux sont des informations fictives. Vous ne devez pas vous baser sur ces informations. Le zoo n’est pas réel, tout a été inventé.</p>

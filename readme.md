@@ -45,12 +45,7 @@ Connectez vous à votre compte Github, cliquez sur “New” (créer un nouveau 
 <pre><code>git remote add origin &lt;URL-du-depot&gt;
 git push -u origin master
 </code></pre>
-Composer est important pour les dépendaces PHP. Après avoir installer <a href="https://getcomposer.org/download/">composer-setup.exe</a>
-<pre><code>
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"</code></pre>
+
 <h2 id="utilisation">Utilisation</h2>
 <p>Lors de ce projet, j'ai travaillé avec 3 branches Git :</p>
 <ul>

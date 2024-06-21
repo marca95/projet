@@ -40,7 +40,7 @@ git commit -m 'Message'
 <p>Cela va vous créez un fichier caché .git/ dans votre fichier, puis vous ajoutez tous les fichiers modifiés  ou nouvellement créés au suivi de version et enfin vous créez une description de vos modifications.<br>
 Connectez vous à votre compte Github, cliquez sur “New” (créer un nouveau dépôt), donnez-lui le nom que vous souhaitez et appuyez sur “Create repository”.</p>
 <ol start="6">
-<li>Faire la liaison du dépôt local au distant : Sur la page Github, copiez l’URL fournie (par exemple : “<a href="https://github.com/votre-utilisateur/votre-depot.git">https://github.com/votre-utilisateur/votre-depot.git</a>”). Retournez sur votre terminal dans l’éditeur de code et tapez :</li>
+<li>Faire la liaison du dépôt local au distant :  terminal :</li>
 </ol>
 <pre><code>git remote add origin &lt;URL-du-depot&gt;
 git push -u origin master

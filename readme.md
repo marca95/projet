@@ -5,10 +5,10 @@
 
 <h1 id="zoo-arcadia">Zoo Arcadia</h1>
 <p>Ce projet est une application web qui montre les différentes parties du Zoo Arcadia. Vous pourrez y découvrir les différentes habitations ainsi que tous les animaux du zoo. Vous pourrez également consulter les activités, ainsi que les avis des visiteurs. Seul l’administrateur, les vétérinaires et les employés ont un compte pour s’y connecter afin qu’ils puissent mettre à jour leurs documents. Il y a un également un formulaire de contact, qui permet aux visiteurs du site de poser une question au zoo en mentionnant un titre, une adresse mail et une description de la demande.</p>
-<p>Lien du déploiement : <a href="https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/">https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/</a></p>
+<!-- <p>Lien du déploiement : <a href="https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/">https://zoo-arcadia-2024-7efa0677447b.herokuapp.com/</a></p>
 <p>Lien des maquettes avec Figma : <a href="https://www.figma.com/file/iXyHguaEtQRTkp5iiRJqGF/Arcadia?type=design&node-id=0%3A1&mode=design&t=7VZwzasuJpaGJoeR-1">Cliquez-ici</a></p>
 <p>Lien de mon gestion de projet avec Trello : <a href="https://trello.com/b/2YBX2Upm/zoo-arcadia" >Cliquez-ici</a></p>
-<p>Lien Github : <a href="https://github.com/marca95/projet.git" >Cliquez-ici</a></p>
+<p>Lien Github : <a href="https://github.com/marca95/projet.git" >Cliquez-ici</a></p> -->
 <h2 id="pré-requis">Pré-requis</h2>
 <ul>
 <li>Editeur de code.</li>
@@ -73,9 +73,19 @@ php -r "unlink('composer-setup.php');"
 </code></pre>
 <p>Ou en téléchargeant l’exécutable : <a href="https://getcomposer.org/download/">https://getcomposer.org/download/</a> (Composer-Setup.exe).</p>
 <p>Dans ce projet, j’ai inclus la bibliothèque PhP-SMTP-Mailer qui m’est fournie dans un lien Github : <a href="https://github.com/halojoy/PHP-SMTP-Mailer">https://github.com/halojoy/PHP-SMTP-Mailer</a>. J’ai préféré utiliser ce procédé pour un contrôle total sur la version ainsi qu’une meilleure sécurité.</p>
-
+<h1 id="autorisations-à-la-connexion">Autorisations à la connexion</h1>
+<p>Seul 3 types de personnes peuvent se connecter à l’application et ainsi remplir les rapports adéquats :</p>
+<ol>
+<li>L’administrateur</li>
+<li>Les vétérinaires</li>
+<li>Les employés</li>
+</ol>
+<p>Il ne peut y avoir qu’un seul administrateur du site. Ici en l’occurrence, il se prénomme José.<br>
+José a accès a sa page d’administrateur en se connectant à la page  <a href="https://zoo-arcadia-2024-efa0677447b.herokuapp.com/connexion.php">https://zoo-arcadia-2024-efa0677447b.herokuapp.com/connexion.php</a> . Une fois connecté, il aura accès à la création d’un nouveau membre, changer les heures d’ouverture du zoo, modifier les habitats ou animaux, etc…</p>
+<p>Les vétérinaires peuvent eux aussi remplir leurs rapports en se connectant sur le site à la même adresse. Ici, notre vétérinaire principale s’appelle Lise. Elle aura droit à voir et mettre à jour tous les animaux du zoo, leur nourriture, état, détails, etc… Elle pourra également mettre un commentaire sur les habitats des animaux ainsi qu'une amélioration possible.</p>
+<p>Pour les employés, ils se connectent de la même manière que les deux précédents. Notre employée sélectionnée s’appelle Emma. Elle pourra gérer les avis des visiteurs (les supprimer ou les publier), gérer les gestions de la nourriture des animaux ainsi que modifier les services du zoo.</p>
 <h2 id="images-citations-et-détails">Images, citations et détails</h2>
 <p>Toutes les images sont libres de droits et gratuites. Elles viennent du site : <a href="https://pixabay.com/fr/">Pixabay</a>.<br>
 La citation à la page d’accueil vient du site <a href="https://citations.ouest-france.fr/citation-francois-mauriac/sert-rien-homme-gagner-lune-32107.html">citations.ouest-france.fr</a>. Cette phrase à été dit par <em>François Mauriac</em>.<br>
 Les informations sur les animaux sont des informations fictives. Vous ne devez pas vous baser sur ces informations. Le zoo n’est pas réel, tout a été inventé.</p>
- 
+

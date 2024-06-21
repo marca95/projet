@@ -65,7 +65,7 @@ require_once '../mariadb/form_avis.php';
               Vous ne pouvez pas dépasser les 1000 mots.
             </div>
           </div>
-          <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token); ?>">
+          <input type="hidden" name="csrf_token" class="token" value="<?php echo htmlspecialchars($csrf_token); ?>">
           <button type="submit" name="submit_avis" class="btn btn-success">Envoyer</button>
         </div>
       </form>

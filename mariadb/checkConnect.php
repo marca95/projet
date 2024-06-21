@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 // Check if user is already logged in 
 if (isset($_SESSION['first_name_user'], $_SESSION['token'])) {
   $token = $_SESSION['token'];
@@ -42,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_SESSION['id_user'] = $response['id_user'];
       $_SESSION['first_name_user'] = $response['first_name'];
       $_SESSION['token'] = $token;
+      $_SESSION['csrf_token'] = '';
 
       switch ($_SESSION['id_role']) {
         case 1:

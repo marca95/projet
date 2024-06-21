@@ -11,9 +11,7 @@
 <p>Lien Github : <a href="https://github.com/marca95/projet.git" >Cliquez-ici</a></p>
 <h2 id="pré-requis">Pré-requis</h2>
 <ul>
-<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a> : Editeur de code (Comprend HTML/CSS/JS).</li>
-<li><a href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">Bootstrap</a> : Front.</li>
-<li><a href="https://www.php.net/downloads.php#gpg-8.2">PhP</a> : Back.</li>
+<li>Editeur de code</li>
 <li><a href="https://getcomposer.org/download/">Composer</a> : Gestionnaire de dépendances PhP.</li>
 <li><a href="https://mariadb.org/download/?t=mariadb&amp;p=mariadb&amp;r=11.3.2&amp;os=windows&amp;cpu=x86_64&amp;pkg=msi&amp;mirror=serverion">MariaDB</a> : Base de données relationnelle.</li>
 <li><a href="https://www.mongodb.com/try/download/community">MongoDB</a> : Base de données NoSQL.</li>
@@ -47,10 +45,11 @@ git push -u origin master
 </code></pre>
 <p>Une fois ces étapes terminées, vous aurez créé la liaison entre votre dépôt local et distant, et vous pousserez vos modifications vers le dépôt local au distant à chaque utilisation du git push.</p>
 <h2 id="utilisation">Utilisation</h2>
-<p>Lors de ce projet, nous avons travaillés sur 2 branches Git :</p>
+<p>Lors de ce projet, nous avons travaillés sur 3 branches Git :</p>
 <ul>
 <li>Branch master</li>
 <li>Branch developpement</li>
+<li>Branch test</li>
 </ul>
 <p>Pour switcher d’une branche à l’autre et fusionner une branche avec l’autre, taper dans votre terminal :</p>
 <pre><code>git checkout developpement
@@ -74,19 +73,9 @@ php -r "unlink('composer-setup.php');"
 </code></pre>
 <p>Ou en téléchargeant l’exécutable : <a href="https://getcomposer.org/download/">https://getcomposer.org/download/</a> (Composer-Setup.exe).</p>
 <p>Dans ce projet, j’ai inclus la bibliothèque PhP-SMTP-Mailer qui m’est fournie dans un lien Github : <a href="https://github.com/halojoy/PHP-SMTP-Mailer">https://github.com/halojoy/PHP-SMTP-Mailer</a>. J’ai préféré utiliser ce procédé pour un contrôle total sur la version ainsi qu’une meilleure sécurité.</p>
-<h1 id="autorisations-à-la-connexion">Autorisations à la connexion</h1>
-<p>Seul 3 types de personnes peuvent se connecter à l’application et ainsi remplir les rapports adéquats :</p>
-<ol>
-<li>L’administrateur</li>
-<li>Les vétérinaires</li>
-<li>Les employés</li>
-</ol>
-<p>Il ne peut y avoir qu’un seul administrateur du site. Ici en l’occurrence, il se prénomme José.<br>
-José a accès a sa page d’administrateur en se connectant à la page  <a href="https://zoo-arcadia-2024-efa0677447b.herokuapp.com/connexion.php">https://zoo-arcadia-2024-efa0677447b.herokuapp.com/connexion.php</a> . Une fois connecté, il aura accès à la création d’un nouveau membre, changer les heures d’ouverture du zoo, modifier les habitats ou animaux, etc…</p>
-<p>Les vétérinaires peuvent eux aussi remplir leurs rapports en se connectant sur le site à la même adresse. Ici, notre vétérinaire principale s’appelle Lise. Elle aura droit à voir et mettre à jour tous les animaux du zoo, leur nourriture, état, détails, etc… Elle pourra également mettre un commentaire sur les habitats des animaux ainsi qu'une amélioration possible.</p>
-<p>Pour les employés, ils se connectent de la même manière que les deux précédents. Notre employée sélectionnée s’appelle Emma. Elle pourra gérer les avis des visiteurs (les supprimer ou les publier), gérer les gestions de la nourriture des animaux ainsi que modifier les services du zoo.</p>
-<h2 id="images-citations-et-détails">Images, citations et détails</h2>
-<p>Toutes les images sont libres de droits et gratuites. Elles viennent du site : <a href="https://pixabay.com/fr/">Pixabay</a>.<br>
-La citation à la page d’accueil vient du site <a href="https://citations.ouest-france.fr/citation-francois-mauriac/sert-rien-homme-gagner-lune-32107.html">citations.ouest-france.fr</a>. Cette phrase à été dit par <em>François Mauriac</em>.<br>
+<h3>Images, citations et détails</h3>
+<p>Toutes les images sont libres de droits et gratuites. Elles viennent du site : <a href="https://pixabay.com/fr/">Pixabay</a>.
+La citation à la page d’accueil vient du site <a href="https://citations.ouest-france.fr/citation-francois-mauriac/sert-rien-homme-gagner-lune-32107.html">citations.ouest-france.fr</a>. Cette phrase à été dit par François Mauriac.
 Les informations sur les animaux sont des informations fictives. Vous ne devez pas vous baser sur ces informations. Le zoo n’est pas réel, tout a été inventé.</p>
+
 

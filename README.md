@@ -45,10 +45,11 @@ git push -u origin master
 </code></pre>
 <p>Une fois ces étapes terminées, vous aurez créé la liaison entre votre dépôt local et distant, et vous pousserez vos modifications vers le dépôt local au distant à chaque utilisation du git push.</p>
 <h2 id="utilisation">Utilisation</h2>
-<p>Lors de ce projet, nous avons travaillés sur 2 branches Git :</p>
+<p>Lors de ce projet, nous avons travaillés sur 3 branches Git :</p>
 <ul>
 <li>Branch master</li>
 <li>Branch developpement</li>
+<li>Branch test</li>
 </ul>
 <p>Pour switcher d’une branche à l’autre et fusionner une branche avec l’autre, taper dans votre terminal :</p>
 <pre><code>git checkout developpement

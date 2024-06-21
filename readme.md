@@ -45,7 +45,12 @@ Connectez vous à votre compte Github, cliquez sur “New” (créer un nouveau 
 <pre><code>git remote add origin &lt;URL-du-depot&gt;
 git push -u origin master
 </code></pre>
-<p>Une fois ces étapes terminées, vous aurez créé la liaison entre votre dépôt local et distant, et vous pousserez vos modifications vers le dépôt local au distant à chaque utilisation du git push.</p>
+Composer est important pour les dépendaces PHP. Après avoir installer <a href="https://getcomposer.org/download/">composer-setup.exe</a>
+<pre><code>
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"</code></pre>
 <h2 id="utilisation">Utilisation</h2>
 <p>Lors de ce projet, j'ai travaillé avec 3 branches Git :</p>
 <ul>
@@ -62,7 +67,7 @@ git merge developpement
 git push origin master
 </code></pre>
 <p><strong>Attention</strong>: Vous pouvez créer autant de branches que vous le souhaitez mais en général il est conseillé de travailler avec 2 branches. Le branch master qui est la branch en ligne et la branch developpement qui nous sert à continuer à développer le projet en local.</p>
-<p>Si vous souhaitez installer Bootstrap, vous pouvez l’installer en local ou grâce à l’invite de commande :</p>
+<p>Si vous souhaitez installer Composer, vous pouvez l’installer en local ou grâce à l’invite de commande :</p>
 <pre><code>npm i bootstrap@5.3.3
 </code></pre>
 <p>Ou en l’incluant via le CND dans les balises <code>&lt;head&gt; &lt;/head&gt;</code> de votre projet :</p>

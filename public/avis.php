@@ -9,7 +9,6 @@ $csrf_token = $_SESSION['csrf_token'];
 require_once '../mariadb/connect.php';
 require_once '../mariadb/set_hours.php';
 require_once '../mariadb/services.php';
-require_once '../mariadb/form_avis.php';
 
 ?>
 <!DOCTYPE html>
@@ -50,7 +49,7 @@ require_once '../mariadb/form_avis.php';
         <h2>Nous souhaitons avoir votre avis</h2>
       </div>
 
-      <form action="" method="POST" id="form">
+      <form method="POST" id="form">
         <div class="formulaire">
           <div class="mb-3">
             <label for="name" class="form-label fs-4">Prénom :</label>

@@ -53,7 +53,7 @@ require_once '../php_mailer/formSendMail.php';
           <h2 class="col-6 col-xl-8">Contact</h2>
           <a href="./tarif.php" class="cent_btn col-3 col-xl-2"><button class="btn btn-success" type="button">Tarifs</button></a>
         </div>
-        <form method="POST" action="./contact.php" id="form">
+        <form method="POST" id="form">
           <div class="mb-3">
             <label for="title" class="form-label">Titre de votre demande :</label>
             <input type="text" class="form-control" id="title" name="title" maxlength="255" required>

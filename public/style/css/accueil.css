@@ -104,6 +104,7 @@ cite {
 
 .img_recyclage1, .img_recyclage2 {
   height: 120px;
+  width: 160px;
 }
 
 .container {
@@ -263,6 +264,7 @@ img{
 
   .img_recyclage1, .img_recyclage2 {
     height: 110px;
+    width: 140px;
   }
 
   blockquote {
@@ -509,6 +511,11 @@ img{
   .img_recyclage1{
    display: none; 
   }
+
+  .img_recyclage2{
+    width: 100px; 
+    height: 90px;
+   }
 
   .avis_séparation1{
     font-size: 0.9rem;

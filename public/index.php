@@ -51,7 +51,9 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
 
   <main>
     <div class="citation row">
-      <img class="img_recyclage1 col-sm-2" src="./img/accueil/recyclage1.png" alt="recyclage">
+      <div class="col-sm-2  d-flex justify-content-center align-items-center">
+        <img class="img_recyclage1" src="./img/accueil/recyclage1.png" alt="recyclage">
+      </div>
       <div class="col-9 col-sm-8">
         <blockquote class="text-center lh-sm">Il ne sert de rien à l'homme de gagner la Lune s'il vient à
           perdre la
@@ -59,7 +61,9 @@ $accueilservices = $viewServices->fetchAll(PDO::FETCH_ASSOC);
         </blockquote>
         <cite class="float-end">François Mauriac</cite>
       </div>
-      <img class="img_recyclage2 col-3 col-sm-2" src="./img/accueil/recyclage2.png" alt="recyclage">
+      <div class="col-3 col-sm-2  d-flex justify-content-center align-items-center">
+        <img class="img_recyclage2 col-3 col-sm-2" src="./img/accueil/recyclage2.png" alt="recyclage">
+      </div>
     </div>
     <div class="row m-0">
       <img class="img_presentation col-sm-6  p-0" src="./img/accueil/conservatoir.jpg" height="600px">

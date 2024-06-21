@@ -100,12 +100,8 @@ nav ul li a:hover{
 }
 
 .img_title{
-  width: 100%;
-}
-
-.sec_div {
-  padding: 5px;
-  height: 10vh;
+  width: 150px;
+  height: 120px;
 }
 
 h2 {
@@ -238,7 +234,7 @@ h6 {
   }
 
   .img_title {
-    width: 50%;
+    width: 120px;
   }
   
 }
@@ -283,11 +279,13 @@ h6 {
 
   .centr_logo1{
     justify-content: start;
+    padding: 10px;
   }
 
   .centr_logo2{
     justify-content: end;
-  }
+    padding: 10px;
+  } 
   
   .img_title {
     width: 40%;
@@ -360,6 +358,7 @@ h6 {
 
   .main_div{
     background-image: url(../../img/tarif/pingouin.jpg);
+    background-size: cover;
   }
 
   .img_title {
@@ -448,7 +447,12 @@ h6 {
     font-size: 1.8rem;
   }
 
+  .centr_logo2, .centr_logo1 {
+    display: none;
+  }
+
   .img_title {
-    width: 90%;
+    width: 80px;
+    height: 100px;
   }
 }

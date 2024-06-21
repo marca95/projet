@@ -39,15 +39,13 @@ require_once '../mariadb/services.php';
   </header>
 
   <main>
-    <div class="main_div">
-      <div class="sec_div row">
-        <div class="centr_logo1 col-3 col-md-4 col-lg-2 col-xl-1">
-          <img class="img_title" src="./img/accueil/recyclage1.png" alt="Ecologie">
-        </div>
-        <h2 class="col-6 col-md-4 col-lg-8 col-xl-10">Tarifs tickets individuels</h2>
-        <div class="centr_logo2 col-3 col-md-4 col-lg-2 col-xl-1">
-          <img class="img_title" src="./img/accueil/recyclage2.png" alt="Ecologie">
-        </div>
+    <div class="main_div row">
+      <div class="centr_logo1 col-3 col-md-4 col-lg-2">
+        <img class="img_title" src="./img/accueil/recyclage1.png" alt="Ecologie">
+      </div>
+      <h2 class="col-12 col-sm-6 col-md-4 col-lg-8">Tarifs tickets individuels</h2>
+      <div class="centr_logo2 col-3 col-md-4 col-lg-2">
+        <img class="img_title" src="./img/accueil/recyclage2.png" alt="Ecologie">
       </div>
     </div>
     <div class="org_div">

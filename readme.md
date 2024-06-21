@@ -24,7 +24,7 @@
 </ul>
 <h1 id="installation">Installation</h1>
 <ol>
-<li>Télécharger Visual Studio code qui est un éditeur de code (texte).</li>
+<li>Télécharger éditeur de code (texte).</li>
 <li>Télécharger XAMPP ( Système d’exploitation, Serveur Apache, Base de<br>
 données MySQL, Php, Perl ou languages de programmation) afin de<br>
 pouvoir créer un environnement en local.</li>
@@ -32,6 +32,7 @@ pouvoir créer un environnement en local.</li>
 <li>Ouvrez ce fichier qui vient d’être créé dans l’éditeur de code VSCode pour ensuite y créer vos différents fichiers.</li>
 <li>Pour sauvegarder vos créations de code, créer un compte github. Ensuite, dans le terminal de votre éditeur de code, tapez :</li>
 </ol>
+<h4>Initialisé un dépôt git</h4>
 <pre><code>git init 
 git add .
 git commit -m 'Message'
@@ -46,11 +47,13 @@ git push -u origin master
 </code></pre>
 <p>Une fois ces étapes terminées, vous aurez créé la liaison entre votre dépôt local et distant, et vous pousserez vos modifications vers le dépôt local au distant à chaque utilisation du git push.</p>
 <h2 id="utilisation">Utilisation</h2>
-<p>Lors de ce projet, nous avons travaillés sur 2 branches Git :</p>
+<p>Lors de ce projet, j'ai travaillé avec 3 branches Git :</p>
 <ul>
 <li>Branch master</li>
 <li>Branch developpement</li>
+<li>Branch test</li>
 </ul>
+<p>La branch test m'a permis d'effectuer des grosses modifications, developpement pour les modifications standard et mes phases de tests, la master mon environnement de production</p>
 <p>Pour switcher d’une branche à l’autre et fusionner une branche avec l’autre, taper dans votre terminal :</p>
 <pre><code>git checkout developpement
 git pull origin master 

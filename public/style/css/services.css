@@ -152,11 +152,17 @@ h2{
 .main_a:hover {
   cursor: pointer;
   background-color: #45454555;
+  border-radius: 20px;
 }
 
 .img_btn{
   width: 100%;
   border-radius: 20px;
+}
+
+.img_btn:hover{
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 /* -------------------------------FOOTER------------------------------------ */

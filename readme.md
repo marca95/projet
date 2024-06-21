@@ -40,12 +40,12 @@ git commit -m 'Message'
 <p>Cela va vous créez un fichier caché .git/ dans votre fichier, puis vous ajoutez tous les fichiers modifiés  ou nouvellement créés au suivi de version et enfin vous créez une description de vos modifications.<br>
 Connectez vous à votre compte Github, cliquez sur “New” (créer un nouveau dépôt), donnez-lui le nom que vous souhaitez et appuyez sur “Create repository”.</p>
 <ol start="6">
-<li>Faire la liaison du dépôt local au distant : Sur la page Github, copiez l’URL fournie (par exemple : “<a href="https://github.com/votre-utilisateur/votre-depot.git">https://github.com/votre-utilisateur/votre-depot.git</a>”). Retournez sur votre terminal dans l’éditeur de code et tapez :</li>
+<li>Faire la liaison du dépôt local au distant :  terminal :</li>
 </ol>
 <pre><code>git remote add origin &lt;URL-du-depot&gt;
 git push -u origin master
 </code></pre>
-<p>Une fois ces étapes terminées, vous aurez créé la liaison entre votre dépôt local et distant, et vous pousserez vos modifications vers le dépôt local au distant à chaque utilisation du git push.</p>
+
 <h2 id="utilisation">Utilisation</h2>
 <p>Lors de ce projet, j'ai travaillé avec 3 branches Git :</p>
 <ul>
@@ -62,7 +62,7 @@ git merge developpement
 git push origin master
 </code></pre>
 <p><strong>Attention</strong>: Vous pouvez créer autant de branches que vous le souhaitez mais en général il est conseillé de travailler avec 2 branches. Le branch master qui est la branch en ligne et la branch developpement qui nous sert à continuer à développer le projet en local.</p>
-<p>Si vous souhaitez installer Bootstrap, vous pouvez l’installer en local ou grâce à l’invite de commande :</p>
+<p>Si vous souhaitez installer Composer, vous pouvez l’installer en local ou grâce à l’invite de commande :</p>
 <pre><code>npm i bootstrap@5.3.3
 </code></pre>
 <p>Ou en l’incluant via le CND dans les balises <code>&lt;head&gt; &lt;/head&gt;</code> de votre projet :</p>

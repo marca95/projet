@@ -4,8 +4,6 @@ require '../vendor/autoload.php';
 
 use MongoDB\Client;
 
-Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
-
 class MongoDBConnection
 {
   private $client;
@@ -25,6 +23,8 @@ class MongoDBConnection
     $passwordOnline = $_ENV['APP_MONGO_ONLINE_PASSWORD'];
 
     if ($this->isLocalhost()) {
+      // Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
+
       $this->client = new Client("mongodb://localhost:27017");
     } else {
       $uri = "mongodb+srv://{$usernameOnline}:{$passwordOnline}@cluster0.1ybtwgx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";

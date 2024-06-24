@@ -12,8 +12,8 @@ require_once '../mariadb/services.php';
 
 function handle_request($request)
 {
-  if ($request === '/mariadb/form_avis.php') {
-    include '../includes/form_avis.php';
+  if ($request === '/avis.php') {
+    include '/mariadb/form_avis.php';
     exit;
   }
   // Ajoutez d'autres routes si nécessaire

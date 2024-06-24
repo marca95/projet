@@ -2,14 +2,6 @@
 
 require '../vendor/autoload.php';
 
-//Get var env
-Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
-
-$localUsername = $_ENV['APP_MARIADB_LOCAL_USERNAME'];
-$localPassword = $_ENV['APP_MARIADB_LOCAL_PASSWORD'];
-$localHostname = $_ENV['APP_MARIADB_LOCAL_HOSTNAME'];
-$localDatabase = $_ENV['APP_MARIADB_LOCAL_DATABASE'];
-$localPort = $_ENV['APP_MARIADB_LOCAL_PORT'];
 
 if (getenv('JAWSDB_MARIA_URL') !== false) {
   $dbparts = parse_url(getenv('JAWSDB_MARIA_URL'));
@@ -20,11 +12,20 @@ if (getenv('JAWSDB_MARIA_URL') !== false) {
   $password = $dbparts['pass'];
   $database = ltrim($dbparts['path'], '/');
 } else {
-  $username = $localUsername;
-  $password = $localPassword;
-  $hostname = $localHostname;
-  $database = $localDatabase;
-  $port = $localPort;
+  //Get var env
+  Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
+
+  $username = $_ENV['APP_MARIADB_LOCAL_USERNAME'];
+  $password = $_ENV['APP_MARIADB_LOCAL_PASSWORD'];
+  $hostname = $_ENV['APP_MARIADB_LOCAL_HOSTNAME'];
+  $database = $_ENV['APP_MARIADB_LOCAL_DATABASE'];
+  $port = $_ENV['APP_MARIADB_LOCAL_PORT'];
+
+  // $username = $localUsername;
+  // $password = $localPassword;
+  // $hostname = $localHostname;
+  // $database = $localDatabase;
+  // $port = $localPort;
 }
 
 try {

@@ -20,7 +20,7 @@ let errorName = document.getElementById('errorName');
 let errorDesc = document.getElementById('errorDesc');
 
 form.addEventListener('submit', (e) => {
-  e.preventDefault();
+  // e.preventDefault();
 
 
   let usernameValue = username.value.trim();

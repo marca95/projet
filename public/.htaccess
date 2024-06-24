@@ -1,6 +1,0 @@
-RewriteEngine On
-RewriteBase /
-
-# Redirection des requêtes POST depuis avis.php vers le script form_avis.php à la racine
-RewriteCond %{REQUEST_METHOD} POST
-RewriteRule ^avis\.php$ /mariadb/form_avis.php [L]

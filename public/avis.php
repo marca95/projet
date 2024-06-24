@@ -9,6 +9,7 @@ $csrf_token = $_SESSION['csrf_token'];
 require_once '../mariadb/connect.php';
 require_once '../mariadb/set_hours.php';
 require_once '../mariadb/services.php';
+require_once '../mariadb/form_avis.php';
 
 ?>
 <!DOCTYPE html>

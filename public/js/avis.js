@@ -79,7 +79,7 @@ form.addEventListener('submit', (e) => {
     }
   };
 
-  xhr.open("POST", "/public/mariadb/form_avis.php", true);
+  xhr.open("POST", "/mariadb/form_avis.php", true);
   xhr.send(data);
 });
 

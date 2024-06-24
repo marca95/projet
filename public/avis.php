@@ -9,8 +9,21 @@ $csrf_token = $_SESSION['csrf_token'];
 require_once '../mariadb/connect.php';
 require_once '../mariadb/set_hours.php';
 require_once '../mariadb/services.php';
-require_once '../mariadb/form_avis.php';
 
+function handle_request($request)
+{
+  if ($request === '/mariadb/form_avis.php') {
+    include '../includes/form_avis.php';
+    exit;
+  }
+  // Ajoutez d'autres routes si nécessaire
+}
+
+$request = $_SERVER['REQUEST_URI'];
+handle_request($request);
+
+var_dump($request);
+var_dump(handle_request($request));
 ?>
 <!DOCTYPE html>
 

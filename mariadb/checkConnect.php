@@ -36,7 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $updateToken = $pdo->prepare("UPDATE users SET token = :token WHERE username = :username");
       $updateToken->execute(array(':token' => $token, ':username' => $username));
 
-      setcookie("id_user", $response['id_user'], time() + 3600, '/', '', true, false);
+      setcookie("id_user", $response['id_user'], time() + 3600, '/', 'zoo-arcadia-2024-7efa0677447b.herokuapp.com', false, false);
+      // setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false); Celui ci fonctionne 
+      // mais test pour production
+
+
       //httpOnly a false pour savoir récupérer l'id dans le script Js lors de la requete AJAX
       // setcookie("username", $username, time() + 3600, '', '', true, true);
       // setcookie("token", $token, time() + 3600, '', '', true, true);

@@ -197,4 +197,14 @@ margin-right: 20px;
   .btn {
     width: 100%;
   }
+
+  .foodInput{
+    width: 80%;
+  }
+
+  .go-to-site{
+    position: absolute;
+    right: 20px;
+    top: 190px;
+  }
 }

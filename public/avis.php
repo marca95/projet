@@ -10,20 +10,6 @@ require_once '../mariadb/connect.php';
 require_once '../mariadb/set_hours.php';
 require_once '../mariadb/services.php';
 
-function handle_request($request)
-{
-  if ($request === '/avis.php') {
-    include '/mariadb/form_avis.php';
-    exit;
-  }
-  // Ajoutez d'autres routes si nécessaire
-}
-
-$request = $_SERVER['REQUEST_URI'];
-handle_request($request);
-
-var_dump($request);
-var_dump(handle_request($request));
 ?>
 <!DOCTYPE html>
 

@@ -37,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $updateToken->execute(array(':token' => $token, ':username' => $username));
 
       setcookie("id_user", $response['id_user'], time() + 3600, '/', 'zoo-arcadia-2024-7efa0677447b.herokuapp.com', true, false);
+      // ou local 
+      // setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false);
 
       $_SESSION['id_role'] = $response['id_role'];
       $_SESSION['id_user'] = $response['id_user'];

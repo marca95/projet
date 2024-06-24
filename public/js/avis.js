@@ -74,6 +74,7 @@ form.addEventListener('submit', (e) => {
         // console.log(this.response);
       } else {
         message.innerHTML = '<span style="color: red; font-weight: bold;">Il y a eu un problème lors de l\'envoi de votre avis.</span>';
+        console.log(this.response);
       }
     }
   };

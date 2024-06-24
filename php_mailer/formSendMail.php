@@ -27,14 +27,13 @@ if (isset($_POST['submit'])) {
     try {
 
       //Get var env
-      Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
+      // Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();
 
       $port = $_ENV['APP_MAILER_PORT'];
       $host = $_ENV['APP_MAILER_HOST'];
       $username = $_ENV['APP_MAILER_USERNAME'];
       $password = $_ENV['APP_MAILER_PASSWORD'];
       $myEmail = $_ENV['APP_MAILER_EMAIL'];
-
 
       $mail->isSMTP();
       $mail->Host       = $host;

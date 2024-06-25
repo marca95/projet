@@ -20,7 +20,7 @@ let errorName = document.getElementById('errorName');
 let errorDesc = document.getElementById('errorDesc');
 
 form.addEventListener('submit', (e) => {
-  // e.preventDefault();
+  e.preventDefault();
 
 
   let usernameValue = username.value.trim();
@@ -79,7 +79,7 @@ form.addEventListener('submit', (e) => {
     }
   };
 
-  xhr.open("POST", "../mariadb/form_avis.php", true);
+  xhr.open("POST", "../avis.php", true);
   xhr.send(data);
 });
 

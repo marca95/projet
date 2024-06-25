@@ -96,7 +96,7 @@ if (!empty($type)) {
                   <?php if ($animal['id_home'] == $home['id_home']) : ?>
                     <div class="hidAnimal" id="<?php echo $animal['type']; ?>">
                       <div class="descr_animal">
-                        Prénom: <?php echo $animal['prenom']; ?>
+                        <b>Prénom:</b> <?php echo $animal['prenom']; ?>
                         <?php
                         foreach ($animals_group as $other_animal) {
                           if ($other_animal['prenom'] != $animal['prenom']) {
@@ -105,17 +105,17 @@ if (!empty($type)) {
                         }
                         ?>
                         <br>
-                        Race: <?php echo $animal['race']; ?><br>
-                        Lieu: <?php echo $animal['pays']; ?><br>
+                        <b>Race:</b> <?php echo $animal['race']; ?><br>
+                        <b>Lieu:</b> <?php echo $animal['pays']; ?><br>
                       </div>
                       <div class="img_animals" style="background-image: url(<?php echo $animal['root']; ?>);">
                       </div>
                       <div class="avis_veterinaire">
-                        <p>Etat de l'animal: <?php echo $animal['state']; ?></p>
-                        <p>Sa nourriture: <?php echo $animal['food']; ?></p>
-                        <p>Le grammage de sa nourriture: <?php echo $animal['grams']; ?> gr</p>
-                        <p>Date de passage: <?php echo $animal['passage']; ?></p>
-                        <p>Détail de l'état de l'animal: <?php echo $animal['detail']; ?></p>
+                        <p><b>Etat de l'animal:</b> <?php echo $animal['state']; ?></p>
+                        <p><b>Sa nourriture:</b> <?php echo $animal['food']; ?></p>
+                        <p><b>Le grammage de sa nourriture:</b> <?php echo $animal['grams']; ?> gr</p>
+                        <p><b>Date de passage:</b> <?php echo $animal['passage']; ?></p>
+                        <p><b>Détail de l'état de l'animal:</b> <?php echo $animal['detail']; ?></p>
                       </div>
                     </div>
                   <?php endif; ?>

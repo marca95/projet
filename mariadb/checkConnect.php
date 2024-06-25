@@ -36,9 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $updateToken = $pdo->prepare("UPDATE users SET token = :token WHERE username = :username");
       $updateToken->execute(array(':token' => $token, ':username' => $username));
 
-      setcookie("id_user", $response['id_user'], time() + 3600, '/', 'zoo-arcadia-2024-7efa0677447b.herokuapp.com', true, false);
-      // ou local 
-      // setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false);
+      // Si je ne fais pas ca, en local il ne connait pas le nom du domaine donc supprime le cookie 
+
+      if ($_SERVER['SERVER_NAME'] === 'localhost') {
+        setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false);
+      } else {
+        setcookie("id_user", $response['id_user'], time() + 3600, '/', 'zoo-arcadia-2024-7efa0677447b.herokuapp.com', true, false);
+      }
 
       $_SESSION['id_role'] = $response['id_role'];
       $_SESSION['id_user'] = $response['id_user'];

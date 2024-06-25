@@ -50,7 +50,7 @@ function sendData(formId) {
       }
     };
 
-    xhr.open("POST", "../mariadb/states.php", true);
+    xhr.open("POST", "./veterinaire.php", true);
     xhr.send(data);
   });
 }

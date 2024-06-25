@@ -6,7 +6,6 @@ require_once '../mariadb/login_admin.php';
 require_once '../mariadb/disconnect.php';
 require_once '../mongodb/mongoDBConnection.php';
 require_once '../mongodb/animalManager.php';
-require_once '../mariadb/cleanCookies.php';
 
 $dbConnection = new MongoDBConnection();
 $collection = $dbConnection->getCollection();

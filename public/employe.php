@@ -9,7 +9,6 @@ require_once '../mariadb/employe_avis.php';
 require_once '../mariadb/employe_animal.php';
 require_once '../mariadb/animals.php';
 require_once '../form_admin/update_services.php';
-require_once '../mariadb/cleanCookies.php';
 
 ?>
 <!DOCTYPE html>

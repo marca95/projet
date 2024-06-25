@@ -5,9 +5,7 @@ include_once '../mariadb/connect.php';
 include_once '../mariadb/login_veterinaire.php';
 include_once '../mariadb/stmt.php';
 include_once '../mariadb/disconnect.php';
-require_once '../mariadb/cleanCookies.php';
 
-// include_once '../mariadb/connect.php';
 
 // view states
 $stmt = $pdo->prepare('SELECT employe.name as nom_employe, employe.first_name as prenom_employe,

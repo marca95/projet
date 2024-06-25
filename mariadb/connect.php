@@ -33,5 +33,4 @@ try {
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
   error_log("Erreur de connexion à la base de données MariaDB :" . $e->getMessage());
-  echo "Erreur de connexion à la base de données";
 }

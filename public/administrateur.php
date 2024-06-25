@@ -6,7 +6,6 @@ require_once '../mariadb/login_admin.php';
 require_once '../mariadb/set_hours.php';
 require_once '../mariadb/disconnect.php';
 require_once '../mariadb/register.php';
-require_once '../mariadb/cleanCookies.php';
 
 ?>
 <!DOCTYPE html>

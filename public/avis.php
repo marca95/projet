@@ -14,9 +14,9 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-require 'connect.php';
+// form management
 
-if (isset($_POST['name'], $_POST['explication'])) {
+if (isset($_POST['name'], $_POST['explication']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($_POST['csrf_token'] === $_SESSION['csrf_token']) {
     $firstName = htmlspecialchars($_POST['name']);
     $content = htmlspecialchars($_POST['explication']);

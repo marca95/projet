@@ -13,6 +13,7 @@ if (isset($_POST['deleteHome'])) {
       $messageDeleteHome = "Erreur lors de la suppression de l'habitation.";
     }
   } catch (PDOException $e) {
+    // Defini un chemin dans php.ini pour recevoir les logs
     error_log($e->getMessage());
     $messageDeleteHome = "Erreur lors de la suppression de l'habitation : ";
   }

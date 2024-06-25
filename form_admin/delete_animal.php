@@ -15,6 +15,7 @@ if (isset($_POST['formDeleteAnimal'])) {
       $message = "Erreur lors de la suppression de l'animal";
     }
   } catch (PDOException $e) {
+    // Defini un chemin dans php.ini pour recevoir les logs
     error_log($e->getMessage());
     $message = "Erreur lors de la suppresion de l'animal.";
   }

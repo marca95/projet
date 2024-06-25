@@ -4,7 +4,6 @@ session_start();
 require_once '../mariadb/connect.php';
 require_once '../mariadb/set_hours.php';
 require_once '../mariadb/services.php';
-require_once '../mariadb/updateService.php';
 
 ?>
 <!DOCTYPE html>
@@ -54,9 +53,9 @@ require_once '../mariadb/updateService.php';
     </div>
     <div class="main_div row">
       <?php foreach ($services as $service) : ?>
-        <section class="main_section col-12 col-sm-6 col-md-4" id="<?php echo $service['name']; ?>">
+        <section class="main_section col-12 col-sm-6 col-md-4" id="<?php echo $service['NAME']; ?>">
           <h3 class="main_h3"><?php echo $service['main_title']; ?></h3>
-          <img src="<?php echo $service['main_img']; ?>" alt="<?php echo $service['name']; ?>" width="100%">
+          <img src="<?php echo $service['img_root']; ?>" alt="<?php echo $service['NAME']; ?>" width="100%">
           <h5 class="main_h5"><?php echo $service['second_title']; ?></h5>
           <p class="pt-3"><?php echo $service['content']; ?></p>
           <h5 class="main_h5"><?php echo $service['third_title']; ?></h5>
@@ -101,7 +100,7 @@ require_once '../mariadb/updateService.php';
             <li class="footer-titre">Nos services</li>
             <li class="footer-li"><a class="footer-a" href="./tarif.php">Nos tarifs</a></li>
             <?php foreach ($services as $service) : ?>
-              <li class="footer-li"><a class="footer-a" href="services.php#<?php echo $service['name'] ?>"><?php echo $service['main_title'] ?></a></li>
+              <li class="footer-li"><a class="footer-a" href="services.php#<?php echo $service['NAME'] ?>"><?php echo $service['main_title'] ?></a></li>
             <?php endforeach; ?>
           </ul>
         </div>

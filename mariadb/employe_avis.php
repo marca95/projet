@@ -1,7 +1,7 @@
 
 <?php
 if (isset($_POST['update_avis'])) {
-  $employeValidated = $empUser['id_user'];
+  $employeValidated = $user['id_user'];
 
   if (!empty($_POST['status'])) {
     $stmtAvis = $pdo->prepare("UPDATE avis SET status = :status, id_employe = :employeValidated WHERE id_avis = :idAvis");

@@ -103,3 +103,26 @@ if (isset($_POST['inscription'])) {
     }
   }
 }
+
+
+$selectAllUsers = $pdo->prepare('SELECT * FROM users');
+$selectAllUsers->execute();
+$users = $selectAllUsers->fetchAll(PDO::FETCH_ASSOC);
+
+$succesDelete = '';
+
+if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['delete'])) {
+  $idUser = intval($_POST['user']);
+
+  if ($idUser > 0) {
+    $request = $pdo->prepare('DELETE FROM users WHERE id_user = :iduser');
+    $request->bindValue('iduser', $idUser, PDO::PARAM_INT);
+    if ($request->execute()) {
+      $succesDelete = 'Utilisateur supprimé avec succès !';
+    } else {
+      $succesDelete = "Erreur lors de la suppression de l'utilisateur.";
+    }
+  } else {
+    $succesDelete = "ID utilisateur invalide.";
+  }
+}

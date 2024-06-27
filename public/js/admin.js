@@ -154,3 +154,14 @@ document.querySelector('.form_hour').addEventListener('submit', function (event)
     }
   }
 });
+
+// form delete animal
+
+function confirmDelete() {
+  let confirmation = confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+  if (confirmation) {
+    return true;
+  } else {
+    return false;
+  }
+}

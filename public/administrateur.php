@@ -97,6 +97,42 @@ require_once '../mariadb/register.php';
     </form>
   </section>
 
+  <section class="remove">
+    <h3>Supprimer un membre :</h3>
+    <form method="POST" action="" class="remove_user" onsubmit="return confirmDelete()">
+      <label for="user"></label>
+      <table>
+        <thead>
+          <tr>
+            <th class="org">Nom</th>
+            <th class="org">Prénom</th>
+            <th class="org mail">Adresse mail</th>
+            <th class="org">Choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($users as $user) : ?>
+            <tr>
+              <td class="design"><?php echo htmlspecialchars($user['name']); ?></td>
+              <td class="design"><?php echo htmlspecialchars($user['first_name']); ?></td>
+              <td class="design mail"><?php echo htmlspecialchars($user['username']); ?></td>
+              <td class="design">
+                <input type="radio" name="user" value="<?php echo htmlspecialchars($user['id_user']); ?>">
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+      <button type="submit" name="delete" class="btn_inscription btn_delete">Supprimer</button>
+      <?php if (isset($succesDelete) && !empty($succesDelete)) : ?>
+        <p id="successHour">
+          <?php
+          echo $succesDelete;
+          ?></p>
+      <?php endif; ?>
+    </form>
+  </section>
+
   <section class="setHours">
     <h3>Modification des horaires</h3>
 

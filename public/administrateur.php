@@ -65,7 +65,7 @@ require_once '../mariadb/register.php';
       <label for="password2">Vérification du mot de passe :</label><br />
       <input type="password" name="password2" id="password2" oninput="clearSuccess()" maxlength="100" required>
       <br />
-      <label for="id_role">Id role :</label><br />
+      <label for="id_role">Role :</label><br />
       <label>
         <input type="radio" name="id_role" value="2" required> Vétérinaire
       </label>

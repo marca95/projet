@@ -12,8 +12,6 @@ class AnimalRepositoryDeleteTest extends TestCase
 {
   public function testDeleteAnimalSuccessfullyDeletes()
   {
-
-
     /*
     * Créez des mocks pour 'Collection' et 'DeleteResult' pour simuler leur 
     * comportement sans dépendre d'une véritable base de données MongoDB

@@ -3,7 +3,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Pour effectuer les tests, mettre le chemin de l'autoload en commentaire
 require '../vendor/autoload.php';
+// Ajouter la connection pour effectuer le test
+// require __DIR__ . '/connect.php';
 
 //Get var env
 // Dotenv\Dotenv::createImmutable(__DIR__ . '../../')->load();

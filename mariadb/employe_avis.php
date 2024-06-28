@@ -1,7 +1,9 @@
 
 <?php
 if (isset($_POST['update_avis'])) {
-  global $user, $employeValidated; // Pour mon test
+  // Pour mon test unitaire, je dois déclarer mes variables en global sinon il me renvoie null
+  global $user, $employeValidated;
+
   $employeValidated = intval($user['id_user']);
 
   if (!empty($_POST['status'])) {

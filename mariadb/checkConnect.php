@@ -19,6 +19,9 @@ if (isset($_SESSION['first_name_user'], $_SESSION['token'])) {
       header("Location: connexion.php");
       exit();
   }
+} else {
+  header("Location: connexion.php");
+  exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -1,6 +1,7 @@
 <?php
 
-require '../vendor/autoload.php';
+// require '../vendor/autoload.php';
+// J'ai mis en commentaire pour effectuer mes tests avec PhpUnit
 
 
 if (getenv('JAWSDB_MARIA_URL') !== false) {

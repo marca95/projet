@@ -47,7 +47,7 @@ class AnimalRepositoryDeleteTest extends TestCase
     // Instancier AnimalManager avec la collection mockée
     $repository = new AnimalManager($collection);
 
-    $result = $repository->deleteAnimal('Unicorn', 'Mythical');
+    $result = $repository->deleteAnimal('Chou', 'Fleur');
 
     $this->assertFalse($result);
   }

@@ -6,9 +6,9 @@ if (empty($_SESSION['csrf_token'])) {
 }
 $csrf_token = $_SESSION['csrf_token'];
 
-require_once '../mariadb/connect.php';
-require_once '../mariadb/set_hours.php';
-require_once '../mariadb/services.php';
+require __DIR__ . '/../mariadb/connect.php';
+require __DIR__ . '/../mariadb/set_hours.php';
+require __DIR__ . '/../mariadb/services.php';
 
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
@@ -33,7 +33,7 @@ if (isset($_POST['name'], $_POST['explication']) && $_SERVER['REQUEST_METHOD'] =
       $message = "Il y a eu un problème lors de l'envoie de votre avis.";
     }
   } else {
-    die('Invalid CSRF token');
+    $message = 'Invalid CSRF token';
   }
 }
 

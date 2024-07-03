@@ -31,9 +31,6 @@ firstNameInput.addEventListener('input', function () {
   upperCaseFirstLetter(firstNameInput);
 });
 
-let test = new Date();
-console.log(test);
-
 form.addEventListener('submit', (e) => {
 
   let regex = /^[a-zA-Z\s-]+$/;

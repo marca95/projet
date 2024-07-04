@@ -12,9 +12,9 @@ require '../vendor/autoload.php';
 if (isset($_POST['submit'])) {
   if (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token']) {
 
-    $title = isset($_POST['title']) ? $_POST['title'] : '';
-    $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $description = isset($_POST['description']) ? $_POST['description'] : '';
+    $title = isset($_POST['title']) ? htmlspecialchars($_POST['title']) : '';
+    $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+    $description = isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '';
 
     // Send mail for username and password
     $subject = 'Formulaire de contact';

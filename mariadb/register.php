@@ -19,6 +19,7 @@ $MailerEmail = $_ENV['APP_MAILER_EMAIL'];
 
 // Create registration form
 if (isset($_POST['inscription'])) {
+  $error = '';
   // Check DB only one unique username
   $onlyOneUsername = $pdo->prepare('SELECT * FROM users WHERE username = :username');
   $onlyOneUsername->execute(['username' => $_POST['username']]);
@@ -35,12 +36,20 @@ if (isset($_POST['inscription'])) {
   } else {
     $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
     $first_name = htmlspecialchars($_POST['first_name'], ENT_QUOTES, 'UTF-8');
-    $username = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
-    $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+    $username = filter_var($_POST['username'], FILTER_SANITIZE_EMAIL);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $id_role = intval($_POST['id_role']);
     $birthday = htmlspecialchars($_POST['birthday'], ENT_QUOTES, 'UTF-8');
     $hire = htmlspecialchars($_POST['hire'], ENT_QUOTES, 'UTF-8');
+
+    if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+      $error = 'Username invalide.';
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $error = 'Email invalide.';
+    }
 
     $userOnlyAdmin = $pdo->prepare('SELECT COUNT(*) FROM users WHERE id_role = 1');
     $userOnlyAdmin->execute();
@@ -48,7 +57,9 @@ if (isset($_POST['inscription'])) {
 
     if ($id_role == 1 && $count > 0) {
       $error = 'Il ne peut y avoir qu\'un seul administrateur.';
-    } else {
+    }
+
+    if (empty($error)) {
       $request = $pdo->prepare('INSERT INTO users(name, first_name, username, email, password, id_role, birthday, hire, token) VALUES (:name, :first_name, :username, :email, :password, :id_role, :birthday, :hire, :token)');
       $request->execute(
         array(

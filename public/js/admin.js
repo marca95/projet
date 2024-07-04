@@ -34,6 +34,7 @@ firstNameInput.addEventListener('input', function () {
 form.addEventListener('submit', (e) => {
 
   let regex = /^[a-zA-Z\s-]+$/;
+  let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   // Condition to be 18 years
   let dateBirthday = new Date(birthDate.value);
   let today = new Date();
@@ -67,10 +68,14 @@ form.addEventListener('submit', (e) => {
   }
 
   if (usernameInput.value.length === '') {
-    errorInput.innerHTML = 'Vous devez avoir une adresse mail.';
+    errorInput.innerHTML = 'Vous devez avoir un username.';
     e.preventDefault();
   } else if (usernameInput.value.length > 50) {
-    errorInput.innerHTML = 'Votre adresse mail est trop longue.';
+    errorInput.innerHTML = 'Votre username est trop long.';
+    usernameInput.value = '';
+    e.preventDefault();
+  } else if (!regexEmail.test(usernameInput.value)) {
+    errorInput.innerHTML = 'Votre username n\'a pas un format correct.';
     usernameInput.value = '';
     e.preventDefault();
   }
@@ -80,6 +85,10 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
   } else if (emailInput.value.length > 50) {
     errorInput.innerHTML = 'Votre adresse mail est trop longue.';
+    emailInput.value = '';
+    e.preventDefault();
+  } else if (!regexEmail.test(emailInput.value)) {
+    errorInput.innerHTML = 'Votre adresse mail n\'a pas un format correct.';
     emailInput.value = '';
     e.preventDefault();
   }

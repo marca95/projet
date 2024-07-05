@@ -33,8 +33,12 @@ if (isset($_POST['createNewAnimal']) && isset($_FILES['upload']) && $_FILES['upl
   $newAnimal->bindValue(':root', $destination);
   $newAnimal->bindValue(':commonName', $commonName);
 
+  // Fichier de max 2MB
+  $maxFileSize = 2 * 1024 * 1024;
+  $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+  $fileExtension = strtolower(pathinfo($_FILES['upload']['name'], PATHINFO_EXTENSION));
 
-  if (move_uploaded_file($imgRoot, $destination)) {
+  if (move_uploaded_file($imgRoot, $destination) && $_FILES['upload']['size'] < $maxFileSize && in_array($fileExtension, $allowedExtensions)) {
     if ($newAnimal->execute()) {
       $messageAnimal = 'Nouvel animal créé avec succès';
     } else {

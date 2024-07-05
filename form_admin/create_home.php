@@ -36,11 +36,26 @@ if (isset($_POST['createNewHome']) && isset($_FILES['main_img']) && $_FILES['mai
     $newHome->bindValue(':commonName', $commonName);
     $newHome->bindValue(':second_title', $secondTitle);
 
+    // Fichier de max 2MB
+    $maxFileSize = 2 * 1024 * 1024;
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    $fileExtensionMainImg = strtolower(pathinfo($_FILES['main_img']['name'], PATHINFO_EXTENSION));
+    $fileExtensionSecondImg = strtolower(pathinfo($_FILES['second_img']['name'], PATHINFO_EXTENSION));
+    $fileExtensionAccueilImg = strtolower(pathinfo($_FILES['url_image_accueil']['name'], PATHINFO_EXTENSION));
+
     if (move_uploaded_file($mainRoot, $destinationMainImg) && move_uploaded_file($secondRoot, $destinationSecondImg) && move_uploaded_file($imgAccueil, $destinatonImgAccueil)) {
-      if ($newHome->execute()) {
-        $messageCreate = 'Nouvelle habitation créée avec succès';
+      if ($maxFileSize > $_FILES['main_img']['size'] && $maxFileSize > $_FILES['second_img']['size'] && $maxFileSize > $_FILES['url_image_accueil']['size']) {
+        if (in_array($fileExtensionMainImg, $allowedExtensions) && in_array($fileExtensionSecondImg, $allowedExtensions) && in_array($fileExtensionAccueilImg, $allowedExtensions)) {
+          if ($newHome->execute()) {
+            $messageCreate = 'Nouvelle habitation créée avec succès';
+          } else {
+            $messageCreate = 'Erreur lors de la création de la nouvelle habitation';
+          }
+        } else {
+          $messageCreate = "L'extension ne correspond pas au bon format.";
+        }
       } else {
-        $messageCreate = 'Erreur lors de la création de la nouvelle habitation';
+        $messageCreate = "Fichier trop volumineux.";
       }
     } else {
       $messageCreate = 'Erreur lors du téléchargement des images';

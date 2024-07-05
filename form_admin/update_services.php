@@ -22,6 +22,10 @@ if (isset($_POST['updateService'])) {
   $linkUrl = isset($_POST['update_url_link']) ? htmlspecialchars($_POST['update_url_link']) : '';
   $linkImgRoot = isset($_FILES['update_img_link']['tmp_name']) ? $_FILES['update_img_link']['tmp_name'] : '';
 
+  // Fichier de max 2MB
+  $maxFileSize = 2 * 1024 * 1024;
+  $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
   if (!empty($mainTitle)) {
     $stmt = $pdo->prepare('UPDATE services SET main_title = :main_title WHERE id_service = :id_service');
     $stmt->bindValue(':main_title', $mainTitle);
@@ -36,10 +40,11 @@ if (isset($_POST['updateService'])) {
   }
   if (!empty($mainImg)) {
     $destinationMainImg = "./img/services/" . $_FILES['update_main_img']['name'];
+    $fileExtensionMainImg = strtolower(pathinfo($_FILES['update_main_img']['name'], PATHINFO_EXTENSION));
     $stmt = $pdo->prepare('UPDATE services SET img_root = :img_root WHERE id_service = :id_service');
     $stmt->bindValue(':img_root', $destinationMainImg);
     $stmt->bindValue(':id_service', $selectedService);
-    if (move_uploaded_file($mainImg, $destinationMainImg)) {
+    if (move_uploaded_file($mainImg, $destinationMainImg) && in_array($fileExtensionMainImg, $allowedExtensions) && $_FILES['update_main_img']['size'] < $maxFileSize) {
       $stmt->execute();
     } else {
       $updateMessage = 'Il y a eu un problème lors du téléchargement de l\'image.';
@@ -89,10 +94,11 @@ if (isset($_POST['updateService'])) {
   }
   if (!empty($linkImgRoot)) {
     $destinationLinkImgRoot = "./img/services/" . $_FILES['update_img_link']['name'];
+    $fileExtensionLinkImg = strtolower(pathinfo($_FILES['update_img_link']['name'], PATHINFO_EXTENSION));
     $stmt = $pdo->prepare('UPDATE services SET img_root_link = :img_root_link WHERE id_service = :id_service');
     $stmt->bindValue(':img_root_link', $destinationLinkImgRoot);
     $stmt->bindValue(':id_service', $selectedService);
-    if (move_uploaded_file($linkImgRoot, $destinationLinkImgRoot)) {
+    if (move_uploaded_file($linkImgRoot, $destinationLinkImgRoot) && in_array($fileExtensionLinkImg, $allowedExtensions) && $_FILES['update_img_link']['size'] < $maxFileSize) {
       $stmt->execute();
     } else {
       $updateMessage = 'Il y a eu un problème lors du téléchargement de l\'image.';

@@ -50,7 +50,12 @@ if (isset($_POST['formUpdateAnimal'])) {
     $stmt = $pdo->prepare('UPDATE animals SET root = :image WHERE id_animal = :choiceAnimal');
     $stmt->bindValue(':image', $destinationImage);
     $stmt->bindValue(':choiceAnimal', $choiceAnimal);
-    if (move_uploaded_file($files, $destinationImage)) {
+    // Fichier de max 2MB
+    $maxFileSize = 2 * 1024 * 1024;
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    $fileExtension = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+
+    if (move_uploaded_file($files, $destinationImage) && $_FILES['image']['size'] < $maxFileSize && in_array($fileExtension, $allowedExtensions)) {
       $stmt->execute();
     } else {
       $updateAnimal = 'Il y a eu un problème lors du téléchargement de l\'image.';

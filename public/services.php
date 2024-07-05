@@ -62,14 +62,14 @@ require_once '../mariadb/services.php';
           <p class="pt-3"><?php echo $service['second_content']; ?></p>
           <div class="row">
             <?php if ($service['link_url'] !== null) : ?>
-              <div class="<?php echo $service['link_class']; ?>">
+              <div class="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
                 <a class="main_a" href="<?php echo $service['link_url']; ?>">
                   <img src="<?php echo $service['img_root_link']; ?>" class="img_btn">
                 </a>
               </div>
             <?php endif; ?>
             <?php if ($service['btn_url'] !== null) : ?>
-              <div class="<?php echo $service['btn_class']; ?>">
+              <div class="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
                 <a class="main_a " href="<?php echo $service['btn_url']; ?>" target="_blank">
                   <button class="btn btn-success"><?php echo $service['btn_title']; ?></button>
                 </a>

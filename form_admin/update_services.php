@@ -19,10 +19,8 @@ if (isset($_POST['updateService'])) {
   $name = isset($_POST['update_name']) ? htmlspecialchars($_POST['update_name']) : '';
   $btnLinkUrl = isset($_POST['update_url_btn']) ? htmlspecialchars($_POST['update_url_btn']) : '';
   $btnTitle = isset($_POST['update_title_btn']) ? htmlspecialchars($_POST['update_title_btn']) : '';
-  $btnClass = isset($_POST['update_class_btn']) ? htmlspecialchars($_POST['update_class_btn']) : '';
   $linkUrl = isset($_POST['update_url_link']) ? htmlspecialchars($_POST['update_url_link']) : '';
   $linkImgRoot = isset($_FILES['update_img_link']['tmp_name']) ? $_FILES['update_img_link']['tmp_name'] : '';
-  $linkClass = isset($_POST['update_class_link']) ? htmlspecialchars($_POST['update_class_link']) : '';
 
   if (!empty($mainTitle)) {
     $stmt = $pdo->prepare('UPDATE services SET main_title = :main_title WHERE id_service = :id_service');
@@ -83,12 +81,6 @@ if (isset($_POST['updateService'])) {
     $stmt->bindValue(':id_service', $selectedService);
     $stmt->execute();
   }
-  if (!empty($btnClass)) {
-    $stmt = $pdo->prepare('UPDATE services SET btn_class = :btn_class WHERE id_service = :id_service');
-    $stmt->bindValue(':btn_class', $btnClass);
-    $stmt->bindValue(':id_service', $selectedService);
-    $stmt->execute();
-  }
   if (!empty($linkUrl)) {
     $stmt = $pdo->prepare('UPDATE services SET link_url = :link_url WHERE id_service = :id_service');
     $stmt->bindValue(':link_url', $linkUrl);
@@ -105,12 +97,6 @@ if (isset($_POST['updateService'])) {
     } else {
       $updateMessage = 'Il y a eu un problème lors du téléchargement de l\'image.';
     }
-  }
-  if (!empty($linkClass)) {
-    $stmt = $pdo->prepare('UPDATE services SET link_class = :link_class WHERE id_service = :id_service');
-    $stmt->bindValue(':link_class', $linkClass);
-    $stmt->bindValue(':id_service', $selectedService);
-    $stmt->execute();
   }
   $updateMessage = "Modification éffectuée avec succès";
 }

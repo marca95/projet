@@ -12,10 +12,8 @@ if (isset($_POST['createService']) && isset($_FILES['main_img']) && $_FILES['mai
   $name = htmlspecialchars($_POST['name']);
   $btnLinkUrl = isset($_POST['btn_link_url']) ? htmlspecialchars($_POST['btn_link_url']) : NULL;
   $btnTitle = isset($_POST['title_btn']) ? htmlspecialchars($_POST['title_btn']) : NULL;
-  $btnClass = isset($_POST['btn_classes']) ? htmlspecialchars($_POST['btn_classes']) : NULL;
   $linkUrl = isset($_POST['link_url']) ? htmlspecialchars($_POST['link_url']) : NULL;
   $linkImgRoot = isset($_FILES['link_img_root']['tmp_name']) ? $_FILES['link_img_root']['tmp_name'] : NULL;
-  $linkClass = isset($_POST['link_classes']) ? htmlspecialchars($_POST['link_classes']) : NULL;
 
   $destinationMainImg = "./img/services/" . $_FILES['main_img']['name'];
 
@@ -30,8 +28,8 @@ if (isset($_POST['createService']) && isset($_FILES['main_img']) && $_FILES['mai
   } elseif (empty($mainImg)) {
     $messageCreate = 'Vous devez télécharger une image principale.';
   } else {
-    $newServices = $pdo->prepare('INSERT INTO services(main_title, second_title, img_root, content, third_title, second_content, name, link_class, link_url, img_root_link, btn_class, btn_url, btn_title)
-     VALUES (:main_title, :second_title, :img_root, :content, :third_title, :second_content, :name, :link_class, :link_url, :img_root_link, :btn_class, :btn_url, :btn_title)');
+    $newServices = $pdo->prepare('INSERT INTO services(main_title, second_title, img_root, content, third_title, second_content, name, link_url, img_root_link, btn_url, btn_title)
+     VALUES (:main_title, :second_title, :img_root, :content, :third_title, :second_content, :name, :link_url, :img_root_link, :btn_url, :btn_title)');
     $newServices->bindValue(':main_title', $mainTitle);
     $newServices->bindValue(':second_title', $secondTitle);
     $newServices->bindValue(':img_root', $destinationMainImg);
@@ -39,10 +37,8 @@ if (isset($_POST['createService']) && isset($_FILES['main_img']) && $_FILES['mai
     $newServices->bindValue(':third_title', $thirdTitle);
     $newServices->bindValue(':second_content', $secondContent);
     $newServices->bindValue(':name', $name);
-    $newServices->bindValue(':link_class', $linkClass);
     $newServices->bindValue(':link_url', $linkUrl);
     $newServices->bindValue(':img_root_link', $destinationLinkImgRoot);
-    $newServices->bindValue(':btn_class', $btnClass);
     $newServices->bindValue(':btn_url', $btnLinkUrl);
     $newServices->bindValue(':btn_title', $btnTitle);
 

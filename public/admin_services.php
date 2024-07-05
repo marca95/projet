@@ -83,18 +83,12 @@ require_once '../form_admin/delete_services.php';
     <label for="title_btn">Titre du bouton : </label>
     <input type="text" name="title_btn" maxlength="255">
     <br />
-    <label for="btn_classes">Classes du bouton : </label>
-    <input type="text" name="btn_classes" maxlength="255" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
-    <p>Valeur par défaut</p>
     <label for="link_url">Lien d'une URL : </label>
     <input type="text" name="link_url" maxlength="255">
     <br />
     <label for="link_img_root">Lien de l'image : </label>
     <input type="file" name="link_img_root" class="file-input">
     <br />
-    <label for="link_classes">Classes du lien : </label>
-    <input type="text" name="link_classes" maxlength="255" value="col-6 col-md-12 col-xl-6 d-flex align-items-center justify-content-center p-4">
-    <p>Valeur par défaut</p>
     <p>Les champs avec (*) sont obligatoires.</p>
     <p class="extension"></p>
     <button type="submit" name="createService" class="btn btn-success">Créer un service</button>
@@ -152,10 +146,8 @@ require_once '../form_admin/delete_services.php';
       <option value="5">Le troisième titre </option>
       <option value="6">Le second contenu </option>
       <option value="7">Le nom </option>
-      <option value="8">Les classes du lien </option>
       <option value="9">L'URL du lien </option>
       <option value="10">L'image du lien </option>
-      <option value="11">Les classes du bouton </option>
       <option value="12">L'URL du bouton </option>
       <option value="13">Le titre du bouton </option>
     </select>

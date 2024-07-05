@@ -105,7 +105,7 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       let label5 = document.createElement("label");
       label5.setAttribute("for", "update_third_title");
       label5.setAttribute("id", "label")
-      label5.textContent = "Le nouveau titre secondaire : ";
+      label5.textContent = "Le nouveau sous-titre : ";
 
       let input5 = document.createElement("input");
       input5.setAttribute("type", "text");
@@ -148,21 +148,6 @@ document.getElementById('selectedPartService').addEventListener('change', functi
       response.appendChild(label7);
       response.appendChild(input7);
       break;
-    case "8":
-      let label8 = document.createElement("label");
-      label8.setAttribute("for", "update_class_link");
-      label8.setAttribute("id", "label")
-      label8.textContent = "Ecrivez la nouvelle classe du lien : ";
-
-      let input8 = document.createElement("input");
-      input8.setAttribute("type", "text");
-      input8.setAttribute("id", "input")
-      input8.setAttribute("name", "update_class_link");
-      input8.setAttribute("maxlength", "255");
-
-      response.appendChild(label8);
-      response.appendChild(input8);
-      break;
     case "9":
       let label9 = document.createElement("label");
       label9.setAttribute("for", "update_url_link");
@@ -192,21 +177,6 @@ document.getElementById('selectedPartService').addEventListener('change', functi
 
       response.appendChild(label10);
       response.appendChild(input10);
-      break;
-    case "11":
-      let label11 = document.createElement("label");
-      label11.setAttribute("for", "update_class_btn");
-      label11.setAttribute("id", "label")
-      label11.textContent = "Ecrivez la nouvelle classe du bouton : ";
-
-      let input11 = document.createElement("input");
-      input11.setAttribute("type", "text");
-      input11.setAttribute("id", "input")
-      input11.setAttribute("name", "update_class_btn");
-      input11.setAttribute("maxlength", "255");
-
-      response.appendChild(label11);
-      response.appendChild(input11);
       break;
     case "12":
       let label12 = document.createElement("label");

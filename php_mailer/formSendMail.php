@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
       $mail->send();
       $message = "Email bien envoyé, nous vous répondrons dans les plus bref délais";
     } catch (Exception $e) {
-      $message = "Problème lors de l'envoi du mail :" + $mail->ErrorInfo;
+      $message = "Problème lors de l'envoi du mail :" . $mail->ErrorInfo;
     }
   } else {
     die('Invalid CSRF token');

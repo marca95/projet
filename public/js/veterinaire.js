@@ -34,12 +34,6 @@ function sendData(formId) {
 
     message.innerHTML = '';
 
-    // Récupérer la valeur du cookie id_user et l'ajouter à FormData
-    let idUserCookie = document.cookie.split('; ')
-      .find(cookie => cookie.startsWith('id_user='))
-      .split('=')[1];
-    data.append('id_user', idUserCookie);
-
     xhr.onreadystatechange = function () {
       if (this.readyState === 4) {
         if (this.status === 200) {

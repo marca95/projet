@@ -97,14 +97,31 @@ class AnimalManager
       $nbrViews[$commonName] = ($nbrViews[$commonName] ?? 0) + $nbrView;
     }
 
-    foreach ($nbrViews as $commonName => $views) {
-      if (count(array_keys($nbrViews, $commonName)) > 1) {
-        $views = ceil($views / 2);
-      }
-    }
-
     arsort($nbrViews);
 
     return $nbrViews;
   }
 }
+
+// public function getAnimalViews()
+// {
+//   $cursor = $this->collection->find();
+//   $nbrViews = [];
+
+//   foreach ($cursor as $document) {
+//     $commonName = $document['commonName'];
+//     $nbrView = $document['nbr_view'];
+
+//     $nbrViews[$commonName] = ($nbrViews[$commonName] ?? 0) + $nbrView;
+//   }
+
+//   foreach ($nbrViews as $commonName => $views) {
+//     if (count(array_keys($nbrViews, $commonName)) > 1) {
+//       $views = ceil($views / 2);
+//     }
+//   }
+
+//   arsort($nbrViews);
+
+//   return $nbrViews;
+// }

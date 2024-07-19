@@ -21,7 +21,7 @@ if (isset($_SESSION['first_name_user'], $_SESSION['token'])) {
   }
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['username']) && !empty($_POST['password'])) {
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
 
@@ -39,9 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Si je ne fais pas ca, en local il ne connait pas le nom du domaine donc supprime le cookie 
 
       if ($_SERVER['SERVER_NAME'] === 'localhost') {
-        setcookie("id_user", $response['id_user'], time() + 3600, '', '', true, false);
+        setcookie("Prénom", $response['first_name'], time() + 3600, '', '', true, true);
       } else {
-        setcookie("id_user", $response['id_user'], time() + 3600, '/', 'zoo-arcadia-2024-7efa0677447b.herokuapp.com', true, false);
+        setcookie("Prénom", $response['first_name'], time() + 3600, '/', 'zoo-arcadia-2024-7efa0677447b.herokuapp.com', true, true);
       }
 
       $_SESSION['id_role'] = $response['id_role'];

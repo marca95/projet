@@ -23,11 +23,10 @@ $viewStates = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $message = '';
 
 if (isset($_POST['idAnimal'], $_POST['state'])) {
-  $idAnimal = $_POST['idAnimal'];
+  $idAnimal = intval($_POST['idAnimal']);
   $state = htmlspecialchars($_POST['state']);
   $detail = isset($_POST['detail']) ? htmlspecialchars($_POST['detail']) : '';
-  $idVete = isset($_POST['id_user']) ? $_POST['id_user'] : '';
-  $idVete = intval($idVete);
+  $idVete = intval($_SESSION['id_user']);
 
   $animalExists = false;
   foreach ($viewStates as $animal) {
@@ -66,8 +65,7 @@ if (isset($_POST['idHabitat'], $_POST['opinion'])) {
   $idHabitat = isset($_POST['idHabitat']) ? $_POST['idHabitat'] : '';
   $opinion = isset($_POST['opinion']) ? htmlspecialchars($_POST['opinion']) : '';
   $improvement = isset($_POST['improvement']) ? htmlspecialchars($_POST['improvement']) : '';
-  $idVete = isset($_POST['id_user']) ? $_POST['id_user'] : '';
-  $idVete = intval($idVete);
+  $idVete = intval($_SESSION['id_user']);
 
   $habitatExists = false;
   foreach ($habitats as $habitat) {

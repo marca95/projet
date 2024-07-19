@@ -9,7 +9,7 @@ if (isset($_POST['sendDatas'])) {
   $food = isset($_POST['food']) ? htmlspecialchars($_POST['food']) : '';
   $grams = isset($_POST['grams']) ? htmlspecialchars($_POST['grams']) : '';
   $datePass = isset($_POST['datePass']) ? htmlspecialchars($_POST['datePass']) : '';
-  $idEmploye = $user['id_user'];
+  $idEmploye = intval($_SESSION['id_user']);
 
   $animalExists = false;
   foreach ($viewFoods as $foods) {
